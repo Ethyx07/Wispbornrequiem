@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://tbjaobq62mt2"]
+
+[ext_resource type="PackedScene" uid="uid://2413ue8fbi7x" path="res://Scenes/PlayerClasses/player_wisp.tscn" id="1_e8h5j"]
+[ext_resource type="PackedScene" uid="uid://baog375jtohmk" path="res://Scenes/Interactables/Podiums/minotaur_podium.tscn" id="2_y041l"]
+
+[node name="World" type="Node2D"]
+
+[node name="player_wisp" parent="." instance=ExtResource("1_e8h5j")]
+
+[node name="MinotaurPodium" parent="." instance=ExtResource("2_y041l")]
+position = Vector2(134, -6)
+
+[node name="MinotaurPodium2" parent="." instance=ExtResource("2_y041l")]
+position = Vector2(134, 15)
+rotation = 3.14159

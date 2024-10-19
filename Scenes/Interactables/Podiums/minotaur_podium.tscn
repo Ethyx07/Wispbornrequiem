@@ -1,0 +1,23 @@
+[gd_scene load_steps=6 format=3 uid="uid://baog375jtohmk"]
+
+[ext_resource type="Script" path="res://Scripts/Interactables/Interactables.gd" id="1_2raew"]
+[ext_resource type="Texture2D" uid="uid://bkkrypsu1d2i1" path="res://Assets/PlayerSprites/Wisp.png" id="2_8lcpp"]
+[ext_resource type="Texture2D" uid="uid://okjk4g0vbcrs" path="res://Assets/PlayerSprites/WispHighlighted.png" id="2_447pp"]
+[ext_resource type="PackedScene" uid="uid://5aa26iu24g7d" path="res://Scenes/PlayerClasses/minotaur.tscn" id="4_ds5og"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_17knc"]
+size = Vector2(41, 20)
+
+[node name="MinotaurPodium" type="StaticBody2D" groups=["Interactable"]]
+texture_filter = 1
+script = ExtResource("1_2raew")
+highlightedTexture = ExtResource("2_447pp")
+baseTexture = ExtResource("2_8lcpp")
+posssesCharacter = ExtResource("4_ds5og")
+
+[node name="hitbox" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_17knc")
+
+[node name="Wisp" type="Sprite2D" parent="."]
+texture = ExtResource("2_8lcpp")

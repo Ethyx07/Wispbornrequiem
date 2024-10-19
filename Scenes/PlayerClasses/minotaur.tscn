@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://5aa26iu24g7d"]
+
+[ext_resource type="Texture2D" uid="uid://okjk4g0vbcrs" path="res://Assets/PlayerSprites/WispHighlighted.png" id="1_6u8td"]
+[ext_resource type="Script" path="res://Scripts/PlayableCharacters/minotaur.gd" id="1_65rwl"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_55fc3"]
+radius = 15.0333
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kopfh"]
+size = Vector2(12, 19)
+
+[node name="minotaur" type="CharacterBody2D"]
+script = ExtResource("1_65rwl")
+
+[node name="playerSprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_6u8td")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_55fc3")
+
+[node name="InteractableBox" type="Area2D" parent="."]
+
+[node name="interact_box_right" type="CollisionShape2D" parent="InteractableBox"]
+position = Vector2(16, 1)
+shape = SubResource("RectangleShape2D_kopfh")
+
+[node name="interact_box_left" type="CollisionShape2D" parent="InteractableBox"]
+position = Vector2(-16, 1)
+shape = SubResource("RectangleShape2D_kopfh")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[connection signal="body_entered" from="InteractableBox" to="." method="_on_interactable_box_body_entered"]
+[connection signal="body_exited" from="InteractableBox" to="." method="_on_interactable_box_body_exited"]
+[connection signal="body_shape_exited" from="InteractableBox" to="." method="_on_interactable_box_body_shape_exited"]
