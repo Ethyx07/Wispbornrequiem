@@ -17,7 +17,7 @@ speed = 80.0
 [node name="playerSprite" type="Sprite2D" parent="."]
 texture = ExtResource("1_3lqi4")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="hurtbox" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_55fc3")
 
 [node name="InteractableBox" type="Area2D" parent="."]

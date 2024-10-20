@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://bddxl25yq1syy"]
+
+[ext_resource type="Script" path="res://Scripts/Particles/dash_particle.gd" id="1_gw6us"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qkfr2"]
+particle_flag_disable_z = true
+spread = 90.0
+initial_velocity_min = -50.0
+initial_velocity_max = 50.0
+gravity = Vector3(0, 0, 0)
+
+[node name="GPUParticles2D" type="GPUParticles2D"]
+emitting = false
+amount = 30
+process_material = SubResource("ParticleProcessMaterial_qkfr2")
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+script = ExtResource("1_gw6us")
+
+[connection signal="finished" from="." to="." method="_on_finished"]
