@@ -38,13 +38,14 @@ func _physics_process(delta: float) -> void:
 		particle_temp.global_position = playerSprite.global_position
 		get_tree().root.get_child(0).add_child(particle_temp)
 		velocity = velocity * 100
-		self.hide()
+		playerSprite.hide()
 		move_and_slide()
+		await get_tree().create_timer(0.1).timeout
 		var particle_tempFin = dashParticle.instantiate()
 		particle_tempFin.emitting = true
 		particle_tempFin.global_position = playerSprite.global_position
 		get_tree().root.get_child(0).add_child(particle_tempFin)
-		self.show()	
+		playerSprite.show()
 
 func _on_interactable_box_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Interactable") and !is_instance_valid(facingBody):
@@ -58,3 +59,6 @@ func _on_interactable_box_body_exited(body: Node2D) -> void:
 
 func _on_particle_finished(particleInstance : Node)-> void:
 	particleInstance.queue_free()
+	
+func wait(delay : float)-> void:
+	pass

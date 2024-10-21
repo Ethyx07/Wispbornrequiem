@@ -537,10 +537,3 @@ tile_set = SubResource("TileSet_u1r38")
 
 [node name="MinotaurPodium" parent="." instance=ExtResource("2_y041l")]
 position = Vector2(134, -6)
-itemDesc = "Minotaur Podium"
-
-[node name="MinotaurPodium2" parent="." instance=ExtResource("2_y041l")]
-position = Vector2(134, 35)
-rotation = 3.14159
-itemDesc = "Siren Podium"
-posssesCharacter = ExtResource("1_e8h5j")

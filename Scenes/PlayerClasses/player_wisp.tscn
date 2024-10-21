@@ -32,5 +32,8 @@ shape = SubResource("RectangleShape2D_kopfh")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
+[node name="attackMarker" type="Marker2D" parent="."]
+visible = false
+
 [connection signal="body_entered" from="InteractableBox" to="." method="_on_interactable_box_body_entered"]
 [connection signal="body_exited" from="InteractableBox" to="." method="_on_interactable_box_body_exited"]
