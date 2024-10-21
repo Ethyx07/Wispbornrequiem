@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @export var speed : float = 20.0
 @export var dashSpeed: float = 100
+@export var dashCooldown : float = 4
 
 @onready var attackDirection = get_node("attackMarker")
 @onready var playerSprite = get_node("playerSprite")
@@ -9,9 +10,10 @@ extends CharacterBody2D
 
 var facingBody : Node2D
 var bDashing : bool = false
+var bIsDead : bool = false
 
 func _physics_process(delta: float) -> void:
-	if !bDashing:
+	if !bIsDead:
 		var inputVector = Vector2.ZERO
 		inputVector.x = Input.get_action_strength("Right") - Input.get_action_strength("Left")
 		inputVector.y = Input.get_action_strength("Down") - Input.get_action_strength("Up")
@@ -50,5 +52,27 @@ func _on_interactable_box_body_exited(body: Node2D) -> void:
 func _on_particle_finished(particleInstance : Node)-> void:
 	particleInstance.queue_free()
 	
-func wait(delay : float)-> void:
-	pass
+func dash()-> void:
+	#Creates particle where the player leaves from
+		var particle_temp = dashParticle.instantiate()
+		particle_temp.emitting = true
+		particle_temp.global_position = playerSprite.global_position
+		get_tree().root.get_child(0).add_child(particle_temp)
+		playerSprite.hide()
+		#Gets position of mouse relative to player location for dash (allows dashing over blocked areas)
+		var dashPosition = (get_global_mouse_position() - self.global_position).normalized() * dashSpeed
+		self.global_position += dashPosition
+		#Delay for when the player reappears to give better visual on the dash
+		await get_tree().create_timer(0.1).timeout
+		#Creates the instance of the dash particle where the player reappears
+		var particle_tempFin = dashParticle.instantiate()
+		particle_tempFin.emitting = true
+		particle_tempFin.global_position = playerSprite.global_position
+		get_tree().root.get_child(0).add_child(particle_tempFin)
+		playerSprite.show()
+		bDashing = true
+		await get_tree().create_timer(dashCooldown).timeout
+		resetDash()
+
+func resetDash() ->void:
+	bDashing = false

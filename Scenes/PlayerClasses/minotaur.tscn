@@ -17,6 +17,7 @@ texture_filter = 1
 script = ExtResource("1_65rwl")
 speed = 100.0
 dashSpeed = 150.0
+dashCooldown = 2.0
 
 [node name="playerSprite" type="Sprite2D" parent="."]
 texture = ExtResource("1_6u8td")
