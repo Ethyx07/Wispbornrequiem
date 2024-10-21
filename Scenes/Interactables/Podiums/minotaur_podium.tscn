@@ -1,12 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://baog375jtohmk"]
+[gd_scene load_steps=7 format=3 uid="uid://baog375jtohmk"]
 
 [ext_resource type="Script" path="res://Scripts/Interactables/podiums.gd" id="1_n832b"]
 [ext_resource type="Texture2D" uid="uid://dr8ncnj1f36qr" path="res://Assets/Relics/MinotaurHornHighlighted.png" id="3_bml6l"]
 [ext_resource type="PackedScene" uid="uid://5aa26iu24g7d" path="res://Scenes/PlayerClasses/minotaur.tscn" id="4_ds5og"]
+[ext_resource type="Texture2D" uid="uid://dardx14ve8n0a" path="res://Assets/Podium/PodiumUnlocked.png" id="5_25woj"]
 [ext_resource type="Texture2D" uid="uid://cbeern5hfqgxe" path="res://Assets/Relics/MinotaurHorn.png" id="5_bop5f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_17knc"]
-size = Vector2(17, 20)
+size = Vector2(28, 46)
 
 [node name="MinotaurPodium" type="StaticBody2D" groups=["Interactable"]]
 texture_filter = 1
@@ -17,10 +18,14 @@ highlightedTexture = ExtResource("3_bml6l")
 baseTexture = ExtResource("5_bop5f")
 
 [node name="hitbox" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, 0)
+position = Vector2(0, 13)
 shape = SubResource("RectangleShape2D_17knc")
 
 [node name="MainTexture" type="Sprite2D" parent="."]
-position = Vector2(-2, -4.76837e-07)
+position = Vector2(0, -2)
 scale = Vector2(0.65625, 0.65625)
 texture = ExtResource("5_bop5f")
+
+[node name="PodiumUnlocked" type="Sprite2D" parent="."]
+position = Vector2(0, 21)
+texture = ExtResource("5_25woj")

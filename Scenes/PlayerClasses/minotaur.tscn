@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://okjk4g0vbcrs" path="res://Assets/PlayerSprites/WispHighlighted.png" id="1_6u8td"]
 [ext_resource type="Script" path="res://Scripts/PlayableCharacters/minotaur.gd" id="1_65rwl"]
-[ext_resource type="Texture2D" uid="uid://bkkrypsu1d2i1" path="res://Assets/PlayerSprites/Wisp.png" id="3_6h0ey"]
+[ext_resource type="Texture2D" uid="uid://bap1b083cw08e" path="res://Assets/PlayerSprites/AttackArrow.png" id="3_qpmay"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_55fc3"]
 radius = 15.0333
@@ -13,7 +13,10 @@ size = Vector2(12, 19)
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oq2df"]
 
 [node name="minotaur" type="CharacterBody2D"]
+texture_filter = 1
 script = ExtResource("1_65rwl")
+speed = 100.0
+dashSpeed = 150.0
 
 [node name="playerSprite" type="Sprite2D" parent="."]
 texture = ExtResource("1_6u8td")
@@ -32,6 +35,7 @@ position = Vector2(-16, 1)
 shape = SubResource("RectangleShape2D_kopfh")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(1.5, 1.5)
 
 [node name="attackMarker" type="Marker2D" parent="."]
 
@@ -44,7 +48,7 @@ shape = SubResource("CapsuleShape2D_oq2df")
 [node name="Wisp" type="Sprite2D" parent="attackMarker/hitbox"]
 rotation = 1.5708
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("3_6h0ey")
+texture = ExtResource("3_qpmay")
 
 [connection signal="body_entered" from="InteractableBox" to="." method="_on_interactable_box_body_entered"]
 [connection signal="body_exited" from="InteractableBox" to="." method="_on_interactable_box_body_exited"]

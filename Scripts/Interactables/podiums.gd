@@ -9,8 +9,8 @@ func _ready() -> void:
 	
 func start_bobbing():
 	var tween = create_tween()
-	tween.tween_property(self, "position:y", startingPos.y + 5, 1)
-	tween.tween_property(self, "position:y", startingPos.y, 1)
+	tween.tween_property(self, "position:y", startingPos.y - 25, 1)
+	tween.tween_property(self, "position:y", startingPos.y - 20, 1)
 	tween.finished.connect(start_bobbing)
 	
 func interact(body: Node2D) -> void:
@@ -23,6 +23,6 @@ func interact(body: Node2D) -> void:
 	
 	
 func _physics_process(delta: float) -> void:
-	pass
+	get_node("PodiumUnlocked").global_position = startingPos
 	
 	

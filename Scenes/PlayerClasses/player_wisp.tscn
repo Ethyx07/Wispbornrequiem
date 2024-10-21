@@ -31,6 +31,7 @@ position = Vector2(-16, 1)
 shape = SubResource("RectangleShape2D_kopfh")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(3, 3)
 
 [node name="attackMarker" type="Marker2D" parent="."]
 visible = false
