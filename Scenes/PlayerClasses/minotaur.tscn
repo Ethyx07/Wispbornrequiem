@@ -15,12 +15,15 @@ size = Vector2(13, 19)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_su2ro"]
 size = Vector2(20, 58)
 
-[node name="minotaur" type="CharacterBody2D"]
+[node name="minotaur" type="CharacterBody2D" groups=["Player"]]
 texture_filter = 1
 script = ExtResource("1_65rwl")
 speed = 100.0
 dashSpeed = 150.0
 dashCooldown = 2.0
+attackDamage = 5.0
+specialDamage = 2.0
+health = 10.0
 
 [node name="Axe" type="Sprite2D" parent="."]
 position = Vector2(6, -3)

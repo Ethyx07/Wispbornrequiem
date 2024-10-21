@@ -4,6 +4,12 @@ extends CharacterBody2D
 @export var dashSpeed: float = 100
 @export var dashCooldown : float = 4
 
+@export var attackDamage : float
+@export var specialDamage : float
+@export var health : float
+
+
+
 @onready var attackDirection = get_node("attackMarker")
 @onready var playerSprite = get_node("playerSprite")
 @onready var dashParticle : PackedScene = preload("res://Scenes/Particles/dash_particle.tscn")
@@ -79,3 +85,6 @@ func resetDash() ->void:
 	
 func attack() -> void:
 	pass
+	
+func attack_hit(body : Node2D) ->void:
+	body.hit(attackDamage)

@@ -9,10 +9,13 @@ radius = 15.0333
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kopfh"]
 size = Vector2(12, 19)
 
-[node name="player_wisp" type="CharacterBody2D"]
+[node name="player_wisp" type="CharacterBody2D" groups=["Player"]]
 texture_filter = 1
 script = ExtResource("1_hy1py")
 speed = 80.0
+attackDamage = 5.0
+specialDamage = 2.0
+health = 10.0
 
 [node name="playerSprite" type="Sprite2D" parent="."]
 texture = ExtResource("1_3lqi4")

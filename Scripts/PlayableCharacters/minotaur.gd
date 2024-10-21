@@ -18,6 +18,7 @@ func attack()-> void:
 	super()
 	get_node("attackMarker/hitbox/attackbox").disabled = false
 	var axeTemp = axeSlash.instantiate()
+	axeTemp.parent = self
 	axeTemp.global_position = get_node("attackMarker/hitbox/attackbox").global_position
 	axeTemp.look_at(get_global_mouse_position())
 	axeTemp.get_node("axe_anim").play("slash_appear")
@@ -34,4 +35,4 @@ func attack()-> void:
 
 func _on_hitbox_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Enemy"):
-		print(body)
+		pass

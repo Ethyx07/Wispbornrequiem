@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=4 uid="uid://tbjaobq62mt2"]
+[gd_scene load_steps=8 format=4 uid="uid://tbjaobq62mt2"]
 
 [ext_resource type="PackedScene" uid="uid://2413ue8fbi7x" path="res://Scenes/PlayerClasses/player_wisp.tscn" id="1_e8h5j"]
 [ext_resource type="PackedScene" uid="uid://baog375jtohmk" path="res://Scenes/Interactables/Podiums/minotaur_podium.tscn" id="2_y041l"]
 [ext_resource type="Texture2D" uid="uid://cp15evf2fviua" path="res://Assets/Tilemap/Dungeon_Tileset.png" id="3_e51q4"]
 [ext_resource type="PackedScene" uid="uid://drxld1vfpxhb8" path="res://Scenes/GUI/player_gui.tscn" id="4_o2shv"]
+[ext_resource type="PackedScene" uid="uid://c8rc5agxlry6f" path="res://Scenes/Enemies/base_enemy.tscn" id="5_by38u"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5q172"]
 texture = ExtResource("3_e51q4")
@@ -536,7 +537,7 @@ tile_set = SubResource("TileSet_u1r38")
 
 [node name="player_wisp" parent="." instance=ExtResource("1_e8h5j")]
 
-[node name="MinotaurPodium" parent="." groups=["Enemy"] instance=ExtResource("2_y041l")]
+[node name="MinotaurPodium" parent="." instance=ExtResource("2_y041l")]
 position = Vector2(217, -36)
 
 [node name="MinotaurPodium2" parent="." instance=ExtResource("2_y041l")]
@@ -554,3 +555,6 @@ offset_left = 2.0
 offset_top = 2.0
 offset_right = 2.0
 offset_bottom = 2.0
+
+[node name="base_enemy" parent="." instance=ExtResource("5_by38u")]
+position = Vector2(653, 40)

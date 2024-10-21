@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://c8rc5agxlry6f"]
+
+[ext_resource type="Texture2D" uid="uid://okjk4g0vbcrs" path="res://Assets/PlayerSprites/WispHighlighted.png" id="1_8kp4g"]
+[ext_resource type="Script" path="res://Scripts/Enemy/base_enemy.gd" id="1_djb8t"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yr4m7"]
+radius = 17.0294
+
+[node name="base_enemy" type="CharacterBody2D" groups=["Enemy"]]
+script = ExtResource("1_djb8t")
+speed = 1000.0
+
+[node name="mainTexture" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_8kp4g")
+
+[node name="hitbox" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_yr4m7")
