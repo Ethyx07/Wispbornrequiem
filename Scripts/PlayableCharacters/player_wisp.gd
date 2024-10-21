@@ -76,3 +76,6 @@ func dash()-> void:
 
 func resetDash() ->void:
 	bDashing = false
+	
+func attack() -> void:
+	pass

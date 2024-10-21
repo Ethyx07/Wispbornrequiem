@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ddpaexd2g3tgh"
-path="res://.godot/imported/PodiumLocked.png-9262fb8e513bc72dd0899a0f943ee04f.ctex"
+uid="uid://bdec631002d6d"
+path="res://.godot/imported/SlashSpriteAnimated9.png-99ef57b2dbf52940ad2f45008c5944d5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Podium/PodiumLocked.png"
-dest_files=["res://.godot/imported/PodiumLocked.png-9262fb8e513bc72dd0899a0f943ee04f.ctex"]
+source_file="res://Scenes/WeaponSFX/axe_animation/SlashSpriteAnimated9.png"
+dest_files=["res://.godot/imported/SlashSpriteAnimated9.png-99ef57b2dbf52940ad2f45008c5944d5.ctex"]
 
 [params]
 

@@ -1,0 +1,62 @@
+[gd_scene load_steps=15 format=3 uid="uid://dspcekj4x1pew"]
+
+[ext_resource type="Texture2D" uid="uid://brocga5wktoqc" path="res://Assets/Weapons/SlashSprite.png" id="1_hntn0"]
+[ext_resource type="Texture2D" uid="uid://dtx2ta20emgo0" path="res://Scenes/WeaponSFX/axe_animation/SlashSpriteAnimated2.png" id="2_xqjyb"]
+[ext_resource type="Texture2D" uid="uid://dy2yd2vi8jvcp" path="res://Scenes/WeaponSFX/axe_animation/SlashSpriteAnimated3.png" id="3_m0j8x"]
+[ext_resource type="Texture2D" uid="uid://buod11jq6gksx" path="res://Scenes/WeaponSFX/axe_animation/SlashSpriteAnimated4.png" id="4_3bb1o"]
+[ext_resource type="Texture2D" uid="uid://hf5sehpe5kmc" path="res://Scenes/WeaponSFX/axe_animation/SlashSpriteAnimated5.png" id="5_65rmf"]
+[ext_resource type="Texture2D" uid="uid://b68dleeh4ysrn" path="res://Scenes/WeaponSFX/axe_animation/SlashSpriteAnimated6.png" id="6_jbnjg"]
+[ext_resource type="Texture2D" uid="uid://cun4gmgjqecmb" path="res://Scenes/WeaponSFX/axe_animation/SlashSpriteAnimated7.png" id="7_bjytt"]
+[ext_resource type="Texture2D" uid="uid://bwfdyod33lmvt" path="res://Scenes/WeaponSFX/axe_animation/SlashSpriteAnimated8.png" id="8_be1ev"]
+[ext_resource type="Texture2D" uid="uid://bdec631002d6d" path="res://Scenes/WeaponSFX/axe_animation/SlashSpriteAnimated9.png" id="9_5xow1"]
+[ext_resource type="Texture2D" uid="uid://pe0fpxi2r0cu" path="res://Scenes/WeaponSFX/axe_animation/SlashSpriteAnimated10.png" id="10_tnmix"]
+[ext_resource type="Texture2D" uid="uid://c5qjr5dy4f0sf" path="res://Scenes/WeaponSFX/axe_animation/SlashSpriteAnimated11.png" id="11_k4owe"]
+
+[sub_resource type="Animation" id="Animation_n7w5k"]
+resource_name = "slash_appear"
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.02, 0.04, 0.06, 0.08, 0.1, 0.12, 0.14, 0.16, 0.18, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [null, ExtResource("2_xqjyb"), ExtResource("3_m0j8x"), ExtResource("4_3bb1o"), ExtResource("5_65rmf"), ExtResource("6_jbnjg"), ExtResource("7_bjytt"), ExtResource("8_be1ev"), ExtResource("9_5xow1"), ExtResource("10_tnmix"), ExtResource("11_k4owe")]
+}
+
+[sub_resource type="Animation" id="Animation_fjud6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_hntn0")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rty8o"]
+_data = {
+"RESET": SubResource("Animation_fjud6"),
+"slash_appear": SubResource("Animation_n7w5k")
+}
+
+[node name="axe_slash" type="Sprite2D"]
+texture_filter = 1
+scale = Vector2(2, 2)
+texture = ExtResource("1_hntn0")
+offset = Vector2(-6, 0)
+
+[node name="axe_anim" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_rty8o")
+}
+speed_scale = 1.766
