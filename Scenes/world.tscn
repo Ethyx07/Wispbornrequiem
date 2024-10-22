@@ -558,3 +558,12 @@ offset_bottom = 2.0
 
 [node name="base_enemy" parent="." instance=ExtResource("5_by38u")]
 position = Vector2(653, 40)
+
+[node name="base_enemy2" parent="." instance=ExtResource("5_by38u")]
+position = Vector2(735, 40)
+
+[node name="base_enemy3" parent="." instance=ExtResource("5_by38u")]
+position = Vector2(653, -32)
+
+[node name="base_enemy4" parent="." instance=ExtResource("5_by38u")]
+position = Vector2(653, 85)

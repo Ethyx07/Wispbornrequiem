@@ -17,24 +17,29 @@ extends CharacterBody2D
 var facingBody : Node2D
 var bDashing : bool = false
 var bIsDead : bool = false
+var bSpecialAttack : bool = false
 
 func _physics_process(delta: float) -> void:
 	if !bIsDead:
-		var inputVector = Vector2.ZERO
-		inputVector.x = Input.get_action_strength("Right") - Input.get_action_strength("Left")
-		inputVector.y = Input.get_action_strength("Down") - Input.get_action_strength("Up")
-		if inputVector.x < 0:
-			#faces to the left
-			playerSprite.flip_h = true
-			get_node("InteractableBox/interact_box_left").disabled = false
-			get_node("InteractableBox/interact_box_right").disabled = true
-		elif inputVector.x > 0:
-			#faces to the right
-			playerSprite.flip_h = false
-			get_node("InteractableBox/interact_box_left").disabled = true
-			get_node("InteractableBox/interact_box_right").disabled = false
-		velocity = inputVector * speed
-		move_and_slide()
+		if !bSpecialAttack:
+			var inputVector = Vector2.ZERO
+			inputVector.x = Input.get_action_strength("Right") - Input.get_action_strength("Left")
+			inputVector.y = Input.get_action_strength("Down") - Input.get_action_strength("Up")
+			if inputVector.x < 0:
+				#faces to the left
+				playerSprite.flip_h = true
+				get_node("InteractableBox/interact_box_left").disabled = false
+				get_node("InteractableBox/interact_box_right").disabled = true
+			elif inputVector.x > 0:
+				#faces to the right
+				playerSprite.flip_h = false
+				get_node("InteractableBox/interact_box_left").disabled = true
+				get_node("InteractableBox/interact_box_right").disabled = false
+			velocity = inputVector * speed
+			move_and_slide()
+		else:
+			return
+	
 		#Moves attack direction
 		if is_instance_valid(attackDirection):
 			attackDirection.look_at(get_global_mouse_position())

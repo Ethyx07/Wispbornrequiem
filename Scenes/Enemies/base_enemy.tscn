@@ -1,10 +1,71 @@
-[gd_scene load_steps=4 format=3 uid="uid://c8rc5agxlry6f"]
+[gd_scene load_steps=7 format=3 uid="uid://c8rc5agxlry6f"]
 
-[ext_resource type="Texture2D" uid="uid://okjk4g0vbcrs" path="res://Assets/PlayerSprites/WispHighlighted.png" id="1_8kp4g"]
 [ext_resource type="Script" path="res://Scripts/Enemy/base_enemy.gd" id="1_djb8t"]
+[ext_resource type="Texture2D" uid="uid://b5idjwshvpjg6" path="res://Assets/Enemy/SwordEnemyV2.png" id="2_ns1ec"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yr4m7"]
-radius = 17.0294
+radius = 19.0263
+
+[sub_resource type="Animation" id="Animation_lbesf"]
+resource_name = "death"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("mainTexture:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.133333, 0.166667, 0.333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(24, -21), Vector2(35.7073, 16.3171), Vector2(35.707, 2), Vector2(35.707, 14)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("mainTexture:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.133333, 0.333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.523599, 1.5708, 1.5708]
+}
+
+[sub_resource type="Animation" id="Animation_u68ip"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("mainTexture:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("mainTexture:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_84elo"]
+_data = {
+"RESET": SubResource("Animation_u68ip"),
+"death": SubResource("Animation_lbesf")
+}
 
 [node name="base_enemy" type="CharacterBody2D" groups=["Enemy"]]
 script = ExtResource("1_djb8t")
@@ -12,7 +73,13 @@ speed = 1000.0
 
 [node name="mainTexture" type="Sprite2D" parent="."]
 texture_filter = 1
-texture = ExtResource("1_8kp4g")
+texture = ExtResource("2_ns1ec")
 
 [node name="hitbox" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2)
 shape = SubResource("CircleShape2D_yr4m7")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_84elo")
+}

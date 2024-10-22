@@ -6,8 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://cbsgxtck3cyjm" path="res://Assets/Weapons/Axe.png" id="4_y3u65"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qip2i"]
-radius = 11.0
-height = 42.0
+radius = 12.0
+height = 44.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kopfh"]
 size = Vector2(13, 19)
@@ -55,6 +55,7 @@ zoom = Vector2(2, 2)
 position = Vector2(24, 0)
 
 [node name="attackbox" type="CollisionShape2D" parent="attackMarker/hitbox"]
+visible = false
 position = Vector2(1, 0)
 shape = SubResource("RectangleShape2D_su2ro")
 
@@ -65,7 +66,14 @@ rotation = 1.5708
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_qpmay")
 
+[node name="chargebox" type="Area2D" parent="attackMarker"]
+position = Vector2(22, 0)
+
+[node name="chargeHurtbox" type="CollisionShape2D" parent="attackMarker/chargebox"]
+shape = SubResource("CapsuleShape2D_qip2i")
+
 [connection signal="body_entered" from="InteractableBox" to="." method="_on_interactable_box_body_entered"]
 [connection signal="body_exited" from="InteractableBox" to="." method="_on_interactable_box_body_exited"]
 [connection signal="body_shape_exited" from="InteractableBox" to="." method="_on_interactable_box_body_shape_exited"]
 [connection signal="body_entered" from="attackMarker/hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="body_entered" from="attackMarker/chargebox" to="." method="_on_chargebox_body_entered"]
