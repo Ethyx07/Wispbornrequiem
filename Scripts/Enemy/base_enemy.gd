@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 var targetPlayer : CharacterBody2D
 var bKnockedback : bool = false
+var bCanMove : bool = true
 @export var speed : float = 200
 @export var health : int = 10
 
@@ -12,7 +13,7 @@ func _ready() -> void:
 	targetPlayer = targetArray[0]
 
 func _physics_process(delta: float) -> void:
-	if is_instance_valid(targetPlayer):
+	if is_instance_valid(targetPlayer) and bCanMove:
 		if !bKnockedback:
 			var direction = (targetPlayer.global_position - self.global_position).normalized()
 			velocity = direction * delta * speed
@@ -36,6 +37,9 @@ func hit(damage : int) -> void:
 		get_node("AnimationPlayer").play("death")
 		await get_node("AnimationPlayer").animation_finished
 		self.queue_free()
+	bCanMove = false
+	await get_tree().create_timer(0.2).timeout
+	bCanMove = true
 		
 func knockback(knockbackVector : Vector2) -> void:
 	var knockbackForce = knockbackVector.normalized()
