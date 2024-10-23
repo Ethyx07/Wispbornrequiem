@@ -8,6 +8,7 @@ extends CharacterBody2D
 @export var specialDamage : float
 @export var health : float
 
+@export var sceneKey : String
 
 
 @onready var attackDirection = get_node("attackMarker")

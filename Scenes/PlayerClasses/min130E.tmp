@@ -16,7 +16,6 @@ size = Vector2(13, 19)
 size = Vector2(20, 58)
 
 [node name="minotaur" type="CharacterBody2D" groups=["Player"]]
-z_index = 2
 texture_filter = 1
 script = ExtResource("1_65rwl")
 speed = 100.0

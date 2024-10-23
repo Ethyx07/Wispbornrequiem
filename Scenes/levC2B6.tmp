@@ -1,0 +1,65 @@
+[gd_scene load_steps=9 format=4 uid="uid://dhx6mxr5221b2"]
+
+[ext_resource type="Texture2D" uid="uid://bpm3qjj17dji3" path="res://Assets/Tilemap/Tilecracked.png" id="1_76vr3"]
+[ext_resource type="PackedScene" uid="uid://2413ue8fbi7x" path="res://Scenes/PlayerClasses/player_wisp.tscn" id="2_a4eln"]
+[ext_resource type="PackedScene" uid="uid://c0suvw7ft6h08" path="res://Scenes/tile_map_layer.tscn" id="2_psjqa"]
+[ext_resource type="PackedScene" uid="uid://baog375jtohmk" path="res://Scenes/Interactables/Podiums/minotaur_podium.tscn" id="3_yykdn"]
+[ext_resource type="PackedScene" uid="uid://drxld1vfpxhb8" path="res://Scenes/GUI/player_gui.tscn" id="4_cw638"]
+[ext_resource type="PackedScene" uid="uid://c8rc5agxlry6f" path="res://Scenes/Enemies/base_enemy.tscn" id="5_rnktc"]
+[ext_resource type="PackedScene" uid="uid://em6vqqa3r1gv" path="res://Scenes/Interactables/doorway.tscn" id="6_t57sh"]
+
+[sub_resource type="GDScript" id="GDScript_l5dar"]
+script/source = "extends Node2D
+class_name WorldScene
+
+
+# Called when the node enters the scene tree for the first time.
+func loadNextLevel() ->void:
+	print(get_node(\"/root/World\"))
+"
+
+[node name="level1" type="Node2D"]
+script = SubResource("GDScript_l5dar")
+
+[node name="Tilecracked" type="Sprite2D" parent="."]
+position = Vector2(-112, -16)
+texture = ExtResource("1_76vr3")
+
+[node name="TileMapLayer" parent="." instance=ExtResource("2_psjqa")]
+tile_map_data = PackedByteArray("AAD///3/AQADAAMAAAD+//3/AQADAAIAAAD9//3/AQABAAMAAAD8//3/AQABAAMAAAD7//3/AQABAAMAAAD6//3/AQABAAAAAAD+////AQABAAIAAAD+//7/AQACAAEAAAD8////AQABAAMAAAD9////AQABAAMAAAD5////AQABAAAAAAD6////AQABAAMAAAD7////AQABAAMAAAA=")
+
+[node name="player_wisp" parent="." instance=ExtResource("2_a4eln")]
+
+[node name="MinotaurPodium" parent="." instance=ExtResource("3_yykdn")]
+position = Vector2(217, -36)
+
+[node name="MinotaurPodium2" parent="." instance=ExtResource("3_yykdn")]
+position = Vector2(354, -36)
+bSaved = true
+
+[node name="MinotaurPodium3" parent="." instance=ExtResource("3_yykdn")]
+position = Vector2(217, 50)
+bUnlocked = false
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="playergui" parent="CanvasLayer" instance=ExtResource("4_cw638")]
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 2.0
+offset_bottom = 2.0
+
+[node name="base_enemy" parent="." instance=ExtResource("5_rnktc")]
+position = Vector2(653, 40)
+
+[node name="base_enemy2" parent="." instance=ExtResource("5_rnktc")]
+position = Vector2(735, 40)
+
+[node name="base_enemy3" parent="." instance=ExtResource("5_rnktc")]
+position = Vector2(653, -32)
+
+[node name="base_enemy4" parent="." instance=ExtResource("5_rnktc")]
+position = Vector2(653, 85)
+
+[node name="doorway" parent="." instance=ExtResource("6_t57sh")]
+position = Vector2(113, 0)

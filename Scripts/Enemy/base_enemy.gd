@@ -56,12 +56,13 @@ func attack():
 	await get_tree().create_timer(attackDelay).timeout
 	get_node("hitbox/attackbox").disabled = false
 	get_node("hitbox").look_at(targetPlayer.global_position)
-	await get_tree().create_timer(0.01).timeout
+	await get_tree().create_timer(0.1).timeout
 	get_node("hitbox/attackbox").disabled = true
-	await get_tree().create_timer(0.01).timeout
+	await get_tree().create_timer(1).timeout
 	bCanMove = true
 
 
 func _on_hitbox_body_entered(body: Node2D) -> void:
-	body.health -= 1 
-	print(body.health)
+	if body.is_in_group("Player"):
+		body.health -= 1 
+		print(body.health)

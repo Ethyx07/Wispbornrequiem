@@ -16,6 +16,7 @@ size = Vector2(28, 46)
 texture_filter = 1
 script = ExtResource("1_n832b")
 posssesCharacter = ExtResource("4_ds5og")
+podiumKey = "Minotaur"
 lockedTexture = ExtResource("3_gjkmt")
 unlockedTexture = ExtResource("5_25woj")
 savedTexture = ExtResource("5_0nybt")

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cp15evf2fviua"
-path="res://.godot/imported/Dungeon_Tileset.png-f968bc41fc025fa09a3d46f46c7c8319.ctex"
+uid="uid://b2bc8d52f774q"
+path="res://.godot/imported/TilebrickBloody1.png-1b1083454c0800a2c1bcac52eae75b1d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Tilemap/Dungeon_Tileset.png"
-dest_files=["res://.godot/imported/Dungeon_Tileset.png-f968bc41fc025fa09a3d46f46c7c8319.ctex"]
+source_file="res://Assets/Tilemap/TilebrickBloody1.png"
+dest_files=["res://.godot/imported/TilebrickBloody1.png-1b1083454c0800a2c1bcac52eae75b1d.ctex"]
 
 [params]
 

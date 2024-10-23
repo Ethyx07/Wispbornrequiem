@@ -5,7 +5,8 @@ extends "res://Scripts/PlayableCharacters/player_wisp.gd"
 
 func _ready() -> void:
 	get_node("attackMarker/hitbox/attackbox").disabled = true
-
+	sceneKey = "Minotaur"
+	print(health)
 	
 
 func _physics_process(delta: float) -> void:
@@ -34,8 +35,6 @@ func attack()-> void:
 	axeTemp.global_position = get_node("attackMarker/hitbox/attackbox").global_position
 	axeTemp.look_at(get_global_mouse_position())
 	axeTemp.get_node("axe_anim").play("slash_appear")
-	WorldScene.new().loadNextLevel()
-	
 	await get_tree().create_timer(0.5).timeout
 	get_node("attackMarker/hitbox/attackbox").disabled = true
 	axeTemp.queue_free()
@@ -65,3 +64,5 @@ func _on_chargebox_body_entered(body: Node2D) -> void:
 		body.hit(1)
 		body.knockback(velocity)
 		print(body.health) # Replace with function body.
+		
+	

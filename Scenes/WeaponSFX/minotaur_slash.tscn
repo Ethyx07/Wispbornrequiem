@@ -17,6 +17,21 @@
 [ext_resource type="Texture2D" uid="uid://bc22g5jo38tai" path="res://Scenes/WeaponSFX/MinotaurSlash/MinotaurSlash14.png" id="14_yx53p"]
 [ext_resource type="Texture2D" uid="uid://b8f78ddhdms25" path="res://Scenes/WeaponSFX/MinotaurSlash/MinotaurSlash15.png" id="15_1l37n"]
 
+[sub_resource type="Animation" id="Animation_x7t67"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_ew432")]
+}
+
 [sub_resource type="Animation" id="Animation_w3nc8"]
 resource_name = "circle_slash"
 step = 0.01
@@ -31,21 +46,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [ExtResource("1_ew432"), ExtResource("2_yxc70"), ExtResource("3_tvryv"), ExtResource("4_a2ut1"), ExtResource("5_vdwmq"), ExtResource("6_xqmko"), ExtResource("7_5nil5"), ExtResource("8_urwp1"), ExtResource("9_3247k"), ExtResource("10_b8fuw"), ExtResource("11_lim8u"), ExtResource("12_cvsl3"), ExtResource("13_dp167"), ExtResource("14_yx53p"), ExtResource("15_1l37n"), ExtResource("15_1l37n")]
-}
-
-[sub_resource type="Animation" id="Animation_x7t67"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("1_ew432")]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_yynp5"]

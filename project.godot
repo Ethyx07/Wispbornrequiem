@@ -11,13 +11,14 @@ config_version=5
 [application]
 
 config/name="WispbornRequiem"
-run/main_scene="res://Scenes/world.tscn"
+run/main_scene="res://Scenes/level_1.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
-World="*res://Scenes/Gamemode/world.gd"
+PlayerData="*res://Scripts/Gamemode/player_data.gd"
+Gamemode="*res://Scripts/Gamemode/gamemode.gd"
 
 [global_group]
 

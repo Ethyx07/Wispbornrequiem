@@ -5,6 +5,7 @@ extends "res://Scripts/Interactables/Interactables.gd"
 
 @export var bUnlocked : bool = true
 @export var bSaved : bool = false
+@export var podiumKey : String
 
 @export var lockedTexture : Texture2D
 @export var unlockedTexture : Texture2D
@@ -33,11 +34,12 @@ func start_bobbing():
 func interact(body: Node2D) -> void:
 	if bUnlocked:
 		super(body)
-		body.hide()
-		var newPossession = posssesCharacter.instantiate()
-		newPossession.global_position = body.global_position
-		get_tree().root.get_child(0).add_child(newPossession)
-		body.queue_free()
+		if body.sceneKey != podiumKey:
+			body.hide()
+			var newPossession = posssesCharacter.instantiate()
+			newPossession.global_position = body.global_position
+			get_tree().root.get_child(0).add_child(newPossession)
+			body.queue_free()
 	
 	
 func _physics_process(delta: float) -> void:

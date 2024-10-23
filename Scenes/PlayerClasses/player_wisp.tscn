@@ -16,6 +16,7 @@ speed = 80.0
 attackDamage = 5.0
 specialDamage = 2.0
 health = 10.0
+sceneKey = "Wisp"
 
 [node name="playerSprite" type="Sprite2D" parent="."]
 texture = ExtResource("1_3lqi4")
