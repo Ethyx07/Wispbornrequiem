@@ -1,0 +1,77 @@
+[gd_scene load_steps=21 format=3 uid="uid://bhao4hiyhohpq"]
+
+[ext_resource type="Texture2D" uid="uid://c3gnmi1ovc06m" path="res://Scenes/WeaponSFX/MinotaurSlash/MinotaurSlash1.png" id="1_ew432"]
+[ext_resource type="Script" path="res://Scenes/WeaponSFX/minotaur_slash.gd" id="2_qmrl7"]
+[ext_resource type="Texture2D" uid="uid://dpuxpbdtpw6we" path="res://Scenes/WeaponSFX/MinotaurSlash/MinotaurSlash2.png" id="2_yxc70"]
+[ext_resource type="Texture2D" uid="uid://cnre7t50nonjx" path="res://Scenes/WeaponSFX/MinotaurSlash/MinotaurSlash3.png" id="3_tvryv"]
+[ext_resource type="Texture2D" uid="uid://deerlw0yl2kth" path="res://Scenes/WeaponSFX/MinotaurSlash/MinotaurSlash4.png" id="4_a2ut1"]
+[ext_resource type="Texture2D" uid="uid://ctcimdk8tuf8n" path="res://Scenes/WeaponSFX/MinotaurSlash/MinotaurSlash5.png" id="5_vdwmq"]
+[ext_resource type="Texture2D" uid="uid://c4675n1crbms2" path="res://Scenes/WeaponSFX/MinotaurSlash/MinotaurSlash6.png" id="6_xqmko"]
+[ext_resource type="Texture2D" uid="uid://c33yihuvwnkn0" path="res://Scenes/WeaponSFX/MinotaurSlash/MinotaurSlash7.png" id="7_5nil5"]
+[ext_resource type="Texture2D" uid="uid://do8cwhtusgcrn" path="res://Scenes/WeaponSFX/MinotaurSlash/MinotaurSlash8.png" id="8_urwp1"]
+[ext_resource type="Texture2D" uid="uid://bimgg117snyv2" path="res://Scenes/WeaponSFX/MinotaurSlash/MinotaurSlash9.png" id="9_3247k"]
+[ext_resource type="Texture2D" uid="uid://bfwpnr6jxfycr" path="res://Scenes/WeaponSFX/MinotaurSlash/MinotaurSlash10.png" id="10_b8fuw"]
+[ext_resource type="Texture2D" uid="uid://cewcd17lptg7w" path="res://Scenes/WeaponSFX/MinotaurSlash/MinotaurSlash11.png" id="11_lim8u"]
+[ext_resource type="Texture2D" uid="uid://rwjdkvgy8erp" path="res://Scenes/WeaponSFX/MinotaurSlash/MinotaurSlash12.png" id="12_cvsl3"]
+[ext_resource type="Texture2D" uid="uid://chonfx0468fgv" path="res://Scenes/WeaponSFX/MinotaurSlash/MinotaurSlash13.png" id="13_dp167"]
+[ext_resource type="Texture2D" uid="uid://bc22g5jo38tai" path="res://Scenes/WeaponSFX/MinotaurSlash/MinotaurSlash14.png" id="14_yx53p"]
+[ext_resource type="Texture2D" uid="uid://b8f78ddhdms25" path="res://Scenes/WeaponSFX/MinotaurSlash/MinotaurSlash15.png" id="15_1l37n"]
+
+[sub_resource type="Animation" id="Animation_w3nc8"]
+resource_name = "circle_slash"
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.02, 0.04, 0.06, 0.08, 0.1, 0.12, 0.14, 0.16, 0.18, 0.2, 0.22, 0.24, 0.26, 0.28, 0.49),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("1_ew432"), ExtResource("2_yxc70"), ExtResource("3_tvryv"), ExtResource("4_a2ut1"), ExtResource("5_vdwmq"), ExtResource("6_xqmko"), ExtResource("7_5nil5"), ExtResource("8_urwp1"), ExtResource("9_3247k"), ExtResource("10_b8fuw"), ExtResource("11_lim8u"), ExtResource("12_cvsl3"), ExtResource("13_dp167"), ExtResource("14_yx53p"), ExtResource("15_1l37n"), ExtResource("15_1l37n")]
+}
+
+[sub_resource type="Animation" id="Animation_x7t67"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_ew432")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yynp5"]
+_data = {
+"RESET": SubResource("Animation_x7t67"),
+"circle_slash": SubResource("Animation_w3nc8")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_otoew"]
+radius = 27.0
+
+[node name="minotaur_slash" type="Sprite2D"]
+texture_filter = 1
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_ew432")
+script = ExtResource("2_qmrl7")
+
+[node name="anim_player" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_yynp5")
+}
+
+[node name="collision_area" type="Area2D" parent="."]
+
+[node name="hitbox" type="CollisionShape2D" parent="collision_area"]
+position = Vector2(0, -3)
+shape = SubResource("CircleShape2D_otoew")
+
+[connection signal="body_entered" from="collision_area" to="." method="_on_collision_area_body_entered"]

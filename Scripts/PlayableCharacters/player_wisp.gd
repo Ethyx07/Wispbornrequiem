@@ -93,3 +93,6 @@ func attack() -> void:
 	
 func attack_hit(body : Node2D) ->void:
 	body.hit(attackDamage)
+	
+func special_hit(body : Node2D) -> void:
+	body.hit(specialDamage)

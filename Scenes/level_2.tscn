@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://bn60ndcfxpatl"]
+
+[ext_resource type="PackedScene" uid="uid://5aa26iu24g7d" path="res://Scenes/PlayerClasses/minotaur.tscn" id="1_l4upx"]
+[ext_resource type="PackedScene" uid="uid://c8rc5agxlry6f" path="res://Scenes/Enemies/base_enemy.tscn" id="2_l0rb5"]
+[ext_resource type="PackedScene" uid="uid://baog375jtohmk" path="res://Scenes/Interactables/Podiums/minotaur_podium.tscn" id="3_4mwnd"]
+
+[node name="level2" type="Node2D"]
+
+[node name="minotaur" parent="." instance=ExtResource("1_l4upx")]
+
+[node name="base_enemy" parent="." instance=ExtResource("2_l0rb5")]
+position = Vector2(275, 0)
+
+[node name="MinotaurPodium" parent="." instance=ExtResource("3_4mwnd")]
+position = Vector2(125, 104)
+bSaved = true

@@ -1,10 +1,37 @@
-[gd_scene load_steps=7 format=3 uid="uid://c8rc5agxlry6f"]
+[gd_scene load_steps=8 format=3 uid="uid://c8rc5agxlry6f"]
 
 [ext_resource type="Script" path="res://Scripts/Enemy/base_enemy.gd" id="1_djb8t"]
 [ext_resource type="Texture2D" uid="uid://b5idjwshvpjg6" path="res://Assets/Enemy/SwordEnemyV2.png" id="2_ns1ec"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yr4m7"]
 radius = 19.0263
+
+[sub_resource type="Animation" id="Animation_u68ip"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("mainTexture:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("mainTexture:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_lbesf"]
 resource_name = "death"
@@ -34,38 +61,13 @@ tracks/1/keys = {
 "values": [0.0, 0.523599, 1.5708, 1.5708]
 }
 
-[sub_resource type="Animation" id="Animation_u68ip"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("mainTexture:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("mainTexture:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_84elo"]
 _data = {
 "RESET": SubResource("Animation_u68ip"),
 "death": SubResource("Animation_lbesf")
 }
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c4pat"]
 
 [node name="base_enemy" type="CharacterBody2D" groups=["Enemy"]]
 script = ExtResource("1_djb8t")
@@ -75,7 +77,7 @@ speed = 1000.0
 texture_filter = 1
 texture = ExtResource("2_ns1ec")
 
-[node name="hitbox" type="CollisionShape2D" parent="."]
+[node name="hurtbox" type="CollisionShape2D" parent="."]
 position = Vector2(0, -2)
 shape = SubResource("CircleShape2D_yr4m7")
 
@@ -83,3 +85,11 @@ shape = SubResource("CircleShape2D_yr4m7")
 libraries = {
 "": SubResource("AnimationLibrary_84elo")
 }
+
+[node name="hitbox" type="Area2D" parent="."]
+
+[node name="attackbox" type="CollisionShape2D" parent="hitbox"]
+position = Vector2(19, -1)
+shape = SubResource("CapsuleShape2D_c4pat")
+
+[connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]
