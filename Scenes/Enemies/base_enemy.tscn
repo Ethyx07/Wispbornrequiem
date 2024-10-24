@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://c8rc5agxlry6f"]
+[gd_scene load_steps=10 format=3 uid="uid://c8rc5agxlry6f"]
 
 [ext_resource type="Script" path="res://Scripts/Enemy/base_enemy.gd" id="1_djb8t"]
 [ext_resource type="Texture2D" uid="uid://b5idjwshvpjg6" path="res://Assets/Enemy/SwordEnemyV2.png" id="2_ns1ec"]
+[ext_resource type="Texture2D" uid="uid://bxac4pwx53bdl" path="res://Assets/Enemy/BaseEnemySlash1.png" id="3_561am"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yr4m7"]
 radius = 19.0263
@@ -61,9 +62,15 @@ tracks/1/keys = {
 "values": [0.0, 0.523599, 1.5708, 1.5708]
 }
 
+[sub_resource type="Animation" id="Animation_f8pgp"]
+resource_name = "attack_slash"
+length = 0.12
+step = 0.01
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_84elo"]
 _data = {
 "RESET": SubResource("Animation_u68ip"),
+"attack_slash": SubResource("Animation_f8pgp"),
 "death": SubResource("Animation_lbesf")
 }
 
@@ -91,5 +98,11 @@ libraries = {
 [node name="attackbox" type="CollisionShape2D" parent="hitbox"]
 position = Vector2(19, -1)
 shape = SubResource("CapsuleShape2D_c4pat")
+
+[node name="BaseEnemySlash1" type="Sprite2D" parent="hitbox"]
+texture_filter = 1
+position = Vector2(19, -1)
+rotation = -0.693345
+texture = ExtResource("3_561am")
 
 [connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]

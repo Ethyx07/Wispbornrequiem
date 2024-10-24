@@ -8,6 +8,7 @@ var bCanMove : bool = true
 @export var attackDelay : float = 0.2
 
 @onready var sprite : Sprite2D = get_node("mainTexture")
+@onready var attackSlash : PackedScene = preload("res://Scenes/Enemies/base_enemy_slash.tscn")
 
 func _ready() -> void:
 	var targetArray = get_tree().get_nodes_in_group("Player")
@@ -16,6 +17,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	if is_instance_valid(targetPlayer) and bCanMove:
+		get_node("hitbox").look_at(targetPlayer.global_position)
 		if !bKnockedback:
 			var direction = (targetPlayer.global_position - self.global_position).normalized()
 			velocity = direction * delta * speed
@@ -55,9 +57,14 @@ func attack():
 	bCanMove = false
 	await get_tree().create_timer(attackDelay).timeout
 	get_node("hitbox/attackbox").disabled = false
-	get_node("hitbox").look_at(targetPlayer.global_position)
-	await get_tree().create_timer(0.1).timeout
+	var slashTemp = attackSlash.instantiate()
+	add_child(slashTemp)
+	slashTemp.global_position = get_node("hitbox/attackbox").global_position
+	slashTemp.look_at(get_global_mouse_position())
+	slashTemp.get_node("animPlayer").play("attack_slash")
+	await slashTemp.get_node("animPlayer").animation_finished
 	get_node("hitbox/attackbox").disabled = true
+	slashTemp.queue_free()
 	await get_tree().create_timer(1).timeout
 	bCanMove = true
 
