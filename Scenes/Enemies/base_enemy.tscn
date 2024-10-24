@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c8rc5agxlry6f"]
+[gd_scene load_steps=12 format=3 uid="uid://c8rc5agxlry6f"]
 
 [ext_resource type="Script" path="res://Scripts/Enemy/base_enemy.gd" id="1_djb8t"]
 [ext_resource type="Texture2D" uid="uid://b5idjwshvpjg6" path="res://Assets/Enemy/SwordEnemyV2.png" id="2_ns1ec"]
@@ -34,6 +34,11 @@ tracks/1/keys = {
 "values": [0.0]
 }
 
+[sub_resource type="Animation" id="Animation_f8pgp"]
+resource_name = "attack_slash"
+length = 0.12
+step = 0.01
+
 [sub_resource type="Animation" id="Animation_lbesf"]
 resource_name = "death"
 length = 0.5
@@ -62,11 +67,6 @@ tracks/1/keys = {
 "values": [0.0, 0.523599, 1.5708, 1.5708]
 }
 
-[sub_resource type="Animation" id="Animation_f8pgp"]
-resource_name = "attack_slash"
-length = 0.12
-step = 0.01
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_84elo"]
 _data = {
 "RESET": SubResource("Animation_u68ip"),
@@ -75,6 +75,12 @@ _data = {
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c4pat"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xk4gw"]
+bg_color = Color(0.92, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0x1pn"]
+bg_color = Color(0.0166667, 1, 0, 1)
 
 [node name="base_enemy" type="CharacterBody2D" groups=["Enemy"]]
 script = ExtResource("1_djb8t")
@@ -104,5 +110,15 @@ texture_filter = 1
 position = Vector2(19, -1)
 rotation = -0.693345
 texture = ExtResource("3_561am")
+
+[node name="hp_bar" type="ProgressBar" parent="."]
+offset_left = -11.0
+offset_top = -28.0
+offset_right = 10.0
+offset_bottom = -24.0
+theme_override_styles/background = SubResource("StyleBoxFlat_xk4gw")
+theme_override_styles/fill = SubResource("StyleBoxFlat_0x1pn")
+value = 50.0
+show_percentage = false
 
 [connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]

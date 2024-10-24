@@ -7,6 +7,7 @@ extends CharacterBody2D
 @export var attackDamage : float
 @export var specialDamage : float
 @export var health : float
+@export var maxHealth : float
 
 enum playerState {NEUTRAL, ATTACK, DEAD, DASH}
 @export var currentState : playerState
@@ -96,3 +97,6 @@ func attack_hit(body : Node2D) ->void:
 	
 func special_hit(body : Node2D) -> void:
 	body.hit(specialDamage)
+	
+func hit(damage : int) -> void:
+	health -= damage

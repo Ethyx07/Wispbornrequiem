@@ -2,21 +2,28 @@ extends CharacterBody2D
 
 var targetPlayer : CharacterBody2D
 var bKnockedback : bool = false
-var bCanMove : bool = true
 @export var speed : float = 200
 @export var health : int = 10
 @export var attackDelay : float = 0.2
+@export var damage: int = 2
+
+enum enemyState {CHASE, ATTACK, DEAD, HIT}
+var currentState : enemyState
 
 @onready var sprite : Sprite2D = get_node("mainTexture")
 @onready var attackSlash : PackedScene = preload("res://Scenes/Enemies/base_enemy_slash.tscn")
+@onready var hp_bar = get_node("hp_bar")
 
 func _ready() -> void:
 	var targetArray = get_tree().get_nodes_in_group("Player")
 	targetPlayer = targetArray[0]
 	get_node("hitbox/attackbox").disabled = true
+	hp_bar.max_value = health
+	hp_bar.value = health
+	
 
 func _physics_process(delta: float) -> void:
-	if is_instance_valid(targetPlayer) and bCanMove:
+	if is_instance_valid(targetPlayer) and currentState == enemyState.CHASE:
 		get_node("hitbox").look_at(targetPlayer.global_position)
 		if !bKnockedback:
 			var direction = (targetPlayer.global_position - self.global_position).normalized()
@@ -36,15 +43,18 @@ func _physics_process(delta: float) -> void:
 		var targetArray = get_tree().get_nodes_in_group("Player")
 		targetPlayer = targetArray[0]
 		
-func hit(damage : int) -> void:
-	health -= damage
+func hit(damageDealt : int) -> void:
+	health -= damageDealt
+	hp_bar.value = health
 	if health <= 0:
+		currentState = enemyState.DEAD
+		hp_bar.visible = false
 		get_node("AnimationPlayer").play("death")
 		await get_node("AnimationPlayer").animation_finished
 		self.queue_free()
-	bCanMove = false
+	currentState = enemyState.HIT
 	await get_tree().create_timer(0.2).timeout
-	bCanMove = true
+	currentState = enemyState.CHASE
 		
 func knockback(knockbackVector : Vector2) -> void:
 	var knockbackForce = knockbackVector.normalized()
@@ -54,7 +64,7 @@ func knockback(knockbackVector : Vector2) -> void:
 	bKnockedback = false
 	
 func attack():
-	bCanMove = false
+	currentState = enemyState.ATTACK
 	await get_tree().create_timer(attackDelay).timeout
 	get_node("hitbox/attackbox").disabled = false
 	var slashTemp = attackSlash.instantiate()
@@ -66,10 +76,10 @@ func attack():
 	get_node("hitbox/attackbox").disabled = true
 	slashTemp.queue_free()
 	await get_tree().create_timer(1).timeout
-	bCanMove = true
+	currentState = enemyState.CHASE
 
 
 func _on_hitbox_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
-		body.health -= 1 
+		body.hit(damage) 
 		print(body.health)

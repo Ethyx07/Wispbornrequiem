@@ -2,12 +2,16 @@ extends "res://Scripts/PlayableCharacters/player_wisp.gd"
 
 @onready var axeSlash : PackedScene = preload("res://Scenes/WeaponSFX/axe_slash.tscn")
 @onready var axeThrow : PackedScene = preload("res://Scenes/Weapons/axe_weapon.tscn")
+@onready var hp_bar = get_node("hp_bar")
+
 var heldAxe
 
 func _ready() -> void:
 	get_node("attackMarker/hitbox/attackbox").disabled = true
 	sceneKey = "Minotaur"
-	print(health)
+	hp_bar.max_value = maxHealth
+	hp_bar.value = health
+
 	heldAxe = axeThrow.instantiate()
 	heldAxe.owningPlayer = self
 	get_tree().root.add_child(heldAxe)
@@ -62,4 +66,6 @@ func _on_chargebox_body_entered(body: Node2D) -> void:
 		body.knockback(velocity)
 		print(body.health) # Replace with function body.
 		
-	
+func hit(damageTaken : int)-> void:
+	super(damageTaken)
+	hp_bar.value = health

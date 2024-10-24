@@ -20,7 +20,8 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	match currentState:
 		weaponState.HELD:
-			self.global_position = owningPlayer.global_position
+			if is_instance_valid(owningPlayer):
+				self.global_position = owningPlayer.global_position
 		weaponState.THROWN:
 			get_node("animPlayer").play("spin")
 			position += direction * delta * travelSpeed
@@ -33,7 +34,7 @@ func _physics_process(delta: float) -> void:
 				rotation = currentRotation #Starts the return spin at the same position as the throw spin was at
 				fixedRotation = true
 			direction = (owningPlayer.global_position - self.global_position).normalized()
-			position += direction * delta * travelSpeed
+			position += direction * delta * (travelSpeed * 2)
 			if position.distance_to(owningPlayer.global_position) < 10:
 				get_node("animPlayer").stop()
 				currentState = weaponState.HELD

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://5aa26iu24g7d"]
+[gd_scene load_steps=9 format=3 uid="uid://5aa26iu24g7d"]
 
 [ext_resource type="Script" path="res://Scripts/PlayableCharacters/minotaur.gd" id="1_65rwl"]
 [ext_resource type="Texture2D" uid="uid://d1y1nna7gh48m" path="res://Assets/PlayerSprites/Minotaur.png" id="2_mwkb6"]
@@ -14,6 +14,12 @@ size = Vector2(13, 19)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_su2ro"]
 size = Vector2(20, 58)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mftj6"]
+bg_color = Color(0.92, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jxnd6"]
+bg_color = Color(0.0166667, 1, 0, 1)
+
 [node name="minotaur" type="CharacterBody2D" groups=["Player"]]
 z_index = 2
 texture_filter = 1
@@ -24,6 +30,7 @@ dashCooldown = 2.0
 attackDamage = 5.0
 specialDamage = 2.0
 health = 10.0
+maxHealth = 10.0
 sceneKey = "Minotaur"
 
 [node name="playerSprite" type="Sprite2D" parent="."]
@@ -68,8 +75,17 @@ position = Vector2(22, 0)
 [node name="chargeHurtbox" type="CollisionShape2D" parent="attackMarker/chargebox"]
 shape = SubResource("CapsuleShape2D_qip2i")
 
+[node name="hp_bar" type="ProgressBar" parent="."]
+offset_left = -11.0
+offset_top = -28.0
+offset_right = 10.0
+offset_bottom = -24.0
+theme_override_styles/background = SubResource("StyleBoxFlat_mftj6")
+theme_override_styles/fill = SubResource("StyleBoxFlat_jxnd6")
+value = 50.0
+show_percentage = false
+
 [connection signal="body_entered" from="InteractableBox" to="." method="_on_interactable_box_body_entered"]
 [connection signal="body_exited" from="InteractableBox" to="." method="_on_interactable_box_body_exited"]
 [connection signal="body_shape_exited" from="InteractableBox" to="." method="_on_interactable_box_body_shape_exited"]
 [connection signal="body_entered" from="attackMarker/hitbox" to="." method="_on_hitbox_body_entered"]
-[connection signal="body_entered" from="attackMarker/chargebox" to="." method="_on_chargebox_body_entered"]

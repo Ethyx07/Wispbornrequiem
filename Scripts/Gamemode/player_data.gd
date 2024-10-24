@@ -10,6 +10,8 @@ var character_versions = {
 
 var playerKey : String
 
+func _ready() -> void:
+	loadPlayerInfo(playerNode)
 	
 func savePlayerInfo(key : String, player : CharacterBody2D) ->void:
 	if character_versions.has(key):
@@ -20,3 +22,7 @@ func savePlayerInfo(key : String, player : CharacterBody2D) ->void:
 func loadPlayerInfo(player : CharacterBody2D) -> void:
 	if is_instance_valid(playerScene):
 		player.health = playerNode.health
+		player.hp_bar.value = playerNode.health
+		if is_instance_valid(player.heldAxe):
+			playerNode.heldAxe.queue_free()
+			

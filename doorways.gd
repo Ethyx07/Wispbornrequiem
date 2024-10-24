@@ -20,8 +20,6 @@ func _process(delta: float) -> void:
 func interact(body: Node2D)-> void:
 	if bIsUnlocked:
 		super(body)
-		body.health -= 2
-		print(body.health)
 		PlayerData.savePlayerInfo(body.sceneKey, body)
 		Gamemode.load_level(levelToLoad)
 		body.queue_free()
