@@ -8,6 +8,10 @@ extends CharacterBody2D
 @export var specialDamage : float
 @export var health : float
 
+enum playerState {NEUTRAL, ATTACK, DEAD, DASH}
+@export var currentState : playerState
+var bUlting : bool = false
+
 @export var sceneKey : String
 
 
@@ -16,13 +20,12 @@ extends CharacterBody2D
 @onready var dashParticle : PackedScene = preload("res://Scenes/Particles/dash_particle.tscn")
 
 var facingBody : Node2D
-var bDashing : bool = false
-var bIsDead : bool = false
-var bSpecialAttack : bool = false
 
 func _physics_process(delta: float) -> void:
-	if !bIsDead:
-		if !bSpecialAttack:
+	match currentState:
+		playerState.DEAD:
+			return
+		_:
 			var inputVector = Vector2.ZERO
 			inputVector.x = Input.get_action_strength("Right") - Input.get_action_strength("Left")
 			inputVector.y = Input.get_action_strength("Down") - Input.get_action_strength("Up")
@@ -38,16 +41,14 @@ func _physics_process(delta: float) -> void:
 				get_node("InteractableBox/interact_box_right").disabled = false
 			velocity = inputVector * speed
 			move_and_slide()
-		else:
-			return
 	
 		#Moves attack direction
-		if is_instance_valid(attackDirection):
-			attackDirection.look_at(get_global_mouse_position())
+			if is_instance_valid(attackDirection):
+				attackDirection.look_at(get_global_mouse_position())
 		
-		if Input.is_action_just_pressed("Interact"):
-			if is_instance_valid(facingBody):
-				facingBody.interact(get_node("."))
+			if Input.is_action_just_pressed("Interact"):
+				if is_instance_valid(facingBody):
+					facingBody.interact(get_node("."))
 		#Dash mechanic and spawning of 2 smoke bomb particle effects at each dash point
 		
 
@@ -71,6 +72,7 @@ func dash()-> void:
 		particle_temp.global_position = playerSprite.global_position
 		get_tree().root.get_child(0).add_child(particle_temp)
 		playerSprite.hide()
+		currentState = playerState.DASH
 		#Gets position of mouse relative to player location for dash (allows dashing over blocked areas)
 		var dashPosition = (get_global_mouse_position() - self.global_position).normalized() * dashSpeed
 		self.global_position += dashPosition
@@ -82,12 +84,9 @@ func dash()-> void:
 		particle_tempFin.global_position = playerSprite.global_position
 		get_tree().root.get_child(0).add_child(particle_tempFin)
 		playerSprite.show()
-		bDashing = true
+		currentState = playerState.NEUTRAL
 		await get_tree().create_timer(dashCooldown).timeout
-		resetDash()
 
-func resetDash() ->void:
-	bDashing = false
 	
 func attack() -> void:
 	pass

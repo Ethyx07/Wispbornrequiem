@@ -1,0 +1,79 @@
+[gd_scene load_steps=8 format=3 uid="uid://tv6eh64vfc1h"]
+
+[ext_resource type="Script" path="res://Scripts/Weapons/axe_weapon.gd" id="1_gfgg6"]
+[ext_resource type="Texture2D" uid="uid://cbsgxtck3cyjm" path="res://Assets/Weapons/Axe.png" id="1_vww3b"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ypy2u"]
+radius = 13.0
+height = 34.0
+
+[sub_resource type="Animation" id="Animation_yqlso"]
+resource_name = "spin"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.233333, 0.5, 0.733333, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 1.5708, 3.14159, 4.71239, 6.28319]
+}
+
+[sub_resource type="Animation" id="Animation_ohnvj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.785398]
+}
+
+[sub_resource type="Animation" id="Animation_jg261"]
+resource_name = "return"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.233333, 0.5, 0.733333, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -1.5708, -3.14159, -4.71239, -6.28319]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7wopo"]
+_data = {
+"RESET": SubResource("Animation_ohnvj"),
+"return": SubResource("Animation_jg261"),
+"spin": SubResource("Animation_yqlso")
+}
+
+[node name="axe_weapon" type="Sprite2D"]
+texture_filter = 1
+rotation = 0.785398
+texture = ExtResource("1_vww3b")
+script = ExtResource("1_gfgg6")
+
+[node name="hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+position = Vector2(0, -1)
+shape = SubResource("CapsuleShape2D_ypy2u")
+
+[node name="animPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_7wopo")
+}
+
+[connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]
