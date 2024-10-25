@@ -103,3 +103,6 @@ func special_hit(body : Node2D) -> void:
 	
 func hit(damage : int) -> void:
 	health -= damage
+	
+func ultActivate() ->void:
+	bUlting = true

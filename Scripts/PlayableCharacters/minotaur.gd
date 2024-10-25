@@ -3,8 +3,13 @@ extends "res://Scripts/PlayableCharacters/player_wisp.gd"
 @onready var axeSlash : PackedScene = preload("res://Scenes/WeaponSFX/axe_slash.tscn")
 @onready var axeThrow : PackedScene = preload("res://Scenes/Weapons/axe_weapon.tscn")
 @onready var hp_bar = get_node("hp_bar")
+@onready var armour_bar = get_node("hp_bar/armour_bar")
 @onready var specialCooldownNode = get_node("CanvasLayer/specialCooldown")
 @onready var cooldownTimer = get_node("cooldownTimer")
+
+@export var maxArmourPoints : int = 10
+
+var armourPoints
 
 
 var heldAxe
@@ -14,6 +19,9 @@ func _ready() -> void:
 	sceneKey = "Minotaur"
 	hp_bar.max_value = maxHealth
 	hp_bar.value = health
+	
+	armour_bar.max_value = maxArmourPoints
+	armour_bar.value = 0
 
 	heldAxe = axeThrow.instantiate()
 	heldAxe.owningPlayer = self
@@ -34,6 +42,8 @@ func _physics_process(delta: float) -> void:
 				attack()
 			if Input.is_action_just_pressed("SpecialAttack"):
 				specialAttack()
+			if Input.is_action_just_pressed("ActivateUlt"):
+				ultActivate()
 				
 	if !bCanUseSpecial and currentState == playerState.NEUTRAL:
 		specialCooldownNode.value = specialCooldown - cooldownTimer.time_left
@@ -53,6 +63,10 @@ func attack()-> void:
 	axeTemp.queue_free()
 	currentState = playerState.NEUTRAL
 
+func ultActivate() -> void:
+	super()
+	armourPoints = maxArmourPoints
+	armour_bar.value = armourPoints
 
 func specialAttack() -> void:
 	if !bCanUseSpecial:
@@ -80,7 +94,16 @@ func _on_chargebox_body_entered(body: Node2D) -> void:
 		print(body.health) # Replace with function body.
 		
 func hit(damageTaken : int)-> void:
-	super(damageTaken)
+	if bUlting:
+		armourPoints -=	damageTaken
+		if armourPoints >= 0:
+			if armourPoints == 0:
+				bUlting = false
+			armour_bar.value = armourPoints	
+		else:
+			super(armourPoints * -1) #Checks if the damage does more than the full armour. If it does the remainder is dealt to hp
+			armourPoints = 0
+			armour_bar.value = armourPoints
 	hp_bar.value = health
 
 

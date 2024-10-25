@@ -61,15 +61,19 @@ offset_bottom = 2.0
 
 [node name="base_enemy" parent="." instance=ExtResource("5_rnktc")]
 position = Vector2(653, 40)
+damage = 7
 
 [node name="base_enemy2" parent="." instance=ExtResource("5_rnktc")]
 position = Vector2(735, 40)
+damage = 7
 
 [node name="base_enemy3" parent="." instance=ExtResource("5_rnktc")]
 position = Vector2(653, -32)
+damage = 7
 
 [node name="base_enemy4" parent="." instance=ExtResource("5_rnktc")]
 position = Vector2(653, 85)
+damage = 7
 
 [node name="doorway" parent="." instance=ExtResource("6_t57sh")]
 position = Vector2(112, 80)
