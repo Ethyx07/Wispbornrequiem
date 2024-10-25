@@ -41,7 +41,7 @@ func _physics_process(delta: float) -> void:
 				fixedRotation = false
 				global_rotation = deg_to_rad(45)
 				owningPlayer.currentState = owningPlayer.playerState.NEUTRAL
-		
+				owningPlayer.startSpecialCooldown()
 
 
 func _on_hitbox_body_entered(body: Node2D) -> void:

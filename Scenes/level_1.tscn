@@ -13,10 +13,16 @@
 script/source = "extends Node2D
 class_name WorldScene
 
+@onready var doorway = get_node(\"doorway\")
 
 # Called when the node enters the scene tree for the first time.
-func loadNextLevel() ->void:
-	print(get_node(\"/root/World\"))
+func _physics_process(delta: float) -> void:
+	if doorway.bIsUnlocked:
+		return
+	if get_tree().get_node_count_in_group(\"Enemy\") <= 0:
+		doorway.bIsUnlocked = true
+		doorway.get_node(\"MainTexture\").texture = doorway.baseTexture
+	
 "
 
 [node name="level1" type="Node2D"]

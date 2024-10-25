@@ -5,7 +5,9 @@ extends CharacterBody2D
 @export var dashCooldown : float = 4
 
 @export var attackDamage : float
+@export var attackCooldown: float
 @export var specialDamage : float
+@export var specialCooldown: float = 5
 @export var health : float
 @export var maxHealth : float
 
@@ -21,6 +23,7 @@ var bUlting : bool = false
 @onready var dashParticle : PackedScene = preload("res://Scenes/Particles/dash_particle.tscn")
 
 var facingBody : Node2D
+var bCanUseSpecial = true
 
 func _physics_process(delta: float) -> void:
 	match currentState:
