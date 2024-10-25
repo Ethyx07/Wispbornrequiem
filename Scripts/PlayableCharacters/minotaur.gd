@@ -9,7 +9,7 @@ extends "res://Scripts/PlayableCharacters/player_wisp.gd"
 
 @export var maxArmourPoints : int = 10
 
-var armourPoints
+var armourPoints = 0
 
 
 var heldAxe

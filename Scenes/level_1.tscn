@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://dhx6mxr5221b2"]
+[gd_scene load_steps=9 format=4 uid="uid://dhx6mxr5221b2"]
 
 [ext_resource type="Texture2D" uid="uid://bpm3qjj17dji3" path="res://Assets/Tilemap/Tilecracked.png" id="1_76vr3"]
 [ext_resource type="PackedScene" uid="uid://2413ue8fbi7x" path="res://Scenes/PlayerClasses/player_wisp.tscn" id="2_a4eln"]
@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://drxld1vfpxhb8" path="res://Scenes/GUI/player_gui.tscn" id="4_cw638"]
 [ext_resource type="PackedScene" uid="uid://c8rc5agxlry6f" path="res://Scenes/Enemies/base_enemy.tscn" id="5_rnktc"]
 [ext_resource type="PackedScene" uid="uid://em6vqqa3r1gv" path="res://Scenes/Interactables/doorway.tscn" id="6_t57sh"]
-[ext_resource type="Texture2D" uid="uid://cye18b6rg0ltu" path="res://Scenes/Interactables/Doors/DoorLocked.png" id="9_okpqg"]
 
 [sub_resource type="GDScript" id="GDScript_l5dar"]
 script/source = "extends Node2D
@@ -20,6 +19,8 @@ func _physics_process(delta: float) -> void:
 	if doorway.bIsUnlocked:
 		return
 	if get_tree().get_node_count_in_group(\"Enemy\") <= 0:
+		doorway.animator.play(\"unlocking\")
+		await doorway.animator.animation_finished
 		doorway.bIsUnlocked = true
 		doorway.get_node(\"MainTexture\").texture = doorway.baseTexture
 	
@@ -76,5 +77,5 @@ position = Vector2(653, 85)
 damage = 7
 
 [node name="doorway" parent="." instance=ExtResource("6_t57sh")]
+texture_filter = 1
 position = Vector2(112, 80)
-lockedTexture = ExtResource("9_okpqg")
