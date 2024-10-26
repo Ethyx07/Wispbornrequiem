@@ -13,6 +13,7 @@ var currentState : enemyState
 @onready var sprite : Sprite2D = get_node("mainTexture")
 @onready var attackSlash : PackedScene = preload("res://Scenes/Enemies/base_enemy_slash.tscn")
 @onready var hp_bar = get_node("hp_bar")
+@onready var nav_agent = get_node("NavAgent")
 
 func _ready() -> void:
 	var targetArray = get_tree().get_nodes_in_group("Player")
@@ -20,13 +21,17 @@ func _ready() -> void:
 	get_node("hitbox/attackbox").disabled = true
 	hp_bar.max_value = health
 	hp_bar.value = health
-	
+	nav_agent.path_desired_distance = 4.0
+	nav_agent.target_desired_distance = 50.0
+
+
 
 func _physics_process(delta: float) -> void:
 	if is_instance_valid(targetPlayer) and currentState == enemyState.CHASE:
 		get_node("hitbox").look_at(targetPlayer.global_position)
-		if !bKnockedback:
-			var direction = (targetPlayer.global_position - self.global_position).normalized()
+		if !bKnockedback and nav_agent.distance_to_target() > nav_agent.target_desired_distance:
+			nav_agent.target_position = targetPlayer.global_position
+			var direction = self.global_position.direction_to(nav_agent.get_next_path_position())
 			velocity = direction * delta * speed
 			if position.distance_to(targetPlayer.global_position) < 50:
 				var seperationVector = (global_position - targetPlayer.global_position).normalized() * 25

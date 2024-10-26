@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://dhx6mxr5221b2"]
+[gd_scene load_steps=10 format=4 uid="uid://dhx6mxr5221b2"]
 
 [ext_resource type="Texture2D" uid="uid://bpm3qjj17dji3" path="res://Assets/Tilemap/Tilecracked.png" id="1_76vr3"]
 [ext_resource type="PackedScene" uid="uid://2413ue8fbi7x" path="res://Scenes/PlayerClasses/player_wisp.tscn" id="2_a4eln"]
@@ -25,6 +25,11 @@ func _physics_process(delta: float) -> void:
 		doorway.get_node(\"MainTexture\").texture = doorway.baseTexture
 	
 "
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_varl8"]
+vertices = PackedVector2Array(33.2813, 202.422, 14.1563, 106.828, 457.102, 100.859, 644.477, 234.844, 456, -6.10156, 455.047, -216, 533.828, -216, 701.898, -45.9297, 851.398, 111.273, 816.867, -18.6406)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(3, 2, 4, 5, 6, 7, 8), PackedInt32Array(8, 7, 9)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(707, -55, 538, -226, 445, -226, 446, -6, 447, 91, 2, 97, 25, 212, 647, 245, 863, 116, 825, -27)])
 
 [node name="level1" type="Node2D"]
 script = SubResource("GDScript_l5dar")
@@ -79,3 +84,6 @@ damage = 7
 [node name="doorway" parent="." instance=ExtResource("6_t57sh")]
 texture_filter = 1
 position = Vector2(112, 80)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_varl8")

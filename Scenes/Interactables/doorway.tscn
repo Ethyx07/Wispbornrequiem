@@ -23,6 +23,21 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q7ujh"]
 size = Vector2(36, 38)
 
+[sub_resource type="Animation" id="Animation_1udrd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MainTexture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_dqrok")]
+}
+
 [sub_resource type="Animation" id="Animation_wx7nb"]
 resource_name = "unlocking"
 length = 0.7
@@ -38,21 +53,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [ExtResource("3_dqrok"), ExtResource("6_ua2pl"), ExtResource("7_3uev3"), ExtResource("8_v1l0w"), ExtResource("9_dgctb"), ExtResource("10_wd53r"), ExtResource("11_oa3sy"), ExtResource("12_566pc"), ExtResource("13_nalws"), ExtResource("14_qgcm1"), ExtResource("15_13cud"), ExtResource("16_pub72"), ExtResource("17_tuu35"), ExtResource("18_pch5w"), ExtResource("19_2gnp2")]
-}
-
-[sub_resource type="Animation" id="Animation_1udrd"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("MainTexture:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("3_dqrok")]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vp54i"]

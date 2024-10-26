@@ -94,6 +94,7 @@ value = 50.0
 show_percentage = false
 
 [node name="armour_bar" type="ProgressBar" parent="hp_bar"]
+layout_mode = 0
 offset_right = 21.0
 offset_bottom = 4.0
 theme_override_styles/background = SubResource("StyleBoxFlat_7tib7")
