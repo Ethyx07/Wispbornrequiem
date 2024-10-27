@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=4 uid="uid://dhx6mxr5221b2"]
+[gd_scene load_steps=11 format=4 uid="uid://dhx6mxr5221b2"]
 
 [ext_resource type="Texture2D" uid="uid://bpm3qjj17dji3" path="res://Assets/Tilemap/Tilecracked.png" id="1_76vr3"]
 [ext_resource type="PackedScene" uid="uid://2413ue8fbi7x" path="res://Scenes/PlayerClasses/player_wisp.tscn" id="2_a4eln"]
 [ext_resource type="PackedScene" uid="uid://c0suvw7ft6h08" path="res://Scenes/tile_map_layer.tscn" id="2_psjqa"]
+[ext_resource type="TileSet" uid="uid://c11wygxx4yfts" path="res://dungeon_tileset.tres" id="3_xlulj"]
 [ext_resource type="PackedScene" uid="uid://baog375jtohmk" path="res://Scenes/Interactables/Podiums/minotaur_podium.tscn" id="3_yykdn"]
 [ext_resource type="PackedScene" uid="uid://drxld1vfpxhb8" path="res://Scenes/GUI/player_gui.tscn" id="4_cw638"]
 [ext_resource type="PackedScene" uid="uid://c8rc5agxlry6f" path="res://Scenes/Enemies/base_enemy.tscn" id="5_rnktc"]
@@ -27,8 +28,8 @@ func _physics_process(delta: float) -> void:
 "
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_varl8"]
-vertices = PackedVector2Array(33.2813, 202.422, 14.1563, 106.828, 457.102, 100.859, 644.477, 234.844, 456, -6.10156, 455.047, -216, 533.828, -216, 701.898, -45.9297, 851.398, 111.273, 816.867, -18.6406)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(3, 2, 4, 5, 6, 7, 8), PackedInt32Array(8, 7, 9)])
+vertices = PackedVector2Array(14.1563, 106.828, 287.813, 103.141, 254.789, 149.531, 33.2813, 202.422, 457.102, 100.867, 456, -6.10156, 455.047, -216, 533.828, -216, 701.898, -45.9297, 644.477, 234.844, 816.867, -18.6406, 851.398, 111.273, 389.789, 190.508, 415.531, 101.422)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6, 7, 8, 9), PackedInt32Array(10, 11, 9, 8), PackedInt32Array(12, 13, 4, 9), PackedInt32Array(12, 9, 3), PackedInt32Array(12, 3, 2)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(707, -55, 538, -226, 445, -226, 446, -6, 447, 91, 2, 97, 25, 212, 647, 245, 863, 116, 825, -27)])
 
 [node name="level1" type="Node2D"]
@@ -43,6 +44,7 @@ tile_map_data = PackedByteArray("AAD9////AQAHAAEAAAD8////AQAGAAAAAAD7////AQAGAAA
 
 [node name="TilePathing" parent="." instance=ExtResource("2_psjqa")]
 tile_map_data = PackedByteArray("AAAFAP//AQABAAIAAAAEAP//AQABAAMAAAADAAAAAQAAAAQAAAADAP//AQADAAIAAAACAP//AQABAAMAAAABAP//AQABAAMAAAAAAP//AQABAAAAAAAFAP7/AQACAAEAAAAMAP3/AQABAAEAAAALAP3/AQABAAMAAAAKAP3/AQABAAMAAAAJAP3/AQABAAMAAAAIAP3/AQADAAIAAAAHAP3/AQABAAMAAAAGAP3/AQABAAMAAAAFAP3/AQAAAAIAAAAMAAIAAQABAAIAAAAMAAEAAQACAAEAAAAMAAAAAQACAAEAAAAMAP//AQACAAEAAAAMAP7/AQACAAEAAAAIAAIAAQAAAAEAAAAJAAIAAQABAAMAAAAKAAIAAQABAAMAAAALAAIAAQABAAMAAAAIAP7/AQACAAEAAAAIAP//AQACAAEAAAAIAAAAAQACAAEAAAAIAAEAAQACAAEAAAA=")
+tile_set = ExtResource("3_xlulj")
 
 [node name="player_wisp" parent="." instance=ExtResource("2_a4eln")]
 
@@ -87,3 +89,7 @@ position = Vector2(112, 80)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_varl8")
+
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="NavigationRegion2D"]
+vertices = PackedVector2Array(323, 71, 271, 144, 383, 178, 422, 43)
+affect_navigation_mesh = true
