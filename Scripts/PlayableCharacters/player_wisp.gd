@@ -15,6 +15,7 @@ enum playerState {NEUTRAL, ATTACK, DEAD, DASH}
 @export var currentState : playerState
 var bUlting : bool = false
 
+
 @export var sceneKey : String
 
 

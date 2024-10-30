@@ -5,7 +5,7 @@ enum weaponState {HELD, THROWN, RETURN}
 
 var currentState : weaponState
 var owningPlayer : CharacterBody2D
-var travelSpeed : float = 100
+var travelSpeed : float = 250
 var travelDist : float = 200
 var direction : Vector2
 
@@ -45,7 +45,7 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_hitbox_body_entered(body: Node2D) -> void:
-	if !body.is_in_group("Player"):
+	if !body.is_in_group("Player") && currentState == weaponState.THROWN:
 		if body.has_method("hit"):
 			body.hit(owningPlayer.specialDamage)
 		currentState = weaponState.RETURN

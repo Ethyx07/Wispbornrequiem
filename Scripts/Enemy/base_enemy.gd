@@ -73,6 +73,7 @@ func attack():
 	await get_tree().create_timer(attackDelay).timeout
 	get_node("hitbox/attackbox").disabled = false
 	var slashTemp = attackSlash.instantiate()
+	slashTemp.parent = self
 	add_child(slashTemp)
 	slashTemp.global_position = get_node("hitbox/attackbox").global_position
 	slashTemp.look_at(get_global_mouse_position())
@@ -83,8 +84,10 @@ func attack():
 	await get_tree().create_timer(1).timeout
 	currentState = enemyState.CHASE
 
+func attack_hit(body : Node2D) -> void:
+	body.hit(damage)
 
-func _on_hitbox_body_entered(body: Node2D) -> void:
-	if body.is_in_group("Player"):
-		body.hit(damage) 
-		print(body.health)
+#func _on_hitbox_body_entered(body: Node2D) -> void:
+	#if body.is_in_group("Player"):
+		#body.hit(damage) 
+		#print(body.health)

@@ -87,11 +87,6 @@ func _on_hitbox_body_entered(body: Node2D) -> void:
 		pass
 
 
-func _on_chargebox_body_entered(body: Node2D) -> void:
-	if body.is_in_group("Enemy"):
-		body.hit(1)
-		body.knockback(velocity)
-		print(body.health) # Replace with function body.
 		
 func hit(damageTaken : int)-> void:
 	if bUlting:
@@ -104,6 +99,8 @@ func hit(damageTaken : int)-> void:
 			super(armourPoints * -1) #Checks if the damage does more than the full armour. If it does the remainder is dealt to hp
 			armourPoints = 0
 			armour_bar.value = armourPoints
+	else:
+		health -= damageTaken
 	hp_bar.value = health
 
 

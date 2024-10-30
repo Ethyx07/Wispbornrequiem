@@ -1,5 +1,6 @@
-[gd_scene load_steps=15 format=3 uid="uid://byxcauw0mm0sv"]
+[gd_scene load_steps=17 format=3 uid="uid://byxcauw0mm0sv"]
 
+[ext_resource type="Script" path="res://Scripts/Enemy/base_enemy_slash.gd" id="1_jmpu2"]
 [ext_resource type="Texture2D" uid="uid://bxac4pwx53bdl" path="res://Assets/Enemy/BaseEnemySlash1.png" id="1_w0k21"]
 [ext_resource type="Texture2D" uid="uid://bcpg5rv6lo478" path="res://Assets/Enemy/BaseEnemySlash2.png" id="2_a4pnq"]
 [ext_resource type="Texture2D" uid="uid://ce8r5byldacb6" path="res://Assets/Enemy/BaseEnemySlash3.png" id="3_rb6lm"]
@@ -11,6 +12,21 @@
 [ext_resource type="Texture2D" uid="uid://dnnjlmw4obauw" path="res://Assets/Enemy/BaseEnemySlash9.png" id="9_v7dqc"]
 [ext_resource type="Texture2D" uid="uid://dw0u66vq5bxs2" path="res://Assets/Enemy/BaseEnemySlash10.png" id="10_s4jde"]
 [ext_resource type="Texture2D" uid="uid://dbytn1gju26hl" path="res://Assets/Enemy/BaseEnemySlash11.png" id="11_etmu0"]
+
+[sub_resource type="Animation" id="Animation_jm4kl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
 
 [sub_resource type="Animation" id="Animation_8pl00"]
 resource_name = "attack_slash"
@@ -28,31 +44,29 @@ tracks/0/keys = {
 "values": [ExtResource("1_w0k21"), ExtResource("2_a4pnq"), ExtResource("3_rb6lm"), ExtResource("4_qmkct"), ExtResource("5_cbjf7"), ExtResource("6_ciyvo"), ExtResource("7_fu3rj"), ExtResource("8_nejrp"), ExtResource("9_v7dqc"), ExtResource("10_s4jde"), ExtResource("11_etmu0"), ExtResource("11_etmu0")]
 }
 
-[sub_resource type="Animation" id="Animation_jm4kl"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [null]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_m7b55"]
 _data = {
 "RESET": SubResource("Animation_jm4kl"),
 "attack_slash": SubResource("Animation_8pl00")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t7of4"]
+size = Vector2(4.94975, 31.1127)
+
 [node name="base_enemy_slash" type="Sprite2D"]
 texture_filter = 1
+script = ExtResource("1_jmpu2")
 
 [node name="animPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_m7b55")
 }
+
+[node name="attackbox" type="Area2D" parent="."]
+
+[node name="hitbox" type="CollisionShape2D" parent="attackbox"]
+position = Vector2(1.75, -0.25)
+rotation = 0.785398
+shape = SubResource("RectangleShape2D_t7of4")
+
+[connection signal="body_entered" from="attackbox" to="." method="_on_attackbox_body_entered"]

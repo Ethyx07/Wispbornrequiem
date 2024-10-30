@@ -1,0 +1,102 @@
+[gd_scene load_steps=27 format=3 uid="uid://bfyn2oiwvmtcd"]
+
+[ext_resource type="PackedScene" uid="uid://2413ue8fbi7x" path="res://Scenes/PlayerClasses/player_wisp.tscn" id="1_nhtfs"]
+[ext_resource type="PackedScene" uid="uid://baog375jtohmk" path="res://Scenes/Interactables/Podiums/minotaur_podium.tscn" id="2_yg01w"]
+[ext_resource type="Script" path="res://doorways.gd" id="4_rclxa"]
+[ext_resource type="PackedScene" uid="uid://bn60ndcfxpatl" path="res://Scenes/level_2.tscn" id="5_e23fg"]
+[ext_resource type="Texture2D" uid="uid://it03gpwv0lpg" path="res://Assets/Tilemap/doorUnlocking/TileDoorwayLocked1.png" id="6_enpus"]
+[ext_resource type="Texture2D" uid="uid://b11ivvm03i0c6" path="res://Scenes/Interactables/Doors/DoorHighlighted.png" id="7_xef2r"]
+[ext_resource type="Texture2D" uid="uid://bnq5k5bc63gv5" path="res://Scenes/Interactables/Doors/TileDoorway.png" id="8_klkc8"]
+[ext_resource type="Texture2D" uid="uid://c7oqknrk2bevs" path="res://Assets/Tilemap/doorUnlocking/TileDoorwayLocked2.png" id="9_snsct"]
+[ext_resource type="Texture2D" uid="uid://c7lpri58embql" path="res://Assets/Tilemap/doorUnlocking/TileDoorwayLocked3.png" id="10_ro77p"]
+[ext_resource type="Texture2D" uid="uid://dpgip1v4jhut7" path="res://Assets/Tilemap/doorUnlocking/TileDoorwayLocked4.png" id="11_u3anj"]
+[ext_resource type="Texture2D" uid="uid://d2pns2gpbcui2" path="res://Assets/Tilemap/doorUnlocking/TileDoorwayLocked5.png" id="12_c6etd"]
+[ext_resource type="Texture2D" uid="uid://c0c1qx78xg7h2" path="res://Assets/Tilemap/doorUnlocking/TileDoorwayLocked6.png" id="13_gs3hc"]
+[ext_resource type="Texture2D" uid="uid://c5bsab2jh8oyb" path="res://Assets/Tilemap/doorUnlocking/TileDoorwayLocked7.png" id="14_flds6"]
+[ext_resource type="Texture2D" uid="uid://d01chcwrtbqjg" path="res://Assets/Tilemap/doorUnlocking/TileDoorwayLocked8.png" id="15_rmcl1"]
+[ext_resource type="Texture2D" uid="uid://eq3kwjqq5gq5" path="res://Assets/Tilemap/doorUnlocking/TileDoorwayLocked9.png" id="16_o2xyi"]
+[ext_resource type="Texture2D" uid="uid://j7sr61gbo1gy" path="res://Assets/Tilemap/doorUnlocking/TileDoorwayLocked10.png" id="17_ovne2"]
+[ext_resource type="Texture2D" uid="uid://ddmgp5bul7gen" path="res://Assets/Tilemap/doorUnlocking/TileDoorwayLocked11.png" id="18_hlypl"]
+[ext_resource type="Texture2D" uid="uid://0eewmf3qcejl" path="res://Assets/Tilemap/doorUnlocking/TileDoorwayLocked12.png" id="19_i5dih"]
+[ext_resource type="Texture2D" uid="uid://duujiuyrf8qhu" path="res://Assets/Tilemap/doorUnlocking/TileDoorwayLocked13.png" id="20_x8wu1"]
+[ext_resource type="Texture2D" uid="uid://c8sub51gwrwfa" path="res://Assets/Tilemap/doorUnlocking/TileDoorwayLocked14.png" id="21_0mwtu"]
+[ext_resource type="Texture2D" uid="uid://2b7dyl1xvg0i" path="res://Assets/Tilemap/doorUnlocking/TileDoorwayLocked15.png" id="22_lmt1w"]
+[ext_resource type="PackedScene" uid="uid://drxld1vfpxhb8" path="res://Scenes/GUI/player_gui.tscn" id="22_yq0jn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q7ujh"]
+size = Vector2(36, 38)
+
+[sub_resource type="Animation" id="Animation_1udrd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MainTexture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("6_enpus")]
+}
+
+[sub_resource type="Animation" id="Animation_wx7nb"]
+resource_name = "unlocking"
+length = 0.7
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MainTexture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("6_enpus"), ExtResource("9_snsct"), ExtResource("10_ro77p"), ExtResource("11_u3anj"), ExtResource("12_c6etd"), ExtResource("13_gs3hc"), ExtResource("14_flds6"), ExtResource("15_rmcl1"), ExtResource("16_o2xyi"), ExtResource("17_ovne2"), ExtResource("18_hlypl"), ExtResource("19_i5dih"), ExtResource("20_x8wu1"), ExtResource("21_0mwtu"), ExtResource("22_lmt1w")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vp54i"]
+_data = {
+"RESET": SubResource("Animation_1udrd"),
+"unlocking": SubResource("Animation_wx7nb")
+}
+
+[node name="hubScene" type="Node2D"]
+
+[node name="player_wisp" parent="." instance=ExtResource("1_nhtfs")]
+
+[node name="MinotaurPodium" parent="." instance=ExtResource("2_yg01w")]
+
+[node name="doorway" type="StaticBody2D" parent="." groups=["Interactable"]]
+position = Vector2(176, 0)
+script = ExtResource("4_rclxa")
+levelToLoad = ExtResource("5_e23fg")
+lockedTexture = ExtResource("6_enpus")
+bIsUnlocked = true
+itemDesc = "Doorway"
+highlightedTexture = ExtResource("7_xef2r")
+baseTexture = ExtResource("8_klkc8")
+
+[node name="hitbox" type="CollisionShape2D" parent="doorway"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_q7ujh")
+
+[node name="MainTexture" type="Sprite2D" parent="doorway"]
+texture_filter = 1
+texture = ExtResource("6_enpus")
+
+[node name="animPlayer" type="AnimationPlayer" parent="doorway"]
+libraries = {
+"": SubResource("AnimationLibrary_vp54i")
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="playergui" parent="CanvasLayer" instance=ExtResource("22_yq0jn")]
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 2.0
+offset_bottom = 2.0

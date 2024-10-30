@@ -1,27 +1,192 @@
-[gd_scene load_steps=6 format=4 uid="uid://bn60ndcfxpatl"]
+[gd_scene load_steps=18 format=4 uid="uid://bn60ndcfxpatl"]
 
+[ext_resource type="Script" path="res://Scripts/level_logic.gd" id="1_q6qtl"]
 [ext_resource type="PackedScene" uid="uid://c0suvw7ft6h08" path="res://Scenes/tile_map_layer.tscn" id="1_wcum3"]
-[ext_resource type="PackedScene" uid="uid://c8rc5agxlry6f" path="res://Scenes/Enemies/base_enemy.tscn" id="2_l0rb5"]
-[ext_resource type="PackedScene" uid="uid://baog375jtohmk" path="res://Scenes/Interactables/Podiums/minotaur_podium.tscn" id="3_4mwnd"]
+[ext_resource type="Script" path="res://Scripts/Enemy/base_enemy.gd" id="2_4ean3"]
 [ext_resource type="PackedScene" uid="uid://drxld1vfpxhb8" path="res://Scenes/GUI/player_gui.tscn" id="3_bntbj"]
+[ext_resource type="Texture2D" uid="uid://b5idjwshvpjg6" path="res://Assets/Enemy/SwordEnemyV2.png" id="3_q3jxa"]
+[ext_resource type="Texture2D" uid="uid://bxac4pwx53bdl" path="res://Assets/Enemy/BaseEnemySlash1.png" id="4_aqtbw"]
+[ext_resource type="PackedScene" uid="uid://em6vqqa3r1gv" path="res://Scenes/Interactables/doorway.tscn" id="8_e7t15"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yr4m7"]
+radius = 19.0263
+
+[sub_resource type="Animation" id="Animation_u68ip"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("mainTexture:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("mainTexture:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_f8pgp"]
+resource_name = "attack_slash"
+length = 0.12
+step = 0.01
+
+[sub_resource type="Animation" id="Animation_lbesf"]
+resource_name = "death"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("mainTexture:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.133333, 0.166667, 0.333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(24, -21), Vector2(35.7073, 16.3171), Vector2(35.707, 2), Vector2(35.707, 14)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("mainTexture:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.133333, 0.333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.523599, 1.5708, 1.5708]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_84elo"]
+_data = {
+"RESET": SubResource("Animation_u68ip"),
+"attack_slash": SubResource("Animation_f8pgp"),
+"death": SubResource("Animation_lbesf")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c4pat"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xk4gw"]
+bg_color = Color(0.92, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0x1pn"]
+bg_color = Color(0.0166667, 1, 0, 1)
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_essge"]
 vertices = PackedVector2Array(151.344, 47.8984, -74, 49.8984, -74, -190, 352.023, -190, 352.531, 44.3281, 189.711, 49.3438, 196.172, 101, 352.672, 101, 352.977, 239, -74, 239, -74, 101.898, 144.844, 99.9219)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(0, 4, 5), PackedInt32Array(6, 7, 8, 9, 10), PackedInt32Array(6, 10, 11), PackedInt32Array(5, 6, 11, 0)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(362, -200, 363, 249, -84, 249, -84, -200)])
 
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_e2qdr"]
+vertices = PackedVector2Array(372, -180.023, 372, 241.063, -53.9688, 243.93, -53.0234, -180.969)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-63, -191, 382, -190, 382, 251, -64, 254)])
+
 [node name="level2" type="Node2D"]
+script = ExtResource("1_q6qtl")
 
 [node name="TileBackground" parent="." instance=ExtResource("1_wcum3")]
 z_index = -1
 tile_map_data = PackedByteArray("AAD+//7/AQAGAAAAAAD///7/AQAHAAEAAAACAP7/AQAHAAEAAAABAP7/AQAGAAAAAAAAAP7/AQAGAAAAAAALAP7/AQAGAAAAAAAKAP7/AQAGAAAAAAAJAP7/AQAGAAAAAAAIAP7/AQAGAAEAAAAHAP7/AQAHAAAAAAAGAP7/AQAGAAAAAAAFAP7/AQAGAAAAAAAEAP7/AQAGAAAAAAADAP7/AQAHAAEAAAALAP//AQAHAAEAAAAKAP//AQAHAAEAAAAJAP//AQAGAAAAAAAIAP//AQAHAAEAAAAHAP//AQAGAAAAAAAGAP//AQAGAAAAAAAFAP//AQAHAAEAAAAEAP//AQAGAAAAAAADAP//AQAGAAAAAAACAP//AQAGAAAAAAABAP//AQAFAAAAAAAAAP//AQAGAAAAAAD/////AQAHAAEAAAD+////AQAGAAEAAAALAAEAAQAHAAAAAAALAAAAAQAHAAEAAAAKAAEAAQAGAAAAAAAKAAAAAQAGAAAAAAAJAAEAAQAHAAEAAAAJAAAAAQAHAAEAAAAIAAEAAQAGAAAAAAAIAAAAAQAHAAEAAAAHAAEAAQAHAAEAAAAHAAAAAQAGAAAAAAAGAAEAAQAFAAAAAAAGAAAAAQAGAAAAAAAFAAEAAQAGAAAAAAAFAAAAAQAHAAEAAAAEAAEAAQAHAAEAAAAEAAAAAQAHAAEAAAADAAEAAQAHAAEAAAADAAAAAQAHAAEAAAACAAEAAQAHAAEAAAACAAAAAQAHAAEAAAABAAEAAQAHAAEAAAABAAAAAQAGAAAAAAAAAAEAAQAHAAEAAAAAAAAAAQAHAAEAAAD//wEAAQAHAAEAAAD//wAAAQAHAAEAAAD+/wEAAQAHAAEAAAD+/wAAAQAHAAEAAAALAP3/AQAGAAEAAAALAPz/AQAHAAEAAAALAPv/AQAHAAEAAAALAPr/AQAGAAAAAAAKAP3/AQAGAAAAAAAKAPz/AQAGAAAAAAAKAPv/AQAGAAAAAAAKAPr/AQAGAAEAAAAJAP3/AQAFAAAAAAAJAPz/AQAHAAEAAAAJAPv/AQAGAAAAAAAJAPr/AQAHAAEAAAAIAP3/AQAGAAAAAAAIAPz/AQAHAAAAAAAIAPv/AQAHAAEAAAAIAPr/AQAHAAEAAAAHAP3/AQAHAAEAAAAHAPz/AQAGAAAAAAAHAPv/AQAGAAAAAAAHAPr/AQAHAAEAAAAGAP3/AQAFAAAAAAAGAPz/AQAGAAEAAAAGAPv/AQAGAAAAAAAGAPr/AQAGAAAAAAAFAP3/AQAGAAEAAAAFAPz/AQAGAAAAAAAFAPv/AQAHAAEAAAAFAPr/AQAGAAAAAAAEAP3/AQAGAAAAAAAEAPz/AQAGAAAAAAAEAPv/AQAHAAEAAAAEAPr/AQAHAAEAAAADAP3/AQAGAAAAAAADAPz/AQAFAAAAAAADAPv/AQAGAAEAAAADAPr/AQAGAAAAAAACAP3/AQAHAAEAAAACAPz/AQAGAAAAAAACAPv/AQAGAAAAAAACAPr/AQAHAAEAAAABAP3/AQAHAAEAAAABAPz/AQAHAAEAAAABAPv/AQAGAAAAAAABAPr/AQAGAAAAAAAAAP3/AQAGAAEAAAAAAPz/AQAGAAAAAAAAAPv/AQAGAAAAAAAAAPr/AQAFAAAAAAD///3/AQAGAAEAAAD///z/AQAHAAEAAAD///v/AQAGAAAAAAD///r/AQAHAAEAAAD+//3/AQAHAAAAAAD+//z/AQAGAAEAAAD+//v/AQAFAAAAAAD+//r/AQAHAAEAAAALAAcAAQAHAAEAAAALAAYAAQAHAAEAAAALAAUAAQAGAAAAAAALAAQAAQAGAAAAAAALAAMAAQAGAAAAAAAKAAcAAQAGAAAAAAAKAAYAAQAHAAEAAAAKAAUAAQAGAAAAAAAKAAQAAQAHAAEAAAAKAAMAAQAGAAEAAAAJAAcAAQAHAAEAAAAJAAYAAQAHAAEAAAAJAAUAAQAGAAAAAAAJAAQAAQAGAAEAAAAJAAMAAQAHAAEAAAAIAAcAAQAGAAAAAAAIAAYAAQAFAAAAAAAIAAUAAQAGAAAAAAAIAAQAAQAGAAAAAAAIAAMAAQAGAAEAAAAHAAcAAQAHAAEAAAAHAAYAAQAGAAAAAAAHAAUAAQAGAAAAAAAHAAQAAQAGAAAAAAAHAAMAAQAHAAEAAAAGAAcAAQAHAAEAAAAGAAYAAQAFAAAAAAAGAAUAAQAHAAEAAAAGAAQAAQAGAAAAAAAGAAMAAQAHAAEAAAAFAAcAAQAHAAEAAAAFAAYAAQAGAAAAAAAFAAUAAQAGAAAAAAAFAAQAAQAGAAAAAAAFAAMAAQAGAAAAAAAEAAcAAQAGAAAAAAAEAAYAAQAHAAAAAAAEAAUAAQAGAAAAAAAEAAQAAQAHAAEAAAAEAAMAAQAGAAAAAAADAAcAAQAFAAAAAAADAAYAAQAHAAEAAAADAAUAAQAFAAAAAAADAAQAAQAFAAAAAAADAAMAAQAGAAAAAAACAAcAAQAHAAEAAAACAAYAAQAGAAAAAAACAAUAAQAGAAAAAAACAAQAAQAHAAEAAAACAAMAAQAHAAEAAAABAAcAAQAHAAEAAAABAAYAAQAHAAEAAAABAAUAAQAHAAAAAAABAAQAAQAGAAAAAAABAAMAAQAHAAEAAAAAAAcAAQAHAAEAAAAAAAYAAQAHAAEAAAAAAAUAAQAGAAAAAAAAAAQAAQAHAAAAAAAAAAMAAQAHAAEAAAD//wcAAQAGAAAAAAD//wYAAQAFAAAAAAD//wUAAQAHAAEAAAD//wQAAQAHAAEAAAD//wMAAQAFAAAAAAD+/wcAAQAGAAAAAAD+/wYAAQAGAAAAAAD+/wUAAQAHAAEAAAD+/wQAAQAHAAEAAAD+/wMAAQAGAAAAAAAGAAIAAQAHAAEAAAAFAAIAAQAGAAAAAAA=")
 
-[node name="base_enemy" parent="." instance=ExtResource("2_l0rb5")]
+[node name="base_enemy" type="CharacterBody2D" parent="." groups=["Enemy"]]
 position = Vector2(275, 0)
+script = ExtResource("2_4ean3")
+speed = 1000.0
 
-[node name="MinotaurPodium" parent="." instance=ExtResource("3_4mwnd")]
-position = Vector2(125, 104)
-bSaved = true
+[node name="mainTexture" type="Sprite2D" parent="base_enemy"]
+texture_filter = 1
+texture = ExtResource("3_q3jxa")
+
+[node name="hurtbox" type="CollisionShape2D" parent="base_enemy"]
+position = Vector2(0, -2)
+shape = SubResource("CircleShape2D_yr4m7")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="base_enemy"]
+libraries = {
+"": SubResource("AnimationLibrary_84elo")
+}
+
+[node name="hitbox" type="Area2D" parent="base_enemy"]
+
+[node name="attackbox" type="CollisionShape2D" parent="base_enemy/hitbox"]
+position = Vector2(19, -1)
+shape = SubResource("CapsuleShape2D_c4pat")
+
+[node name="BaseEnemySlash1" type="Sprite2D" parent="base_enemy/hitbox"]
+texture_filter = 1
+position = Vector2(19, -1)
+rotation = -0.693345
+texture = ExtResource("4_aqtbw")
+
+[node name="hp_bar" type="ProgressBar" parent="base_enemy"]
+offset_left = -11.0
+offset_top = -28.0
+offset_right = 10.0
+offset_bottom = -24.0
+theme_override_styles/background = SubResource("StyleBoxFlat_xk4gw")
+theme_override_styles/fill = SubResource("StyleBoxFlat_0x1pn")
+value = 50.0
+show_percentage = false
+
+[node name="NavAgent" type="NavigationAgent2D" parent="base_enemy"]
+
+[node name="base_enemy2" type="CharacterBody2D" parent="." groups=["Enemy"]]
+position = Vector2(216, 0)
+script = ExtResource("2_4ean3")
+speed = 1000.0
+
+[node name="mainTexture" type="Sprite2D" parent="base_enemy2"]
+texture_filter = 1
+texture = ExtResource("3_q3jxa")
+
+[node name="hurtbox" type="CollisionShape2D" parent="base_enemy2"]
+position = Vector2(0, -2)
+shape = SubResource("CircleShape2D_yr4m7")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="base_enemy2"]
+libraries = {
+"": SubResource("AnimationLibrary_84elo")
+}
+
+[node name="hitbox" type="Area2D" parent="base_enemy2"]
+
+[node name="attackbox" type="CollisionShape2D" parent="base_enemy2/hitbox"]
+position = Vector2(19, -1)
+shape = SubResource("CapsuleShape2D_c4pat")
+
+[node name="BaseEnemySlash1" type="Sprite2D" parent="base_enemy2/hitbox"]
+texture_filter = 1
+position = Vector2(19, -1)
+rotation = -0.693345
+texture = ExtResource("4_aqtbw")
+
+[node name="hp_bar" type="ProgressBar" parent="base_enemy2"]
+offset_left = -11.0
+offset_top = -28.0
+offset_right = 10.0
+offset_bottom = -24.0
+theme_override_styles/background = SubResource("StyleBoxFlat_xk4gw")
+theme_override_styles/fill = SubResource("StyleBoxFlat_0x1pn")
+value = 50.0
+show_percentage = false
+
+[node name="NavAgent" type="NavigationAgent2D" parent="base_enemy2"]
+navigation_layers = 2
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -38,3 +203,14 @@ affect_navigation_mesh = true
 [node name="NavigationObstacle2D2" type="NavigationObstacle2D" parent="NavigationRegion2D"]
 vertices = PackedVector2Array(-84, 60, -84, 92, 136, 90, 140, 58)
 affect_navigation_mesh = true
+
+[node name="NavigationRegion2D2" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_e2qdr")
+navigation_layers = 2
+
+[node name="doorway" parent="." instance=ExtResource("8_e7t15")]
+position = Vector2(26, 210)
+bIsUnlocked = null
+
+[connection signal="body_entered" from="base_enemy/hitbox" to="base_enemy" method="_on_hitbox_body_entered"]
+[connection signal="body_entered" from="base_enemy2/hitbox" to="base_enemy2" method="_on_hitbox_body_entered"]
