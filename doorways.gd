@@ -1,6 +1,5 @@
 extends "res://Scripts/Interactables/Interactables.gd"
 
-@export var levelToLoad : PackedScene
 @export var lockedTexture : Texture2D
 @onready var animator = get_node("animPlayer")
 @export var bIsUnlocked : bool = false
@@ -13,10 +12,7 @@ func _ready() -> void:
 		get_node("MainTexture").texture = baseTexture
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-	
+
 func interact(body: Node2D)-> void:
 	if bIsUnlocked:
 		super(body)

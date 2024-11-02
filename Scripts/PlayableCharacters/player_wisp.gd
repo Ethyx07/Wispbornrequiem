@@ -26,7 +26,7 @@ var bUlting : bool = false
 var facingBody : Node2D
 var bCanUseSpecial = true
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	match currentState:
 		playerState.DEAD:
 			return

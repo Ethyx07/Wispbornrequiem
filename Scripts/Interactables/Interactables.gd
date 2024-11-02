@@ -6,7 +6,7 @@ extends Node
 
 
 
-func interact(body: Node2D) -> void:
+func interact(_body: Node2D) -> void:
 	print(itemDesc)
 	
 	

@@ -122,5 +122,3 @@ value = 50.0
 show_percentage = false
 
 [node name="NavAgent" type="NavigationAgent2D" parent="."]
-
-[connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]

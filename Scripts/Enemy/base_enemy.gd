@@ -31,6 +31,7 @@ func _physics_process(delta: float) -> void:
 		get_node("hitbox").look_at(targetPlayer.global_position)
 		if !bKnockedback and nav_agent.distance_to_target() > nav_agent.target_desired_distance:
 			nav_agent.target_position = targetPlayer.global_position
+			await get_tree().physics_frame
 			var direction = self.global_position.direction_to(nav_agent.get_next_path_position())
 			velocity = direction * delta * speed
 			if position.distance_to(targetPlayer.global_position) < 50:

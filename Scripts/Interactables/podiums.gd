@@ -42,7 +42,7 @@ func interact(body: Node2D) -> void:
 			body.queue_free()
 	
 	
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	get_node("PodiumTexture").global_position = startingPos
 	get_node("hitbox").global_position = startingPos
 	
