@@ -48,3 +48,6 @@ position = Vector2(112, 80)
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 position = Vector2(-7, -13)
 navigation_polygon = SubResource("NavigationPolygon_varl8")
+
+[node name="spawnLocation" type="Node2D" parent="."]
+position = Vector2(171, 0)

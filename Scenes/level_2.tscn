@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://5n0yome5tq1v"]
+[gd_scene load_steps=23 format=4 uid="uid://5n0yome5tq1v"]
 
 [ext_resource type="Script" path="res://Scripts/level_logic.gd" id="1_8gmwg"]
 [ext_resource type="Texture2D" uid="uid://bpm3qjj17dji3" path="res://Assets/Tilemap/Tilecracked.png" id="1_hm13y"]
@@ -99,6 +99,12 @@ vertices = PackedVector2Array(721.141, -245.078, 732.852, 567.047, -409.156, 572
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-433, -265, -419, 583, 743, 577, 731, -255)])
 
+[sub_resource type="Gradient" id="Gradient_t0ihx"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_bjj84"]
+gradient = SubResource("Gradient_t0ihx")
+
 [node name="level2" type="Node2D"]
 script = ExtResource("1_8gmwg")
 
@@ -177,6 +183,7 @@ texture_filter = 1
 position = Vector2(146, 171)
 
 [node name="GroundNav" type="NavigationRegion2D" parent="."]
+visible = false
 position = Vector2(-4, 0)
 navigation_polygon = SubResource("NavigationPolygon_0jbyv")
 
@@ -217,5 +224,61 @@ vertices = PackedVector2Array(99, -248, 101, -160, 68, -160, 68, -193, -157, -19
 affect_navigation_mesh = true
 
 [node name="FlightNav" type="NavigationRegion2D" parent="."]
+visible = false
 navigation_polygon = SubResource("NavigationPolygon_eqge8")
 navigation_layers = 2
+
+[node name="DeathPits" type="StaticBody2D" parent="."]
+position = Vector2(321, 0)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DeathPits"]
+light_mask = 2
+visibility_layer = 2
+polygon = PackedVector2Array(-64, -64, -64, -32, -96, -32, -96, 95, -64, 95, -64, 128, 63, 128, 64, 96, 95, 96, 95, -32, 63, -31, 64, -64)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="DeathPits"]
+light_mask = 2
+visibility_layer = 2
+position = Vector2(-320, 0)
+polygon = PackedVector2Array(-64, -64, -64, -32, -96, -32, -96, 95, -64, 95, -64, 128, 63, 128, 64, 96, 95, 96, 95, -32, 63, -31, 64, -64)
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="DeathPits"]
+light_mask = 2
+visibility_layer = 2
+position = Vector2(-320, 257)
+polygon = PackedVector2Array(-64, -64, -64, -32, -96, -32, -96, 95, -64, 95, -64, 128, 63, 128, 64, 96, 95, 96, 95, -32, 63, -31, 64, -64)
+
+[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="DeathPits"]
+light_mask = 2
+visibility_layer = 2
+position = Vector2(-1, 258)
+polygon = PackedVector2Array(-64, -64, -64, -32, -96, -32, -96, 95, -64, 95, -64, 128, 63, 128, 64, 96, 95, 96, 95, -32, 63, -31, 64, -64)
+
+[node name="spawnLocation" type="Node2D" parent="."]
+position = Vector2(168, 285)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -2
+position = Vector2(156, 146)
+scale = Vector2(20, 20)
+texture = SubResource("GradientTexture2D_bjj84")
+
+[node name="WorldBorder" type="StaticBody2D" parent="."]
+light_mask = 4
+visibility_layer = 4
+position = Vector2(321, 0)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="WorldBorder"]
+build_mode = 1
+polygon = PackedVector2Array(-225, -256, -737, -256, -737, 576, 415, 576, 415, -256, -97, -256)
+
+[node name="CollisionPolygon2D5" type="CollisionPolygon2D" parent="WorldBorder"]
+light_mask = 5
+visibility_layer = 5
+position = Vector2(-1, 258)
+build_mode = 1
+polygon = PackedVector2Array(-736, -162, -544, -162, -544, -194, -576, -194, -576, -354, -544, -354, -544, -386, -512, -386, -512, -418, -480, -418, -480, -450, -256, -450, -256, -418, -224, -418, -224, -514, -96, -514, -96, -418, -64, -418, -64, -450, 160, -450, 160, -418, 192, -418, 192, -386, 224, -386, 224, -354, 256, -354, 256, -194, 224, -194, 224, -162, 416, -162, 416, -34, 224, -34, 224, -2, 256, -2, 256, 158, 224, 158, 224, 190, 192, 190, 192, 222, 160, 222, 160, 254, -64, 254, -64, 222, -96, 222, -96, 318, -224, 318, -224, 222, -256, 222, -256, 254, -480, 254, -480, 222, -512, 222, -512, 190, -544, 190, -544, 158, -576, 158, -576, -2, -544, -2, -544, -34, -736, -34)

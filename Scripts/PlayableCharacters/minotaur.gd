@@ -10,6 +10,7 @@ extends "res://Scripts/PlayableCharacters/player_wisp.gd"
 @export var maxArmourPoints : int = 10
 
 var armourPoints = 0
+var direction
 
 
 var heldAxe
@@ -37,17 +38,28 @@ func _physics_process(delta: float) -> void:
 	match currentState:
 		playerState.NEUTRAL:
 			if Input.is_action_just_pressed("Dash"):
-				dash()
+				direction = dash()
+			get_node("hurtbox").disabled = false
 			if Input.is_action_just_pressed("Attack"):
 				attack()
 			if Input.is_action_just_pressed("SpecialAttack"):
 				specialAttack()
 			if Input.is_action_just_pressed("ActivateUlt"):
 				ultActivate()
-				
+		playerState.DASH:
+			velocity = direction * speed * delta * 300
+			self.collision_layer = 0
+			self.collision_layer = (1 << 2)
+			self.collision_mask = 0
+			self.collision_mask = (1 << 2)
+			move_and_slide()
+			await get_tree().create_timer(0.5).timeout
+			self.collision_layer = (1 << 0) | (1 << 1) | (1 << 2)
+			self.collision_mask = (1 << 0) | (1 << 1) | (1 << 2)
+			currentState = playerState.NEUTRAL	
+			#pitCheck()
 	if !bCanUseSpecial and currentState == playerState.NEUTRAL:
 		specialCooldownNode.value = specialCooldown - cooldownTimer.time_left
-	
 func attack()-> void:
 	super()
 	currentState = playerState.ATTACK
@@ -89,6 +101,8 @@ func _on_hitbox_body_entered(body: Node2D) -> void:
 
 		
 func hit(damageTaken : int)-> void:
+	if currentState == playerState.DASH:
+		return
 	if bUlting:
 		armourPoints -=	damageTaken
 		if armourPoints >= 0:

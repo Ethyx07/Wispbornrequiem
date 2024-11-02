@@ -11,7 +11,7 @@ radius = 12.0
 height = 44.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kopfh"]
-size = Vector2(13, 19)
+size = Vector2(27.25, 19)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_su2ro"]
 size = Vector2(20, 58)
@@ -31,6 +31,8 @@ bg_color = Color(0, 0.5, 0.466667, 1)
 [node name="minotaur" type="CharacterBody2D" groups=["Player"]]
 z_index = 2
 texture_filter = 1
+collision_layer = 7
+collision_mask = 7
 script = ExtResource("1_65rwl")
 speed = 100.0
 dashSpeed = 150.0
@@ -48,13 +50,15 @@ texture = ExtResource("2_mwkb6")
 shape = SubResource("CapsuleShape2D_qip2i")
 
 [node name="InteractableBox" type="Area2D" parent="."]
+light_mask = 5
+visibility_layer = 5
 
 [node name="interact_box_right" type="CollisionShape2D" parent="InteractableBox"]
-position = Vector2(17.5, 1)
+position = Vector2(16.625, 1)
 shape = SubResource("RectangleShape2D_kopfh")
 
 [node name="interact_box_left" type="CollisionShape2D" parent="InteractableBox"]
-position = Vector2(-17, 1)
+position = Vector2(-10.75, 1)
 shape = SubResource("RectangleShape2D_kopfh")
 
 [node name="Camera2D" type="Camera2D" parent="."]

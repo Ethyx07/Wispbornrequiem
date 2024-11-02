@@ -34,7 +34,7 @@ func _physics_process(delta: float) -> void:
 			await get_tree().physics_frame
 			var direction = self.global_position.direction_to(nav_agent.get_next_path_position())
 			velocity = direction * delta * speed
-			if position.distance_to(targetPlayer.global_position) < 50:
+			if position.distance_to(targetPlayer.global_position) < 80:
 				var seperationVector = (global_position - targetPlayer.global_position).normalized() * 25
 				velocity += seperationVector
 				attack()
@@ -50,6 +50,7 @@ func _physics_process(delta: float) -> void:
 		targetPlayer = targetArray[0]
 		
 func hit(damageDealt : int) -> void:
+	
 	health -= damageDealt
 	hp_bar.value = health
 	if health <= 0:
@@ -70,20 +71,23 @@ func knockback(knockbackVector : Vector2) -> void:
 	bKnockedback = false
 	
 func attack():
-	currentState = enemyState.ATTACK
-	await get_tree().create_timer(attackDelay).timeout
-	get_node("hitbox/attackbox").disabled = false
-	var slashTemp = attackSlash.instantiate()
-	slashTemp.parent = self
-	add_child(slashTemp)
-	slashTemp.global_position = get_node("hitbox/attackbox").global_position
-	slashTemp.look_at(get_global_mouse_position())
-	slashTemp.get_node("animPlayer").play("attack_slash")
-	await slashTemp.get_node("animPlayer").animation_finished
-	get_node("hitbox/attackbox").disabled = true
-	slashTemp.queue_free()
-	await get_tree().create_timer(1).timeout
-	currentState = enemyState.CHASE
+	if currentState != enemyState.ATTACK:
+		currentState = enemyState.ATTACK
+		await get_tree().create_timer(attackDelay).timeout
+		get_node("hitbox/attackbox").disabled = false
+		var slashTemp = attackSlash.instantiate()
+		slashTemp.parent = self
+		add_child(slashTemp)
+		slashTemp.global_position = get_node("hitbox/attackbox").global_position
+		slashTemp.look_at(get_global_mouse_position())
+		slashTemp.get_node("animPlayer").play("attack_slash")
+		await slashTemp.get_node("animPlayer").animation_finished
+		get_node("hitbox/attackbox").disabled = true
+		slashTemp.queue_free()
+		await get_tree().create_timer(1).timeout
+		currentState = enemyState.CHASE
+	else:
+		return
 
 func attack_hit(body : Node2D) -> void:
 	body.hit(damage)

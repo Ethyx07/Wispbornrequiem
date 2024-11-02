@@ -18,15 +18,16 @@ var bUlting : bool = false
 
 @export var sceneKey : String
 
-
+@onready var hurtbox = get_node("hurtbox")
 @onready var attackDirection = get_node("attackMarker")
 @onready var playerSprite = get_node("playerSprite")
 @onready var dashParticle : PackedScene = preload("res://Scenes/Particles/dash_particle.tscn")
 
 var facingBody : Node2D
 var bCanUseSpecial = true
+var lastState
 
-func _physics_process(_delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	match currentState:
 		playerState.DEAD:
 			return
@@ -55,7 +56,7 @@ func _physics_process(_delta: float) -> void:
 				if is_instance_valid(facingBody):
 					facingBody.interact(get_node("."))
 		#Dash mechanic and spawning of 2 smoke bomb particle effects at each dash point
-		
+	lastState = currentState
 
 func _on_interactable_box_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Interactable") and !is_instance_valid(facingBody):
@@ -70,27 +71,10 @@ func _on_interactable_box_body_exited(body: Node2D) -> void:
 func _on_particle_finished(particleInstance : Node)-> void:
 	particleInstance.queue_free()
 	
-func dash()-> void:
+func dash()-> Vector2:
 	#Creates particle where the player leaves from
-		var particle_temp = dashParticle.instantiate()
-		particle_temp.emitting = true
-		particle_temp.global_position = playerSprite.global_position
-		get_tree().root.get_child(0).add_child(particle_temp)
-		playerSprite.hide()
 		currentState = playerState.DASH
-		#Gets position of mouse relative to player location for dash (allows dashing over blocked areas)
-		var dashPosition = (get_global_mouse_position() - self.global_position).normalized() * dashSpeed
-		self.global_position += dashPosition
-		#Delay for when the player reappears to give better visual on the dash
-		await get_tree().create_timer(0.1).timeout
-		#Creates the instance of the dash particle where the player reappears
-		var particle_tempFin = dashParticle.instantiate()
-		particle_tempFin.emitting = true
-		particle_tempFin.global_position = playerSprite.global_position
-		get_tree().root.get_child(0).add_child(particle_tempFin)
-		playerSprite.show()
-		currentState = playerState.NEUTRAL
-		await get_tree().create_timer(dashCooldown).timeout
+		return (get_global_mouse_position() - self.global_position).normalized()
 
 	
 func attack() -> void:
@@ -107,3 +91,8 @@ func hit(damage : int) -> void:
 	
 func ultActivate() ->void:
 	bUlting = true
+	
+func pitCheck()->void:
+	if lastState == playerState.DASH and currentState == playerState.NEUTRAL:
+		print("Working")
+		
