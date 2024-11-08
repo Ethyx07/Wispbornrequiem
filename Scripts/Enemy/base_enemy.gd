@@ -50,12 +50,12 @@ func _physics_process(delta: float) -> void:
 		targetPlayer = targetArray[0]
 		
 func hit(damageDealt : int) -> void:
-	
 	health -= damageDealt
 	hp_bar.value = health
 	if health <= 0:
 		currentState = enemyState.DEAD
 		hp_bar.visible = false
+		self.collision_layer = 0
 		get_node("AnimationPlayer").play("death")
 		await get_node("AnimationPlayer").animation_finished
 		self.queue_free()
