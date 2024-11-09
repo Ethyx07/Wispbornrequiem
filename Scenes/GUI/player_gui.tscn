@@ -8,7 +8,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Textbox" type="RichTextLabel" parent="."]
+[node name="itemDesc" type="RichTextLabel" parent="."]
 layout_mode = 0
 offset_left = 10.0
 offset_top = 617.0
