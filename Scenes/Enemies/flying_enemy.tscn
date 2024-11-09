@@ -1,0 +1,254 @@
+[gd_scene load_steps=20 format=3 uid="uid://bk5vxno1mqdyp"]
+
+[ext_resource type="Texture2D" uid="uid://da13efr6m7guc" path="res://Assets/Enemy/JetpackAnim/JetpackAnimation1.png" id="1_gq0a1"]
+[ext_resource type="Texture2D" uid="uid://b5idjwshvpjg6" path="res://Assets/Enemy/SwordEnemyV2.png" id="1_tiu2k"]
+[ext_resource type="Script" path="res://Scripts/Enemy/base_enemy.gd" id="1_xs8ep"]
+[ext_resource type="Texture2D" uid="uid://drnc0d52ccl7l" path="res://Assets/Enemy/JetpackAnim/JetpackAnimation2.png" id="2_fwpbr"]
+[ext_resource type="Texture2D" uid="uid://bxac4pwx53bdl" path="res://Assets/Enemy/SlashAnim/BaseEnemySlash1.png" id="2_yu67b"]
+[ext_resource type="Texture2D" uid="uid://bupfnfvwonkt3" path="res://Assets/Enemy/JetpackAnim/JetpackAnimation3.png" id="3_rfovs"]
+[ext_resource type="Texture2D" uid="uid://drckkjw4kqq6v" path="res://Assets/Enemy/JetpackAnim/JetpackAnimation4.png" id="4_x8yu6"]
+[ext_resource type="Texture2D" uid="uid://dpke0f8s5sjkw" path="res://Assets/Enemy/JetpackAnim/Shadow.png" id="6_wyw7o"]
+
+[sub_resource type="Animation" id="Animation_75xyh"]
+resource_name = "jetpack_animation"
+length = 0.35
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.233333, 0.333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("1_gq0a1"), ExtResource("2_fwpbr"), ExtResource("3_rfovs"), ExtResource("4_x8yu6")]
+}
+
+[sub_resource type="Animation" id="Animation_jayfo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_gq0a1")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1a316"]
+_data = {
+"RESET": SubResource("Animation_jayfo"),
+"jetpack_animation": SubResource("Animation_75xyh")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yr4m7"]
+radius = 19.0263
+
+[sub_resource type="Animation" id="Animation_u68ip"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("mainTexture:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("mainTexture:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Jetpack:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 7)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Jetpack:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Jetpack/shadow:texture")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("6_wyw7o")]
+}
+
+[sub_resource type="Animation" id="Animation_f8pgp"]
+resource_name = "attack_slash"
+length = 0.12
+step = 0.01
+
+[sub_resource type="Animation" id="Animation_lbesf"]
+resource_name = "death"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("mainTexture:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.133333, 0.166667, 0.333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(24, -21), Vector2(35.7073, 16.3171), Vector2(35.707, 2), Vector2(35.707, 14)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("mainTexture:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.133333, 0.333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.523599, 1.5708, 1.5708]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Jetpack:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0333337, 0.133333, 0.166667, 0.333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 7), Vector2(24, -21), Vector2(35.7073, 16.3171), Vector2(35.707, 2), Vector2(35.707, 14)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Jetpack:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.0333337, 0.133333, 0.333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.523599, 1.5708, 1.5708]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Jetpack/shadow:texture")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_84elo"]
+_data = {
+"RESET": SubResource("Animation_u68ip"),
+"attack_slash": SubResource("Animation_f8pgp"),
+"death": SubResource("Animation_lbesf")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c4pat"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xk4gw"]
+bg_color = Color(0.92, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0x1pn"]
+bg_color = Color(0.0166667, 1, 0, 1)
+
+[node name="flying_enemy" type="CharacterBody2D" groups=["Enemy"]]
+script = ExtResource("1_xs8ep")
+speed = 1500.0
+
+[node name="Jetpack" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, 7)
+texture = ExtResource("1_gq0a1")
+
+[node name="JetpackAnimation" type="AnimationPlayer" parent="Jetpack"]
+libraries = {
+"": SubResource("AnimationLibrary_1a316")
+}
+autoplay = "jetpack_animation"
+
+[node name="shadow" type="Sprite2D" parent="Jetpack"]
+texture = ExtResource("6_wyw7o")
+
+[node name="mainTexture" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_tiu2k")
+
+[node name="hurtbox" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2)
+shape = SubResource("CircleShape2D_yr4m7")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_84elo")
+}
+
+[node name="hitbox" type="Area2D" parent="."]
+
+[node name="attackbox" type="CollisionShape2D" parent="hitbox"]
+position = Vector2(19, -1)
+shape = SubResource("CapsuleShape2D_c4pat")
+
+[node name="BaseEnemySlash1" type="Sprite2D" parent="hitbox"]
+texture_filter = 1
+position = Vector2(19, -1)
+rotation = -0.693345
+texture = ExtResource("2_yu67b")
+
+[node name="hp_bar" type="ProgressBar" parent="."]
+offset_left = -11.0
+offset_top = -28.0
+offset_right = 10.0
+offset_bottom = -24.0
+theme_override_styles/background = SubResource("StyleBoxFlat_xk4gw")
+theme_override_styles/fill = SubResource("StyleBoxFlat_0x1pn")
+value = 50.0
+show_percentage = false
+
+[node name="NavAgent" type="NavigationAgent2D" parent="."]
+navigation_layers = 2

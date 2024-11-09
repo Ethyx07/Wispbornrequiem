@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/Enemy/base_enemy.gd" id="1_djb8t"]
 [ext_resource type="Texture2D" uid="uid://b5idjwshvpjg6" path="res://Assets/Enemy/SwordEnemyV2.png" id="2_ns1ec"]
-[ext_resource type="Texture2D" uid="uid://bxac4pwx53bdl" path="res://Assets/Enemy/BaseEnemySlash1.png" id="3_561am"]
+[ext_resource type="Texture2D" uid="uid://bxac4pwx53bdl" path="res://Assets/Enemy/SlashAnim/BaseEnemySlash1.png" id="3_561am"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yr4m7"]
 radius = 19.0263

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dw0u66vq5bxs2"
-path="res://.godot/imported/BaseEnemySlash10.png-98795e6a7247bb045ec98205fd60d666.ctex"
+uid="uid://drnc0d52ccl7l"
+path="res://.godot/imported/JetpackAnimation2.png-8b4b99d8e6bd5927a2c3176136a433d2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Enemy/BaseEnemySlash10.png"
-dest_files=["res://.godot/imported/BaseEnemySlash10.png-98795e6a7247bb045ec98205fd60d666.ctex"]
+source_file="res://Assets/Enemy/JetpackAnim/JetpackAnimation2.png"
+dest_files=["res://.godot/imported/JetpackAnimation2.png-8b4b99d8e6bd5927a2c3176136a433d2.ctex"]
 
 [params]
 

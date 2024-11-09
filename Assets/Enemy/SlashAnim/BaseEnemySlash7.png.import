@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bxac4pwx53bdl"
-path="res://.godot/imported/BaseEnemySlash1.png-feacd6ef1fca1a58e606472055a3ee81.ctex"
+uid="uid://ckfy64kjpewg5"
+path="res://.godot/imported/BaseEnemySlash7.png-ae91fd104e37a66bda439149c9c4d15b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Enemy/BaseEnemySlash1.png"
-dest_files=["res://.godot/imported/BaseEnemySlash1.png-feacd6ef1fca1a58e606472055a3ee81.ctex"]
+source_file="res://Assets/Enemy/SlashAnim/BaseEnemySlash7.png"
+dest_files=["res://.godot/imported/BaseEnemySlash7.png-ae91fd104e37a66bda439149c9c4d15b.ctex"]
 
 [params]
 
