@@ -70,7 +70,7 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-433, -265, -419, 583, 
 script = ExtResource("1_8gmwg")
 enemyList = Array[PackedScene]([ExtResource("5_d66oa"), ExtResource("3_y5d6h")])
 enemySpawns = [NodePath("EnemySpawns/Spawn1"), NodePath("EnemySpawns/Spawn2"), NodePath("EnemySpawns/Spawn3"), NodePath("EnemySpawns/Spawn4"), NodePath("EnemySpawns/Spawn5")]
-finalWave = 3
+finalWave = 1
 
 [node name="TileBackground" type="TileMapLayer" parent="."]
 z_index = -1

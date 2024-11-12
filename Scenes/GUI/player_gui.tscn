@@ -1,4 +1,10 @@
-[gd_scene format=3 uid="uid://drxld1vfpxhb8"]
+[gd_scene load_steps=3 format=3 uid="uid://drxld1vfpxhb8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cdhcr"]
+bg_color = Color(0.091414, 0.00873808, 3.00817e-09, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oh0ey"]
+bg_color = Color(0.639225, 0.103384, 0.123242, 1)
 
 [node name="playergui" type="Control"]
 layout_mode = 3
@@ -14,3 +20,33 @@ offset_left = 10.0
 offset_top = 617.0
 offset_right = 402.0
 offset_bottom = 746.0
+
+[node name="bossName" type="RichTextLabel" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 475.0
+offset_top = 49.0
+offset_right = 707.0
+offset_bottom = 89.0
+text = "Exclia the Corrupted Dragon
+"
+
+[node name="healthBar" type="ProgressBar" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 280.0
+offset_top = 8.0
+offset_right = 886.0
+offset_bottom = 35.0
+theme_override_styles/background = SubResource("StyleBoxFlat_cdhcr")
+theme_override_styles/fill = SubResource("StyleBoxFlat_oh0ey")
+value = 95.0
+show_percentage = false
+
+[node name="healthValue" type="RichTextLabel" parent="healthBar"]
+layout_mode = 0
+offset_left = 300.0
+offset_right = 340.0
+offset_bottom = 40.0
+text = "100
+"

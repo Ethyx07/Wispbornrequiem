@@ -2,7 +2,7 @@ extends Node
 
 var dungeon_levels_generator = []
 var dungeon_levels = ["res://Scenes/level_1.tscn", "res://Scenes/level_2.tscn"]
-var boss_level = "res://Scenes/hub_scene.tscn"
+var boss_level = "res://Scenes/corrupt_dragon_arena.tscn"
 var currentLevel : int = 0
 
 func _ready() -> void:
