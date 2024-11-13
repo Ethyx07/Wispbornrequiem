@@ -22,7 +22,6 @@ tile_map_data = PackedByteArray("AAD9////AQAHAAEAAAD8////AQAGAAAAAAD7////AQAGAAA
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="playergui" parent="CanvasLayer" instance=ExtResource("2_scq1u")]
-anchors_preset = 5
 grow_vertical = 1
 metadata/_edit_use_anchors_ = true
 

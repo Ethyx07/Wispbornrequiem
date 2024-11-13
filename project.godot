@@ -25,6 +25,7 @@ Gamemode="*res://Scripts/Gamemode/gamemode.gd"
 Interactable=""
 Enemy=""
 Player=""
+Podium=""
 
 [input]
 

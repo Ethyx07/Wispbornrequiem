@@ -1,13 +1,22 @@
-[gd_scene load_steps=26 format=3 uid="uid://bfyn2oiwvmtcd"]
+[gd_scene load_steps=36 format=3 uid="uid://bfyn2oiwvmtcd"]
 
+[ext_resource type="Script" path="res://Scripts/hub_scene.gd" id="1_k7cri"]
 [ext_resource type="PackedScene" uid="uid://2413ue8fbi7x" path="res://Scenes/PlayerClasses/player_wisp.tscn" id="1_nhtfs"]
 [ext_resource type="PackedScene" uid="uid://baog375jtohmk" path="res://Scenes/Interactables/Podiums/minotaur_podium.tscn" id="2_yg01w"]
+[ext_resource type="Script" path="res://Scripts/Interactables/podiums.gd" id="4_7s34f"]
 [ext_resource type="Script" path="res://doorways.gd" id="4_rclxa"]
+[ext_resource type="PackedScene" uid="uid://5aa26iu24g7d" path="res://Scenes/PlayerClasses/minotaur.tscn" id="5_lxxih"]
+[ext_resource type="Texture2D" uid="uid://ddpaexd2g3tgh" path="res://Assets/Podium/PodiumLocked.png" id="6_72f84"]
 [ext_resource type="Texture2D" uid="uid://it03gpwv0lpg" path="res://Assets/Tilemap/doorUnlocking/TileDoorwayLocked1.png" id="6_enpus"]
+[ext_resource type="Texture2D" uid="uid://bch6cdxq542od" path="res://Assets/Podium/PodiumUnlocked.png" id="7_5lvpq"]
 [ext_resource type="Texture2D" uid="uid://b11ivvm03i0c6" path="res://Scenes/Interactables/Doors/DoorHighlighted.png" id="7_xef2r"]
+[ext_resource type="Texture2D" uid="uid://pkoy1jowlts3" path="res://Assets/Podium/PodiumFreed.png" id="8_ewmuh"]
 [ext_resource type="Texture2D" uid="uid://bnq5k5bc63gv5" path="res://Scenes/Interactables/Doors/TileDoorway.png" id="8_klkc8"]
+[ext_resource type="Texture2D" uid="uid://ce7bknp1iwxtt" path="res://Assets/Podium/MinotaurHornLocked.png" id="9_cfgbh"]
 [ext_resource type="Texture2D" uid="uid://c7oqknrk2bevs" path="res://Assets/Tilemap/doorUnlocking/TileDoorwayLocked2.png" id="9_snsct"]
+[ext_resource type="Texture2D" uid="uid://dr8ncnj1f36qr" path="res://Assets/Relics/MinotaurHornHighlighted.png" id="10_21dvp"]
 [ext_resource type="Texture2D" uid="uid://c7lpri58embql" path="res://Assets/Tilemap/doorUnlocking/TileDoorwayLocked3.png" id="10_ro77p"]
+[ext_resource type="Texture2D" uid="uid://cbeern5hfqgxe" path="res://Assets/Relics/MinotaurHorn.png" id="11_3bid2"]
 [ext_resource type="Texture2D" uid="uid://dpgip1v4jhut7" path="res://Assets/Tilemap/doorUnlocking/TileDoorwayLocked4.png" id="11_u3anj"]
 [ext_resource type="Texture2D" uid="uid://d2pns2gpbcui2" path="res://Assets/Tilemap/doorUnlocking/TileDoorwayLocked5.png" id="12_c6etd"]
 [ext_resource type="Texture2D" uid="uid://c0c1qx78xg7h2" path="res://Assets/Tilemap/doorUnlocking/TileDoorwayLocked6.png" id="13_gs3hc"]
@@ -21,6 +30,9 @@
 [ext_resource type="Texture2D" uid="uid://c8sub51gwrwfa" path="res://Assets/Tilemap/doorUnlocking/TileDoorwayLocked14.png" id="21_0mwtu"]
 [ext_resource type="Texture2D" uid="uid://2b7dyl1xvg0i" path="res://Assets/Tilemap/doorUnlocking/TileDoorwayLocked15.png" id="22_lmt1w"]
 [ext_resource type="PackedScene" uid="uid://drxld1vfpxhb8" path="res://Scenes/GUI/player_gui.tscn" id="22_yq0jn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_17knc"]
+size = Vector2(28, 46)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q7ujh"]
 size = Vector2(36, 38)
@@ -64,10 +76,39 @@ _data = {
 }
 
 [node name="hubScene" type="Node2D"]
+script = ExtResource("1_k7cri")
 
 [node name="player_wisp" parent="." instance=ExtResource("1_nhtfs")]
 
 [node name="MinotaurPodium" parent="." instance=ExtResource("2_yg01w")]
+
+[node name="HydraPodium" type="StaticBody2D" parent="." groups=["Interactable", "Podium"]]
+texture_filter = 1
+position = Vector2(0, 73)
+script = ExtResource("4_7s34f")
+posssesCharacter = ExtResource("5_lxxih")
+podiumKey = "Hydra"
+lockedTexture = ExtResource("6_72f84")
+unlockedTexture = ExtResource("7_5lvpq")
+savedTexture = ExtResource("8_ewmuh")
+lockedRelicTexture = ExtResource("9_cfgbh")
+itemDesc = "Minotaur Podium"
+highlightedTexture = ExtResource("10_21dvp")
+baseTexture = ExtResource("11_3bid2")
+
+[node name="hitbox" type="CollisionShape2D" parent="HydraPodium"]
+auto_translate_mode = 2
+position = Vector2(0, 13)
+shape = SubResource("RectangleShape2D_17knc")
+
+[node name="MainTexture" type="Sprite2D" parent="HydraPodium"]
+position = Vector2(0, -2)
+scale = Vector2(0.65625, 0.65625)
+texture = ExtResource("11_3bid2")
+
+[node name="PodiumTexture" type="Sprite2D" parent="HydraPodium"]
+position = Vector2(0, 21)
+texture = ExtResource("7_5lvpq")
 
 [node name="doorway" type="StaticBody2D" parent="." groups=["Interactable"]]
 position = Vector2(176, 0)
@@ -98,3 +139,4 @@ offset_left = 2.0
 offset_top = 2.0
 offset_right = 2.0
 offset_bottom = 2.0
+grow_vertical = 1

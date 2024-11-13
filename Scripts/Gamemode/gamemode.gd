@@ -5,6 +5,11 @@ var dungeon_levels = ["res://Scenes/level_1.tscn", "res://Scenes/level_2.tscn"]
 var boss_level = "res://Scenes/corrupt_dragon_arena.tscn"
 var currentLevel : int = 0
 
+var activePodiums = {
+	"Minotaur" : true,
+	"Hydra" : false
+}
+
 func _ready() -> void:
 	#for i in range(5):
 		#var randNum = randi_range(0, 1)

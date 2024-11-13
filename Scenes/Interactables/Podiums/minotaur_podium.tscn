@@ -12,7 +12,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_17knc"]
 size = Vector2(28, 46)
 
-[node name="MinotaurPodium" type="StaticBody2D" groups=["Interactable"]]
+[node name="MinotaurPodium" type="StaticBody2D" groups=["Interactable", "Podium"]]
 texture_filter = 1
 script = ExtResource("1_n832b")
 posssesCharacter = ExtResource("4_ds5og")

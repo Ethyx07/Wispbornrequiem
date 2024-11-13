@@ -8,6 +8,7 @@ bg_color = Color(0.639225, 0.103384, 0.123242, 1)
 
 [node name="playergui" type="Control"]
 layout_mode = 3
+anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 grow_horizontal = 2

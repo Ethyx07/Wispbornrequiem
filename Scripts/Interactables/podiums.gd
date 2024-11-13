@@ -13,7 +13,7 @@ extends "res://Scripts/Interactables/Interactables.gd"
 @export var lockedRelicTexture : Texture2D
 
 
-func _ready() -> void:
+func setStatus() ->void:
 	get_node("MainTexture").global_position.y = startingPos.y - 25
 	if bUnlocked or bSaved:
 		start_bobbing()
@@ -24,6 +24,7 @@ func _ready() -> void:
 	else:
 		get_node("PodiumTexture").texture = lockedTexture
 		get_node("MainTexture").texture = lockedRelicTexture
+	
 	
 func start_bobbing():
 	var tween = create_tween()
