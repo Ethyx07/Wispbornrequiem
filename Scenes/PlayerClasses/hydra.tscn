@@ -1,10 +1,13 @@
-[gd_scene load_steps=13 format=3 uid="uid://5aa26iu24g7d"]
+[gd_scene load_steps=16 format=3 uid="uid://du8becrhraynp"]
 
-[ext_resource type="Script" path="res://Scripts/PlayableCharacters/minotaur.gd" id="1_65rwl"]
-[ext_resource type="Texture2D" uid="uid://d1y1nna7gh48m" path="res://Assets/PlayerSprites/Minotaur.png" id="2_mwkb6"]
-[ext_resource type="Texture2D" uid="uid://bap1b083cw08e" path="res://Assets/PlayerSprites/AttackArrow.png" id="3_qpmay"]
-[ext_resource type="Texture2D" uid="uid://bm6r7vcxiylhq" path="res://Assets/GUI/AxeThrowUnder.png" id="4_f5j6k"]
-[ext_resource type="Texture2D" uid="uid://d1oxluqj40vrd" path="res://Assets/GUI/AxeThrowProgress.png" id="5_jop5t"]
+[ext_resource type="Script" path="res://Scripts/PlayableCharacters/hydra.gd" id="1_ssvo3"]
+[ext_resource type="Texture2D" uid="uid://nrxlphynyx12" path="res://Assets/Enemy/CorruptEnemy/CorruptHydra/FreedHydraBody.png" id="2_catek"]
+[ext_resource type="Texture2D" uid="uid://btdrqypmntaop" path="res://Assets/Enemy/CorruptEnemy/CorruptHydra/FreedHydraLeftHead.png" id="3_3u631"]
+[ext_resource type="Texture2D" uid="uid://bap1b083cw08e" path="res://Assets/PlayerSprites/AttackArrow.png" id="3_y7ek5"]
+[ext_resource type="Texture2D" uid="uid://d2ik65iy3dktc" path="res://Assets/Enemy/CorruptEnemy/CorruptHydra/FreedHydraMiddleHead.png" id="4_2otqk"]
+[ext_resource type="Texture2D" uid="uid://bm6r7vcxiylhq" path="res://Assets/GUI/AxeThrowUnder.png" id="4_lprvf"]
+[ext_resource type="Texture2D" uid="uid://xosdynni4ght" path="res://Assets/Enemy/CorruptEnemy/CorruptHydra/FreedHydraRightHead.png" id="5_drcaf"]
+[ext_resource type="Texture2D" uid="uid://d1oxluqj40vrd" path="res://Assets/GUI/AxeThrowProgress.png" id="5_vlup8"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qip2i"]
 radius = 27.0
@@ -28,33 +31,42 @@ bg_color = Color(0, 0.399, 0.57, 0)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ilrt6"]
 bg_color = Color(0, 0.5, 0.466667, 1)
 
-[node name="minotaur" type="CharacterBody2D" groups=["Player"]]
+[node name="hydra" type="CharacterBody2D" groups=["Player"]]
 z_index = 2
 texture_filter = 1
 collision_layer = 7
 collision_mask = 7
-script = ExtResource("1_65rwl")
-speed = 100.0
-dashSpeed = 150.0
-dashCooldown = 2.0
-attackDamage = 5.0
-specialDamage = 2.0
-health = 10.0
-maxHealth = 10.0
-sceneKey = "Minotaur"
+script = ExtResource("1_ssvo3")
+speed = 400.0
+health = 100.0
+sceneKey = "Hydra"
 
 [node name="playerSprite" type="Sprite2D" parent="."]
-texture = ExtResource("2_mwkb6")
+position = Vector2(-1, -4)
+scale = Vector2(0.600001, 0.600001)
+texture = ExtResource("2_catek")
+
+[node name="leftHead" type="Sprite2D" parent="playerSprite"]
+texture = ExtResource("3_3u631")
+
+[node name="middleHead" type="Sprite2D" parent="playerSprite"]
+texture = ExtResource("4_2otqk")
+
+[node name="rightHead" type="Sprite2D" parent="playerSprite"]
+texture = ExtResource("5_drcaf")
 
 [node name="hurtbox" type="CollisionShape2D" parent="."]
+position = Vector2(1, -4)
 shape = SubResource("CapsuleShape2D_qip2i")
 
 [node name="InteractableBox" type="Area2D" parent="."]
 light_mask = 5
 visibility_layer = 5
+position = Vector2(-5, -3)
+scale = Vector2(1.26938, 1.32)
 
 [node name="interact_box_right" type="CollisionShape2D" parent="InteractableBox"]
-position = Vector2(16.625, 1)
+position = Vector2(18.9069, 1.51515)
 shape = SubResource("RectangleShape2D_kopfh")
 
 [node name="interact_box_left" type="CollisionShape2D" parent="InteractableBox"]
@@ -79,13 +91,13 @@ modulate = Color(1, 1, 1, 0.290196)
 position = Vector2(24, 0)
 rotation = 1.5708
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("3_qpmay")
+texture = ExtResource("3_y7ek5")
 
 [node name="hp_bar" type="ProgressBar" parent="."]
 offset_left = -11.0
-offset_top = -28.0
+offset_top = -42.0
 offset_right = 10.0
-offset_bottom = -24.0
+offset_bottom = -38.0
 theme_override_styles/background = SubResource("StyleBoxFlat_mftj6")
 theme_override_styles/fill = SubResource("StyleBoxFlat_jxnd6")
 value = 50.0
@@ -118,8 +130,8 @@ grow_horizontal = 2
 grow_vertical = 2
 max_value = 5.0
 fill_mode = 4
-texture_under = ExtResource("4_f5j6k")
-texture_progress = ExtResource("5_jop5t")
+texture_under = ExtResource("4_lprvf")
+texture_progress = ExtResource("5_vlup8")
 
 [node name="cooldownTimer" type="Timer" parent="."]
 

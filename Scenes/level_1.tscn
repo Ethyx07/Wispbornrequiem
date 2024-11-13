@@ -44,7 +44,7 @@ grow_vertical = 1
 
 [node name="doorway" parent="." instance=ExtResource("6_t57sh")]
 texture_filter = 1
-position = Vector2(112, 80)
+position = Vector2(113, -96)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 position = Vector2(-7, -13)

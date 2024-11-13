@@ -5,7 +5,8 @@ var playerScene : PackedScene
 
 var character_versions = {
 	"Wisp" : preload("res://Scenes/PlayerClasses/player_wisp.tscn"),
-	"Minotaur" : preload("res://Scenes/PlayerClasses/minotaur.tscn")
+	"Minotaur" : preload("res://Scenes/PlayerClasses/minotaur.tscn"),
+	"Hydra" : preload("res://Scenes/PlayerClasses/hydra.tscn")
 }
 
 var playerKey : String

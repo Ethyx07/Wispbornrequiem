@@ -122,3 +122,7 @@ func _on_cooldown_timer_timeout() -> void:
 	if !bCanUseSpecial:
 		bCanUseSpecial = true
 		return
+
+func remove_self() -> void:
+	heldAxe.queue_free()
+	self.queue_free()

@@ -1,10 +1,9 @@
-[gd_scene load_steps=7 format=4 uid="uid://bit46outrbqa1"]
+[gd_scene load_steps=6 format=4 uid="uid://bit46outrbqa1"]
 
 [ext_resource type="Script" path="res://Scripts/CorruptBosses/corrupt_bosses_arena.gd" id="1_cp1hg"]
 [ext_resource type="PackedScene" uid="uid://c0suvw7ft6h08" path="res://Scenes/tile_map_layer.tscn" id="1_dgsag"]
 [ext_resource type="PackedScene" uid="uid://drxld1vfpxhb8" path="res://Scenes/GUI/player_gui.tscn" id="2_scq1u"]
 [ext_resource type="PackedScene" uid="uid://dbcsm5nbsnsd8" path="res://Scenes/Enemies/CorruptMinibosses/corrupt_hydra.tscn" id="2_urs27"]
-[ext_resource type="PackedScene" uid="uid://5aa26iu24g7d" path="res://Scenes/PlayerClasses/minotaur.tscn" id="5_edd0k"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_r3180"]
 vertices = PackedVector2Array(442.961, -201.031, 442.031, 99.9531, -366.961, 96.0391, -366.031, -203.961)
@@ -60,5 +59,3 @@ visibility_layer = 5
 position = Vector2(-11, 300)
 build_mode = 1
 polygon = PackedVector2Array(-694, -524, 138, -523, 138, -198, -696, -204)
-
-[node name="minotaur" parent="." instance=ExtResource("5_edd0k")]

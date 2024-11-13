@@ -40,7 +40,7 @@ func interact(body: Node2D) -> void:
 			var newPossession = posssesCharacter.instantiate()
 			newPossession.global_position = body.global_position
 			get_tree().root.get_child(0).add_child(newPossession)
-			body.queue_free()
+			body.remove_self()
 	
 	
 func _physics_process(_delta: float) -> void:

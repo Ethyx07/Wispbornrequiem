@@ -32,7 +32,8 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	if get_tree().get_node_count_in_group("Enemy") <= 0:
-		pass
+		get_tree().get_first_node_in_group("Player").remove_self()
+		get_tree().change_scene_to_file("res://Scenes/hub_scene.tscn")
 	
 func setPlayerLocation(playerNode : Node2D)->void:
 	player = playerNode

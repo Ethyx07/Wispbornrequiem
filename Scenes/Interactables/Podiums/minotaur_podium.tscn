@@ -1,12 +1,12 @@
 [gd_scene load_steps=10 format=3 uid="uid://baog375jtohmk"]
 
 [ext_resource type="Script" path="res://Scripts/Interactables/podiums.gd" id="1_n832b"]
-[ext_resource type="Texture2D" uid="uid://dr8ncnj1f36qr" path="res://Assets/Relics/MinotaurHornHighlighted.png" id="3_bml6l"]
+[ext_resource type="Texture2D" uid="uid://dr8ncnj1f36qr" path="res://Assets/Relics/Horn/MinotaurHornHighlighted.png" id="3_bml6l"]
 [ext_resource type="Texture2D" uid="uid://ddpaexd2g3tgh" path="res://Assets/Podium/PodiumLocked.png" id="3_gjkmt"]
 [ext_resource type="PackedScene" uid="uid://5aa26iu24g7d" path="res://Scenes/PlayerClasses/minotaur.tscn" id="4_ds5og"]
 [ext_resource type="Texture2D" uid="uid://pkoy1jowlts3" path="res://Assets/Podium/PodiumFreed.png" id="5_0nybt"]
 [ext_resource type="Texture2D" uid="uid://bch6cdxq542od" path="res://Assets/Podium/PodiumUnlocked.png" id="5_25woj"]
-[ext_resource type="Texture2D" uid="uid://cbeern5hfqgxe" path="res://Assets/Relics/MinotaurHorn.png" id="5_bop5f"]
+[ext_resource type="Texture2D" uid="uid://cbeern5hfqgxe" path="res://Assets/Relics/Horn/MinotaurHorn.png" id="5_bop5f"]
 [ext_resource type="Texture2D" uid="uid://ce7bknp1iwxtt" path="res://Assets/Podium/MinotaurHornLocked.png" id="6_byhcf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_17knc"]

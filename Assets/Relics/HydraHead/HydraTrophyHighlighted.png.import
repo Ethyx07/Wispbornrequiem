@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dr8ncnj1f36qr"
-path="res://.godot/imported/MinotaurHornHighlighted.png-964f9638bc5b87ecf28f6621d518be12.ctex"
+uid="uid://c26372rqbwpou"
+path="res://.godot/imported/HydraTrophyHighlighted.png-11e370b87e3a3b42236a432e90a41494.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Relics/MinotaurHornHighlighted.png"
-dest_files=["res://.godot/imported/MinotaurHornHighlighted.png-964f9638bc5b87ecf28f6621d518be12.ctex"]
+source_file="res://Assets/Relics/HydraHead/HydraTrophyHighlighted.png"
+dest_files=["res://.godot/imported/HydraTrophyHighlighted.png-11e370b87e3a3b42236a432e90a41494.ctex"]
 
 [params]
 

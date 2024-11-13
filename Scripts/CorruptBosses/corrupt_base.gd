@@ -27,7 +27,8 @@ func hit(damage : float)-> void:
 		await animPlayer.animation_finished
 		get_node("hurtbox").disabled = true
 		Gamemode.activePodiums[bossKey] = true
-		get_tree().change_scene_to_file("res://Scenes/hub_scene.tscn")
+		await get_tree().create_timer(5).timeout
+		self.remove_from_group("Enemy")
 	else:
 		arenaNode.updateUI()
 	

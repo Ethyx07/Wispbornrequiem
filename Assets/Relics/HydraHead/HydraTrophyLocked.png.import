@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dfcgigw0f71f4"
-path="res://.godot/imported/MinotaurHornLocked.png-afae474ac4d26669349f561d11dccfdb.ctex"
+uid="uid://bl2koyv0j62vj"
+path="res://.godot/imported/HydraTrophyLocked.png-507c8c9397c4275e28a568c59030df67.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Relics/MinotaurHornLocked.png"
-dest_files=["res://.godot/imported/MinotaurHornLocked.png-afae474ac4d26669349f561d11dccfdb.ctex"]
+source_file="res://Assets/Relics/HydraHead/HydraTrophyLocked.png"
+dest_files=["res://.godot/imported/HydraTrophyLocked.png-507c8c9397c4275e28a568c59030df67.ctex"]
 
 [params]
 

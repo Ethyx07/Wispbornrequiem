@@ -7,6 +7,7 @@ class_name WorldScene
 @export var finalWave : int
 
 var player
+var bSpawningEnemies = false
 
 var currentWave : int = 0
 
@@ -22,7 +23,10 @@ func _physics_process(_delta: float) -> void:
 				doorway.bIsUnlocked = true
 				doorway.get_node("MainTexture").texture = doorway.baseTexture
 			else:
-				spawnEnemies()
+				if !bSpawningEnemies:
+					bSpawningEnemies = true
+					await get_tree().create_timer(5).timeout
+					spawnEnemies()
 			
 func setPlayerLocation(playerNode : Node2D)->void:
 	player = playerNode
@@ -30,8 +34,7 @@ func setPlayerLocation(playerNode : Node2D)->void:
 	
 func _ready() -> void:
 	setPlayerLocation(get_tree().get_first_node_in_group("Player"))
-	spawnEnemies()
-
+	
 func spawnEnemies() -> void:
 	currentWave += 1
 	var randEnemyCount = randi_range(2, enemySpawns.size())
@@ -40,3 +43,4 @@ func spawnEnemies() -> void:
 		var enemyTemp = enemyList[randEnemyIndex].instantiate()
 		add_child(enemyTemp)
 		enemyTemp.global_position = enemySpawns[i].global_position
+	bSpawningEnemies = false

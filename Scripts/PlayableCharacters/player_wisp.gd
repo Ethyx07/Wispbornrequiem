@@ -26,13 +26,14 @@ var bUlting : bool = false
 var facingBody : Node2D
 var bCanUseSpecial = true
 var lastState
+var inputVector
 
 func _physics_process(_delta: float) -> void:
 	match currentState:
 		playerState.DEAD:
 			return
 		_:
-			var inputVector = Vector2.ZERO
+			inputVector = Vector2.ZERO
 			inputVector.x = Input.get_action_strength("Right") - Input.get_action_strength("Left")
 			inputVector.y = Input.get_action_strength("Down") - Input.get_action_strength("Up")
 			if inputVector.x < 0:
@@ -95,4 +96,7 @@ func ultActivate() ->void:
 func pitCheck()->void:
 	if lastState == playerState.DASH and currentState == playerState.NEUTRAL:
 		print("Working")
+		
+func remove_self() -> void:
+	self.queue_free()
 		
