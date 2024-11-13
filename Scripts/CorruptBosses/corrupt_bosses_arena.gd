@@ -3,7 +3,7 @@ extends Node2D
 
 @onready var healthBar = get_node("CanvasLayer/playergui/healthBar")
 @onready var healthBarVal = get_node("CanvasLayer/playergui/healthBar/healthValue")
-@onready var bossNameDisplay = get_node("CanvasLayer/playergui/bossName")
+@onready var bossNameDisplay = get_node("CanvasLayer/playergui/healthBar/bossName")
 
 @export var bossEnemy : PackedScene
 
@@ -20,10 +20,9 @@ func _ready() -> void:
 	healthBarVal.add_text(str(boss.bossMaxHealth))
 	
 	bossNameDisplay.clear()
-	bossNameDisplay.add_text(boss.bossName)
+	bossNameDisplay.bbcode_text = "[center]" + boss.bossName + "[/center]"
 	
 	healthBar.visible = true
-	bossNameDisplay.visible = true
 	add_child(boss)
 	boss.arenaNode = self
 	boss.global_position = get_node("BossSpawn").global_position

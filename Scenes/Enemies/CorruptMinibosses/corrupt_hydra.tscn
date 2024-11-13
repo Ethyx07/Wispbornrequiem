@@ -19,6 +19,8 @@ texture_filter = 1
 texture = ExtResource("2_d46dw")
 
 [node name="LeftHead" type="Sprite2D" parent="body"]
+position = Vector2(-0.226415, 0.849057)
+rotation = 0.0197584
 texture = ExtResource("3_qavof")
 
 [node name="MiddleHead" type="Sprite2D" parent="body"]
