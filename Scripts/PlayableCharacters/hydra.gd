@@ -12,7 +12,7 @@ enum attackStates {ACID, FIRE, ICE}
 
 var currentAttack : attackStates
 var bCanSwap : bool = true
-var iceSpawns = 2
+var iceSpawns = 10
 
 
 func _physics_process(delta: float) -> void:
@@ -66,18 +66,14 @@ func attack() -> void:
 				
 
 func iceAttack() -> void:
+	var firstRotation = 0
 	for i in iceSpawns:
-			var rotation = 0
 			var iceTemp = iceProjectile.instantiate()
-			var angle_radians = deg_to_rad((360/iceSpawns) * i) 
-			var x_offset = 25 * cos(angle_radians)
-			var y_offset = 25 * sin(angle_radians)
-			iceTemp.global_position = get_node("attackMarker/hitbox/attackbox").global_position
+			iceTemp.parent = self
+			iceTemp.global_position = self.global_position
+			iceTemp.look_at(get_global_mouse_position())
 			if i == 0:
-				iceTemp.look_at(get_global_mouse_position())
-			else:
-				iceTemp.global_rotation = rotation + (360/iceSpawns)
-			rotation = iceTemp.global_rotation
-			print(rotation)
+				firstRotation = iceTemp.rotation_degrees
+			iceTemp.rotation_degrees = ((360*i)/float(iceSpawns)) + firstRotation
 			get_tree().root.add_child(iceTemp)
 				
