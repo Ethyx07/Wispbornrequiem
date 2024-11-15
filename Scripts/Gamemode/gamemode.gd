@@ -7,7 +7,7 @@ var currentLevel : int = 0
 
 var activePodiums = {
 	"Minotaur" : true,
-	"Hydra" : true
+	"Hydra" : false
 }
 
 func _ready() -> void:

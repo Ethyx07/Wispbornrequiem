@@ -1,13 +1,13 @@
-[gd_scene load_steps=16 format=3 uid="uid://du8becrhraynp"]
+[gd_scene load_steps=21 format=3 uid="uid://du8becrhraynp"]
 
 [ext_resource type="Script" path="res://Scripts/PlayableCharacters/hydra.gd" id="1_ssvo3"]
 [ext_resource type="Texture2D" uid="uid://nrxlphynyx12" path="res://Assets/Enemy/CorruptEnemy/CorruptHydra/FreedHydraBody.png" id="2_catek"]
 [ext_resource type="Texture2D" uid="uid://btdrqypmntaop" path="res://Assets/Enemy/CorruptEnemy/CorruptHydra/FreedHydraLeftHead.png" id="3_3u631"]
 [ext_resource type="Texture2D" uid="uid://bap1b083cw08e" path="res://Assets/PlayerSprites/AttackArrow.png" id="3_y7ek5"]
 [ext_resource type="Texture2D" uid="uid://d2ik65iy3dktc" path="res://Assets/Enemy/CorruptEnemy/CorruptHydra/FreedHydraMiddleHead.png" id="4_2otqk"]
-[ext_resource type="Texture2D" uid="uid://bm6r7vcxiylhq" path="res://Assets/GUI/AxeThrowUnder.png" id="4_lprvf"]
 [ext_resource type="Texture2D" uid="uid://xosdynni4ght" path="res://Assets/Enemy/CorruptEnemy/CorruptHydra/FreedHydraRightHead.png" id="5_drcaf"]
-[ext_resource type="Texture2D" uid="uid://d1oxluqj40vrd" path="res://Assets/GUI/AxeThrowProgress.png" id="5_vlup8"]
+[ext_resource type="Texture2D" uid="uid://dhdqnf2b2ukcx" path="res://Assets/GUI/HydraGUI/HydraAttackTypes.png" id="7_056ku"]
+[ext_resource type="Texture2D" uid="uid://bhi5emqu6mt70" path="res://Assets/GUI/HydraGUI/HydraSelect.png" id="8_aahb1"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qip2i"]
 radius = 27.0
@@ -30,6 +30,77 @@ bg_color = Color(0, 0.399, 0.57, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ilrt6"]
 bg_color = Color(0, 0.5, 0.466667, 1)
+
+[sub_resource type="Animation" id="Animation_72b36"]
+resource_name = "middleSelect"
+length = 0.35
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BoxContainer/attackTypes/attackSelect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(24, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_amb6i"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BoxContainer/attackTypes/attackSelect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_bpml7"]
+resource_name = "rightSelect"
+length = 0.35
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BoxContainer/attackTypes/attackSelect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(24, 0), Vector2(48, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_of7ih"]
+resource_name = "leftSelect"
+length = 0.35
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BoxContainer/attackTypes/attackSelect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(48, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_45x0d"]
+_data = {
+"RESET": SubResource("Animation_amb6i"),
+"leftSelect": SubResource("Animation_of7ih"),
+"middleSelect": SubResource("Animation_72b36"),
+"rightSelect": SubResource("Animation_bpml7")
+}
 
 [node name="hydra" type="CharacterBody2D" groups=["Player"]]
 z_index = 2
@@ -88,7 +159,7 @@ shape = SubResource("RectangleShape2D_su2ro")
 
 [node name="attackDirection" type="Sprite2D" parent="attackMarker"]
 modulate = Color(1, 1, 1, 0.290196)
-position = Vector2(24, 0)
+position = Vector2(36, 0)
 rotation = 1.5708
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_y7ek5")
@@ -115,23 +186,35 @@ show_percentage = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="specialCooldown" type="TextureProgressBar" parent="CanvasLayer"]
+[node name="UIAnimation" type="AnimationPlayer" parent="CanvasLayer"]
+libraries = {
+"": SubResource("AnimationLibrary_45x0d")
+}
+
+[node name="BoxContainer" type="BoxContainer" parent="CanvasLayer"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -128.0
+offset_top = -128.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(5, 5)
+pivot_offset = Vector2(85, 120)
+
+[node name="attackTypes" type="TextureRect" parent="CanvasLayer/BoxContainer"]
 texture_filter = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 543.0
-offset_top = 284.0
-offset_right = 622.0
-offset_bottom = 363.0
-grow_horizontal = 2
-grow_vertical = 2
-max_value = 5.0
-fill_mode = 4
-texture_under = ExtResource("4_lprvf")
-texture_progress = ExtResource("5_vlup8")
+layout_mode = 2
+texture = ExtResource("7_056ku")
+
+[node name="attackSelect" type="TextureRect" parent="CanvasLayer/BoxContainer/attackTypes"]
+texture_filter = 1
+layout_mode = 2
+offset_right = 128.0
+offset_bottom = 128.0
+texture = ExtResource("8_aahb1")
 
 [node name="cooldownTimer" type="Timer" parent="."]
 

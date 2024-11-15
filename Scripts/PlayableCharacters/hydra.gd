@@ -3,10 +3,16 @@ extends "res://Scripts/PlayableCharacters/player_wisp.gd"
 @onready var leftHeadSprite = get_node("playerSprite/leftHead")
 @onready var middleHeadSprite = get_node("playerSprite/middleHead")
 @onready var rightHeadSprite = get_node("playerSprite/rightHead")
+@onready var hp_bar = get_node("hp_bar")
+@onready var uiAnimation = get_node("CanvasLayer/UIAnimation")
 
+@export var iceProjectile = preload("res://Scenes/PlayerClasses/hydraAttacks/ice_projectile.tscn")
 
-const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
+enum attackStates {ACID, FIRE, ICE}
+
+var currentAttack : attackStates
+var bCanSwap : bool = true
+var iceSpawns = 2
 
 
 func _physics_process(delta: float) -> void:
@@ -22,6 +28,56 @@ func _physics_process(delta: float) -> void:
 			leftHeadSprite.flip_h = false
 			middleHeadSprite.flip_h = false
 			rightHeadSprite.flip_h = false
+			
+	if Input.is_action_just_pressed("SpecialAttack"):
+			changeAttackType()
+	if Input.is_action_just_pressed("Attack"):
+			attack()
 		
 func _ready() -> void:
 	inputVector = Vector2.ZERO
+	currentAttack = attackStates.ACID
+	
+func changeAttackType() -> void:
+	if bCanSwap:
+		bCanSwap = false
+		match currentAttack:
+			attackStates.ACID:
+				uiAnimation.play("middleSelect")
+				currentAttack = attackStates.FIRE
+			attackStates.FIRE:
+				uiAnimation.play("rightSelect")
+				currentAttack = attackStates.ICE
+			attackStates.ICE:
+				uiAnimation.play("leftSelect")
+				currentAttack = attackStates.ACID
+		await uiAnimation.animation_finished
+		bCanSwap = true
+
+func attack() -> void:
+	currentState = playerState.ATTACK
+	match currentAttack:
+		attackStates.ACID:
+			print("acid")
+		attackStates.FIRE:
+			print("fire")
+		attackStates.ICE:
+			iceAttack()
+				
+
+func iceAttack() -> void:
+	for i in iceSpawns:
+			var rotation = 0
+			var iceTemp = iceProjectile.instantiate()
+			var angle_radians = deg_to_rad((360/iceSpawns) * i) 
+			var x_offset = 25 * cos(angle_radians)
+			var y_offset = 25 * sin(angle_radians)
+			iceTemp.global_position = get_node("attackMarker/hitbox/attackbox").global_position
+			if i == 0:
+				iceTemp.look_at(get_global_mouse_position())
+			else:
+				iceTemp.global_rotation = rotation + (360/iceSpawns)
+			rotation = iceTemp.global_rotation
+			print(rotation)
+			get_tree().root.add_child(iceTemp)
+				
