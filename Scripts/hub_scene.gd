@@ -2,6 +2,7 @@ extends Node2D
 
 @export var startingPlayer : PackedScene
 @onready var doorway = get_node("doorway")
+@onready var doorwayHitbox = get_node("doorway/hitbox")
 
 var bOpened = false
 
@@ -9,6 +10,7 @@ var bOpened = false
 func _ready() -> void:
 	Gamemode.currentLevel = 0
 	doorway.bIsUnlocked = false
+	doorwayHitbox.disabled = true
 	var player = startingPlayer.instantiate()
 	player.global_position = get_node("PlayerSpawn").global_position
 	add_child(player)
@@ -25,5 +27,6 @@ func _process(_delta: float) -> void:
 		doorway.animator.play("unlocking")
 		await doorway.animator.animation_finished
 		doorway.bIsUnlocked = true
+		doorwayHitbox.disabled = false
 		doorway.get_node("MainTexture").texture = doorway.baseTexture
 		bOpened = true

@@ -2,6 +2,7 @@ extends Node2D
 class_name WorldScene
 
 @onready var doorway = get_node("doorway")
+@onready var doorwayHitbox = get_node("doorway/hitbox")
 @export var enemyList : Array[PackedScene]
 @export var enemySpawns : Array[Node2D]
 @export var finalWave : int
@@ -21,6 +22,7 @@ func _physics_process(_delta: float) -> void:
 				doorway.animator.play("unlocking")
 				await doorway.animator.animation_finished
 				doorway.bIsUnlocked = true
+				doorwayHitbox.disabled = false
 				doorway.get_node("MainTexture").texture = doorway.baseTexture
 			else:
 				if !bSpawningEnemies:
@@ -33,6 +35,7 @@ func setPlayerLocation(playerNode : Node2D)->void:
 	player.global_position = get_node("spawnLocation").global_position
 	
 func _ready() -> void:
+	doorwayHitbox.disabled = true
 	setPlayerLocation(get_tree().get_first_node_in_group("Player"))
 	
 func spawnEnemies() -> void:

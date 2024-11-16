@@ -30,4 +30,7 @@ func loadPlayerInfo(player : CharacterBody2D) -> void:
 			if is_instance_valid(player.armour_bar):
 				player.armourPoints = playerNode.armourPoints
 				player.armour_bar.value = player.armourPoints
+		if(player.sceneKey == "Hydra"):
+			player.currentAttack = playerNode.currentAttack
+			player.loadUI()
 		

@@ -7,8 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://d1oxluqj40vrd" path="res://Assets/GUI/AxeThrowProgress.png" id="5_jop5t"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qip2i"]
-radius = 27.0
-height = 54.0
+radius = 14.0
+height = 48.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kopfh"]
 size = Vector2(27.25, 19)
@@ -47,6 +47,7 @@ sceneKey = "Minotaur"
 texture = ExtResource("2_mwkb6")
 
 [node name="hurtbox" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2)
 shape = SubResource("CapsuleShape2D_qip2i")
 
 [node name="InteractableBox" type="Area2D" parent="."]

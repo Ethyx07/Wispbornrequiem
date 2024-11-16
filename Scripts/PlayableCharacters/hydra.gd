@@ -11,6 +11,12 @@ extends "res://Scripts/PlayableCharacters/player_wisp.gd"
 
 enum attackStates {ACID, FIRE, ICE}
 
+@export var fireDamage : int
+@export var explosionDamage : int
+@export var iceDamage : int
+@export var acidDamage : int
+@export var acidPuddleDamage : int
+
 var currentAttack : attackStates
 var bCanSwap : bool = true
 var iceSpawns = 10
@@ -21,6 +27,14 @@ func _ready() -> void:
 	hp_bar.max_value = maxHealth
 	hp_bar.value = health
 	
+func loadUI() -> void:
+	match currentAttack:
+		attackStates.ACID:
+			get_node("CanvasLayer/BoxContainer/attackTypes/attackSelect").position = Vector2(0,0)
+		attackStates.FIRE:
+			get_node("CanvasLayer/BoxContainer/attackTypes/attackSelect").position = Vector2(24,0)
+		attackStates.ICE:
+			get_node("CanvasLayer/BoxContainer/attackTypes/attackSelect").position = Vector2(48,0)
 
 func _physics_process(delta: float) -> void:
 	super(delta)
@@ -65,7 +79,7 @@ func attack() -> void:
 		attackStates.ACID:
 			print("acid")
 		attackStates.FIRE:
-			print("fire")
+			fireAttack()
 		attackStates.ICE:
 			iceAttack()
 				
@@ -75,10 +89,19 @@ func iceAttack() -> void:
 	for i in iceSpawns:
 			var iceTemp = iceProjectile.instantiate()
 			iceTemp.parent = self
+			iceTemp.damage = iceDamage
 			iceTemp.global_position = self.global_position
 			iceTemp.look_at(get_global_mouse_position())
 			if i == 0:
 				firstRotation = iceTemp.rotation_degrees
 			iceTemp.rotation_degrees = ((360*i)/float(iceSpawns)) + firstRotation
 			get_tree().root.add_child(iceTemp)
-				
+			
+func fireAttack() -> void:
+	var fireTemp = fireballProjectile.instantiate()
+	fireTemp.parent = self
+	fireTemp.fireDamage = fireDamage
+	fireTemp.explosionDamage = explosionDamage
+	fireTemp.global_position = get_node("attackMarker/attackDirection").global_position
+	fireTemp.look_at(get_global_mouse_position())
+	get_tree().root.add_child(fireTemp)
