@@ -92,6 +92,10 @@ func attack():
 func attack_hit(body : Node2D) -> void:
 	body.hit(damage)
 
+func remove_self() ->void:
+	self.queue_free()
+
+
 #func _on_hitbox_body_entered(body: Node2D) -> void:
 	#if body.is_in_group("Player"):
 		#body.hit(damage) 

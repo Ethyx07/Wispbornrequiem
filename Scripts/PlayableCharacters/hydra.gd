@@ -105,3 +105,7 @@ func fireAttack() -> void:
 	fireTemp.global_position = get_node("attackMarker/attackDirection").global_position
 	fireTemp.look_at(get_global_mouse_position())
 	get_tree().root.add_child(fireTemp)
+
+
+func hit(damage : int) -> void:
+	super(damage)

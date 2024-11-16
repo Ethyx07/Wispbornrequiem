@@ -114,7 +114,7 @@ func hit(damageTaken : int)-> void:
 			armourPoints = 0
 			armour_bar.value = armourPoints
 	else:
-		health -= damageTaken
+		super(damageTaken)
 	hp_bar.value = health
 
 

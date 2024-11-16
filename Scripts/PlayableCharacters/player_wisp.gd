@@ -89,6 +89,10 @@ func special_hit(body : Node2D) -> void:
 	
 func hit(damage : int) -> void:
 	health -= damage
+	if health <= 0: 
+		health = 0
+		get_tree().get_first_node_in_group("Player").remove_self()
+		get_tree().change_scene_to_file("res://Scenes/hub_scene.tscn")
 	
 func ultActivate() ->void:
 	bUlting = true
