@@ -7,6 +7,7 @@ extends "res://Scripts/PlayableCharacters/player_wisp.gd"
 @onready var uiAnimation = get_node("CanvasLayer/UIAnimation")
 
 @export var iceProjectile = preload("res://Scenes/PlayerClasses/hydraAttacks/ice_projectile.tscn")
+@export var fireballProjectile = preload("res://Scenes/PlayerClasses/hydraAttacks/fireball_projectile.tscn")
 
 enum attackStates {ACID, FIRE, ICE}
 
@@ -14,6 +15,12 @@ var currentAttack : attackStates
 var bCanSwap : bool = true
 var iceSpawns = 10
 
+func _ready() -> void:
+	inputVector = Vector2.ZERO
+	currentAttack = attackStates.ACID
+	hp_bar.max_value = maxHealth
+	hp_bar.value = health
+	
 
 func _physics_process(delta: float) -> void:
 	super(delta)
@@ -34,9 +41,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("Attack"):
 			attack()
 		
-func _ready() -> void:
-	inputVector = Vector2.ZERO
-	currentAttack = attackStates.ACID
+
 	
 func changeAttackType() -> void:
 	if bCanSwap:

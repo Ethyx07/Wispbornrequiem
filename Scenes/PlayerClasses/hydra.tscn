@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://du8becrhraynp"]
+[gd_scene load_steps=19 format=3 uid="uid://du8becrhraynp"]
 
 [ext_resource type="Script" path="res://Scripts/PlayableCharacters/hydra.gd" id="1_ssvo3"]
 [ext_resource type="Texture2D" uid="uid://nrxlphynyx12" path="res://Assets/Enemy/CorruptEnemy/CorruptHydra/FreedHydraBody.png" id="2_catek"]
@@ -24,12 +24,6 @@ bg_color = Color(0.92, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jxnd6"]
 bg_color = Color(0.0166667, 1, 0, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7tib7"]
-bg_color = Color(0, 0.399, 0.57, 0)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ilrt6"]
-bg_color = Color(0, 0.5, 0.466667, 1)
 
 [sub_resource type="Animation" id="Animation_amb6i"]
 length = 0.001
@@ -172,16 +166,6 @@ offset_bottom = -38.0
 theme_override_styles/background = SubResource("StyleBoxFlat_mftj6")
 theme_override_styles/fill = SubResource("StyleBoxFlat_jxnd6")
 value = 50.0
-show_percentage = false
-
-[node name="armour_bar" type="ProgressBar" parent="hp_bar"]
-layout_mode = 0
-offset_right = 21.0
-offset_bottom = 4.0
-theme_override_styles/background = SubResource("StyleBoxFlat_7tib7")
-theme_override_styles/fill = SubResource("StyleBoxFlat_ilrt6")
-max_value = 10.0
-value = 5.0
 show_percentage = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]

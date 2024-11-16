@@ -1,0 +1,87 @@
+[gd_scene load_steps=9 format=3 uid="uid://cbmdx503euxmt"]
+
+[ext_resource type="Texture2D" uid="uid://c31mafatartaw" path="res://Assets/Weapons/HydraAttacks/Fireball1.png" id="1_3v4mn"]
+[ext_resource type="Texture2D" uid="uid://bt0fm63k16b8n" path="res://Assets/Weapons/HydraAttacks/Fireball2.png" id="2_njtpt"]
+[ext_resource type="Texture2D" uid="uid://bp2v825g8gypx" path="res://Assets/Weapons/HydraAttacks/Fireball3.png" id="3_wg1ps"]
+[ext_resource type="Texture2D" uid="uid://f6wq1hlia2en" path="res://Assets/Weapons/HydraAttacks/Fireball4.png" id="4_a8ubs"]
+
+[sub_resource type="Animation" id="Animation_j6kfs"]
+resource_name = "explosion"
+length = 0.6
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("fireballProj:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.08, 0.09, 0.56, 0.57, 0.58),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("1_3v4mn"), ExtResource("2_njtpt"), ExtResource("3_wg1ps"), ExtResource("4_a8ubs"), ExtResource("3_wg1ps"), ExtResource("2_njtpt"), null]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("explosionRadius:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.06, 0.07, 0.08, 0.09, 0.55, 0.56, 0.57, 0.58),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1e-05, 1e-05), Vector2(1.68, 1.68), Vector2(3.28, 3.28), Vector2(5, 5), Vector2(5, 5), Vector2(3.28, 3.28), Vector2(1.68, 1.68), Vector2(1e-05, 1e-05)]
+}
+
+[sub_resource type="Animation" id="Animation_4sm1t"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("fireballProj:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_3v4mn")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("explosionRadius:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ytxbr"]
+_data = {
+"RESET": SubResource("Animation_4sm1t"),
+"explosion": SubResource("Animation_j6kfs")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_115ca"]
+
+[node name="fireball" type="Node2D"]
+
+[node name="fireballProj" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_3v4mn")
+
+[node name="explosionAnim" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ytxbr")
+}
+
+[node name="explosionRadius" type="Area2D" parent="."]
+scale = Vector2(1e-05, 1e-05)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="explosionRadius"]
+shape = SubResource("CircleShape2D_115ca")

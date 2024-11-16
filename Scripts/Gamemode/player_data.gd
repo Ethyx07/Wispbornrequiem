@@ -24,7 +24,7 @@ func loadPlayerInfo(player : CharacterBody2D) -> void:
 	if is_instance_valid(playerScene):
 		player.health = playerNode.health
 		player.hp_bar.value = playerNode.health
-		if(playerKey == "Minotaur"):
+		if(player.sceneKey == "Minotaur"):
 			if is_instance_valid(player.heldAxe):
 				playerNode.heldAxe.queue_free()
 			if is_instance_valid(player.armour_bar):
