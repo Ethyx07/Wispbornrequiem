@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://fecq432hjkr6"]
 
-[ext_resource type="Texture2D" uid="uid://dwslpy6k8rlwq" path="res://Assets/Weapons/IceProj.png" id="1_8gw5e"]
+[ext_resource type="Texture2D" uid="uid://dwslpy6k8rlwq" path="res://Assets/Weapons/HydraAttacks/IceProj.png" id="1_8gw5e"]
 [ext_resource type="Script" path="res://Scripts/PlayableCharacters/hydraAttacks/ice_projectile.gd" id="1_xmpdp"]
 
 [node name="iceProjectile" type="Node2D"]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dwslpy6k8rlwq"
-path="res://.godot/imported/IceProj.png-2665f4b12df154320036e46c97ee5e74.ctex"
+uid="uid://bp2v825g8gypx"
+path="res://.godot/imported/Fireball3.png-242ed87b9d57d78ea1ce96658a41651a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Weapons/IceProj.png"
-dest_files=["res://.godot/imported/IceProj.png-2665f4b12df154320036e46c97ee5e74.ctex"]
+source_file="res://Assets/Weapons/HydraAttacks/Fireball3.png"
+dest_files=["res://.godot/imported/Fireball3.png-242ed87b9d57d78ea1ce96658a41651a.ctex"]
 
 [params]
 
