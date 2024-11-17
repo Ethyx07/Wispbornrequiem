@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://c8rc5agxlry6f"]
+[gd_scene load_steps=13 format=3 uid="uid://c8rc5agxlry6f"]
 
 [ext_resource type="Script" path="res://Scripts/Enemy/base_enemy.gd" id="1_djb8t"]
 [ext_resource type="Texture2D" uid="uid://b5idjwshvpjg6" path="res://Assets/Enemy/SwordEnemyV2.png" id="2_ns1ec"]
 [ext_resource type="Texture2D" uid="uid://bxac4pwx53bdl" path="res://Assets/Enemy/SlashAnim/BaseEnemySlash1.png" id="3_561am"]
+[ext_resource type="PackedScene" uid="uid://8edjpdiandxd" path="res://Scenes/GUI/status_bar.tscn" id="4_fat4v"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yr4m7"]
 radius = 19.0263
@@ -120,5 +121,14 @@ theme_override_styles/background = SubResource("StyleBoxFlat_xk4gw")
 theme_override_styles/fill = SubResource("StyleBoxFlat_0x1pn")
 value = 50.0
 show_percentage = false
+
+[node name="statusBar" parent="hp_bar" instance=ExtResource("4_fat4v")]
+texture_filter = 1
+layout_mode = 1
+offset_left = 5.0
+offset_top = -6.0
+offset_right = 5.0
+offset_bottom = -6.0
+scale = Vector2(0.24, 0.24)
 
 [node name="NavAgent" type="NavigationAgent2D" parent="."]

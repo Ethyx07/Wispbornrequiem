@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://8edjpdiandxd"]
+
+[ext_resource type="Script" path="res://Scripts/GUI/status_bar.gd" id="1_u4rl4"]
+[ext_resource type="Texture2D" uid="uid://bm6r7vcxiylhq" path="res://Assets/GUI/AxeThrowUnder.png" id="2_mgpwv"]
+
+[node name="statusBar" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_u4rl4")
+
+[node name="statusSprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_mgpwv")

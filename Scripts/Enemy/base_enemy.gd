@@ -10,10 +10,17 @@ var bKnockedback : bool = false
 enum enemyState {CHASE, ATTACK, DEAD, HIT}
 var currentState : enemyState
 
+enum statusState {NONE, POISON, STUN, SLOW, CHARM}
+var statusEffect : statusState
+var poisonTick : int
+var poisonTickDamage : int
+var currentTick = 0
+
 @onready var sprite : Sprite2D = get_node("mainTexture")
 @onready var attackSlash : PackedScene = preload("res://Scenes/Enemies/base_enemy_slash.tscn")
 @onready var hp_bar = get_node("hp_bar")
 @onready var nav_agent = get_node("NavAgent")
+@onready var statusBar = get_node("hp_bar/statusBar")
 
 func _ready() -> void:
 	var targetArray = get_tree().get_nodes_in_group("Player")
@@ -23,6 +30,7 @@ func _ready() -> void:
 	hp_bar.value = health
 	nav_agent.path_desired_distance = 4.0
 	nav_agent.target_desired_distance = 50.0
+	statusEffect = statusState.NONE
 
 
 
@@ -92,9 +100,28 @@ func attack():
 func attack_hit(body : Node2D) -> void:
 	body.hit(damage)
 
+func checkStatus() -> void:
+	match statusEffect:
+		statusState.NONE:
+			return
+		statusState.POISON:
+			dealPoisonDamage()
+	statusBar.updateStatusUI(self)
+			
+func dealPoisonDamage() -> void:
+	if currentTick < poisonTick:
+		currentTick += 1
+		hit(poisonTickDamage)
+		var randCure = randi_range(0, 10)
+		if randCure >= 10:
+			statusEffect = statusState.NONE
+		await get_tree().create_timer(1).timeout
+	else:
+		statusEffect = statusState.NONE
+	checkStatus()
+
 func remove_self() ->void:
 	self.queue_free()
-
 
 #func _on_hitbox_body_entered(body: Node2D) -> void:
 	#if body.is_in_group("Player"):

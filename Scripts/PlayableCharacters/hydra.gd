@@ -8,6 +8,7 @@ extends "res://Scripts/PlayableCharacters/player_wisp.gd"
 
 @export var iceProjectile = preload("res://Scenes/PlayerClasses/hydraAttacks/ice_projectile.tscn")
 @export var fireballProjectile = preload("res://Scenes/PlayerClasses/hydraAttacks/fireball_projectile.tscn")
+@export var acidBreath = preload("res://Scenes/PlayerClasses/hydraAttacks/acid_breath.tscn")
 
 enum attackStates {ACID, FIRE, ICE}
 
@@ -15,7 +16,8 @@ enum attackStates {ACID, FIRE, ICE}
 @export var explosionDamage : int
 @export var iceDamage : int
 @export var acidDamage : int
-@export var acidPuddleDamage : int
+@export var acidPoisonDamage : int
+@export var poisonTick : int
 
 var currentAttack : attackStates
 var bCanSwap : bool = true
@@ -77,7 +79,7 @@ func attack() -> void:
 	currentState = playerState.ATTACK
 	match currentAttack:
 		attackStates.ACID:
-			print("acid")
+			acidAttack()
 		attackStates.FIRE:
 			fireAttack()
 		attackStates.ICE:
@@ -106,6 +108,17 @@ func fireAttack() -> void:
 	fireTemp.look_at(get_global_mouse_position())
 	get_tree().root.add_child(fireTemp)
 
+func acidAttack() -> void:
+	var acidTemp = acidBreath.instantiate()
+	acidTemp.global_position = get_node("attackMarker/attackDirection").global_position
+	acidTemp.look_at(get_global_mouse_position())
+	acidTemp.parent = self
+	acidTemp.breathDamage = acidDamage
+	acidTemp.poisonDamage = acidPoisonDamage
+	acidTemp.poisonTick = poisonTick
+	get_tree().root.add_child(acidTemp)
+	await get_tree().create_timer(4).timeout
+	acidTemp.queue_free()
 
 func hit(damage : int) -> void:
 	super(damage)

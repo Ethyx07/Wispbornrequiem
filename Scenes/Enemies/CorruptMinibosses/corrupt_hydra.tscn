@@ -166,7 +166,7 @@ _data = {
 "deathAnim": SubResource("Animation_ulmdf")
 }
 
-[node name="corruptHydra" type="CharacterBody2D" groups=["Enemy"]]
+[node name="corruptHydra" type="CharacterBody2D" groups=["Boss", "Enemy"]]
 script = ExtResource("1_3peoa")
 bossName = "Corrupt Hydra"
 bossMaxHealth = 10
