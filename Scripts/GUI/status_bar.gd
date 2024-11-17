@@ -2,6 +2,9 @@ extends Control
 
 @onready var statusSprite = get_node("statusSprite")
 
+@export var poisonSprite : Texture2D
+@export var charmSprite : Texture2D
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	hide()
@@ -15,6 +18,9 @@ func _process(delta: float) -> void:
 func updateStatusUI(body : CharacterBody2D):
 	match body.statusEffect:
 		body.statusState.POISON:
-			show()
+			statusSprite.texture = poisonSprite
+		body.statusState.CHARM:
+			statusSprite.texture = charmSprite
 		_:
-			pass
+			hide()
+	show()

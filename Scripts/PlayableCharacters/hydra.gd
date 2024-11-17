@@ -117,8 +117,7 @@ func acidAttack() -> void:
 	acidTemp.poisonDamage = acidPoisonDamage
 	acidTemp.poisonTick = poisonTick
 	get_tree().root.add_child(acidTemp)
-	await get_tree().create_timer(4).timeout
-	acidTemp.queue_free()
+	
 
 func hit(damage : int) -> void:
 	super(damage)

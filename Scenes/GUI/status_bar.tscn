@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://8edjpdiandxd"]
+[gd_scene load_steps=4 format=3 uid="uid://8edjpdiandxd"]
 
 [ext_resource type="Script" path="res://Scripts/GUI/status_bar.gd" id="1_u4rl4"]
-[ext_resource type="Texture2D" uid="uid://bm6r7vcxiylhq" path="res://Assets/GUI/AxeThrowUnder.png" id="2_mgpwv"]
+[ext_resource type="Texture2D" uid="uid://b8dyj0deklxxf" path="res://Assets/GUI/StatusEffects/poisonEffect.png" id="2_aduu8"]
+[ext_resource type="Texture2D" uid="uid://by4r6bgw78qct" path="res://Assets/GUI/StatusEffects/charmEffect.png" id="3_r8swh"]
 
 [node name="statusBar" type="Control"]
+texture_filter = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,6 +13,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_u4rl4")
+poisonSprite = ExtResource("2_aduu8")
+charmSprite = ExtResource("3_r8swh")
 
 [node name="statusSprite" type="Sprite2D" parent="."]
-texture = ExtResource("2_mgpwv")
+position = Vector2(5, -10)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_r8swh")

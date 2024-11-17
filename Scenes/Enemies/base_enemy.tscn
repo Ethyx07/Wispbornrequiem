@@ -123,12 +123,8 @@ value = 50.0
 show_percentage = false
 
 [node name="statusBar" parent="hp_bar" instance=ExtResource("4_fat4v")]
-texture_filter = 1
 layout_mode = 1
-offset_left = 5.0
-offset_top = -6.0
-offset_right = 5.0
-offset_bottom = -6.0
-scale = Vector2(0.24, 0.24)
+offset_right = -21.0
+offset_bottom = -4.0
 
 [node name="NavAgent" type="NavigationAgent2D" parent="."]

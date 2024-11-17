@@ -102,8 +102,6 @@ func attack_hit(body : Node2D) -> void:
 
 func checkStatus() -> void:
 	match statusEffect:
-		statusState.NONE:
-			return
 		statusState.POISON:
 			dealPoisonDamage()
 	statusBar.updateStatusUI(self)
@@ -114,10 +112,10 @@ func dealPoisonDamage() -> void:
 		hit(poisonTickDamage)
 		var randCure = randi_range(0, 10)
 		if randCure >= 10:
-			statusEffect = statusState.NONE
+			statusEffect = statusState.CHARM
 		await get_tree().create_timer(1).timeout
 	else:
-		statusEffect = statusState.NONE
+		statusEffect = statusState.CHARM
 	checkStatus()
 
 func remove_self() ->void:
