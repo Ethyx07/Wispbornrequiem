@@ -5,6 +5,7 @@ extends Node2D
 @onready var healthBarVal = get_node("CanvasLayer/playergui/healthBar/healthValue")
 @onready var bossNameDisplay = get_node("CanvasLayer/playergui/healthBar/bossName")
 
+
 @export var bossEnemy : PackedScene
 
 var player
@@ -35,6 +36,8 @@ func _process(_delta: float) -> void:
 		get_tree().get_first_node_in_group("Player").remove_self()
 		get_tree().change_scene_to_file("res://Scenes/hub_scene.tscn")
 	
+	
+
 func setPlayerLocation(playerNode : Node2D)->void:
 	player = playerNode
 	player.global_position = get_node("spawnLocation").global_position

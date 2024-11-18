@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://kbe66jdn8wlj"]
+
+[ext_resource type="PackedScene" uid="uid://cvbhe4702y548" path="res://Scenes/GUI/menu.tscn" id="1_nuqka"]
+
+[node name="mainMenu" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="menu" parent="CanvasLayer" instance=ExtResource("1_nuqka")]
+offset_left = 562.0
+offset_top = 685.0
+offset_right = -590.0
+offset_bottom = 37.0

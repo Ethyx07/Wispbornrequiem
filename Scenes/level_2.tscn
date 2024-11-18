@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://c8rc5agxlry6f" path="res://Scenes/Enemies/base_enemy.tscn" id="5_d66oa"]
 [ext_resource type="PackedScene" uid="uid://em6vqqa3r1gv" path="res://Scenes/Interactables/doorway.tscn" id="6_j3hsg"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fpm63"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wnakx"]
 texture = ExtResource("4_s8vkp")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
@@ -25,7 +25,7 @@ texture_region_size = Vector2i(32, 32)
 2:3/0 = 0
 3:3/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7ad76"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4ky7o"]
 texture = ExtResource("2_hjtq4")
 texture_region_size = Vector2i(32, 32)
 0:4/0 = 0
@@ -53,8 +53,8 @@ texture_region_size = Vector2i(32, 32)
 
 [sub_resource type="TileSet" id="TileSet_m1nrx"]
 tile_size = Vector2i(32, 32)
-sources/1 = SubResource("TileSetAtlasSource_7ad76")
-sources/0 = SubResource("TileSetAtlasSource_fpm63")
+sources/1 = SubResource("TileSetAtlasSource_4ky7o")
+sources/0 = SubResource("TileSetAtlasSource_wnakx")
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_0jbyv"]
 vertices = PackedVector2Array(423.078, 109.32, 538, 107.102, 730.688, 105.133, 733.141, 217.047, 534.656, 219.102, 421.922, 216, 391, 140.078, 74, 138.078, 106.078, 107.32, 210.922, 105.672, 241.289, 106.672, 242.313, 138.93, 243.32, 184, 242.289, 215.922, 212.07, 218.938, 104.922, 214, 71.3906, 182, 106, 470.313, 106.078, 363.32, 210.922, 361.672, 241.289, 362.672, 242.313, 394.93, 210.883, 472.313, 106, 566, 563.063, 268.68, 563.938, 409.594, 530.672, 411.609, 423.078, 365.32, 531.313, 267.656, -74.6875, 392.93, -149.688, 468.68, -182.656, 469.672, -181.656, 438.68, -106.078, 359.672, -75.7031, 360.672, 467.328, 473.32, 469.313, 503.039, 265.133, 503.953, 262.109, 470.711, 391, 396.078, -214.68, 439.672, -213.711, 406.32, 53.6797, 468.672, 54.6797, 502.039, -150.688, 502.953, 74, 106.32, 391, 108.32, 74, 394.078, 74, 362.32, 499.68, 442.633, 391, 364.32, 111.227, -150, 109.133, -241.852, 218.852, -241, 217.891, -148.68, 212.07, -37.0625, -145.68, -152.609, -146.656, -182.039, 58, -182.953, 58, -150, -73.6797, -74, 212, 566, 390.391, 216, 388.391, 184, 421.922, -40, 538, 55, -215.297, 212.797, -407.008, 216.641, -407.969, 105, -210, 105, 104.922, -42, -246.063, 405.297, -246.938, 267, -213.703, 267, 570.047, -86.3125, 570.938, 55, 539.313, -87.3125, 500.672, 472.297, -104.93, -39.0625, -209.68, -86, -210.68, -118.297, -177.68, -119.313, -74.7031, -42.0703, -210, 55, -243, 55, -243, -86, 531.672, 440.617, -178.688, -150.602, 269.711, -150.297, 270.703, -183, 473.32, -183, 474.313, -152.297, 388.391, -72, 507.297, -119.313, 390.391, -40, 506.289, -151.289, 73.3906, -42, 71.3906, -74, 73.3906, 214, -106.078, 103.672, -75.7031, 104.672, -74.6875, 136.93, -73.6797, 182, -74.7031, 213.922, -104.93, 216.938, 538.313, -118.313, 243.32, -72, 242.289, -40.0703)
