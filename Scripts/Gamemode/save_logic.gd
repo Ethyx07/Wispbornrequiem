@@ -13,7 +13,8 @@ func setButtonDetails(button : Button, slot : int)-> void:
 	if save_file:
 		var save_data = JSON.parse_string(FileAccess.get_file_as_string(save_path))
 		save_file.close()
-		button.text = save_data["save_name"]
+		button.text = save_data["save_name"] + "\n" + save_data["save_date"]
+		
 	else:
 		button.text = "Empty Save"
 	
