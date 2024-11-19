@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://cvbhe4702y548"]
+[gd_scene load_steps=3 format=3 uid="uid://cvbhe4702y548"]
 
 [ext_resource type="Script" path="res://Scripts/GUI/menu.gd" id="1_ijv2a"]
+
+[sub_resource type="Theme" id="Theme_q43gx"]
+resource_name = "SaveOne"
 
 [node name="menu" type="Control"]
 layout_mode = 3
@@ -11,31 +14,109 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ijv2a")
 
-[node name="PlayButton" type="Button" parent="."]
-texture_filter = 1
+[node name="mainMenu" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -20.5
-offset_top = -31.0
-offset_right = 20.5
+offset_left = 394.0
+offset_top = -304.0
+offset_right = 394.0
+offset_bottom = -264.0
 grow_horizontal = 2
 grow_vertical = 0
-scale = Vector2(13.24, 6.16)
+
+[node name="PlayButton" type="Button" parent="mainMenu"]
+texture_filter = 1
+layout_mode = 2
+offset_left = -545.504
+offset_right = -504.504
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 0
 pivot_offset = Vector2(20, 40)
 text = "Play"
 
-[node name="SettingsButton" type="Button" parent="."]
-layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
+[node name="SettingsButton" type="Button" parent="mainMenu"]
+layout_mode = 2
+offset_left = -546.0
+offset_top = 47.0
+offset_right = -476.0
+offset_bottom = 87.0
+text = "Settings"
 
-[node name="QuitButton" type="Button" parent="."]
-layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
+[node name="QuitButton" type="Button" parent="mainMenu"]
+layout_mode = 2
+offset_left = -546.0
+offset_top = 94.0
+offset_right = -504.0
+offset_bottom = 134.0
+text = "Quit"
 
-[connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
+[node name="saveMenu" type="BoxContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 25.0
+offset_top = -344.0
+offset_right = 156.0
+offset_bottom = -304.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="saveOne" type="Button" parent="saveMenu"]
+texture_filter = 1
+layout_mode = 2
+theme = SubResource("Theme_q43gx")
+text = "Save 1
+"
+
+[node name="saveTwo" type="Button" parent="saveMenu"]
+texture_filter = 1
+layout_mode = 2
+text = "Save 2"
+
+[node name="saveThree" type="Button" parent="saveMenu"]
+texture_filter = 1
+layout_mode = 2
+text = "Save 3"
+
+[node name="loadDelete" type="BoxContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 25.0
+offset_top = -304.0
+offset_right = 156.0
+offset_bottom = -264.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="loadSave" type="Button" parent="loadDelete"]
+texture_filter = 1
+layout_mode = 2
+text = "Load 
+"
+
+[node name="deleteSave" type="Button" parent="loadDelete"]
+texture_filter = 1
+layout_mode = 2
+text = "Delete
+"
+
+[connection signal="pressed" from="mainMenu/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="saveMenu/saveOne" to="." method="_on_save_one_pressed"]
+[connection signal="pressed" from="saveMenu/saveTwo" to="." method="_on_save_two_pressed"]
+[connection signal="pressed" from="saveMenu/saveThree" to="." method="_on_save_three_pressed"]
+[connection signal="pressed" from="loadDelete/loadSave" to="." method="_on_load_save_pressed"]
+[connection signal="pressed" from="loadDelete/deleteSave" to="." method="_on_delete_save_pressed"]
