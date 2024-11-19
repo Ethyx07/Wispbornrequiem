@@ -148,6 +148,37 @@ texture_filter = 1
 layout_mode = 2
 text = "NO"
 
+[node name="setSaveName" type="BoxContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -335.0
+offset_top = -32.0
+offset_right = -235.0
+offset_bottom = 18.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(6.31999, 1)
+
+[node name="nameGrabber" type="TextEdit" parent="setSaveName"]
+clip_contents = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.0
+placeholder_text = "enter save name"
+
+[node name="setName" type="Button" parent="setSaveName/nameGrabber"]
+layout_mode = 2
+offset_left = 86.8672
+offset_right = 117.867
+offset_bottom = 40.0
+scale = Vector2(0.170885, 1)
+text = "OK"
+
 [connection signal="pressed" from="mainMenu/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="mainMenu/QuitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="pressed" from="saveMenu/saveOne" to="." method="_on_save_one_pressed"]
@@ -157,3 +188,4 @@ text = "NO"
 [connection signal="pressed" from="loadDelete/deleteSave" to="." method="_on_delete_save_pressed"]
 [connection signal="pressed" from="doubleCheck/yesDelete" to="." method="_on_yes_delete_pressed"]
 [connection signal="pressed" from="doubleCheck/noDont" to="." method="_on_no_dont_pressed"]
+[connection signal="pressed" from="setSaveName/nameGrabber/setName" to="." method="_on_set_name_pressed"]

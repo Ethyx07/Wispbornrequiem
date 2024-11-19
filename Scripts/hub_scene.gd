@@ -9,7 +9,7 @@ var bOpened = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Gamemode.currentLevel = 0
-	SaveLogic.save_game(Gamemode.saveSlot)
+	SaveLogic.save_game(Gamemode.saveSlot, Gamemode.saveName)
 	doorway.bIsUnlocked = false
 	doorwayHitbox.disabled = true
 	var player = startingPlayer.instantiate()

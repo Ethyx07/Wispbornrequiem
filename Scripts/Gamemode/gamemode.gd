@@ -6,6 +6,7 @@ var boss_level = "res://Scenes/corrupt_dragon_arena.tscn"
 var currentLevel : int = 0
 
 var saveSlot : int
+var saveName : String
 
 var activePodiums = {
 	"Minotaur" : true,

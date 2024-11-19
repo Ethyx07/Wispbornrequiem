@@ -20,6 +20,8 @@ func _ready() -> void:
 	saveTwo.add_theme_stylebox_override("normal", styleBoxTwo)
 	saveThree.add_theme_stylebox_override("normal", styleBoxThree)
 	
+	updateSaveData()
+	
 func _on_play_button_pressed() -> void:
 	mainMenu.hide()
 	print("done")
@@ -57,6 +59,7 @@ func _on_delete_save_pressed() -> void:
 	
 func _on_yes_delete_pressed() -> void:
 	SaveLogic.delete_save(selectedSave)
+	updateSaveData()
 	doubleCheck.hide()
 	loadButtons.show()
 	
@@ -64,10 +67,28 @@ func _on_no_dont_pressed() -> void:
 	doubleCheck.hide()
 	loadButtons.show()
 	
-func loadGame(slot : int) -> void:
-	SaveLogic.load_game(slot)
+func nameSavePrompt(slot : int) -> void:
+	get_node("setSaveName").show()
 	Gamemode.saveSlot = slot
-	openHub()
+	
+func loadGame(slot : int) -> void:
+	if SaveLogic.load_game(slot):
+		Gamemode.saveSlot = slot
+		openHub()
 
 func openHub() -> void:
 	get_tree().change_scene_to_file("res://Scenes/hub_scene.tscn")
+
+func updateSaveData() -> void:
+	SaveLogic.setButtonDetails(saveOne, 1)
+	SaveLogic.setButtonDetails(saveTwo, 2)
+	SaveLogic.setButtonDetails(saveThree, 3)
+	
+func _on_set_name_pressed() -> void:
+	if get_node("setSaveName/nameGrabber").text.length() > 0:
+		Gamemode.saveName = get_node("setSaveName/nameGrabber").text
+		SaveLogic.save_game(selectedSave, Gamemode.saveName)
+		get_node("setSaveName/nameGrabber").text = ""
+		get_node("setSaveName").hide()
+		updateSaveData()
+		
