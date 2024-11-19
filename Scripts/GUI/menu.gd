@@ -3,6 +3,7 @@ extends Control
 @onready var saveMenu = get_node("saveMenu")
 @onready var mainMenu = get_node("mainMenu")
 @onready var loadButtons = get_node("loadDelete")
+@onready var doubleCheck = get_node("doubleCheck")
 @onready var saveOne = get_node("saveMenu/saveOne")
 @onready var saveTwo = get_node("saveMenu/saveTwo")
 @onready var saveThree = get_node("saveMenu/saveThree")
@@ -24,6 +25,9 @@ func _on_play_button_pressed() -> void:
 	print("done")
 	saveMenu.show()
 	loadButtons.show()
+
+func _on_quit_button_pressed() -> void:
+	get_tree().quit()
 
 
 func _on_save_one_pressed() -> void:
@@ -48,8 +52,18 @@ func _on_load_save_pressed() -> void:
 	loadGame(selectedSave)
 
 func _on_delete_save_pressed() -> void:
-	SaveLogic.delete_save(selectedSave) # Replace with function body.
-
+	doubleCheck.show()
+	loadButtons.hide()
+	
+func _on_yes_delete_pressed() -> void:
+	SaveLogic.delete_save(selectedSave)
+	doubleCheck.hide()
+	loadButtons.show()
+	
+func _on_no_dont_pressed() -> void:
+	doubleCheck.hide()
+	loadButtons.show()
+	
 func loadGame(slot : int) -> void:
 	SaveLogic.load_game(slot)
 	Gamemode.saveSlot = slot
@@ -57,6 +71,3 @@ func loadGame(slot : int) -> void:
 
 func openHub() -> void:
 	get_tree().change_scene_to_file("res://Scenes/hub_scene.tscn")
-
-
-# Replace with function body.
