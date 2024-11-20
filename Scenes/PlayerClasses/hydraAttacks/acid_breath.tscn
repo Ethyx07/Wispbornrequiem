@@ -10,7 +10,7 @@ gradient = SubResource("Gradient_fto5o")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ij8xm"]
 size = Vector2(63, 65)
 
-[node name="acidBreath" type="Node2D"]
+[node name="acidBreath" type="Node2D" groups=["Projectile"]]
 z_index = -1
 scale = Vector2(1, 0.16)
 script = ExtResource("1_1hbrn")

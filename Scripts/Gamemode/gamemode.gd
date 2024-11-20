@@ -21,6 +21,9 @@ func _ready() -> void:
 	
 
 func load_level() -> void:
+	var projectiles = get_tree().get_nodes_in_group("Projectile")
+	for proj in projectiles:
+		proj.queue_free()
 	if dungeon_levels_generator.size() > currentLevel:
 		get_tree().change_scene_to_file(dungeon_levels_generator[currentLevel])
 		currentLevel += 1
@@ -30,8 +33,12 @@ func load_level() -> void:
 	get_tree().root.add_child(player)
 	PlayerData.loadPlayerInfo(player)
 	
+	
 func respawn() -> void:
 	runCount += 1
+	var projectiles = get_tree().get_nodes_in_group("Projectile")
+	for proj in projectiles:
+		proj.queue_free()
 	var enemies = get_tree().get_nodes_in_group("Enemy")
 	for enemy in enemies:
 		enemy.call_deferred("remove_self")

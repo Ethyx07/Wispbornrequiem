@@ -74,7 +74,7 @@ _data = {
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_115ca"]
 
-[node name="fireball" type="Node2D"]
+[node name="fireball" type="Node2D" groups=["Projectile"]]
 script = ExtResource("1_ufshd")
 
 [node name="fireballProj" type="Sprite2D" parent="."]

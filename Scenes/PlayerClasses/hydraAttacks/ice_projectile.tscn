@@ -6,7 +6,7 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tmpbb"]
 radius = 7.0
 
-[node name="iceProjectile" type="Node2D"]
+[node name="iceProjectile" type="Node2D" groups=["Projectile"]]
 script = ExtResource("1_xmpdp")
 
 [node name="iceSprite" type="Sprite2D" parent="."]
