@@ -4,7 +4,7 @@ const save_DIR = "user://saves_"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	add_to_group("Persistent")
 
 func setButtonDetails(button : Button, slot : int)-> void:
 	var save_path = "%ssave_slot_%d.JSON" % [save_DIR,slot]
@@ -13,7 +13,7 @@ func setButtonDetails(button : Button, slot : int)-> void:
 	if save_file:
 		var save_data = JSON.parse_string(FileAccess.get_file_as_string(save_path))
 		save_file.close()
-		button.text = save_data["save_name"] + "\n" + save_data["save_date"]
+		button.text = save_data["save_name"] + "\n Runs: " + str(save_data["no_runs"])
 		
 	else:
 		button.text = "Empty Save"
@@ -25,9 +25,10 @@ func save_game(slot: int, save_name : String) -> void:
 		
 	var save_data = {
 		"save_name" : "Save %s" % save_name,
-		"save_date" : Time.get_time_string_from_system(),
-		"game_data" : Gamemode.activePodiums
+		"game_data" : Gamemode.activePodiums,
+		"no_runs" : Gamemode.runCount
 	}
+	
 	var save_path = "%ssave_slot_%d.JSON" % [save_DIR,slot]
 	
 	var save_file = FileAccess.open(save_path, FileAccess.WRITE)
@@ -46,6 +47,7 @@ func load_game(slot: int) -> bool:
 		var save_data = JSON.parse_string(FileAccess.get_file_as_string(save_path))
 		save_file.close()
 		Gamemode.activePodiums = save_data["game_data"]
+		Gamemode.runCount = save_data["no_runs"]
 	return true
 		
 func delete_save(slot : int) -> void:

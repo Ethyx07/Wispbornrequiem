@@ -19,6 +19,20 @@ func _ready() -> void:
 	saveOne.add_theme_stylebox_override("normal", styleBoxOne)
 	saveTwo.add_theme_stylebox_override("normal", styleBoxTwo)
 	saveThree.add_theme_stylebox_override("normal", styleBoxThree)
+	saveOne.get_theme_stylebox("normal").border_width_left = 1
+	saveOne.get_theme_stylebox("normal").border_width_right = 1
+	saveOne.get_theme_stylebox("normal").border_width_top = 1
+	saveOne.get_theme_stylebox("normal").border_width_bottom = 1
+	
+	saveTwo.get_theme_stylebox("normal").border_width_left = 1
+	saveTwo.get_theme_stylebox("normal").border_width_right = 1
+	saveTwo.get_theme_stylebox("normal").border_width_top = 1
+	saveTwo.get_theme_stylebox("normal").border_width_bottom = 1
+	
+	saveThree.get_theme_stylebox("normal").border_width_left = 1
+	saveThree.get_theme_stylebox("normal").border_width_right = 1
+	saveThree.get_theme_stylebox("normal").border_width_top = 1
+	saveThree.get_theme_stylebox("normal").border_width_bottom = 1
 	
 	updateSaveData()
 	
@@ -34,21 +48,21 @@ func _on_quit_button_pressed() -> void:
 
 func _on_save_one_pressed() -> void:
 	selectedSave = 1
-	saveOne.get_theme_stylebox("normal").bg_color = Color.GREEN
-	saveTwo.get_theme_stylebox("normal").bg_color = Color.GRAY
-	saveThree.get_theme_stylebox("normal").bg_color = Color.GRAY
+	saveOne.get_theme_stylebox("normal").border_color = Color.RED
+	saveTwo.get_theme_stylebox("normal").border_color = Color.GRAY
+	saveThree.get_theme_stylebox("normal").border_color = Color.GRAY
 
 func _on_save_two_pressed() -> void:
 	selectedSave = 2
-	saveOne.get_theme_stylebox("normal").bg_color = Color.GRAY
-	saveTwo.get_theme_stylebox("normal").bg_color = Color.GREEN
-	saveThree.get_theme_stylebox("normal").bg_color = Color.GRAY
+	saveOne.get_theme_stylebox("normal").border_color = Color.GRAY
+	saveTwo.get_theme_stylebox("normal").border_color = Color.RED
+	saveThree.get_theme_stylebox("normal").border_color = Color.GRAY
 
 func _on_save_three_pressed() -> void:
 	selectedSave = 3 
-	saveOne.get_theme_stylebox("normal").bg_color = Color.GRAY
-	saveTwo.get_theme_stylebox("normal").bg_color = Color.GRAY
-	saveThree.get_theme_stylebox("normal").bg_color = Color.GREEN
+	saveOne.get_theme_stylebox("normal").border_color = Color.GRAY
+	saveTwo.get_theme_stylebox("normal").border_color = Color.GRAY
+	saveThree.get_theme_stylebox("normal").border_color = Color.RED
 
 func _on_load_save_pressed() -> void:
 	loadGame(selectedSave)

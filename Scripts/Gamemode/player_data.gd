@@ -12,6 +12,7 @@ var character_versions = {
 var playerKey : String
 
 func _ready() -> void:
+	add_to_group("Persistent")
 	loadPlayerInfo(playerNode)
 	
 func savePlayerInfo(key : String, player : CharacterBody2D) ->void:

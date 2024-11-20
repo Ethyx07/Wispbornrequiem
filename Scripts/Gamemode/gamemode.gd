@@ -7,6 +7,7 @@ var currentLevel : int = 0
 
 var saveSlot : int
 var saveName : String
+var runCount = 0
 
 var activePodiums = {
 	"Minotaur" : true,
@@ -14,12 +15,10 @@ var activePodiums = {
 }
 
 func _ready() -> void:
-	#for i in range(5):
-		#var randNum = randi_range(0, 1)
-		#dungeon_levels_generator.append(randNum)
+	add_to_group("Persistent")
 	dungeon_levels_generator = dungeon_levels.duplicate()
 	dungeon_levels_generator.shuffle()
-	print("done")
+	
 
 func load_level() -> void:
 	if dungeon_levels_generator.size() > currentLevel:
@@ -30,3 +29,11 @@ func load_level() -> void:
 	var player = PlayerData.playerScene.instantiate()
 	get_tree().root.add_child(player)
 	PlayerData.loadPlayerInfo(player)
+	
+func respawn() -> void:
+	runCount += 1
+	var enemies = get_tree().get_nodes_in_group("Enemy")
+	for enemy in enemies:
+		enemy.call_deferred("remove_self")
+	get_tree().get_first_node_in_group("Player").call_deferred("remove_self")
+	get_tree().call_deferred("change_scene_to_file", "res://Scenes/hub_scene.tscn")

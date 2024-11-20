@@ -66,7 +66,7 @@ vertices = PackedVector2Array(721.141, -245.078, 732.852, 567.047, -409.156, 572
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-433, -265, -419, 583, 743, 577, 731, -255)])
 
-[node name="level2" type="Node2D" node_paths=PackedStringArray("enemySpawns")]
+[node name="level2" type="Node2D" node_paths=PackedStringArray("enemySpawns") groups=["Level"]]
 script = ExtResource("1_8gmwg")
 enemyList = Array[PackedScene]([ExtResource("5_d66oa"), ExtResource("3_y5d6h")])
 enemySpawns = [NodePath("EnemySpawns/Spawn1"), NodePath("EnemySpawns/Spawn2"), NodePath("EnemySpawns/Spawn3"), NodePath("EnemySpawns/Spawn4"), NodePath("EnemySpawns/Spawn5")]

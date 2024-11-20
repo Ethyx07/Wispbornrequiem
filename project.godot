@@ -28,6 +28,7 @@ Enemy=""
 Player=""
 Podium=""
 Boss=""
+Level=""
 
 [input]
 

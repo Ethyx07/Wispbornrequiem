@@ -12,24 +12,27 @@ var targetPlayer : CharacterBody2D
 var currentHealth
 var arenaNode
 
+enum bossState {CHASE, ATTACK, DEAD}
+var currentState : bossState
 
 func _ready() -> void:
 	currentHealth = bossMaxHealth
 	nav_agent.path_desired_distance = 4.0
-	nav_agent.target_desired_distance = 10.0
+	nav_agent.target_desired_distance = 40
+	currentState = bossState.CHASE
 
 func _physics_process(delta: float) -> void:
-	if is_instance_valid(targetPlayer):
+	if is_instance_valid(targetPlayer) and currentState == bossState.CHASE:
 		get_node("hitbox").look_at(targetPlayer.global_position)
 		if nav_agent.distance_to_target() > nav_agent.target_desired_distance:
 			nav_agent.target_position = targetPlayer.global_position
 			await get_tree().physics_frame
 			var direction = self.global_position.direction_to(nav_agent.get_next_path_position())
 			velocity = direction * delta * speed
-			if position.distance_to(targetPlayer.global_position) < 10:
+			if position.distance_to(targetPlayer.global_position) <= 90:
 				var seperationVector = (global_position - targetPlayer.global_position).normalized() * 25
 				velocity += seperationVector
-				#attack()
+				attack()
 			#if direction.x < 0:
 				#self.flip_h = true
 			#else:
@@ -45,6 +48,7 @@ func _physics_process(delta: float) -> void:
 func hit(damage : float)-> void:
 	currentHealth -= damage
 	if currentHealth <= 0:
+		currentState = bossState.DEAD
 		currentHealth = 0
 		arenaNode.updateUI()
 		animPlayer.play("deathAnim")
@@ -56,4 +60,12 @@ func hit(damage : float)-> void:
 	else:
 		arenaNode.updateUI()
 	
-	
+func attack() -> void:
+	var attackRand = randi_range(0,2)
+	match attackRand:
+		0:
+			print("ice")
+		1:
+			print("fire")
+		2:
+			print("poison")
