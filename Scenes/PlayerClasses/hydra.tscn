@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://du8becrhraynp"]
+[gd_scene load_steps=21 format=3 uid="uid://du8becrhraynp"]
 
 [ext_resource type="Script" path="res://Scripts/PlayableCharacters/hydra.gd" id="1_ssvo3"]
 [ext_resource type="Texture2D" uid="uid://nrxlphynyx12" path="res://Assets/Enemy/CorruptEnemy/CorruptHydra/FreedHydraBody.png" id="2_catek"]
@@ -6,8 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://bap1b083cw08e" path="res://Assets/PlayerSprites/AttackArrow.png" id="3_y7ek5"]
 [ext_resource type="Texture2D" uid="uid://d2ik65iy3dktc" path="res://Assets/Enemy/CorruptEnemy/CorruptHydra/FreedHydraMiddleHead.png" id="4_2otqk"]
 [ext_resource type="Texture2D" uid="uid://xosdynni4ght" path="res://Assets/Enemy/CorruptEnemy/CorruptHydra/FreedHydraRightHead.png" id="5_drcaf"]
-[ext_resource type="Texture2D" uid="uid://dhdqnf2b2ukcx" path="res://Assets/GUI/HydraGUI/HydraAttackTypes.png" id="7_056ku"]
+[ext_resource type="Texture2D" uid="uid://b7kf6ij5taaor" path="res://Assets/GUI/HydraGUI/HydraAttackPoison.png" id="7_3y01r"]
 [ext_resource type="Texture2D" uid="uid://bhi5emqu6mt70" path="res://Assets/GUI/HydraGUI/HydraSelect.png" id="8_aahb1"]
+[ext_resource type="Texture2D" uid="uid://cehpb3gna1kee" path="res://Assets/GUI/HydraGUI/HydraAttackFire.png" id="9_5bsae"]
+[ext_resource type="Texture2D" uid="uid://dmp8b5kps07sy" path="res://Assets/GUI/HydraGUI/HydraAttackIce.png" id="10_dwwka"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qip2i"]
 radius = 27.0
@@ -30,7 +32,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("BoxContainer/attackTypes/attackSelect:position")
+tracks/0/path = NodePath("BoxContainer/poisonAttack/attackSelect:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -46,7 +48,7 @@ length = 0.35
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("BoxContainer/attackTypes/attackSelect:position")
+tracks/0/path = NodePath("BoxContainer/poisonAttack/attackSelect:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -62,7 +64,7 @@ length = 0.35
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("BoxContainer/attackTypes/attackSelect:position")
+tracks/0/path = NodePath("BoxContainer/poisonAttack/attackSelect:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -78,7 +80,7 @@ length = 0.35
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("BoxContainer/attackTypes/attackSelect:position")
+tracks/0/path = NodePath("BoxContainer/poisonAttack/attackSelect:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -108,6 +110,9 @@ iceDamage = 6
 acidDamage = 5
 acidPoisonDamage = 1
 poisonTick = 5
+breathCooldown = 5
+fireballCooldown = 2
+iceCooldown = 3
 speed = 400.0
 health = 100.0
 sceneKey = "Hydra"
@@ -193,18 +198,29 @@ grow_horizontal = 0
 grow_vertical = 0
 scale = Vector2(5, 5)
 pivot_offset = Vector2(85, 120)
+theme_override_constants/separation = -128
 
-[node name="attackTypes" type="TextureRect" parent="CanvasLayer/BoxContainer"]
+[node name="poisonAttack" type="TextureRect" parent="CanvasLayer/BoxContainer"]
 texture_filter = 1
 layout_mode = 2
-texture = ExtResource("7_056ku")
+texture = ExtResource("7_3y01r")
 
-[node name="attackSelect" type="TextureRect" parent="CanvasLayer/BoxContainer/attackTypes"]
+[node name="attackSelect" type="TextureRect" parent="CanvasLayer/BoxContainer/poisonAttack"]
 texture_filter = 1
 layout_mode = 2
 offset_right = 128.0
 offset_bottom = 128.0
 texture = ExtResource("8_aahb1")
+
+[node name="fireAttack" type="TextureRect" parent="CanvasLayer/BoxContainer"]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("9_5bsae")
+
+[node name="iceAttack" type="TextureRect" parent="CanvasLayer/BoxContainer"]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("10_dwwka")
 
 [node name="cooldownTimer" type="Timer" parent="."]
 

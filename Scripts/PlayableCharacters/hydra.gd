@@ -18,9 +18,18 @@ enum attackStates {ACID, FIRE, ICE}
 @export var acidDamage : int
 @export var acidPoisonDamage : int
 @export var poisonTick : int
+@export var breathCooldown : int
+@export var fireballCooldown : int
+@export var iceCooldown : int
+
+var currentCooldown : int
+var direction
 
 var currentAttack : attackStates
 var bCanSwap : bool = true
+var bIceReady : bool = true
+var bFireReady : bool = true
+var bPoisonReady : bool = true
 var iceSpawns = 10
 
 func _ready() -> void:
@@ -28,6 +37,7 @@ func _ready() -> void:
 	currentAttack = attackStates.ACID
 	hp_bar.max_value = maxHealth
 	hp_bar.value = health
+	currentState = playerState.NEUTRAL
 	
 func loadUI() -> void:
 	match currentAttack:
@@ -51,12 +61,25 @@ func _physics_process(delta: float) -> void:
 			leftHeadSprite.flip_h = false
 			middleHeadSprite.flip_h = false
 			rightHeadSprite.flip_h = false
-			
 	if Input.is_action_just_pressed("SpecialAttack"):
-			changeAttackType()
-	if Input.is_action_just_pressed("Attack"):
-			attack()
-		
+		changeAttackType()
+	match currentState:
+		playerState.NEUTRAL:
+			if Input.is_action_just_pressed("Attack"):
+				attack()
+			if Input.is_action_just_pressed("Dash"):
+				direction = dash()
+		playerState.DASH:
+			velocity = direction * speed * delta * 300
+			self.collision_layer = 0
+			self.collision_layer = (1 << 2)
+			self.collision_mask = 0
+			self.collision_mask = (1 << 2)
+			move_and_slide()
+			await get_tree().create_timer(0.5).timeout
+			self.collision_layer = (1 << 0) | (1 << 1) | (1 << 2)
+			self.collision_mask = (1 << 0) | (1 << 1) | (1 << 2)
+			currentState = playerState.NEUTRAL	
 
 	
 func changeAttackType() -> void:
@@ -79,11 +102,16 @@ func attack() -> void:
 	currentState = playerState.ATTACK
 	match currentAttack:
 		attackStates.ACID:
-			acidAttack()
+			if bPoisonReady:
+				acidAttack()
 		attackStates.FIRE:
-			fireAttack()
+			if bFireReady:
+				fireAttack()
 		attackStates.ICE:
-			iceAttack()
+			if bIceReady:
+				iceAttack()
+				updateUI(attackStates.ICE)
+	currentState = playerState.NEUTRAL
 				
 
 func iceAttack() -> void:
@@ -118,6 +146,17 @@ func acidAttack() -> void:
 	acidTemp.poisonTick = poisonTick
 	get_tree().root.add_child(acidTemp)
 	
+func updateUI(attack : attackStates)->void:
+	match attack:
+		attackStates.ICE:
+			if bIceReady:
+				bIceReady = false
+				await get_tree().create_timer(iceCooldown).timeout
+				updateUI(attack)
+			else:
+				bIceReady = true
+			
+
 
 func hit(damage : int) -> void:
 	super(damage)

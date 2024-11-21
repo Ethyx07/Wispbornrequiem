@@ -27,7 +27,7 @@ func _physics_process(_delta: float) -> void:
 			else:
 				if !bSpawningEnemies:
 					bSpawningEnemies = true
-					await get_tree().create_timer(5).timeout
+					await get_tree().create_timer(2.5).timeout
 					spawnEnemies()
 			
 func setPlayerLocation(playerNode : Node2D)->void:
