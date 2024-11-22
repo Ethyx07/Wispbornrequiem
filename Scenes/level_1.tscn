@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=4 uid="uid://dhx6mxr5221b2"]
+[gd_scene load_steps=10 format=4 uid="uid://dhx6mxr5221b2"]
 
 [ext_resource type="Texture2D" uid="uid://bpm3qjj17dji3" path="res://Assets/Tilemap/Tilecracked.png" id="1_76vr3"]
 [ext_resource type="Script" path="res://Scripts/level_logic.gd" id="1_xnx4o"]
 [ext_resource type="PackedScene" uid="uid://c0suvw7ft6h08" path="res://Scenes/tile_map_layer.tscn" id="2_psjqa"]
+[ext_resource type="PackedScene" uid="uid://bnh7jre3dp02y" path="res://Scenes/Enemies/spawn_indicator.tscn" id="3_oofvl"]
 [ext_resource type="TileSet" uid="uid://c11wygxx4yfts" path="res://dungeon_tileset.tres" id="3_xlulj"]
 [ext_resource type="PackedScene" uid="uid://drxld1vfpxhb8" path="res://Scenes/GUI/player_gui.tscn" id="4_cw638"]
 [ext_resource type="PackedScene" uid="uid://c8rc5agxlry6f" path="res://Scenes/Enemies/base_enemy.tscn" id="5_rnktc"]
@@ -17,7 +18,8 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(453, -211, -376, -214, 
 script = ExtResource("1_xnx4o")
 enemyList = Array[PackedScene]([ExtResource("5_rnktc"), ExtResource("5_rnktc")])
 enemySpawns = [NodePath("EnemySpawns/Spawn1"), NodePath("EnemySpawns/Spawn2"), NodePath("EnemySpawns/Spawn3"), NodePath("EnemySpawns/Spawn4"), NodePath("EnemySpawns/Spawn5")]
-finalWave = 1
+finalWave = 2
+spawningIndicator = ExtResource("3_oofvl")
 
 [node name="Tilecracked" type="Sprite2D" parent="."]
 z_index = -1

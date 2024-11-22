@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=4 uid="uid://5n0yome5tq1v"]
+[gd_scene load_steps=14 format=4 uid="uid://5n0yome5tq1v"]
 
 [ext_resource type="Script" path="res://Scripts/level_logic.gd" id="1_8gmwg"]
 [ext_resource type="Texture2D" uid="uid://dnanjexv0r58u" path="res://Assets/Tilemap/Tilemap.png" id="2_hjtq4"]
 [ext_resource type="PackedScene" uid="uid://bk5vxno1mqdyp" path="res://Scenes/Enemies/flying_enemy.tscn" id="3_y5d6h"]
 [ext_resource type="PackedScene" uid="uid://drxld1vfpxhb8" path="res://Scenes/GUI/player_gui.tscn" id="4_6b2o6"]
 [ext_resource type="Texture2D" uid="uid://diyru2do7cejo" path="res://Assets/Tilemap/CornerTilemap.png" id="4_s8vkp"]
+[ext_resource type="PackedScene" uid="uid://bnh7jre3dp02y" path="res://Scenes/Enemies/spawn_indicator.tscn" id="4_yyapl"]
 [ext_resource type="PackedScene" uid="uid://c8rc5agxlry6f" path="res://Scenes/Enemies/base_enemy.tscn" id="5_d66oa"]
 [ext_resource type="PackedScene" uid="uid://em6vqqa3r1gv" path="res://Scenes/Interactables/doorway.tscn" id="6_j3hsg"]
 
@@ -71,6 +72,7 @@ script = ExtResource("1_8gmwg")
 enemyList = Array[PackedScene]([ExtResource("5_d66oa"), ExtResource("3_y5d6h")])
 enemySpawns = [NodePath("EnemySpawns/Spawn1"), NodePath("EnemySpawns/Spawn2"), NodePath("EnemySpawns/Spawn3"), NodePath("EnemySpawns/Spawn4"), NodePath("EnemySpawns/Spawn5")]
 finalWave = 1
+spawningIndicator = ExtResource("4_yyapl")
 
 [node name="TileBackground" type="TileMapLayer" parent="."]
 z_index = -1
