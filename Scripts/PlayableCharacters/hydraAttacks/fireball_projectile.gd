@@ -11,7 +11,7 @@ var fireDamage
 var explosionDamage
 
 var bIsExploding = false
-
+var targetGroup : String
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -29,7 +29,7 @@ func _physics_process(delta: float) -> void:
 
 func _on_collision_area_body_entered(body: Node2D) -> void:
 	if body != parent:
-		if body.is_in_group("Enemy"):
+		if body.is_in_group(targetGroup):
 			body.hit(fireDamage) 
 		call_deferred("explosionHandler")
 
@@ -42,5 +42,5 @@ func explosionHandler() ->void:
 	self.queue_free()
 
 func _on_explosion_radius_body_entered(body: Node2D) -> void:
-	if body.is_in_group("Enemy"):
+	if body.is_in_group(targetGroup):
 		body.hit(explosionDamage) # Replace with function body.

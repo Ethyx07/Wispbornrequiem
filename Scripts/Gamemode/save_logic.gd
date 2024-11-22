@@ -24,7 +24,7 @@ func save_game(slot: int, save_name : String) -> void:
 		DirAccess.make_dir_absolute(save_DIR)
 		
 	var save_data = {
-		"save_name" : "Save %s" % save_name,
+		"save_name" : save_name,
 		"game_data" : Gamemode.activePodiums,
 		"no_runs" : Gamemode.runCount
 	}
@@ -48,6 +48,7 @@ func load_game(slot: int) -> bool:
 		save_file.close()
 		Gamemode.activePodiums = save_data["game_data"]
 		Gamemode.runCount = save_data["no_runs"]
+		Gamemode.saveName = save_data["save_name"]
 	return true
 		
 func delete_save(slot : int) -> void:

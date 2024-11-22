@@ -64,8 +64,11 @@ func attack() -> void:
 	var attackRand = randi_range(0,2)
 	match attackRand:
 		0:
-			print("ice")
+			iceAttack()
 		1:
 			print("fire")
 		2:
 			print("poison")
+
+func iceAttack() -> void:
+	print("ice")

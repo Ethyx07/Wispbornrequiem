@@ -5,6 +5,9 @@ extends "res://Scripts/PlayableCharacters/player_wisp.gd"
 @onready var rightHeadSprite = get_node("playerSprite/rightHead")
 @onready var hp_bar = get_node("hp_bar")
 @onready var uiAnimation = get_node("CanvasLayer/UIAnimation")
+@onready var poisonNode = get_node("CanvasLayer/BoxContainer/poisonAttack")
+@onready var fireNode = get_node("CanvasLayer/BoxContainer/fireAttack")
+@onready var iceNode = get_node("CanvasLayer/BoxContainer/iceAttack")
 
 @export var iceProjectile = preload("res://Scenes/PlayerClasses/hydraAttacks/ice_projectile.tscn")
 @export var fireballProjectile = preload("res://Scenes/PlayerClasses/hydraAttacks/fireball_projectile.tscn")
@@ -21,6 +24,13 @@ enum attackStates {ACID, FIRE, ICE}
 @export var breathCooldown : int
 @export var fireballCooldown : int
 @export var iceCooldown : int
+
+@export var iceTexture : Texture2D
+@export var iceDisabled : Texture2D
+@export var fireTexture : Texture2D
+@export var fireDisabled : Texture2D
+@export var poisonTexture : Texture2D
+@export var poisonDisabled : Texture2D
 
 var currentCooldown : int
 var direction
@@ -42,11 +52,11 @@ func _ready() -> void:
 func loadUI() -> void:
 	match currentAttack:
 		attackStates.ACID:
-			get_node("CanvasLayer/BoxContainer/attackTypes/attackSelect").position = Vector2(0,0)
+			get_node("CanvasLayer/BoxContainer/poisonAttack/attackSelect").position = Vector2(0,0)
 		attackStates.FIRE:
-			get_node("CanvasLayer/BoxContainer/attackTypes/attackSelect").position = Vector2(24,0)
+			get_node("CanvasLayer/BoxContainer/poisonAttack/attackSelect").position = Vector2(24,0)
 		attackStates.ICE:
-			get_node("CanvasLayer/BoxContainer/attackTypes/attackSelect").position = Vector2(48,0)
+			get_node("CanvasLayer/BoxContainer/poisonAttack/attackSelect").position = Vector2(48,0)
 
 func _physics_process(delta: float) -> void:
 	super(delta)
@@ -70,7 +80,7 @@ func _physics_process(delta: float) -> void:
 			if Input.is_action_just_pressed("Dash"):
 				direction = dash()
 		playerState.DASH:
-			velocity = direction * speed * delta * 300
+			velocity = direction * speed * delta * 50
 			self.collision_layer = 0
 			self.collision_layer = (1 << 2)
 			self.collision_mask = 0
@@ -104,9 +114,11 @@ func attack() -> void:
 		attackStates.ACID:
 			if bPoisonReady:
 				acidAttack()
+				updateUI(attackStates.ACID)
 		attackStates.FIRE:
 			if bFireReady:
 				fireAttack()
+				updateUI(attackStates.FIRE)
 		attackStates.ICE:
 			if bIceReady:
 				iceAttack()
@@ -119,6 +131,7 @@ func iceAttack() -> void:
 	for i in iceSpawns:
 			var iceTemp = iceProjectile.instantiate()
 			iceTemp.parent = self
+			iceTemp.targetGroup = "Enemy"
 			iceTemp.damage = iceDamage
 			iceTemp.global_position = self.global_position
 			iceTemp.look_at(get_global_mouse_position())
@@ -130,6 +143,7 @@ func iceAttack() -> void:
 func fireAttack() -> void:
 	var fireTemp = fireballProjectile.instantiate()
 	fireTemp.parent = self
+	fireTemp.targetGroup = "Enemy"
 	fireTemp.fireDamage = fireDamage
 	fireTemp.explosionDamage = explosionDamage
 	fireTemp.global_position = get_node("attackMarker/attackDirection").global_position
@@ -138,24 +152,44 @@ func fireAttack() -> void:
 
 func acidAttack() -> void:
 	var acidTemp = acidBreath.instantiate()
-	acidTemp.global_position = get_node("attackMarker/attackDirection").global_position
+	acidTemp.global_position = get_node("attackMarker").global_position
 	acidTemp.look_at(get_global_mouse_position())
 	acidTemp.parent = self
+	acidTemp.targetGroup = "Enemy"
 	acidTemp.breathDamage = acidDamage
 	acidTemp.poisonDamage = acidPoisonDamage
 	acidTemp.poisonTick = poisonTick
 	get_tree().root.add_child(acidTemp)
 	
-func updateUI(attack : attackStates)->void:
-	match attack:
+func updateUI(attackStat : attackStates)->void:
+	match attackStat:
 		attackStates.ICE:
 			if bIceReady:
 				bIceReady = false
+				iceNode.texture = iceDisabled
 				await get_tree().create_timer(iceCooldown).timeout
-				updateUI(attack)
+				updateUI(attackStat)
 			else:
 				bIceReady = true
-			
+				iceNode.texture = iceTexture
+		attackStates.FIRE:
+			if bFireReady:
+				bFireReady = false
+				fireNode.texture = fireDisabled
+				await get_tree().create_timer(fireballCooldown).timeout
+				updateUI(attackStat)
+			else:
+				bFireReady = true
+				fireNode.texture = fireTexture
+		attackStates.ACID:
+			if bPoisonReady:
+				bPoisonReady = false
+				poisonNode.texture = poisonDisabled
+				await get_tree().create_timer(breathCooldown).timeout
+				updateUI(attackStat)
+			else:
+				bPoisonReady = true
+				poisonNode.texture = poisonTexture
 
 
 func hit(damage : int) -> void:

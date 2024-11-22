@@ -1,12 +1,15 @@
-[gd_scene load_steps=21 format=3 uid="uid://du8becrhraynp"]
+[gd_scene load_steps=24 format=3 uid="uid://du8becrhraynp"]
 
 [ext_resource type="Script" path="res://Scripts/PlayableCharacters/hydra.gd" id="1_ssvo3"]
 [ext_resource type="Texture2D" uid="uid://nrxlphynyx12" path="res://Assets/Enemy/CorruptEnemy/CorruptHydra/FreedHydraBody.png" id="2_catek"]
 [ext_resource type="Texture2D" uid="uid://btdrqypmntaop" path="res://Assets/Enemy/CorruptEnemy/CorruptHydra/FreedHydraLeftHead.png" id="3_3u631"]
+[ext_resource type="Texture2D" uid="uid://bfboss7vradvc" path="res://Assets/GUI/HydraGUI/HydraAttackIceCooldown.png" id="3_07lw7"]
 [ext_resource type="Texture2D" uid="uid://bap1b083cw08e" path="res://Assets/PlayerSprites/AttackArrow.png" id="3_y7ek5"]
 [ext_resource type="Texture2D" uid="uid://d2ik65iy3dktc" path="res://Assets/Enemy/CorruptEnemy/CorruptHydra/FreedHydraMiddleHead.png" id="4_2otqk"]
 [ext_resource type="Texture2D" uid="uid://xosdynni4ght" path="res://Assets/Enemy/CorruptEnemy/CorruptHydra/FreedHydraRightHead.png" id="5_drcaf"]
+[ext_resource type="Texture2D" uid="uid://be7y04leuthop" path="res://Assets/GUI/HydraGUI/HydraAttackFireCooldown.png" id="5_nyu7x"]
 [ext_resource type="Texture2D" uid="uid://b7kf6ij5taaor" path="res://Assets/GUI/HydraGUI/HydraAttackPoison.png" id="7_3y01r"]
+[ext_resource type="Texture2D" uid="uid://d0v86em0ftm67" path="res://Assets/GUI/HydraGUI/HydraAttackPoisonCooldown.png" id="7_uc2a0"]
 [ext_resource type="Texture2D" uid="uid://bhi5emqu6mt70" path="res://Assets/GUI/HydraGUI/HydraSelect.png" id="8_aahb1"]
 [ext_resource type="Texture2D" uid="uid://cehpb3gna1kee" path="res://Assets/GUI/HydraGUI/HydraAttackFire.png" id="9_5bsae"]
 [ext_resource type="Texture2D" uid="uid://dmp8b5kps07sy" path="res://Assets/GUI/HydraGUI/HydraAttackIce.png" id="10_dwwka"]
@@ -113,6 +116,12 @@ poisonTick = 5
 breathCooldown = 5
 fireballCooldown = 2
 iceCooldown = 3
+iceTexture = ExtResource("10_dwwka")
+iceDisabled = ExtResource("3_07lw7")
+fireTexture = ExtResource("9_5bsae")
+fireDisabled = ExtResource("5_nyu7x")
+poisonTexture = ExtResource("7_3y01r")
+poisonDisabled = ExtResource("7_uc2a0")
 speed = 400.0
 health = 100.0
 sceneKey = "Hydra"
@@ -200,6 +209,16 @@ scale = Vector2(5, 5)
 pivot_offset = Vector2(85, 120)
 theme_override_constants/separation = -128
 
+[node name="fireAttack" type="TextureRect" parent="CanvasLayer/BoxContainer"]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("9_5bsae")
+
+[node name="iceAttack" type="TextureRect" parent="CanvasLayer/BoxContainer"]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("10_dwwka")
+
 [node name="poisonAttack" type="TextureRect" parent="CanvasLayer/BoxContainer"]
 texture_filter = 1
 layout_mode = 2
@@ -211,16 +230,6 @@ layout_mode = 2
 offset_right = 128.0
 offset_bottom = 128.0
 texture = ExtResource("8_aahb1")
-
-[node name="fireAttack" type="TextureRect" parent="CanvasLayer/BoxContainer"]
-texture_filter = 1
-layout_mode = 2
-texture = ExtResource("9_5bsae")
-
-[node name="iceAttack" type="TextureRect" parent="CanvasLayer/BoxContainer"]
-texture_filter = 1
-layout_mode = 2
-texture = ExtResource("10_dwwka")
 
 [node name="cooldownTimer" type="Timer" parent="."]
 
