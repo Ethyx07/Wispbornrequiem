@@ -52,7 +52,7 @@ func spawnEnemies() -> void:
 		spawnPoint.global_position = enemySpawns[i].global_position
 		enemyToSpawn.append(enemyTemp)
 	var spawnIndex = 0
-	await get_tree().create_timer(2).timeout
+	await get_tree().create_timer(2.5).timeout
 	for enemy in enemyToSpawn:
 		add_child(enemy)
 		enemy.global_position = enemySpawns[spawnIndex].global_position
