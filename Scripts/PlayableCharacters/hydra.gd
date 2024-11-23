@@ -60,17 +60,16 @@ func loadUI() -> void:
 
 func _physics_process(delta: float) -> void:
 	super(delta)
-	if Input.is_action_pressed("Left") or Input.is_action_pressed("Right"):
-		if inputVector.x >= 0:
-			playerSprite.flip_h = true
-			leftHeadSprite.flip_h = true
-			middleHeadSprite.flip_h = true
-			rightHeadSprite.flip_h = true
-		else:
-			playerSprite.flip_h = false
-			leftHeadSprite.flip_h = false
-			middleHeadSprite.flip_h = false
-			rightHeadSprite.flip_h = false
+	if inputVector.x > 0:
+		playerSprite.flip_h = true
+		leftHeadSprite.flip_h = true
+		middleHeadSprite.flip_h = true
+		rightHeadSprite.flip_h = true
+	else:
+		playerSprite.flip_h = false
+		leftHeadSprite.flip_h = false
+		middleHeadSprite.flip_h = false
+		rightHeadSprite.flip_h = false
 	if Input.is_action_just_pressed("SpecialAttack"):
 		changeAttackType()
 	match currentState:
@@ -134,7 +133,10 @@ func iceAttack() -> void:
 			iceTemp.targetGroup = "Enemy"
 			iceTemp.damage = iceDamage
 			iceTemp.global_position = self.global_position
-			iceTemp.look_at(get_global_mouse_position())
+			if currentDevice == controllerState.KBM:
+				iceTemp.look_at(get_global_mouse_position())
+			else:
+				iceTemp.rotation = get_node("attackMarker").rotation
 			if i == 0:
 				firstRotation = iceTemp.rotation_degrees
 			iceTemp.rotation_degrees = ((360*i)/float(iceSpawns)) + firstRotation
@@ -147,13 +149,19 @@ func fireAttack() -> void:
 	fireTemp.fireDamage = fireDamage
 	fireTemp.explosionDamage = explosionDamage
 	fireTemp.global_position = get_node("attackMarker/attackDirection").global_position
-	fireTemp.look_at(get_global_mouse_position())
+	if currentDevice == controllerState.KBM:
+		fireTemp.look_at(get_global_mouse_position())
+	else:
+		fireTemp.rotation = get_node("attackMarker").rotation
 	get_tree().root.add_child(fireTemp)
 
 func acidAttack() -> void:
 	var acidTemp = acidBreath.instantiate()
 	acidTemp.global_position = get_node("attackMarker").global_position
-	acidTemp.look_at(get_global_mouse_position())
+	if currentDevice == controllerState.KBM:
+		acidTemp.look_at(get_global_mouse_position())
+	else:
+		acidTemp.rotation = get_node("attackMarker").rotation
 	acidTemp.parent = self
 	acidTemp.targetGroup = "Enemy"
 	acidTemp.breathDamage = acidDamage

@@ -68,7 +68,10 @@ func attack()-> void:
 	axeTemp.parent = self
 	add_child(axeTemp)
 	axeTemp.global_position = get_node("attackMarker/hitbox/attackbox").global_position
-	axeTemp.look_at(get_global_mouse_position())
+	if currentDevice == controllerState.KBM:
+		axeTemp.look_at(get_global_mouse_position())
+	else:
+		axeTemp.rotation = get_node("attackMarker").rotation
 	axeTemp.get_node("axe_anim").play("slash_appear")
 	await get_tree().create_timer(0.5).timeout
 	get_node("attackMarker/hitbox/attackbox").disabled = true
@@ -85,9 +88,14 @@ func specialAttack() -> void:
 		return
 	bCanUseSpecial = false
 	specialCooldownNode.value = 0
-	heldAxe.look_at(get_global_mouse_position())
+	if currentDevice == controllerState.KBM:
+		heldAxe.look_at(get_global_mouse_position())
+		heldAxe.direction = (get_global_mouse_position() - get_node("attackMarker").global_position).normalized()
+	else:
+		heldAxe.rotation = get_node("attackMarker").rotation
+		heldAxe.direction = (get_node("attackMarker/attackDirection").global_position - get_node("attackMarker").global_position).normalized()
 	heldAxe.currentState = heldAxe.weaponState.THROWN
-	heldAxe.direction = (get_global_mouse_position() - get_node("attackMarker").global_position).normalized()
+	
 	currentState = playerState.ATTACK
 	
 func startSpecialCooldown() ->void:

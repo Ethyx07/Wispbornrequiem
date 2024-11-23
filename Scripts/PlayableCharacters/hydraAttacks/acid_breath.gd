@@ -16,7 +16,11 @@ func _ready() -> void:
 
 func _physics_process(_delta: float) -> void:
 	self.global_position = parent.get_node("attackMarker/attackDirection").global_position
-	self.look_at(get_global_mouse_position())
+	if parent.currentDevice == parent.controllerState.KBM:
+		self.look_at(get_global_mouse_position())
+	else:
+		self.rotation = parent.get_node("attackMarker").rotation
+	
 
 func _on_collision_area_body_entered(body: Node2D) -> void:
 	if body != parent and body.is_in_group(targetGroup) and !hitBody.has(body):

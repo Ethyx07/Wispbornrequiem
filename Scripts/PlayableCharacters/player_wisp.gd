@@ -12,9 +12,12 @@ extends CharacterBody2D
 @export var maxHealth : float
 
 enum playerState {NEUTRAL, ATTACK, DEAD, DASH}
+enum controllerState {KBM, Controller}
+
+var currentDevice = controllerState.KBM
 @export var currentState : playerState
 var bUlting : bool = false
-
+var attackInput
 
 @export var sceneKey : String
 
@@ -33,9 +36,13 @@ func _physics_process(_delta: float) -> void:
 		playerState.DEAD:
 			return
 		_:
-			inputVector = Vector2.ZERO
-			inputVector.x = Input.get_action_strength("Right") - Input.get_action_strength("Left")
-			inputVector.y = Input.get_action_strength("Down") - Input.get_action_strength("Up")
+			if currentDevice == controllerState.KBM:
+				inputVector = Vector2.ZERO
+				inputVector.x = Input.get_action_strength("Right") - Input.get_action_strength("Left")
+				inputVector.y = Input.get_action_strength("Down") - Input.get_action_strength("Up")
+			else:
+				inputVector = Input.get_vector("Left", "Right", "Up", "Down")
+			
 			if inputVector.x < 0:
 				#faces to the left
 				playerSprite.flip_h = true
@@ -51,13 +58,25 @@ func _physics_process(_delta: float) -> void:
 	
 		#Moves attack direction
 			if is_instance_valid(attackDirection):
-				attackDirection.look_at(get_global_mouse_position())
+				attackInput = Vector2( Input.get_action_strength("aimRight") - Input.get_action_strength("aimLeft"),
+				Input.get_action_strength("aimDown") - Input.get_action_strength("aimUp"))
+				if currentDevice == controllerState.Controller and attackInput.length() > 0.1:
+					attackDirection.rotation = attackInput.angle()
+				elif currentDevice == controllerState.KBM:
+					attackDirection.look_at(get_global_mouse_position())
 		
 			if Input.is_action_just_pressed("Interact"):
 				if is_instance_valid(facingBody):
 					facingBody.interact(get_node("."))
 		#Dash mechanic and spawning of 2 smoke bomb particle effects at each dash point
 	lastState = currentState
+
+func _input(event: InputEvent) -> void:
+	if event is InputEventKey:
+		currentDevice = controllerState.KBM
+	elif event is InputEventJoypadButton or event is InputEventJoypadMotion:
+		currentDevice = controllerState.Controller
+		
 
 func _on_interactable_box_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Interactable") and !is_instance_valid(facingBody):
@@ -75,7 +94,9 @@ func _on_particle_finished(particleInstance : Node)-> void:
 func dash()-> Vector2:
 	#Creates particle where the player leaves from
 		currentState = playerState.DASH
-		return (get_global_mouse_position() - self.global_position).normalized()
+		if currentDevice == controllerState.KBM:	
+			return (get_global_mouse_position() - self.global_position).normalized()
+		return (get_node("attackMarker/attackDirection").global_position - self.global_position).normalized()
 
 	
 func attack() -> void:
@@ -89,6 +110,11 @@ func special_hit(body : Node2D) -> void:
 	
 func hit(damage : int) -> void:
 	health -= damage
+	if currentDevice == controllerState.Controller:
+		var joypads = Input.get_connected_joypads()
+		if joypads.size() > 0:
+			var joypadIndex = joypads[0]
+			Input.start_joy_vibration(joypadIndex, 1, 1, 0.25)
 	if health <= 0: 
 		health = 0
 		Gamemode.respawn()
