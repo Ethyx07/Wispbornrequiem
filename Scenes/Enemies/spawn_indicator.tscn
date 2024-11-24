@@ -14,6 +14,21 @@
 [ext_resource type="Texture2D" uid="uid://josmxuv1fgju" path="res://Assets/Enemy/EnemySpawn/EnemySpawn11.png" id="12_ricqd"]
 [ext_resource type="Texture2D" uid="uid://dfxwmp3bn3cq6" path="res://Assets/Enemy/EnemySpawn/EnemySpawn12.png" id="13_86u6g"]
 
+[sub_resource type="Animation" id="Animation_kmo4n"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("spawnSprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_e3s7p")]
+}
+
 [sub_resource type="Animation" id="Animation_5drv2"]
 resource_name = "spawnAnim"
 length = 2.5
@@ -29,21 +44,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [ExtResource("2_e3s7p"), ExtResource("3_mp4xp"), ExtResource("4_8bmow"), ExtResource("5_ki46u"), ExtResource("6_lhicp"), ExtResource("7_gqegy"), ExtResource("8_n11dl"), ExtResource("9_te6sy"), ExtResource("10_of7wd"), ExtResource("11_wp6g5"), ExtResource("12_ricqd"), ExtResource("13_86u6g")]
-}
-
-[sub_resource type="Animation" id="Animation_kmo4n"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("spawnSprite:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("2_e3s7p")]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jdji7"]

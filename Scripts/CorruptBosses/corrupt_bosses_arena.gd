@@ -8,6 +8,11 @@ extends Node2D
 
 @export var bossEnemy : PackedScene
 
+@export var cameraXMax : float
+@export var cameraXMin : float
+@export var cameraYMax : float
+@export var cameraYMin : float
+
 var player
 var boss
 # Called when the node enters the scene tree for the first time.
@@ -28,7 +33,10 @@ func _ready() -> void:
 	boss.arenaNode = self
 	boss.global_position = get_node("BossSpawn").global_position
 	setPlayerLocation(get_tree().get_first_node_in_group("Player"))
-
+	player.get_node("Camera2D").limit_left = cameraXMin
+	player.get_node("Camera2D").limit_right = cameraXMax
+	player.get_node("Camera2D").limit_top = cameraYMin
+	player.get_node("Camera2D").limit_bottom = cameraYMax
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:

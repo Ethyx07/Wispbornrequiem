@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=4 uid="uid://bit46outrbqa1"]
+[gd_scene load_steps=11 format=4 uid="uid://bit46outrbqa1"]
 
 [ext_resource type="Script" path="res://Scripts/CorruptBosses/corrupt_bosses_arena.gd" id="1_cp1hg"]
 [ext_resource type="PackedScene" uid="uid://drxld1vfpxhb8" path="res://Scenes/GUI/player_gui.tscn" id="2_scq1u"]
 [ext_resource type="PackedScene" uid="uid://dbcsm5nbsnsd8" path="res://Scenes/Enemies/CorruptMinibosses/corrupt_hydra.tscn" id="2_urs27"]
 [ext_resource type="Texture2D" uid="uid://diyru2do7cejo" path="res://Assets/Tilemap/CornerTilemap.png" id="3_stu14"]
 [ext_resource type="Texture2D" uid="uid://dnanjexv0r58u" path="res://Assets/Tilemap/Tilemap.png" id="4_nhiju"]
+[ext_resource type="PackedScene" uid="uid://du8becrhraynp" path="res://Scenes/PlayerClasses/hydra.tscn" id="6_ml8y3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dqgv0"]
 texture = ExtResource("3_stu14")
@@ -63,6 +64,10 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-313, -115, -313, 397, 
 [node name="corruptDragonArena" type="Node2D" groups=["Level"]]
 script = ExtResource("1_cp1hg")
 bossEnemy = ExtResource("2_urs27")
+cameraXMax = 544.0
+cameraXMin = -512.0
+cameraYMax = 544.0
+cameraYMin = -160.0
 
 [node name="TileBackground" type="TileMapLayer" parent="."]
 z_index = -1
@@ -99,3 +104,8 @@ visibility_layer = 5
 position = Vector2(-11, 300)
 build_mode = 1
 polygon = PackedVector2Array(-630, 84, -374, 84, -374, 116, -342, 116, -342, 212, -246, 212, -246, 116, -214, 116, -214, 84, 74, 84, 74, -428, -630, -428)
+
+[node name="hydra" parent="." instance=ExtResource("6_ml8y3")]
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(-512, 544)

@@ -8,6 +8,8 @@ extends CharacterBody2D
 @onready var animPlayer = get_node("animPlayer")
 @onready var nav_agent = get_node("NavAgent")
 
+
+
 var targetPlayer : CharacterBody2D
 var currentHealth
 var arenaNode
@@ -20,6 +22,7 @@ func _ready() -> void:
 	nav_agent.path_desired_distance = 4.0
 	nav_agent.target_desired_distance = 40
 	currentState = bossState.CHASE
+	
 
 func _physics_process(delta: float) -> void:
 	if is_instance_valid(targetPlayer) and currentState == bossState.CHASE:

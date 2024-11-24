@@ -8,6 +8,12 @@ class_name WorldScene
 @export var finalWave : int
 @export var spawningIndicator : PackedScene
 
+@export var cameraXMax : float
+@export var cameraXMin : float
+@export var cameraYMax : float
+@export var cameraYMin : float
+
+
 var player
 var bSpawningEnemies = false
 
@@ -38,6 +44,10 @@ func setPlayerLocation(playerNode : Node2D)->void:
 func _ready() -> void:
 	doorwayHitbox.disabled = true
 	setPlayerLocation(get_tree().get_first_node_in_group("Player"))
+	player.get_node("Camera2D").limit_left = cameraXMin
+	player.get_node("Camera2D").limit_right = cameraXMax
+	player.get_node("Camera2D").limit_top = cameraYMin
+	player.get_node("Camera2D").limit_bottom = cameraYMax
 	
 func spawnEnemies() -> void:
 	bHasSomethingSpawned = false

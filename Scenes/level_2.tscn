@@ -73,6 +73,10 @@ enemyList = Array[PackedScene]([ExtResource("5_d66oa"), ExtResource("3_y5d6h")])
 enemySpawns = [NodePath("EnemySpawns/Spawn1"), NodePath("EnemySpawns/Spawn2"), NodePath("EnemySpawns/Spawn3"), NodePath("EnemySpawns/Spawn4"), NodePath("EnemySpawns/Spawn5")]
 finalWave = 1
 spawningIndicator = ExtResource("4_yyapl")
+cameraXMax = 770.0
+cameraXMin = -450.0
+cameraYMax = 610.0
+cameraYMin = -290.0
 
 [node name="TileBackground" type="TileMapLayer" parent="."]
 z_index = -1

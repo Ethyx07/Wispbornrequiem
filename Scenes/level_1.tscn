@@ -10,9 +10,9 @@
 [ext_resource type="PackedScene" uid="uid://em6vqqa3r1gv" path="res://Scenes/Interactables/doorway.tscn" id="6_t57sh"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_varl8"]
-vertices = PackedVector2Array(442.961, -201.031, 442.031, 99.9531, -366.961, 96.0391, -366.031, -203.961)
+vertices = PackedVector2Array(445, 99, -367, 99, -367, -201, 445, -201)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(453, -211, -376, -214, -377, 106, 452, 110)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(455, -211, -377, -211, -377, 109, 455, 109)])
 
 [node name="level1" type="Node2D" node_paths=PackedStringArray("enemySpawns") groups=["Level"]]
 script = ExtResource("1_xnx4o")
@@ -20,6 +20,10 @@ enemyList = Array[PackedScene]([ExtResource("5_rnktc"), ExtResource("5_rnktc")])
 enemySpawns = [NodePath("EnemySpawns/Spawn1"), NodePath("EnemySpawns/Spawn2"), NodePath("EnemySpawns/Spawn3"), NodePath("EnemySpawns/Spawn4"), NodePath("EnemySpawns/Spawn5")]
 finalWave = 2
 spawningIndicator = ExtResource("3_oofvl")
+cameraXMax = 1000.0
+cameraXMin = -1000.0
+cameraYMax = 1000.0
+cameraYMin = -1000.0
 
 [node name="Tilecracked" type="Sprite2D" parent="."]
 z_index = -1
@@ -71,3 +75,17 @@ position = Vector2(0, -61)
 
 [node name="Spawn5" type="Node2D" parent="EnemySpawns"]
 position = Vector2(112, -84)
+
+[node name="WorldBorder" type="StaticBody2D" parent="."]
+light_mask = 4
+visibility_layer = 4
+position = Vector2(321, 0)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionPolygon2D5" type="CollisionPolygon2D" parent="WorldBorder"]
+light_mask = 5
+visibility_layer = 5
+position = Vector2(-1, 258)
+build_mode = 1
+polygon = PackedVector2Array(128, -162, -704, -162, -704, -482, 128, -482)

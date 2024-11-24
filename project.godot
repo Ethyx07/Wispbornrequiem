@@ -21,6 +21,12 @@ PlayerData="*res://Scripts/Gamemode/player_data.gd"
 Gamemode="*res://Scripts/Gamemode/gamemode.gd"
 SaveLogic="*res://Scripts/Gamemode/save_logic.gd"
 
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/stretch/mode="viewport"
+
 [global_group]
 
 Interactable=""
