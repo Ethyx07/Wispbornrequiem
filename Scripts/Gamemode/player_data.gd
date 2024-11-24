@@ -30,6 +30,7 @@ func loadPlayerInfo(player : CharacterBody2D) -> void:
 				playerNode.heldAxe.queue_free()
 			if is_instance_valid(player.armour_bar):
 				player.armourPoints = playerNode.armourPoints
+				player.bUlting = playerNode.bUlting
 				player.armour_bar.value = player.armourPoints
 		if(player.sceneKey == "Hydra"):
 			player.currentAttack = playerNode.currentAttack

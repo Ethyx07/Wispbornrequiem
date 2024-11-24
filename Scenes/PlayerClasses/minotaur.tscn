@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://5aa26iu24g7d"]
+[gd_scene load_steps=13 format=3 uid="uid://br3idkko52naa"]
 
 [ext_resource type="Script" path="res://Scripts/PlayableCharacters/minotaur.gd" id="1_65rwl"]
 [ext_resource type="Texture2D" uid="uid://d1y1nna7gh48m" path="res://Assets/PlayerSprites/Minotaur.png" id="2_mwkb6"]
