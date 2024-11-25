@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://du8becrhraynp"]
+[gd_scene load_steps=25 format=3 uid="uid://du8becrhraynp"]
 
 [ext_resource type="Script" path="res://Scripts/PlayableCharacters/hydra.gd" id="1_ssvo3"]
 [ext_resource type="Texture2D" uid="uid://nrxlphynyx12" path="res://Assets/Enemy/CorruptEnemy/CorruptHydra/FreedHydraBody.png" id="2_catek"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://bhi5emqu6mt70" path="res://Assets/GUI/HydraGUI/HydraSelect.png" id="8_aahb1"]
 [ext_resource type="Texture2D" uid="uid://cehpb3gna1kee" path="res://Assets/GUI/HydraGUI/HydraAttackFire.png" id="9_5bsae"]
 [ext_resource type="Texture2D" uid="uid://dmp8b5kps07sy" path="res://Assets/GUI/HydraGUI/HydraAttackIce.png" id="10_dwwka"]
+[ext_resource type="PackedScene" uid="uid://cvlupvlvcx1bl" path="res://Scenes/PlayerClasses/hydraAttacks/lightning_attack.tscn" id="14_xelji"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qip2i"]
 radius = 27.0
@@ -232,6 +233,8 @@ offset_bottom = 128.0
 texture = ExtResource("8_aahb1")
 
 [node name="cooldownTimer" type="Timer" parent="."]
+
+[node name="lightningAttack" parent="." instance=ExtResource("14_xelji")]
 
 [connection signal="body_entered" from="InteractableBox" to="." method="_on_interactable_box_body_entered"]
 [connection signal="body_exited" from="InteractableBox" to="." method="_on_interactable_box_body_exited"]

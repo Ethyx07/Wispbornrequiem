@@ -4,6 +4,7 @@ extends Control
 
 @export var poisonSprite : Texture2D
 @export var charmSprite : Texture2D
+@export var stunSprite : Texture2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -21,6 +22,9 @@ func updateStatusUI(body : CharacterBody2D):
 			statusSprite.texture = poisonSprite
 		body.statusState.CHARM:
 			statusSprite.texture = charmSprite
+		body.statusState.STUN:
+			statusSprite.texture = stunSprite
 		_:
 			hide()
+			return
 	show()

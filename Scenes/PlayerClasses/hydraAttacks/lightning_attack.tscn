@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://cvlupvlvcx1bl"]
+
+[ext_resource type="Script" path="res://Scripts/PlayableCharacters/hydraAttacks/lightning_attack.gd" id="1_7vk1f"]
+[ext_resource type="Texture2D" uid="uid://bvcosakqjy4ij" path="res://Assets/Weapons/HydraAttacks/lightningTemp.png" id="2_cwbi5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_y46u8"]
+radius = 100.0
+
+[node name="lightningAttack" type="Node2D"]
+script = ExtResource("1_7vk1f")
+
+[node name="sprite" type="Sprite2D" parent="."]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(16, 0)
+texture = ExtResource("2_cwbi5")
+offset = Vector2(16, 0)
+region_enabled = true
+region_rect = Rect2(0, 9, 64, 12)
+
+[node name="detection" type="Area2D" parent="."]
+
+[node name="zapRadius" type="CollisionShape2D" parent="detection"]
+shape = SubResource("CircleShape2D_y46u8")
+disabled = true
+
+[connection signal="body_entered" from="detection" to="." method="_on_detection_body_entered"]

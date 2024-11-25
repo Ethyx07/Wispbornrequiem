@@ -35,7 +35,7 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	if is_instance_valid(targetPlayer) and currentState == enemyState.CHASE:
+	if is_instance_valid(targetPlayer) and currentState == enemyState.CHASE and statusEffect != statusState.STUN:
 		get_node("hitbox").look_at(targetPlayer.global_position)
 		if !bKnockedback and nav_agent.distance_to_target() > nav_agent.target_desired_distance:
 			nav_agent.target_position = targetPlayer.global_position
@@ -104,6 +104,8 @@ func checkStatus() -> void:
 	match statusEffect:
 		statusState.POISON:
 			dealPoisonDamage()
+		statusState.STUN:
+			stunLogic()
 	statusBar.updateStatusUI(self)
 			
 func dealPoisonDamage() -> void:
@@ -116,6 +118,11 @@ func dealPoisonDamage() -> void:
 		await get_tree().create_timer(1).timeout
 	else:
 		statusEffect = statusState.CHARM
+	checkStatus()
+
+func stunLogic() -> void:
+	await get_tree().create_timer(2).timeout
+	statusEffect = statusState.NONE
 	checkStatus()
 
 func remove_self() ->void:

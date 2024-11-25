@@ -8,6 +8,7 @@ extends "res://Scripts/PlayableCharacters/player_wisp.gd"
 @onready var poisonNode = get_node("CanvasLayer/BoxContainer/poisonAttack")
 @onready var fireNode = get_node("CanvasLayer/BoxContainer/fireAttack")
 @onready var iceNode = get_node("CanvasLayer/BoxContainer/iceAttack")
+@onready var ultZap = get_node("lightningAttack")
 
 @export var iceProjectile = preload("res://Scenes/PlayerClasses/hydraAttacks/ice_projectile.tscn")
 @export var fireballProjectile = preload("res://Scenes/PlayerClasses/hydraAttacks/fireball_projectile.tscn")
@@ -40,7 +41,9 @@ var bCanSwap : bool = true
 var bIceReady : bool = true
 var bFireReady : bool = true
 var bPoisonReady : bool = true
+var bUltFireReady : bool = true
 var iceSpawns = 10
+var totalChain = 3
 
 func _ready() -> void:
 	inputVector = Vector2.ZERO
@@ -48,6 +51,7 @@ func _ready() -> void:
 	hp_bar.max_value = maxHealth
 	hp_bar.value = health
 	currentState = playerState.NEUTRAL
+	ultZap.hide()
 	
 func loadUI() -> void:
 	match currentAttack:
@@ -78,6 +82,8 @@ func _physics_process(delta: float) -> void:
 				attack()
 			if Input.is_action_just_pressed("Dash"):
 				direction = dash()
+			if Input.is_action_just_pressed("ActivateUlt") and bUltFireReady:
+				ultAttack()
 		playerState.DASH:
 			velocity = direction * speed * delta * 50
 			self.collision_layer = 0
@@ -169,6 +175,27 @@ func acidAttack() -> void:
 	acidTemp.poisonTick = poisonTick
 	get_tree().root.add_child(acidTemp)
 	
+func ultAttack() -> void:
+	var dist = 9999
+	var targetEnemy
+	for enemy in get_tree().get_nodes_in_group("Enemy"):
+		if self.global_position.distance_to(enemy.global_position) < dist:
+			targetEnemy = enemy
+			dist = self.global_position.distance_to(enemy.global_position)
+	if !is_instance_valid(targetEnemy):
+		return
+	ultZap.show()
+	bUltFireReady = false
+	ultZap.chainCount = 0
+	ultZap.parent = self
+	ultZap.totalChain = totalChain
+	ultZap.global_position = self.global_position
+	
+	ultZap.target = targetEnemy
+	ultZap.spark(self.global_position.distance_to(ultZap.target.global_position))
+	await get_tree().create_timer(3).timeout
+	bUltFireReady = true
+
 func updateUI(attackStat : attackStates)->void:
 	match attackStat:
 		attackStates.ICE:

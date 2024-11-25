@@ -1,11 +1,10 @@
-[gd_scene load_steps=29 format=3 uid="uid://bfyn2oiwvmtcd"]
+[gd_scene load_steps=28 format=3 uid="uid://bfyn2oiwvmtcd"]
 
 [ext_resource type="Script" path="res://Scripts/hub_scene.gd" id="1_k7cri"]
 [ext_resource type="PackedScene" uid="uid://2413ue8fbi7x" path="res://Scenes/PlayerClasses/player_wisp.tscn" id="1_nhtfs"]
 [ext_resource type="PackedScene" uid="uid://baog375jtohmk" path="res://Scenes/Interactables/Podiums/minotaur_podium.tscn" id="2_yg01w"]
 [ext_resource type="Script" path="res://doorways.gd" id="4_rclxa"]
 [ext_resource type="PackedScene" uid="uid://bw6odkkd1o7ae" path="res://Scenes/Interactables/Podiums/hydra_podium.tscn" id="4_sdbm1"]
-[ext_resource type="PackedScene" uid="uid://du8becrhraynp" path="res://Scenes/PlayerClasses/hydra.tscn" id="5_nhupa"]
 [ext_resource type="Texture2D" uid="uid://it03gpwv0lpg" path="res://Assets/Tilemap/doorUnlocking/TileDoorwayLocked1.png" id="6_enpus"]
 [ext_resource type="Texture2D" uid="uid://b11ivvm03i0c6" path="res://Scenes/Interactables/Doors/DoorHighlighted.png" id="7_xef2r"]
 [ext_resource type="Texture2D" uid="uid://bnq5k5bc63gv5" path="res://Scenes/Interactables/Doors/TileDoorway.png" id="8_klkc8"]
@@ -74,7 +73,6 @@ startingPlayer = ExtResource("1_nhtfs")
 bUnlocked = false
 
 [node name="HydraPodium" parent="." instance=ExtResource("4_sdbm1")]
-posssesCharacter = ExtResource("5_nhupa")
 
 [node name="doorway" type="StaticBody2D" parent="." groups=["Interactable"]]
 position = Vector2(176, 0)
