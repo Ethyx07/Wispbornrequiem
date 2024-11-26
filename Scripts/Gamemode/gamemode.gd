@@ -39,8 +39,6 @@ func respawn() -> void:
 	var projectiles = get_tree().get_nodes_in_group("Projectile")
 	for proj in projectiles:
 		proj.queue_free()
-	var boss = get_tree().get_first_node_in_group("Boss")
-	boss.queue_free()
 	var enemies = get_tree().get_nodes_in_group("Enemy")
 	for enemy in enemies:
 		enemy.call_deferred("remove_self")

@@ -31,7 +31,12 @@ var bCanUseSpecial = true
 var lastState
 var inputVector
 
-func _physics_process(_delta: float) -> void:
+var shakeStrength : float = 0
+var randShake : float = 15
+var shakeFade : float = 5
+var rng = RandomNumberGenerator.new()
+
+func _physics_process(delta: float) -> void:
 	match currentState:
 		playerState.DEAD:
 			return
@@ -68,7 +73,10 @@ func _physics_process(_delta: float) -> void:
 			if Input.is_action_just_pressed("Interact"):
 				if is_instance_valid(facingBody):
 					facingBody.interact(get_node("."))
-		#Dash mechanic and spawning of 2 smoke bomb particle effects at each dash point
+			if shakeStrength > 0:
+				shakeStrength = lerpf(shakeStrength, 0, shakeFade * delta)
+				get_node("Camera2D").offset = Vector2(rng.randf_range(-shakeStrength, shakeStrength), rng.randf_range(-shakeStrength, shakeStrength))
+				
 	lastState = currentState
 
 func _input(event: InputEvent) -> void:
@@ -125,7 +133,10 @@ func ultActivate() ->void:
 func pitCheck()->void:
 	if lastState == playerState.DASH and currentState == playerState.NEUTRAL:
 		print("Working")
-		
+	
+func shakeScreen():
+	shakeStrength = randShake
+	
 func remove_self() -> void:
 	self.queue_free()
 		

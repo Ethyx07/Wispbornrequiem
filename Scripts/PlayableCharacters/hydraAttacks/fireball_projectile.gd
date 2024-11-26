@@ -1,7 +1,7 @@
 extends Node2D
 
 @onready var explosionAnim = get_node("explosionAnim")
-@onready var explosionHitbox = get_node("explosionRadius/explosionShape")
+@onready var explosionHitbox = get_node("fireballProj/explosionRadius/explosionShape")
 @onready var collisionHitbox = get_node("fireballProj/collisionArea/collisionShape")
 
 var parent : CharacterBody2D
@@ -17,8 +17,10 @@ var targetGroup : String
 func _ready() -> void:
 	if targetGroup == "Player":
 		direction = (get_node("fireballProj").global_position - parent.global_position).normalized()
+		get_node("fireballProj").rotation = direction.angle()
 	else:
 		direction = (self.global_position - parent.global_position).normalized()
+		
 	explosionHitbox.disabled = true
 	await get_tree().create_timer(3).timeout
 	if !bIsExploding:

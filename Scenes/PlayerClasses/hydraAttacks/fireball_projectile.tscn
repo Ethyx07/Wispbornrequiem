@@ -10,6 +10,8 @@
 radius = 16.9689
 height = 40.7001
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_115ca"]
+
 [sub_resource type="Animation" id="Animation_4sm1t"]
 length = 0.001
 tracks/0/type = "value"
@@ -27,7 +29,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("explosionRadius:scale")
+tracks/1/path = NodePath("fireballProj/explosionRadius:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -56,7 +58,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("explosionRadius:scale")
+tracks/1/path = NodePath("fireballProj/explosionRadius:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -71,8 +73,6 @@ _data = {
 "RESET": SubResource("Animation_4sm1t"),
 "explosion": SubResource("Animation_j6kfs")
 }
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_115ca"]
 
 [node name="fireball" type="Node2D" groups=["Projectile"]]
 script = ExtResource("1_ufshd")
@@ -91,17 +91,17 @@ rotation = 1.5708
 scale = Vector2(0.353587, -0.638819)
 shape = SubResource("CapsuleShape2D_8enah")
 
+[node name="explosionRadius" type="Area2D" parent="fireballProj"]
+scale = Vector2(1e-05, 1e-05)
+
+[node name="explosionShape" type="CollisionShape2D" parent="fireballProj/explosionRadius"]
+visible = false
+shape = SubResource("CircleShape2D_115ca")
+
 [node name="explosionAnim" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_ytxbr")
 }
 
-[node name="explosionRadius" type="Area2D" parent="."]
-scale = Vector2(1e-05, 1e-05)
-
-[node name="explosionShape" type="CollisionShape2D" parent="explosionRadius"]
-visible = false
-shape = SubResource("CircleShape2D_115ca")
-
 [connection signal="body_entered" from="fireballProj/collisionArea" to="." method="_on_collision_area_body_entered"]
-[connection signal="body_entered" from="explosionRadius" to="." method="_on_explosion_radius_body_entered"]
+[connection signal="body_entered" from="fireballProj/explosionRadius" to="." method="_on_explosion_radius_body_entered"]

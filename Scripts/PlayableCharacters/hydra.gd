@@ -228,4 +228,7 @@ func updateUI(attackStat : attackStates)->void:
 
 
 func hit(damage : int) -> void:
+	if currentState == playerState.DASH:
+		return
 	super(damage)
+	hp_bar.value = health

@@ -25,16 +25,16 @@ func _ready() -> void:
 	
 
 func _physics_process(delta: float) -> void:
-	if is_instance_valid(targetPlayer) and currentState == bossState.CHASE:
-		get_node("hitbox").look_at(targetPlayer.global_position)
-		if nav_agent.distance_to_target() > nav_agent.target_desired_distance:
-			nav_agent.target_position = targetPlayer.global_position
-			await get_tree().physics_frame
-			var direction = self.global_position.direction_to(nav_agent.get_next_path_position())
-			velocity = direction * delta * speed
-			move_and_slide()
-		else:
-			move_and_slide()
+	if is_instance_valid(targetPlayer):
+		if currentState == bossState.CHASE:
+			if nav_agent.distance_to_target() > nav_agent.target_desired_distance:
+				nav_agent.target_position = targetPlayer.global_position
+				await get_tree().physics_frame
+				var direction = self.global_position.direction_to(nav_agent.get_next_path_position())
+				velocity = direction * delta * speed
+				move_and_slide()
+			else:
+				move_and_slide()
 	else:
 		var targetArray = get_tree().get_nodes_in_group("Player")
 		targetPlayer = targetArray[0]
@@ -55,3 +55,5 @@ func hit(damage : float)-> void:
 	else:
 		arenaNode.updateUI()
 	
+func remove_self()->void:
+	self.queue_free()

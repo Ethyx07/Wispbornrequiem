@@ -5,11 +5,12 @@ var speed = 100
 var direction : Vector2
 var damage
 var targetGroup : String
+var deathTimer : float = 2
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	direction = (get_node("iceSprite").global_position - parent.global_position).normalized()
-	await get_tree().create_timer(2).timeout
+	await get_tree().create_timer(deathTimer).timeout
 	self.queue_free()
 
 
