@@ -4,6 +4,7 @@ extends "res://Scripts/CorruptBosses/corrupt_base.gd"
 @export var fireball : PackedScene
 @export var acidBreath : PackedScene
 
+
 var iceDamage : int = 5
 
 var fireDamage : int = 2
@@ -26,7 +27,6 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	super(delta)
-	print(position.distance_to(targetPlayer.global_position))
 	if !bRageAttackActive:
 		get_node("hitbox").look_at(targetPlayer.global_position)
 	if currentState == bossState.DEAD:
@@ -43,7 +43,7 @@ func _physics_process(delta: float) -> void:
 			fireAttack()
 			await get_tree().create_timer(0.1).timeout
 			if !bRageAttackActive:
-				if currentState == bossState.ATTACK:
+				if currentState == bossState.ATTACK and !bRageAttackActive:
 					currentState = bossState.CHASE
 
 
@@ -77,7 +77,7 @@ func poisonAttack()->void:
 	acidTemp.poisonTick = poisonTick
 	get_tree().root.add_child(acidTemp)	
 	await get_tree().create_timer(attackCooldown).timeout
-	if currentState == bossState.ATTACK:
+	if currentState == bossState.ATTACK and !bRageAttackActive:
 		currentState = bossState.CHASE
 	
 func hit(damage: float) -> void:
