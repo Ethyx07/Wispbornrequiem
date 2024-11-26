@@ -1,7 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://dbcsm5nbsnsd8"]
+[gd_scene load_steps=13 format=3 uid="uid://dbcsm5nbsnsd8"]
 
-[ext_resource type="Script" path="res://Scripts/CorruptBosses/corrupt_base.gd" id="1_3peoa"]
+[ext_resource type="Script" path="res://Scenes/Enemies/CorruptMinibosses/corrupt_hydra.gd" id="1_7akqv"]
 [ext_resource type="Texture2D" uid="uid://nrxlphynyx12" path="res://Assets/Enemy/CorruptEnemy/CorruptHydra/FreedHydraBody.png" id="2_d46dw"]
+[ext_resource type="PackedScene" uid="uid://fecq432hjkr6" path="res://Scenes/PlayerClasses/hydraAttacks/ice_projectile.tscn" id="2_edwmo"]
+[ext_resource type="PackedScene" uid="uid://cbmdx503euxmt" path="res://Scenes/PlayerClasses/hydraAttacks/fireball_projectile.tscn" id="3_hwqa4"]
 [ext_resource type="Texture2D" uid="uid://btdrqypmntaop" path="res://Assets/Enemy/CorruptEnemy/CorruptHydra/FreedHydraLeftHead.png" id="3_qavof"]
 [ext_resource type="Texture2D" uid="uid://d2ik65iy3dktc" path="res://Assets/Enemy/CorruptEnemy/CorruptHydra/FreedHydraMiddleHead.png" id="4_pfc7h"]
 [ext_resource type="Texture2D" uid="uid://xosdynni4ght" path="res://Assets/Enemy/CorruptEnemy/CorruptHydra/FreedHydraRightHead.png" id="5_ve4af"]
@@ -169,9 +171,11 @@ _data = {
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hle42"]
 
 [node name="corruptHydra" type="CharacterBody2D" groups=["Boss", "Enemy"]]
-script = ExtResource("1_3peoa")
+script = ExtResource("1_7akqv")
+iceProjectile = ExtResource("2_edwmo")
+fireball = ExtResource("3_hwqa4")
 bossName = "Corrupt Hydra"
-bossMaxHealth = 10
+bossMaxHealth = 30
 bossKey = "Hydra"
 speed = 1000
 
@@ -201,6 +205,6 @@ libraries = {
 
 [node name="hitbox" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+[node name="attackDirection" type="CollisionShape2D" parent="hitbox"]
 position = Vector2(58, 0)
 shape = SubResource("CapsuleShape2D_hle42")

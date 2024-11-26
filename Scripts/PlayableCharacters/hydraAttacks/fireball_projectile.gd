@@ -15,8 +15,11 @@ var targetGroup : String
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	if targetGroup == "Player":
+		direction = (get_node("fireballProj").global_position - parent.global_position).normalized()
+	else:
+		direction = (self.global_position - parent.global_position).normalized()
 	explosionHitbox.disabled = true
-	direction = (self.global_position - parent.global_position).normalized()
 	await get_tree().create_timer(3).timeout
 	if !bIsExploding:
 		explosionHandler()

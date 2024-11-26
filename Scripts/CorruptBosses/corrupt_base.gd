@@ -32,14 +32,6 @@ func _physics_process(delta: float) -> void:
 			await get_tree().physics_frame
 			var direction = self.global_position.direction_to(nav_agent.get_next_path_position())
 			velocity = direction * delta * speed
-			if position.distance_to(targetPlayer.global_position) <= 90:
-				var seperationVector = (global_position - targetPlayer.global_position).normalized() * 25
-				velocity += seperationVector
-				attack()
-			#if direction.x < 0:
-				#self.flip_h = true
-			#else:
-				#self.flip_h = false
 			move_and_slide()
 		else:
 			move_and_slide()
@@ -63,15 +55,3 @@ func hit(damage : float)-> void:
 	else:
 		arenaNode.updateUI()
 	
-func attack() -> void:
-	var attackRand = randi_range(0,2)
-	match attackRand:
-		0:
-			iceAttack()
-		1:
-			print("fire")
-		2:
-			print("poison")
-
-func iceAttack() -> void:
-	print("ice")
