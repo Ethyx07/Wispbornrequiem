@@ -34,7 +34,7 @@ func _physics_process(_delta: float) -> void:
 	
 
 func _on_collision_area_body_entered(body: Node2D) -> void:
-	if body.is_in_group("Player") and !bHitPlayer:
+	if body.is_in_group("Player") and !bHitPlayer and body != parent:
 		bHitPlayer = true
 		body.hit(breathDamage)
 		return

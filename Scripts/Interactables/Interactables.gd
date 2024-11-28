@@ -7,7 +7,7 @@ extends Node
 
 
 func interact(_body: Node2D) -> void:
-	print(itemDesc)
+	pass
 	
 	
 func highlighted() -> void:
