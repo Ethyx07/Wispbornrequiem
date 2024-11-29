@@ -9,6 +9,16 @@ var saveSlot : int
 var saveName : String
 var runCount = 0
 
+var HydraLoot = ["res://Scripts/Upgrades/Hydra/ice_spawnBuff.tres", "res://Scripts/Upgrades/Hydra/ice_damageBuff.tres"]
+var MinotaurLoot
+
+var lootTableDict = {
+	"Minotaur" : MinotaurLoot,
+	"Hydra" : HydraLoot
+}
+
+var runtimeLootTable
+
 var activePodiums = {
 	"Minotaur" : true,
 	"Hydra" : false

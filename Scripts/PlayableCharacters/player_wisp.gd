@@ -17,6 +17,7 @@ enum controllerState {KBM, Controller}
 var currentDevice = controllerState.KBM
 @export var currentState : playerState
 var bUlting : bool = false
+var inputEnabled : bool = true
 var attackInput
 
 @export var sceneKey : String
@@ -37,6 +38,8 @@ var shakeFade : float = 5
 var rng = RandomNumberGenerator.new()
 
 func _physics_process(delta: float) -> void:
+	if !inputEnabled: 
+		return
 	match currentState:
 		playerState.DEAD:
 			return

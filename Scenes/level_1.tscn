@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://dhx6mxr5221b2"]
+[gd_scene load_steps=12 format=4 uid="uid://dhx6mxr5221b2"]
 
 [ext_resource type="Texture2D" uid="uid://bpm3qjj17dji3" path="res://Assets/Tilemap/Tilecracked.png" id="1_76vr3"]
 [ext_resource type="Script" path="res://Scripts/level_logic.gd" id="1_xnx4o"]
@@ -6,8 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://bnh7jre3dp02y" path="res://Scenes/Enemies/spawn_indicator.tscn" id="3_oofvl"]
 [ext_resource type="TileSet" uid="uid://c11wygxx4yfts" path="res://dungeon_tileset.tres" id="3_xlulj"]
 [ext_resource type="PackedScene" uid="uid://drxld1vfpxhb8" path="res://Scenes/GUI/player_gui.tscn" id="4_cw638"]
+[ext_resource type="PackedScene" uid="uid://bbkraq600sjs5" path="res://Scenes/Interactables/upgrade_item.tscn" id="4_ndg68"]
 [ext_resource type="PackedScene" uid="uid://c8rc5agxlry6f" path="res://Scenes/Enemies/base_enemy.tscn" id="5_rnktc"]
 [ext_resource type="PackedScene" uid="uid://em6vqqa3r1gv" path="res://Scenes/Interactables/doorway.tscn" id="6_t57sh"]
+[ext_resource type="PackedScene" uid="uid://835xqak3vrpb" path="res://Scenes/GUI/item_menu.tscn" id="9_oifh4"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_varl8"]
 vertices = PackedVector2Array(445, 99, -367, 99, -367, -201, 445, -201)
@@ -24,6 +26,7 @@ cameraXMax = 1000.0
 cameraXMin = -1000.0
 cameraYMax = 1000.0
 cameraYMin = -1000.0
+upgradeItem = ExtResource("4_ndg68")
 
 [node name="Tilecracked" type="Sprite2D" parent="."]
 z_index = -1
@@ -47,6 +50,9 @@ offset_top = 2.0
 offset_right = 2.0
 offset_bottom = 2.0
 grow_vertical = 1
+
+[node name="itemMenu" parent="CanvasLayer" instance=ExtResource("9_oifh4")]
+visible = false
 
 [node name="doorway" parent="." instance=ExtResource("6_t57sh")]
 texture_filter = 1

@@ -35,6 +35,8 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	super(delta)
+	if !inputEnabled:
+		return
 	match currentState:
 		playerState.NEUTRAL:
 			if Input.is_action_just_pressed("Dash"):

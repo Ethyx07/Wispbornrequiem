@@ -75,16 +75,21 @@ vertical = true
 
 [node name="saveOne" type="Button" parent="saveMenu"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../saveThree")
+focus_neighbor_right = NodePath("../../loadDelete/loadSave")
 theme = SubResource("Theme_q43gx")
 text = "Save 1
 "
 
 [node name="saveTwo" type="Button" parent="saveMenu"]
 layout_mode = 2
+focus_neighbor_right = NodePath("../../loadDelete/loadSave")
 text = "Save 2"
 
 [node name="saveThree" type="Button" parent="saveMenu"]
 layout_mode = 2
+focus_neighbor_right = NodePath("../../loadDelete/loadSave")
+focus_neighbor_bottom = NodePath("../saveOne")
 text = "Save 3"
 
 [node name="loadDelete" type="BoxContainer" parent="."]
@@ -96,9 +101,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = 179.0
-offset_top = -264.0
+offset_top = -706.0
 offset_right = 310.0
-offset_bottom = -224.0
+offset_bottom = -666.0
 grow_horizontal = 2
 grow_vertical = 0
 

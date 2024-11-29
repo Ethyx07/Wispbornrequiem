@@ -47,6 +47,7 @@ func hit(damage : float)-> void:
 		currentHealth = 0
 		arenaNode.updateUI()
 		animPlayer.play("deathAnim")
+		removeProjectiles()
 		await animPlayer.animation_finished
 		get_node("hurtbox").disabled = true
 		Gamemode.activePodiums[bossKey] = true
@@ -57,3 +58,9 @@ func hit(damage : float)-> void:
 	
 func remove_self()->void:
 	self.queue_free()
+
+func removeProjectiles()->void:
+	var projectiles = get_tree().get_nodes_in_group("Projectile")
+	for proj in projectiles:
+		if proj.targetGroup == "Player":
+			proj.queue_free()

@@ -25,6 +25,8 @@ enum attackStates {ACID, FIRE, ICE}
 @export var breathCooldown : int
 @export var fireballCooldown : int
 @export var iceCooldown : int
+var iceSpawns = 2
+var totalChain = 3
 
 @export var iceTexture : Texture2D
 @export var iceDisabled : Texture2D
@@ -42,8 +44,7 @@ var bIceReady : bool = true
 var bFireReady : bool = true
 var bPoisonReady : bool = true
 var bUltFireReady : bool = true
-var iceSpawns = 10
-var totalChain = 3
+
 
 func _ready() -> void:
 	inputVector = Vector2.ZERO
@@ -64,6 +65,8 @@ func loadUI() -> void:
 
 func _physics_process(delta: float) -> void:
 	super(delta)
+	if !inputEnabled:
+		return
 	if inputVector.x > 0:
 		playerSprite.flip_h = true
 		leftHeadSprite.flip_h = true
@@ -179,7 +182,7 @@ func ultAttack() -> void:
 	var dist = 9999
 	var targetEnemy
 	for enemy in get_tree().get_nodes_in_group("Enemy"):
-		if self.global_position.distance_to(enemy.global_position) < dist:
+		if self.global_position.distance_to(enemy.global_position) < dist and enemy.currentState != enemy.enemyState.DEAD:
 			targetEnemy = enemy
 			dist = self.global_position.distance_to(enemy.global_position)
 	if !is_instance_valid(targetEnemy):
@@ -232,3 +235,11 @@ func hit(damage : int) -> void:
 		return
 	super(damage)
 	hp_bar.value = health
+	
+func applyUpgrade(type : String, bonus : int)-> void:
+	if type == "IceSpawns":
+		iceSpawns += bonus
+		return
+	if type == "IceDamage":
+		iceDamage += bonus
+		return

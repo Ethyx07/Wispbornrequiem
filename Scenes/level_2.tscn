@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://5n0yome5tq1v"]
+[gd_scene load_steps=16 format=4 uid="uid://5n0yome5tq1v"]
 
 [ext_resource type="Script" path="res://Scripts/level_logic.gd" id="1_8gmwg"]
 [ext_resource type="Texture2D" uid="uid://dnanjexv0r58u" path="res://Assets/Tilemap/Tilemap.png" id="2_hjtq4"]
@@ -7,7 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://diyru2do7cejo" path="res://Assets/Tilemap/CornerTilemap.png" id="4_s8vkp"]
 [ext_resource type="PackedScene" uid="uid://bnh7jre3dp02y" path="res://Scenes/Enemies/spawn_indicator.tscn" id="4_yyapl"]
 [ext_resource type="PackedScene" uid="uid://c8rc5agxlry6f" path="res://Scenes/Enemies/base_enemy.tscn" id="5_d66oa"]
+[ext_resource type="PackedScene" uid="uid://bbkraq600sjs5" path="res://Scenes/Interactables/upgrade_item.tscn" id="5_fsc0g"]
 [ext_resource type="PackedScene" uid="uid://em6vqqa3r1gv" path="res://Scenes/Interactables/doorway.tscn" id="6_j3hsg"]
+[ext_resource type="PackedScene" uid="uid://835xqak3vrpb" path="res://Scenes/GUI/item_menu.tscn" id="9_nm0us"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wnakx"]
 texture = ExtResource("4_s8vkp")
@@ -77,6 +79,7 @@ cameraXMax = 770.0
 cameraXMin = -450.0
 cameraYMax = 610.0
 cameraYMin = -290.0
+upgradeItem = ExtResource("5_fsc0g")
 
 [node name="TileBackground" type="TileMapLayer" parent="."]
 z_index = -1
@@ -93,6 +96,9 @@ offset_right = 2.0
 offset_bottom = 2.0
 grow_vertical = 1
 metadata/_edit_use_anchors_ = true
+
+[node name="itemMenu" parent="CanvasLayer" instance=ExtResource("9_nm0us")]
+visible = false
 
 [node name="doorway" parent="." instance=ExtResource("6_j3hsg")]
 texture_filter = 1

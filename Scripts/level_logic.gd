@@ -13,12 +13,14 @@ class_name WorldScene
 @export var cameraYMax : float
 @export var cameraYMin : float
 
+@export var upgradeItem : PackedScene
 
 var player
 var bSpawningEnemies = false
 
 var currentWave : int = 0
 var bHasSomethingSpawned = false
+var bLootCollected = false
 
 # Called when the node enters the scene tree for the first time.
 func _physics_process(_delta: float) -> void:
@@ -26,12 +28,18 @@ func _physics_process(_delta: float) -> void:
 		if doorway.bIsUnlocked:
 			return
 		if get_tree().get_node_count_in_group("Enemy") <= 0:
-			if currentWave == finalWave and bHasSomethingSpawned: 
-				doorway.animator.play("unlocking")
-				await doorway.animator.animation_finished
-				doorway.bIsUnlocked = true
-				doorwayHitbox.disabled = false
-				doorway.get_node("MainTexture").texture = doorway.baseTexture
+			if currentWave == finalWave and bHasSomethingSpawned:
+				if !bLootCollected:
+					bLootCollected = true
+					var item = upgradeItem.instantiate()
+					item.global_position = doorway.global_position + Vector2(25,25)
+					add_child(item)
+				if bLootCollected:
+					doorway.animator.play("unlocking")
+					await doorway.animator.animation_finished
+					doorway.bIsUnlocked = true
+					doorwayHitbox.disabled = false
+					doorway.get_node("MainTexture").texture = doorway.baseTexture
 			else:
 				if !bSpawningEnemies:
 					bSpawningEnemies = true

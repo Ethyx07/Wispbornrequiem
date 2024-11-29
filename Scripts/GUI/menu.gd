@@ -12,6 +12,7 @@ var selectedSave : int
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	$mainMenu/PlayButton.grab_focus()
 	var styleBoxOne = StyleBoxFlat.new() # Replace with function body.
 	var styleBoxTwo = StyleBoxFlat.new()
 	var styleBoxThree = StyleBoxFlat.new()
@@ -40,6 +41,7 @@ func _on_play_button_pressed() -> void:
 	mainMenu.hide()
 	print("done")
 	saveMenu.show()
+	$saveMenu/saveOne.grab_focus()
 	loadButtons.show()
 
 func _on_quit_button_pressed() -> void:

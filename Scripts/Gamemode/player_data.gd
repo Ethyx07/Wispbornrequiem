@@ -34,5 +34,16 @@ func loadPlayerInfo(player : CharacterBody2D) -> void:
 				player.armour_bar.value = player.armourPoints
 		if(player.sceneKey == "Hydra"):
 			player.currentAttack = playerNode.currentAttack
+			player.fireDamage = playerNode.fireDamage 
+			player.explosionDamage = playerNode.explosionDamage
+			player.iceDamage = playerNode.iceDamage
+			player.acidDamage = playerNode.acidDamage
+			player.acidPoisonDamage = playerNode.acidPoisonDamage
+			player.poisonTick = playerNode.poisonTick
+			player.breathCooldown = playerNode.breathCooldown
+			player.fireballCooldown = playerNode.fireballCooldown
+			player.iceCooldown = playerNode.iceCooldown
+			player.iceSpawns = playerNode.iceSpawns
+			player.totalChain = playerNode.totalChain
 			player.loadUI()
 		
