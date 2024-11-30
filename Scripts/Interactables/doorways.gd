@@ -3,6 +3,7 @@ extends "res://Scripts/Interactables/Interactables.gd"
 @export var lockedTexture : Texture2D
 @onready var animator = get_node("animPlayer")
 @export var bIsUnlocked : bool = false
+@export var bHubDoor : bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -16,6 +17,8 @@ func _ready() -> void:
 func interact(body: Node2D)-> void:
 	if bIsUnlocked:
 		super(body)
+		if bHubDoor:
+			Gamemode.populateLootTable(body.sceneKey)
 		PlayerData.savePlayerInfo(body.sceneKey, body)
 		Gamemode.load_level()
 		body.queue_free()

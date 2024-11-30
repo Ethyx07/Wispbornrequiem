@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ua27actiyjlu"
-path="res://.godot/imported/TempIceHighlight.png-e0bd0a95a728ff720dc8f268d781f597.ctex"
+uid="uid://lh4yu4k26f8y"
+path="res://.godot/imported/ThrowDamageBuffHighlighted.png-3af6800ecda6d7c434ea66dba3bd8b84.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Upgrades/Hydra/TempIceHighlight.png"
-dest_files=["res://.godot/imported/TempIceHighlight.png-e0bd0a95a728ff720dc8f268d781f597.ctex"]
+source_file="res://Assets/Upgrades/Minotaur/ThrowDamageBuffHighlighted.png"
+dest_files=["res://.godot/imported/ThrowDamageBuffHighlighted.png-3af6800ecda6d7c434ea66dba3bd8b84.ctex"]
 
 [params]
 

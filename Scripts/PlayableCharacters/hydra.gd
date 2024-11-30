@@ -182,7 +182,13 @@ func ultAttack() -> void:
 	var dist = 9999
 	var targetEnemy
 	for enemy in get_tree().get_nodes_in_group("Enemy"):
-		if self.global_position.distance_to(enemy.global_position) < dist and enemy.currentState != enemy.enemyState.DEAD:
+		if self.global_position.distance_to(enemy.global_position) < dist:
+			if enemy.is_in_group("Boss"):
+				if enemy.currentState == enemy.bossState.DEAD:
+					return
+			else:
+				if enemy.currentState == enemy.enemyState.DEAD:
+					return
 			targetEnemy = enemy
 			dist = self.global_position.distance_to(enemy.global_position)
 	if !is_instance_valid(targetEnemy):

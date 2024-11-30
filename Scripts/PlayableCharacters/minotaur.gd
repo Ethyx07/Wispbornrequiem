@@ -133,6 +133,14 @@ func _on_cooldown_timer_timeout() -> void:
 		bCanUseSpecial = true
 		return
 
+func applyUpgrade(type : String, bonus : int) -> void:
+	if type == "AxeSlash":
+		attackDamage += bonus
+		return
+	if type == "AxeThrow":
+		specialDamage += bonus
+		return
+
 func remove_self() -> void:
 	heldAxe.queue_free()
 	self.queue_free()

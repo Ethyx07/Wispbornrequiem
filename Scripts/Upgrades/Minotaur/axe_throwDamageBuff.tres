@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="UpgradeItems" load_steps=4 format=3 uid="uid://dhpa1cdoh0hho"]
+
+[ext_resource type="Texture2D" uid="uid://lh4yu4k26f8y" path="res://Assets/Upgrades/Minotaur/ThrowDamageBuffHighlighted.png" id="1_5ag3e"]
+[ext_resource type="Texture2D" uid="uid://bmpk116vrkqqa" path="res://Assets/Upgrades/Minotaur/ThrowDamageBuff.png" id="2_bmesq"]
+[ext_resource type="Script" path="res://Scripts/Upgrades/upgrade_item.gd" id="3_yd4ej"]
+
+[resource]
+script = ExtResource("3_yd4ej")
+upgradeName = "Axe Throw Upgrade"
+upgradeDesc = "Increases Axe Throw Damage by 3"
+icon = ExtResource("2_bmesq")
+highlightIcon = ExtResource("1_5ag3e")
+effectBonus = 3
+bonusType = "AxeThrow"

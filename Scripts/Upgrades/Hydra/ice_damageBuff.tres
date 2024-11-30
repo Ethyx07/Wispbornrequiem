@@ -1,14 +1,14 @@
 [gd_resource type="Resource" script_class="UpgradeItems" load_steps=4 format=3 uid="uid://bc4asq3vs21ka"]
 
-[ext_resource type="Texture2D" uid="uid://ua27actiyjlu" path="res://Assets/Upgrades/Hydra/TempIceHighlight.png" id="1_ox03r"]
-[ext_resource type="Texture2D" uid="uid://c75se8nc8kp34" path="res://Assets/Upgrades/Hydra/TempIceUpgrade.png" id="2_wjo24"]
+[ext_resource type="Texture2D" uid="uid://bf7lyghe8vsqv" path="res://Assets/Upgrades/Hydra/IceDamageBuffHighlighted.png" id="1_ltuko"]
+[ext_resource type="Texture2D" uid="uid://c8gn73c72h7ff" path="res://Assets/Upgrades/Hydra/IceDamageBuff.png" id="2_076me"]
 [ext_resource type="Script" path="res://Scripts/Upgrades/upgrade_item.gd" id="3_mtq8g"]
 
 [resource]
 script = ExtResource("3_mtq8g")
 upgradeName = "Ice Upgrade"
 upgradeDesc = "Increases Ice Damage by 4"
-icon = ExtResource("2_wjo24")
-highlightIcon = ExtResource("1_ox03r")
+icon = ExtResource("2_076me")
+highlightIcon = ExtResource("1_ltuko")
 effectBonus = 4
 bonusType = "IceDamage"

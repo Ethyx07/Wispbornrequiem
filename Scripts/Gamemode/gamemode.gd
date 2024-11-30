@@ -10,7 +10,7 @@ var saveName : String
 var runCount = 0
 
 var HydraLoot = ["res://Scripts/Upgrades/Hydra/ice_spawnBuff.tres", "res://Scripts/Upgrades/Hydra/ice_damageBuff.tres"]
-var MinotaurLoot
+var MinotaurLoot = ["res://Scripts/Upgrades/Minotaur/axe_damageBuff.tres", "res://Scripts/Upgrades/Minotaur/axe_throwDamageBuff.tres"]
 
 var lootTableDict = {
 	"Minotaur" : MinotaurLoot,
@@ -55,3 +55,5 @@ func respawn() -> void:
 	get_tree().get_first_node_in_group("Player").call_deferred("remove_self")
 	get_tree().call_deferred("change_scene_to_file", "res://Scenes/hub_scene.tscn")
 	
+func populateLootTable(key : String) -> void:
+	runtimeLootTable = lootTableDict[key].duplicate()

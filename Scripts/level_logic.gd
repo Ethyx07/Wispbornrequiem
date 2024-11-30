@@ -32,7 +32,7 @@ func _physics_process(_delta: float) -> void:
 				if !bLootCollected:
 					bLootCollected = true
 					var item = upgradeItem.instantiate()
-					item.global_position = doorway.global_position + Vector2(25,25)
+					item.global_position = get_node("spawnLocation").global_position
 					add_child(item)
 				if bLootCollected:
 					doorway.animator.play("unlocking")

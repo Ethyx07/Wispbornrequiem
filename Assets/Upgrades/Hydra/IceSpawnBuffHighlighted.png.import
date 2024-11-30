@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c75se8nc8kp34"
-path="res://.godot/imported/TempIceUpgrade.png-a14cf6be674e7944062885a1406698d0.ctex"
+uid="uid://cr5g8tc3iqkqd"
+path="res://.godot/imported/IceSpawnBuffHighlighted.png-c9ec41c00b069e4c75eb4a24378e0688.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Upgrades/Hydra/TempIceUpgrade.png"
-dest_files=["res://.godot/imported/TempIceUpgrade.png-a14cf6be674e7944062885a1406698d0.ctex"]
+source_file="res://Assets/Upgrades/Hydra/IceSpawnBuffHighlighted.png"
+dest_files=["res://.godot/imported/IceSpawnBuffHighlighted.png-c9ec41c00b069e4c75eb4a24378e0688.ctex"]
 
 [params]
 

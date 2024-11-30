@@ -1,16 +1,18 @@
 extends "res://Scripts/Interactables/Interactables.gd"
 @onready var menu = get_node("../CanvasLayer/itemMenu")
 var upgradeData : Resource
+var randInt
 
 func _ready() -> void:
-	var randInt = randi_range(0, Gamemode.HydraLoot.size() - 1)
-	upgradeData = load(Gamemode.HydraLoot[randInt])
+	randInt = randi_range(0, Gamemode.runtimeLootTable.size() - 1)
+	upgradeData = load(Gamemode.runtimeLootTable[randInt])
 	highlightedTexture = upgradeData.highlightIcon
 	baseTexture = upgradeData.icon
 	itemDesc = upgradeData.upgradeName + "\n" + upgradeData.upgradeDesc
 	get_node("MainTexture").texture = upgradeData.icon
 	
 func interact(body : Node2D)->void:
+	menu.itemNum = randInt
 	menu.get_node("Item").text = itemDesc
 	menu.upgradeData = upgradeData
 	menu.body = body

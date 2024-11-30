@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="UpgradeItems" load_steps=4 format=3 uid="uid://yfcq22e6syxh"]
+
+[ext_resource type="Texture2D" uid="uid://dxpjn7rpngke4" path="res://Assets/Upgrades/Minotaur/SlashDamageBuffHighlighted.png" id="1_okgfl"]
+[ext_resource type="Texture2D" uid="uid://mavxdqalvdxf" path="res://Assets/Upgrades/Minotaur/SlashDamageBuff.png" id="2_jrb4e"]
+[ext_resource type="Script" path="res://Scripts/Upgrades/upgrade_item.gd" id="3_v00bk"]
+
+[resource]
+script = ExtResource("3_v00bk")
+upgradeName = "Axe Slash Upgrade"
+upgradeDesc = "Increases Axe Slash Damage by 2"
+icon = ExtResource("2_jrb4e")
+highlightIcon = ExtResource("1_okgfl")
+effectBonus = 2
+bonusType = "AxeSlash"

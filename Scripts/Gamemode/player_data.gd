@@ -26,6 +26,10 @@ func loadPlayerInfo(player : CharacterBody2D) -> void:
 		player.health = playerNode.health
 		player.hp_bar.value = playerNode.health
 		if(player.sceneKey == "Minotaur"):
+			player.attackDamage = playerNode.attackDamage
+			player.attackCooldown = playerNode.attackCooldown
+			player.specialDamage = playerNode.specialDamage
+			player.specialCooldown = playerNode.specialCooldown
 			if is_instance_valid(player.heldAxe):
 				playerNode.heldAxe.queue_free()
 			if is_instance_valid(player.armour_bar):
