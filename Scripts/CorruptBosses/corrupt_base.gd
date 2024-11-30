@@ -50,7 +50,8 @@ func hit(damage : float)-> void:
 		removeProjectiles()
 		await animPlayer.animation_finished
 		get_node("hurtbox").disabled = true
-		Gamemode.activePodiums[bossKey] = true
+		if self.is_in_group("Corrupt"):
+			Gamemode.activePodiums[bossKey] = true 
 		await get_tree().create_timer(5).timeout
 		self.remove_from_group("Enemy")
 	else:

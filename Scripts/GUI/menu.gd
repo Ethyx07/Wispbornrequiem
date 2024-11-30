@@ -39,7 +39,6 @@ func _ready() -> void:
 	
 func _on_play_button_pressed() -> void:
 	mainMenu.hide()
-	print("done")
 	saveMenu.show()
 	$saveMenu/saveOne.grab_focus()
 	loadButtons.show()

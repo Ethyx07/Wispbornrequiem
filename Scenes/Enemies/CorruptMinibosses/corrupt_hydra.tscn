@@ -171,7 +171,7 @@ _data = {
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hle42"]
 
-[node name="corruptHydra" type="CharacterBody2D" groups=["Boss", "Enemy"]]
+[node name="corruptHydra" type="CharacterBody2D" groups=["Boss", "Corrupt", "Enemy"]]
 script = ExtResource("1_7akqv")
 iceProjectile = ExtResource("2_edwmo")
 fireball = ExtResource("3_hwqa4")

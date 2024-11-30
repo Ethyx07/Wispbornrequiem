@@ -4,7 +4,7 @@ extends Node2D
 @onready var healthBar = get_node("CanvasLayer/playergui/healthBar")
 @onready var healthBarVal = get_node("CanvasLayer/playergui/healthBar/healthValue")
 @onready var bossNameDisplay = get_node("CanvasLayer/playergui/healthBar/bossName")
-
+@onready var doorway = get_node("doorway")
 
 @export var bossEnemy : PackedScene
 
@@ -41,7 +41,12 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	if get_tree().get_node_count_in_group("Enemy") <= 0:
-		Gamemode.respawn()
+		if !doorway.bIsUnlocked:
+			doorway.animator.play("unlocking")
+			await doorway.animator.animation_finished
+			doorway.bIsUnlocked = true
+			doorway.get_node("hitbox").disabled = false
+			doorway.get_node("MainTexture").texture = doorway.baseTexture
 	
 	
 
