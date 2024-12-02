@@ -1,11 +1,12 @@
-[gd_scene load_steps=11 format=4 uid="uid://bit46outrbqa1"]
+[gd_scene load_steps=12 format=4 uid="uid://bit46outrbqa1"]
 
 [ext_resource type="Script" path="res://Scripts/CorruptBosses/corrupt_bosses_arena.gd" id="1_cp1hg"]
+[ext_resource type="PackedScene" uid="uid://dranjdg8vapdi" path="res://Scenes/Enemies/Area Boss/huntsman_boss.tscn" id="2_6rbmn"]
 [ext_resource type="PackedScene" uid="uid://drxld1vfpxhb8" path="res://Scenes/GUI/player_gui.tscn" id="2_scq1u"]
-[ext_resource type="PackedScene" uid="uid://dbcsm5nbsnsd8" path="res://Scenes/Enemies/CorruptMinibosses/corrupt_hydra.tscn" id="2_urs27"]
 [ext_resource type="Texture2D" uid="uid://diyru2do7cejo" path="res://Assets/Tilemap/CornerTilemap.png" id="3_stu14"]
 [ext_resource type="Texture2D" uid="uid://dnanjexv0r58u" path="res://Assets/Tilemap/Tilemap.png" id="4_nhiju"]
 [ext_resource type="PackedScene" uid="uid://em6vqqa3r1gv" path="res://Scenes/Interactables/doorway.tscn" id="6_u2ahn"]
+[ext_resource type="PackedScene" uid="uid://du8becrhraynp" path="res://Scenes/PlayerClasses/hydra.tscn" id="7_r3wi3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dqgv0"]
 texture = ExtResource("3_stu14")
@@ -63,7 +64,7 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-313, -115, -313, 397, 
 
 [node name="corruptDragonArena" type="Node2D" groups=["Level"]]
 script = ExtResource("1_cp1hg")
-bossEnemy = ExtResource("2_urs27")
+bossEnemy = ExtResource("2_6rbmn")
 cameraXMax = 544.0
 cameraXMin = -512.0
 cameraYMax = 544.0
@@ -103,10 +104,26 @@ light_mask = 5
 visibility_layer = 5
 position = Vector2(-11, 300)
 build_mode = 1
-polygon = PackedVector2Array(-630, 84, -374, 84, -374, 116, -342, 116, -342, 212, -246, 212, -246, 116, -214, 116, -214, 84, 74, 84, 74, -428, -630, -428)
+polygon = PackedVector2Array(-630, 84, -374, 84, -374, 116, -342, 116, -342, 212, -246, 212, -246, 116, -214, 116, -214, 84, 74, 84, 74, -444, -630, -444)
+
+[node name="WorldBorder2" type="StaticBody2D" parent="."]
+light_mask = 4
+visibility_layer = 4
+position = Vector2(321, 0)
+collision_layer = 5
+collision_mask = 5
+
+[node name="CollisionPolygon2D5" type="CollisionPolygon2D" parent="WorldBorder2"]
+light_mask = 5
+visibility_layer = 5
+position = Vector2(-11, 300)
+build_mode = 1
+polygon = PackedVector2Array(-814, -452, -814, 236, 226, 236, 226, -452)
 
 [node name="Node2D" type="Node2D" parent="."]
 position = Vector2(-512, 544)
 
 [node name="doorway" parent="." instance=ExtResource("6_u2ahn")]
 position = Vector2(8, -112)
+
+[node name="hydra" parent="." instance=ExtResource("7_r3wi3")]
