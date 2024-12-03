@@ -46,3 +46,5 @@ func _on_collision_area_body_entered(body: Node2D) -> void:
 			body.statusEffect = body.statusState.POISON
 			body.checkStatus()
 		body.hit(breathDamage)
+	if body.is_in_group("Projectile"):
+		print("hit")

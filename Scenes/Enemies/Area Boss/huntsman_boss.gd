@@ -42,7 +42,7 @@ func spawnArrow(spawnPos : Vector2) -> void:
 	if speedChance >= 7:
 		arrowTemp.speed = arrowTemp.speed * 1.5
 		arrowTemp.playSpeedAnim()
-	get_tree().root.add_child(arrowTemp)
+	self.get_parent().add_child(arrowTemp)
 
 func hit(damage : float)-> void:
 	super(damage)
@@ -56,6 +56,9 @@ func attackSelector() ->void:
 
 func triAttack()->void:
 	var curPosition = get_node("hitbox/attackDirection").global_position
-	for i in range(bossMaxHealth/currentHealth):
+	var spawnNum = 2 * (bossMaxHealth/currentHealth)
+	if spawnNum > 6: 
+		spawnNum = 6
+	for i in range(1):
 		spawnArrow(curPosition)
-		await get_tree().create_timer(0.5).timeout
+		await get_tree().create_timer(0.2).timeout

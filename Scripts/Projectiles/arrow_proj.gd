@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var animPlayer = get_node("animPlayer")
 @onready var sprite = get_node("sprite")
+@onready var rayNode = get_node("rayNode")
 
 @export var normTexture : Texture2D
 @export var bounceTexture : Texture2D
@@ -55,25 +56,15 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 
 func _physics_process(delta: float) -> void:
 	self.global_position += direction * speed * delta
+	if rayNode.is_colliding():
+		var collider = rayNode.get_collider()
+		if collider.is_in_group("Projectile") or collider.get_parent().is_in_group("Projectile"):
+			self.queue_free()
 	if arrowType == arrowState.TRACK and bStillTracking:
 		look_at(target.global_position)
 		direction = (get_node("forwardDir").global_position - self.global_position).normalized()
 		
-#func rotationCalc(angle : float) -> float:
-	#var rotationChange
-	#if abs(angle) == 90 or abs(angle) == 180:
-		#rotationChange = -180
-	#elif angle == 0:
-		#rotationChange = 180
-	#elif angle > 0 and angle < 90:
-		#rotationChange = 90 - angle
-	#elif angle > -90 and angle < 0:
-		#rotationChange = -90 - angle
-	#elif angle > 90:
-		#rotationChange = -angle + 90
-	#elif angle < -90:
-		#rotationChange =  -angle - 90
-	#return rotationChange
+
 func playSpeedAnim()->void:
 	get_node("sprite/speedSprite").visible = true
 	get_node("speedAnim").play("speedyAnim")

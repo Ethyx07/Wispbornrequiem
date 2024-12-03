@@ -1,8 +1,8 @@
 extends Node2D
 
 @onready var explosionAnim = get_node("explosionAnim")
-@onready var explosionHitbox = get_node("fireballProj/explosionRadius/explosionShape")
-@onready var collisionHitbox = get_node("fireballProj/collisionArea/collisionShape")
+@onready var explosionHitbox = get_node("explosionRadius/explosionShape")
+@onready var collisionHitbox = get_node("collisionArea/collisionShape")
 
 var parent : CharacterBody2D
 var direction

@@ -126,4 +126,8 @@ libraries = {
 "": SubResource("AnimationLibrary_j2ee0")
 }
 
+[node name="rayNode" type="RayCast2D" parent="."]
+target_position = Vector2(17.2, 0)
+collide_with_areas = true
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

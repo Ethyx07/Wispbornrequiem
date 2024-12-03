@@ -199,6 +199,7 @@ bg_color = Color(0.92, 0, 0, 1)
 bg_color = Color(0.0166667, 1, 0, 1)
 
 [node name="flying_enemy" type="CharacterBody2D" groups=["Enemy"]]
+motion_mode = 1
 script = ExtResource("1_xs8ep")
 speed = 1500.0
 
