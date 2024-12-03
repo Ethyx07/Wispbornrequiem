@@ -16,6 +16,21 @@
 radius = 4.0
 height = 14.0
 
+[sub_resource type="Animation" id="Animation_tutr4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_ky5m1")]
+}
+
 [sub_resource type="Animation" id="Animation_oux3m"]
 resource_name = "trackAnim"
 length = 0.3
@@ -33,25 +48,25 @@ tracks/0/keys = {
 "values": [ExtResource("2_ky5m1"), ExtResource("3_vjgtw"), ExtResource("4_gufa4")]
 }
 
-[sub_resource type="Animation" id="Animation_tutr4"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fgsf6"]
+_data = {
+"RESET": SubResource("Animation_tutr4"),
+"trackAnim": SubResource("Animation_oux3m")
+}
+
+[sub_resource type="Animation" id="Animation_kc1fi"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("sprite:texture")
+tracks/0/path = NodePath("sprite/speedSprite:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2_ky5m1")]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_fgsf6"]
-_data = {
-"RESET": SubResource("Animation_tutr4"),
-"trackAnim": SubResource("Animation_oux3m")
+"values": [null]
 }
 
 [sub_resource type="Animation" id="Animation_ldugl"]
@@ -69,21 +84,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [ExtResource("8_ead2b"), ExtResource("9_4ykiq"), ExtResource("10_vx4ro"), ExtResource("11_oyb8y")]
-}
-
-[sub_resource type="Animation" id="Animation_kc1fi"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("sprite/speedSprite:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [null]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_j2ee0"]
@@ -106,9 +106,8 @@ texture = ExtResource("2_ky5m1")
 
 [node name="speedSprite" type="Sprite2D" parent="sprite"]
 visible = false
-scale = Vector2(1, 1)
 
-[node name="Area2D" type="Area2D" parent="." groups=["Projectile"]]
+[node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 rotation = 1.5708

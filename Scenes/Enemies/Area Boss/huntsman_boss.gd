@@ -2,16 +2,26 @@ extends "res://Scripts/CorruptBosses/corrupt_base.gd"
 
 @export var arrow : PackedScene
 var target
-
-func hit(damage : float)-> void:
-	super(damage)
+var bCanAttack: bool = false
+var attackCooldown : float = 4.5
 	
 func _ready() -> void:
 	super()
 	target = get_tree().get_first_node_in_group("Player")
 	await get_tree().create_timer(5).timeout
-	spawnArrow(get_node("hitbox/attackDirection").global_position)
+	bCanAttack = true	
 	
+func _physics_process(delta: float) -> void:
+	super(delta)
+	if currentState == bossState.DEAD:
+		return
+	get_node("hitbox").look_at(target.global_position)
+	if bCanAttack:
+		bCanAttack = false
+		attackSelector()
+		await get_tree().create_timer(attackCooldown).timeout
+		bCanAttack = true	
+
 func spawnArrow(spawnPos : Vector2) -> void:
 	var arrowTemp = arrow.instantiate()
 	arrowTemp.global_position = spawnPos
@@ -33,10 +43,19 @@ func spawnArrow(spawnPos : Vector2) -> void:
 		arrowTemp.speed = arrowTemp.speed * 1.5
 		arrowTemp.playSpeedAnim()
 	get_tree().root.add_child(arrowTemp)
-	await get_tree().create_timer(10).timeout
-	spawnArrow(get_node("hitbox/attackDirection").global_position)
 
+func hit(damage : float)-> void:
+	super(damage)
+	
+func attackSelector() ->void:
+	var randNum = randi_range(0, 10)
+	if randNum >= 0:
+		triAttack()
+	else:
+		spawnArrow(get_node("hitbox/attackDirection").global_position)
 
-func _physics_process(delta: float) -> void:
-	super(delta)
-	get_node("hitbox").look_at(target.global_position)
+func triAttack()->void:
+	var curPosition = get_node("hitbox/attackDirection").global_position
+	for i in range(bossMaxHealth/currentHealth):
+		spawnArrow(curPosition)
+		await get_tree().create_timer(0.5).timeout
