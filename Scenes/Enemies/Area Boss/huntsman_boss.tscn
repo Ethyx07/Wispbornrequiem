@@ -70,6 +70,7 @@ _data = {
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qh35k"]
 
 [node name="huntsman" type="CharacterBody2D" groups=["Boss", "Enemy"]]
+motion_mode = 1
 script = ExtResource("1_62r6c")
 arrow = ExtResource("2_tyshe")
 bossName = "The Huntsman"

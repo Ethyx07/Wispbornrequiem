@@ -1,10 +1,20 @@
 extends Node2D
 
+@onready var animPlayer = get_node("animPlayer")
+@onready var sprite = get_node("sprite")
+
+@export var normTexture : Texture2D
+@export var bounceTexture : Texture2D
+@export var scatterTexture : Texture2D
+@export var trackTexture : Texture2D
+
 var targetGroup : String = "Player"
-var direction
-var speed = 250
-var target 
-var parent
+var direction : Vector2
+var speed : float = 250
+var target : CharacterBody2D
+var parent : CharacterBody2D
+var maxBounce : int = 5
+var bounceCount : int = 0
 
 var bStillTracking : bool = true
 
@@ -16,12 +26,14 @@ func _ready() -> void:
 	target = get_tree().get_first_node_in_group("Player")
 	match arrowType:
 		arrowState.NORMAL:
-			pass
+			sprite.texture = normTexture
 		arrowState.BOUNCE:
-			pass
+			sprite.texture = bounceTexture
 		arrowState.SCATTER:
-			pass
+			sprite.texture = scatterTexture
 		arrowState.TRACK:
+			sprite.texture = trackTexture
+			animPlayer.play("trackAnim")
 			await get_tree().create_timer(10).timeout
 			bStillTracking = false
 
@@ -31,8 +43,12 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 			body.hit(5)
 			self.queue_free()
 		elif arrowType == arrowState.BOUNCE:
-			var rotationChange = 180 - self.rotation_degrees
-			self.rotation_degrees = rotationChange
+			bounceCount += 1
+			if bounceCount >= maxBounce:
+				self.queue_free()
+				return
+			#var rotationChange = rotationCalc(self.rotation_degrees) will use later
+			look_at(target.global_position)
 			direction = (get_node("forwardDir").global_position - self.global_position).normalized()
 		else:
 			self.queue_free()
@@ -43,4 +59,22 @@ func _physics_process(delta: float) -> void:
 		look_at(target.global_position)
 		direction = (get_node("forwardDir").global_position - self.global_position).normalized()
 		
+#func rotationCalc(angle : float) -> float:
+	#var rotationChange
+	#if abs(angle) == 90 or abs(angle) == 180:
+		#rotationChange = -180
+	#elif angle == 0:
+		#rotationChange = 180
+	#elif angle > 0 and angle < 90:
+		#rotationChange = 90 - angle
+	#elif angle > -90 and angle < 0:
+		#rotationChange = -90 - angle
+	#elif angle > 90:
+		#rotationChange = -angle + 90
+	#elif angle < -90:
+		#rotationChange =  -angle - 90
+	#return rotationChange
+func playSpeedAnim()->void:
+	get_node("sprite/speedSprite").visible = true
+	get_node("speedAnim").play("speedyAnim")
 	

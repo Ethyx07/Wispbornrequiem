@@ -1,18 +1,112 @@
-[gd_scene load_steps=4 format=3 uid="uid://c25t6v0pfo46"]
+[gd_scene load_steps=19 format=3 uid="uid://c25t6v0pfo46"]
 
 [ext_resource type="Texture2D" uid="uid://db74x18dc8cld" path="res://Assets/Enemy/AreaBoss/arrow.png" id="1_inm77"]
 [ext_resource type="Script" path="res://Scripts/Projectiles/arrow_proj.gd" id="1_yd07f"]
+[ext_resource type="Texture2D" uid="uid://2m5bpn3e32hs" path="res://Assets/Enemy/AreaBoss/trackArrow1.png" id="2_ky5m1"]
+[ext_resource type="Texture2D" uid="uid://d1cpmohwyf4ep" path="res://Assets/Enemy/AreaBoss/bounceArrow.png" id="3_qfp3m"]
+[ext_resource type="Texture2D" uid="uid://br8aidgdi2y4o" path="res://Assets/Enemy/AreaBoss/trackArrow2.png" id="3_vjgtw"]
+[ext_resource type="Texture2D" uid="uid://dc76m78ns1kee" path="res://Assets/Enemy/AreaBoss/scatterArrow.png" id="4_df8bb"]
+[ext_resource type="Texture2D" uid="uid://ce4kpas2yh30h" path="res://Assets/Enemy/AreaBoss/trackArrow3.png" id="4_gufa4"]
+[ext_resource type="Texture2D" uid="uid://bdh7l1vxqhov2" path="res://Assets/Enemy/AreaBoss/speedArrowEffect/speedArrowEffect1.png" id="8_ead2b"]
+[ext_resource type="Texture2D" uid="uid://q32l5bo1hp7p" path="res://Assets/Enemy/AreaBoss/speedArrowEffect/speedArrowEffect2.png" id="9_4ykiq"]
+[ext_resource type="Texture2D" uid="uid://e2xxlqilb2e2" path="res://Assets/Enemy/AreaBoss/speedArrowEffect/speedArrowEffect3.png" id="10_vx4ro"]
+[ext_resource type="Texture2D" uid="uid://bqxygi81xfgmc" path="res://Assets/Enemy/AreaBoss/speedArrowEffect/speedArrowEffect4.png" id="11_oyb8y"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lht47"]
 radius = 4.0
 height = 14.0
 
-[node name="arrow_proj" type="Node2D" groups=["Projectile"]]
-script = ExtResource("1_yd07f")
+[sub_resource type="Animation" id="Animation_oux3m"]
+resource_name = "trackAnim"
+length = 0.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("2_ky5m1"), ExtResource("3_vjgtw"), ExtResource("4_gufa4")]
+}
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[sub_resource type="Animation" id="Animation_tutr4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_ky5m1")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fgsf6"]
+_data = {
+"RESET": SubResource("Animation_tutr4"),
+"trackAnim": SubResource("Animation_oux3m")
+}
+
+[sub_resource type="Animation" id="Animation_ldugl"]
+resource_name = "speedyAnim"
+length = 0.2667
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite/speedSprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("8_ead2b"), ExtResource("9_4ykiq"), ExtResource("10_vx4ro"), ExtResource("11_oyb8y")]
+}
+
+[sub_resource type="Animation" id="Animation_kc1fi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite/speedSprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j2ee0"]
+_data = {
+"RESET": SubResource("Animation_kc1fi"),
+"speedyAnim": SubResource("Animation_ldugl")
+}
+
+[node name="arrow_proj" type="Node2D" groups=["Projectile"]]
+scale = Vector2(2.5, 2.5)
+script = ExtResource("1_yd07f")
+normTexture = ExtResource("1_inm77")
+bounceTexture = ExtResource("3_qfp3m")
+scatterTexture = ExtResource("4_df8bb")
+trackTexture = ExtResource("2_ky5m1")
+
+[node name="sprite" type="Sprite2D" parent="."]
 texture_filter = 1
-texture = ExtResource("1_inm77")
+texture = ExtResource("2_ky5m1")
+
+[node name="speedSprite" type="Sprite2D" parent="sprite"]
+visible = false
+scale = Vector2(1, 1)
 
 [node name="Area2D" type="Area2D" parent="." groups=["Projectile"]]
 
@@ -22,5 +116,15 @@ shape = SubResource("CapsuleShape2D_lht47")
 
 [node name="forwardDir" type="Node2D" parent="."]
 position = Vector2(7, 0)
+
+[node name="animPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_fgsf6")
+}
+
+[node name="speedAnim" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_j2ee0")
+}
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
