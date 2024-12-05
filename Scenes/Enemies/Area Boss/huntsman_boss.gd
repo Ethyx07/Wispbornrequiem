@@ -59,6 +59,6 @@ func triAttack()->void:
 	var spawnNum = 2 * (bossMaxHealth/currentHealth)
 	if spawnNum > 6: 
 		spawnNum = 6
-	for i in range(1):
+	for i in range(spawnNum):
 		spawnArrow(curPosition)
 		await get_tree().create_timer(0.2).timeout
