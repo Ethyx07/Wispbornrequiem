@@ -96,14 +96,16 @@ func _on_interactable_box_body_entered(body: Node2D) -> void:
 		facingBody = body
 		facingBody.highlighted()
 		if body.is_in_group("Podium")  and sceneKey == "Wisp":
-			playerSprite.texture = possessionTexture
+			if body.bUnlocked:
+				playerSprite.texture = possessionTexture
 
 func _on_interactable_box_body_exited(body: Node2D) -> void:
 	if body.is_in_group("Interactable") and is_instance_valid(facingBody):
 		facingBody.unhighlighted()
 		facingBody = null
 		if body.is_in_group("Podium") and sceneKey == "Wisp":
-			playerSprite.texture = mainTexture
+			if body.bUnlocked:
+				playerSprite.texture = mainTexture
 
 func _on_particle_finished(particleInstance : Node)-> void:
 	particleInstance.queue_free()
