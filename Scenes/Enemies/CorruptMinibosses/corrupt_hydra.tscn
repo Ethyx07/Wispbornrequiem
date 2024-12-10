@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dbcsm5nbsnsd8"]
+[gd_scene load_steps=15 format=3 uid="uid://dbcsm5nbsnsd8"]
 
 [ext_resource type="Script" path="res://Scenes/Enemies/CorruptMinibosses/corrupt_hydra.gd" id="1_7akqv"]
 [ext_resource type="Texture2D" uid="uid://nrxlphynyx12" path="res://Assets/Enemy/CorruptEnemy/CorruptHydra/FreedHydraBody.png" id="2_d46dw"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dmatwbwv7f8jo" path="res://Scenes/PlayerClasses/hydraAttacks/acid_breath.tscn" id="4_o641j"]
 [ext_resource type="Texture2D" uid="uid://d2ik65iy3dktc" path="res://Assets/Enemy/CorruptEnemy/CorruptHydra/FreedHydraMiddleHead.png" id="4_pfc7h"]
 [ext_resource type="Texture2D" uid="uid://xosdynni4ght" path="res://Assets/Enemy/CorruptEnemy/CorruptHydra/FreedHydraRightHead.png" id="5_ve4af"]
+[ext_resource type="PackedScene" uid="uid://bfi2oqbfot71m" path="res://Scenes/Interactables/trophy.tscn" id="5_yv1to"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g802k"]
 radius = 56.0089
@@ -84,6 +85,7 @@ bossName = "Corrupt Hydra"
 bossMaxHealth = 30
 bossKey = "Hydra"
 speed = 1000
+trophy = ExtResource("5_yv1to")
 
 [node name="body" type="Sprite2D" parent="."]
 texture_filter = 1

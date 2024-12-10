@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://5n0yome5tq1v"]
+[gd_scene load_steps=17 format=4 uid="uid://5n0yome5tq1v"]
 
 [ext_resource type="Script" path="res://Scripts/level_logic.gd" id="1_8gmwg"]
 [ext_resource type="Texture2D" uid="uid://dnanjexv0r58u" path="res://Assets/Tilemap/Tilemap.png" id="2_hjtq4"]
@@ -68,6 +68,10 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-414, 576, -421, -256, 
 vertices = PackedVector2Array(721.141, -245.078, 732.852, 567.047, -409.156, 572.938, -422.828, -254.906)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-433, -265, -419, 583, 743, 577, 731, -255)])
+
+[sub_resource type="GDScript" id="GDScript_efn8q"]
+script/source = "extends StaticBody2D
+"
 
 [node name="level2" type="Node2D" node_paths=PackedStringArray("enemySpawns") groups=["Level"]]
 script = ExtResource("1_8gmwg")
@@ -155,6 +159,7 @@ visible = false
 position = Vector2(321, 0)
 collision_layer = 2
 collision_mask = 2
+script = SubResource("GDScript_efn8q")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DeathPits"]
 light_mask = 2

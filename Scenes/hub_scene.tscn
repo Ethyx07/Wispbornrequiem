@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://bfyn2oiwvmtcd"]
+[gd_scene load_steps=28 format=3 uid="uid://bfyn2oiwvmtcd"]
 
 [ext_resource type="Script" path="res://Scripts/hub_scene.gd" id="1_k7cri"]
 [ext_resource type="PackedScene" uid="uid://2413ue8fbi7x" path="res://Scenes/PlayerClasses/player_wisp.tscn" id="1_nhtfs"]
@@ -23,7 +23,6 @@
 [ext_resource type="Texture2D" uid="uid://c8sub51gwrwfa" path="res://Assets/Tilemap/doorUnlocking/TileDoorwayLocked14.png" id="21_0mwtu"]
 [ext_resource type="Texture2D" uid="uid://2b7dyl1xvg0i" path="res://Assets/Tilemap/doorUnlocking/TileDoorwayLocked15.png" id="22_lmt1w"]
 [ext_resource type="PackedScene" uid="uid://drxld1vfpxhb8" path="res://Scenes/GUI/player_gui.tscn" id="22_yq0jn"]
-[ext_resource type="PackedScene" uid="uid://c25t6v0pfo46" path="res://Scenes/Enemies/Area Boss/arrow_proj.tscn" id="24_de2qf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q7ujh"]
 size = Vector2(36, 38)
@@ -108,7 +107,3 @@ grow_vertical = 1
 
 [node name="PlayerSpawn" type="Node2D" parent="."]
 position = Vector2(-119, 0)
-
-[node name="arrow_proj" parent="." instance=ExtResource("24_de2qf")]
-position = Vector2(-74, 41)
-rotation = -0.165202

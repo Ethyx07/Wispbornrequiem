@@ -9,7 +9,7 @@ func _on_accept_pressed() -> void:
 	body.applyUpgrade(upgradeData.bonusType, upgradeData.effectBonus)
 	self.hide()
 	get_tree().get_first_node_in_group("Player").inputEnabled = true
-	Gamemode.runtimeLootTable.remove_at(itemNum)
+	#Gamemode.runtimeLootTable.remove_at(itemNum)
 	upgradeItem.queue_free()
 
 func _on_decline_pressed() -> void:

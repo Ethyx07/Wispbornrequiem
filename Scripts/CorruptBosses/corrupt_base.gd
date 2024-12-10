@@ -4,6 +4,7 @@ extends CharacterBody2D
 @export var bossMaxHealth : int
 @export var bossKey : String
 @export var speed : int
+@export var trophy : PackedScene
 
 @onready var animPlayer = get_node("animPlayer")
 @onready var nav_agent = get_node("NavAgent")
@@ -51,9 +52,10 @@ func hit(damage : float)-> void:
 		await animPlayer.animation_finished
 		get_node("hurtbox").disabled = true
 		if self.is_in_group("Corrupt"):
-			Gamemode.activePodiums[bossKey] = true 
+			spawnDrop() 
 		await get_tree().create_timer(5).timeout
 		self.remove_from_group("Enemy")
+		remove_self()
 	else:
 		arenaNode.updateUI()
 	
@@ -65,3 +67,12 @@ func removeProjectiles()->void:
 	for proj in projectiles:
 		if proj.targetGroup == "Player":
 			proj.queue_free()
+
+
+func spawnDrop() -> void:
+	if Gamemode.activePodiums[bossKey]:
+		print("already got")
+	else:
+		var trophyItem = trophy.instantiate()
+		trophyItem.bossKey = bossKey
+		get_tree().get_first_node_in_group("Level").add_child(trophyItem)

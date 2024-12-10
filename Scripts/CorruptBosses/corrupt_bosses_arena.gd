@@ -42,7 +42,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	if get_tree().get_node_count_in_group("Enemy") <= 0:
+	if get_tree().get_node_count_in_group("Enemy") <= 0 and get_tree().get_node_count_in_group("Trophy") <= 0:
 		if !doorway.bIsUnlocked:
 			doorway.animator.play("unlocking")
 			await doorway.animator.animation_finished
@@ -61,3 +61,6 @@ func updateUI() ->void:
 	
 	healthBarVal.clear()
 	healthBarVal.add_text(str(boss.currentHealth))
+	if healthBar.value <= 0:
+		await get_tree().create_timer(2.5).timeout
+		healthBar.hide()
