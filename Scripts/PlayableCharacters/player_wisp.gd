@@ -10,6 +10,7 @@ extends CharacterBody2D
 @export var specialCooldown: float = 5
 @export var health : float
 @export var maxHealth : float
+@export var possessionTexture : Texture2D
 
 enum playerState {NEUTRAL, ATTACK, DEAD, DASH}
 enum controllerState {KBM, Controller}
@@ -19,6 +20,7 @@ var currentDevice = controllerState.KBM
 var bUlting : bool = false
 var inputEnabled : bool = true
 var attackInput
+@onready var mainTexture = get_node("playerSprite").texture
 
 @export var sceneKey : String
 
@@ -93,11 +95,15 @@ func _on_interactable_box_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Interactable") and !is_instance_valid(facingBody):
 		facingBody = body
 		facingBody.highlighted()
+		if body.is_in_group("Podium")  and sceneKey == "Wisp":
+			playerSprite.texture = possessionTexture
 
 func _on_interactable_box_body_exited(body: Node2D) -> void:
 	if body.is_in_group("Interactable") and is_instance_valid(facingBody):
 		facingBody.unhighlighted()
 		facingBody = null
+		if body.is_in_group("Podium") and sceneKey == "Wisp":
+			playerSprite.texture = mainTexture
 
 func _on_particle_finished(particleInstance : Node)-> void:
 	particleInstance.queue_free()
