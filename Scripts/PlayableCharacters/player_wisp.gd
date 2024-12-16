@@ -15,6 +15,8 @@ extends CharacterBody2D
 enum playerState {NEUTRAL, ATTACK, DEAD, DASH}
 enum controllerState {KBM, Controller}
 
+var dashPosition : Vector2
+
 var currentDevice = controllerState.KBM
 @export var currentState : playerState
 var bUlting : bool = false
@@ -113,6 +115,7 @@ func _on_particle_finished(particleInstance : Node)-> void:
 func dash()-> Vector2:
 	#Creates particle where the player leaves from
 		currentState = playerState.DASH
+		dashPosition = self.global_position
 		if currentDevice == controllerState.KBM:	
 			return (get_global_mouse_position() - self.global_position).normalized()
 		return (get_node("attackMarker/attackDirection").global_position - self.global_position).normalized()
@@ -141,9 +144,10 @@ func hit(damage : int) -> void:
 func ultActivate() ->void:
 	bUlting = true
 	
-func pitCheck()->void:
-	if lastState == playerState.DASH and currentState == playerState.NEUTRAL:
-		print("Working")
+func pitfall()->void:
+	self.global_position = dashPosition
+	get_tree().create_tween()
+	hit(3)
 	
 func shakeScreen():
 	shakeStrength = randShake
