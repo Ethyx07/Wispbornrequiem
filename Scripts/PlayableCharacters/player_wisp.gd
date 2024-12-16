@@ -120,6 +120,15 @@ func dash()-> Vector2:
 			return (get_global_mouse_position() - self.global_position).normalized()
 		return (get_node("attackMarker/attackDirection").global_position - self.global_position).normalized()
 
+func resetLayers() -> void:
+	self.collision_layer = (1 << 0) | (1 << 1) | (1 << 2)
+	self.collision_mask = (1 << 0) | (1 << 1) | (1 << 2)
+
+func dashLayers()-> void:
+	self.collision_layer = 0
+	self.collision_layer = (1 << 2)
+	self.collision_mask = 0
+	self.collision_mask = (1 << 2)
 	
 func attack() -> void:
 	pass
