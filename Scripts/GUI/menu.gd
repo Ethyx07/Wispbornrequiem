@@ -2,7 +2,9 @@ extends Control
 
 @onready var saveMenu = get_node("saveMenu")
 @onready var mainMenu = get_node("mainMenu")
-@onready var loadButtons = get_node("loadDelete")
+@onready var loadButtons = get_node("saveMenu/loadDelete")
+@onready var loadSaveButton = get_node("saveMenu/loadDelete/loadSave")
+@onready var deleteSaveButton = get_node("saveMenu/loadDelete/deleteSave")
 @onready var doubleCheck = get_node("doubleCheck")
 @onready var saveOne = get_node("saveMenu/saveOne")
 @onready var saveTwo = get_node("saveMenu/saveTwo")
@@ -12,7 +14,7 @@ var selectedSave : int
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	$mainMenu/PlayButton.grab_focus()
+	$mainMenu/VertContainer/PlayButton.grab_focus()
 	var styleBoxOne = StyleBoxFlat.new() # Replace with function body.
 	var styleBoxTwo = StyleBoxFlat.new()
 	var styleBoxThree = StyleBoxFlat.new()
@@ -70,17 +72,20 @@ func _on_load_save_pressed() -> void:
 
 func _on_delete_save_pressed() -> void:
 	doubleCheck.show()
-	loadButtons.hide()
+	loadSaveButton.disabled = true
+	deleteSaveButton.disabled = true
 	
 func _on_yes_delete_pressed() -> void:
 	SaveLogic.delete_save(selectedSave)
 	updateSaveData()
 	doubleCheck.hide()
-	loadButtons.show()
+	loadSaveButton.disabled = false
+	deleteSaveButton.disabled = false
 	
 func _on_no_dont_pressed() -> void:
 	doubleCheck.hide()
-	loadButtons.show()
+	loadSaveButton.disabled = false
+	deleteSaveButton.disabled = false
 	
 func nameSavePrompt(slot : int) -> void:
 	get_node("setSaveName").show()

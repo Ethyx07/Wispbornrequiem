@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://cvbhe4702y548"]
+[gd_scene load_steps=5 format=3 uid="uid://cvbhe4702y548"]
 
 [ext_resource type="Script" path="res://Scripts/GUI/menu.gd" id="1_ijv2a"]
+[ext_resource type="Texture2D" uid="uid://c1sj7kv8mau0u" path="res://Assets/GUI/MenuUI/Button Template.png" id="2_gt47o"]
 
 [sub_resource type="Theme" id="Theme_q43gx"]
 resource_name = "SaveOne"
@@ -19,56 +20,135 @@ script = ExtResource("1_ijv2a")
 
 [node name="mainMenu" type="Control" parent="."]
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 394.0
-offset_top = -304.0
-offset_right = 394.0
-offset_bottom = -264.0
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
 
-[node name="PlayButton" type="Button" parent="mainMenu"]
-layout_mode = 2
-offset_left = -545.504
-offset_right = -504.504
-offset_bottom = 40.0
+[node name="VertContainer" type="VBoxContainer" parent="mainMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -35.0
+offset_top = 15.0
+offset_right = 35.0
+offset_bottom = 117.0
 grow_horizontal = 2
-grow_vertical = 0
-pivot_offset = Vector2(20, 40)
+grow_vertical = 2
+scale = Vector2(5.56, 5.56)
+pivot_offset = Vector2(35, 45)
+alignment = 1
+
+[node name="PlayButton" type="TextureButton" parent="mainMenu/VertContainer"]
+texture_filter = 1
+layout_mode = 2
+texture_normal = ExtResource("2_gt47o")
+
+[node name="PlayText" type="RichTextLabel" parent="mainMenu/VertContainer/PlayButton"]
+clip_contents = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -12.451
+offset_top = -7.17647
+offset_right = 590.549
+offset_bottom = 401.824
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.0303922, 0.0303922)
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 300
 text = "Play"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
 
-[node name="SettingsButton" type="Button" parent="mainMenu"]
+[node name="SettingsButton" type="TextureButton" parent="mainMenu/VertContainer"]
+texture_filter = 1
 layout_mode = 2
-offset_left = -546.0
-offset_top = 47.0
-offset_right = -476.0
-offset_bottom = 87.0
+texture_normal = ExtResource("2_gt47o")
+
+[node name="SettingsText" type="RichTextLabel" parent="mainMenu/VertContainer/SettingsButton"]
+clip_contents = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -19.964
+offset_top = -7.17985
+offset_right = 583.036
+offset_bottom = 401.82
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.0303922, 0.0303922)
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 300
 text = "Settings"
+scroll_active = false
+autowrap_mode = 0
 
-[node name="QuitButton" type="Button" parent="mainMenu"]
+[node name="QuitButton" type="TextureButton" parent="mainMenu/VertContainer"]
+texture_filter = 1
 layout_mode = 2
-offset_left = -546.0
-offset_top = 94.0
-offset_right = -504.0
-offset_bottom = 134.0
+texture_normal = ExtResource("2_gt47o")
+
+[node name="QuitText" type="RichTextLabel" parent="mainMenu/VertContainer/QuitButton"]
+clip_contents = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -12.0504
+offset_top = -6.48919
+offset_right = 615.95
+offset_bottom = 402.511
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.0303922, 0.0303922)
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 300
 text = "Quit"
+scroll_active = false
+autowrap_mode = 0
+
+[node name="Title" type="RichTextLabel" parent="mainMenu"]
+layout_mode = 1
+offset_left = 49.0
+offset_top = 40.0
+offset_right = 36762.0
+offset_bottom = 5488.0
+scale = Vector2(0.05, 0.05)
+theme_override_font_sizes/normal_font_size = 4000
+text = "Wispborn Requiem"
+fit_content = true
+autowrap_mode = 0
 
 [node name="saveMenu" type="BoxContainer" parent="."]
 visible = false
 texture_filter = 2
 layout_mode = 1
-anchors_preset = -1
+anchors_preset = 8
 anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
+anchor_bottom = 0.5
 offset_left = -29.0
-offset_top = 292.0
+offset_top = -56.5
 offset_right = 29.0
-offset_bottom = 405.0
+offset_bottom = 56.5
 grow_horizontal = 2
+grow_vertical = 2
 scale = Vector2(2, 2)
 theme_override_constants/separation = 10
 vertical = true
@@ -76,44 +156,32 @@ vertical = true
 [node name="saveOne" type="Button" parent="saveMenu"]
 layout_mode = 2
 focus_neighbor_top = NodePath("../saveThree")
-focus_neighbor_right = NodePath("../../loadDelete/loadSave")
+focus_neighbor_right = NodePath("../loadDelete/loadSave")
 theme = SubResource("Theme_q43gx")
 text = "Save 1
 "
 
 [node name="saveTwo" type="Button" parent="saveMenu"]
 layout_mode = 2
-focus_neighbor_right = NodePath("../../loadDelete/loadSave")
+focus_neighbor_right = NodePath("../loadDelete/loadSave")
 text = "Save 2"
 
 [node name="saveThree" type="Button" parent="saveMenu"]
 layout_mode = 2
-focus_neighbor_right = NodePath("../../loadDelete/loadSave")
+focus_neighbor_right = NodePath("../loadDelete/loadSave")
 focus_neighbor_bottom = NodePath("../saveOne")
 text = "Save 3"
 
-[node name="loadDelete" type="BoxContainer" parent="."]
-visible = false
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = 179.0
-offset_top = -706.0
-offset_right = 310.0
-offset_bottom = -666.0
-grow_horizontal = 2
-grow_vertical = 0
+[node name="loadDelete" type="BoxContainer" parent="saveMenu"]
+layout_mode = 2
 
-[node name="loadSave" type="Button" parent="loadDelete"]
+[node name="loadSave" type="Button" parent="saveMenu/loadDelete"]
 texture_filter = 1
 layout_mode = 2
 text = "Load 
 "
 
-[node name="deleteSave" type="Button" parent="loadDelete"]
+[node name="deleteSave" type="Button" parent="saveMenu/loadDelete"]
 texture_filter = 1
 layout_mode = 2
 text = "Delete
@@ -122,24 +190,26 @@ text = "Delete
 [node name="doubleCheck" type="BoxContainer" parent="."]
 visible = false
 layout_mode = 1
-anchors_preset = -1
+anchors_preset = 8
 anchor_left = 0.5
-anchor_top = 1.0
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -311.0
-offset_top = -575.0
-offset_right = 312.0
-offset_bottom = -367.0
+anchor_bottom = 0.5
+offset_left = -255.0
+offset_top = -297.0
+offset_right = 368.0
+offset_bottom = -89.0
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
 vertical = true
 
-[node name="RichTextLabel" type="RichTextLabel" parent="doubleCheck"]
+[node name="AreYouSure" type="RichTextLabel" parent="doubleCheck"]
 layout_mode = 2
 theme = SubResource("Theme_wo7w5")
-text = "Are you sure?
-Saves cannot be restored!"
+bbcode_enabled = true
+text = "[center]Are you sure?
+Saves cannot be restored![/center]
+"
 fit_content = true
 autowrap_mode = 0
 
@@ -157,18 +227,18 @@ text = "NO"
 [node name="setSaveName" type="BoxContainer" parent="."]
 visible = false
 layout_mode = 1
-anchors_preset = -1
+anchors_preset = 7
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -100.0
-offset_top = -269.0
-offset_right = 50.0
-offset_bottom = -219.0
+anchor_bottom = 1.0
+offset_left = -75.0
+offset_top = -50.0
+offset_right = 75.0
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
 scale = Vector2(3.08995, 3.30258)
+pivot_offset = Vector2(0, 60)
 
 [node name="nameGrabber" type="TextEdit" parent="setSaveName"]
 clip_contents = false
@@ -189,13 +259,13 @@ offset_bottom = 25.0
 grow_vertical = 2
 text = "OK"
 
-[connection signal="pressed" from="mainMenu/PlayButton" to="." method="_on_play_button_pressed"]
-[connection signal="pressed" from="mainMenu/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="mainMenu/VertContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="mainMenu/VertContainer/QuitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="pressed" from="saveMenu/saveOne" to="." method="_on_save_one_pressed"]
 [connection signal="pressed" from="saveMenu/saveTwo" to="." method="_on_save_two_pressed"]
 [connection signal="pressed" from="saveMenu/saveThree" to="." method="_on_save_three_pressed"]
-[connection signal="pressed" from="loadDelete/loadSave" to="." method="_on_load_save_pressed"]
-[connection signal="pressed" from="loadDelete/deleteSave" to="." method="_on_delete_save_pressed"]
+[connection signal="pressed" from="saveMenu/loadDelete/loadSave" to="." method="_on_load_save_pressed"]
+[connection signal="pressed" from="saveMenu/loadDelete/deleteSave" to="." method="_on_delete_save_pressed"]
 [connection signal="pressed" from="doubleCheck/yesDelete" to="." method="_on_yes_delete_pressed"]
 [connection signal="pressed" from="doubleCheck/noDont" to="." method="_on_no_dont_pressed"]
 [connection signal="pressed" from="setSaveName/nameGrabber/setName" to="." method="_on_set_name_pressed"]
