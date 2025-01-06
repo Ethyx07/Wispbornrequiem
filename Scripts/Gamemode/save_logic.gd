@@ -39,6 +39,7 @@ func save_game(slot: int, save_name : String) -> void:
 	
 func load_game(slot: int) -> bool:
 	var save_path = "%ssave_slot_%d.JSON" % [save_DIR,slot]
+	print(save_path)
 	if !FileAccess.file_exists(save_path):
 		get_tree().root.get_node("mainMenu/CanvasLayer/menu").nameSavePrompt(slot)
 		return false

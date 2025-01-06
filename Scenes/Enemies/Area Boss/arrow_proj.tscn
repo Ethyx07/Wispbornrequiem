@@ -106,6 +106,7 @@ texture = ExtResource("2_ky5m1")
 
 [node name="speedSprite" type="Sprite2D" parent="sprite"]
 visible = false
+texture_filter = 1
 
 [node name="Area2D" type="Area2D" parent="."]
 

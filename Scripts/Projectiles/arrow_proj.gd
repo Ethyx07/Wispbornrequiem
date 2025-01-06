@@ -58,7 +58,7 @@ func _physics_process(delta: float) -> void:
 	self.global_position += direction * speed * delta
 	if rayNode.is_colliding():
 		var collider = rayNode.get_collider()
-		if collider.is_in_group("Projectile") or collider.get_parent().is_in_group("Projectile"):
+		if (collider.is_in_group("Projectile") or collider.get_parent().is_in_group("Projectile")) and collider.parent != parent:
 			self.queue_free()
 	if arrowType == arrowState.TRACK and bStillTracking:
 		look_at(target.global_position)
