@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cvbhe4702y548"]
+[gd_scene load_steps=7 format=3 uid="uid://cvbhe4702y548"]
 
 [ext_resource type="Script" path="res://Scripts/GUI/menu.gd" id="1_ijv2a"]
 [ext_resource type="Texture2D" uid="uid://c1sj7kv8mau0u" path="res://Assets/GUI/MenuUI/Button Template.png" id="2_gt47o"]
+[ext_resource type="Texture2D" uid="uid://bncd6wnk26rj2" path="res://Assets/GUI/MenuUI/ButtonHovered.png" id="3_p5q4m"]
+[ext_resource type="BitMap" uid="uid://c5nbv02aq3cf4" path="res://Assets/GUI/MenuUI/ClickableBitmap.png" id="4_pa66q"]
 
 [sub_resource type="Theme" id="Theme_q43gx"]
 resource_name = "SaveOne"
@@ -46,7 +48,10 @@ alignment = 1
 [node name="PlayButton" type="TextureButton" parent="mainMenu/VertContainer"]
 texture_filter = 1
 layout_mode = 2
+size_flags_horizontal = 4
 texture_normal = ExtResource("2_gt47o")
+texture_hover = ExtResource("3_p5q4m")
+texture_click_mask = ExtResource("4_pa66q")
 
 [node name="PlayText" type="RichTextLabel" parent="mainMenu/VertContainer/PlayButton"]
 clip_contents = false
@@ -56,10 +61,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -12.451
-offset_top = -7.17647
-offset_right = 590.549
-offset_bottom = 401.824
+offset_left = -9.71223
+offset_top = -7.24462
+offset_right = 593.288
+offset_bottom = 401.755
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.0303922, 0.0303922)
@@ -73,7 +78,10 @@ autowrap_mode = 0
 [node name="SettingsButton" type="TextureButton" parent="mainMenu/VertContainer"]
 texture_filter = 1
 layout_mode = 2
+size_flags_horizontal = 4
 texture_normal = ExtResource("2_gt47o")
+texture_hover = ExtResource("3_p5q4m")
+texture_click_mask = ExtResource("4_pa66q")
 
 [node name="SettingsText" type="RichTextLabel" parent="mainMenu/VertContainer/SettingsButton"]
 clip_contents = false
@@ -83,10 +91,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -19.964
-offset_top = -7.17985
-offset_right = 583.036
-offset_bottom = 401.82
+offset_left = -17.2662
+offset_top = -7.25899
+offset_right = 585.734
+offset_bottom = 401.741
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.0303922, 0.0303922)
@@ -99,7 +107,10 @@ autowrap_mode = 0
 [node name="QuitButton" type="TextureButton" parent="mainMenu/VertContainer"]
 texture_filter = 1
 layout_mode = 2
+size_flags_horizontal = 4
 texture_normal = ExtResource("2_gt47o")
+texture_hover = ExtResource("3_p5q4m")
+texture_click_mask = ExtResource("4_pa66q")
 
 [node name="QuitText" type="RichTextLabel" parent="mainMenu/VertContainer/QuitButton"]
 clip_contents = false
@@ -109,10 +120,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -12.0504
-offset_top = -6.48919
-offset_right = 615.95
-offset_bottom = 402.511
+offset_left = -10.6115
+offset_top = -6.55395
+offset_right = 617.388
+offset_bottom = 402.446
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.0303922, 0.0303922)

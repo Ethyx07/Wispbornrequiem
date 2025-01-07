@@ -1,0 +1,16 @@
+[remap]
+
+importer="bitmap"
+type="BitMap"
+uid="uid://c5nbv02aq3cf4"
+path="res://.godot/imported/ClickableBitmap.png-fa5d02383dd0a27b904aae89e601b143.res"
+
+[deps]
+
+source_file="res://Assets/GUI/MenuUI/ClickableBitmap.png"
+dest_files=["res://.godot/imported/ClickableBitmap.png-fa5d02383dd0a27b904aae89e601b143.res"]
+
+[params]
+
+create_from=0
+threshold=0.5
