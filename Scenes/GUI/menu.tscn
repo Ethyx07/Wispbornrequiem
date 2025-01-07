@@ -53,6 +53,7 @@ focus_neighbor_top = NodePath("../QuitButton")
 focus_neighbor_bottom = NodePath("../SettingsButton")
 texture_normal = ExtResource("2_gt47o")
 texture_hover = ExtResource("3_p5q4m")
+texture_focused = ExtResource("3_p5q4m")
 texture_click_mask = ExtResource("4_pa66q")
 
 [node name="PlayText" type="RichTextLabel" parent="mainMenu/VertContainer/PlayButton"]
@@ -85,6 +86,7 @@ focus_neighbor_top = NodePath("../PlayButton")
 focus_neighbor_bottom = NodePath("../QuitButton")
 texture_normal = ExtResource("2_gt47o")
 texture_hover = ExtResource("3_p5q4m")
+texture_focused = ExtResource("3_p5q4m")
 texture_click_mask = ExtResource("4_pa66q")
 
 [node name="SettingsText" type="RichTextLabel" parent="mainMenu/VertContainer/SettingsButton"]
@@ -116,6 +118,7 @@ focus_neighbor_top = NodePath("../SettingsButton")
 focus_neighbor_bottom = NodePath("../PlayButton")
 texture_normal = ExtResource("2_gt47o")
 texture_hover = ExtResource("3_p5q4m")
+texture_focused = ExtResource("3_p5q4m")
 texture_click_mask = ExtResource("4_pa66q")
 
 [node name="QuitText" type="RichTextLabel" parent="mainMenu/VertContainer/QuitButton"]

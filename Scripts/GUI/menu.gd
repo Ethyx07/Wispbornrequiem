@@ -14,7 +14,7 @@ var selectedSave : int
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	$mainMenu/VertContainer/PlayButton.grab_focus()
+	#$mainMenu/VertContainer/PlayButton.grab_focus()
 	var styleBoxOne = StyleBoxFlat.new() # Replace with function body.
 	var styleBoxTwo = StyleBoxFlat.new()
 	var styleBoxThree = StyleBoxFlat.new()

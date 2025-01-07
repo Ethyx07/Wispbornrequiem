@@ -59,10 +59,11 @@ func _physics_process(delta: float) -> void:
 	if rayNode.is_colliding():
 		var collider = rayNode.get_collider()
 		var hitObject
-		if collider.is_in_group("Projectile"):
-			hitObject = collider
-		if collider.get_parent().is_in_group("Projectile"):
-			hitObject = collider.get_parent()
+		if collider:
+			if collider.is_in_group("Projectile"):
+				hitObject = collider
+			if collider.get_parent().is_in_group("Projectile"):
+				hitObject = collider.get_parent()
 		if hitObject:
 			if hitObject.parent != self.parent:
 				self.queue_free()
