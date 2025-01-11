@@ -5,7 +5,7 @@ extends Control
 @onready var loadButtons = get_node("saveMenu/loadDelete")
 @onready var loadSaveButton = get_node("saveMenu/loadDelete/loadSave")
 @onready var deleteSaveButton = get_node("saveMenu/loadDelete/deleteSave")
-@onready var doubleCheck = get_node("doubleCheck")
+@onready var doubleCheck = get_node("dCheckContainer")
 @onready var saveOne = get_node("saveMenu/saveOne")
 @onready var saveTwo = get_node("saveMenu/saveTwo")
 @onready var saveThree = get_node("saveMenu/saveThree")

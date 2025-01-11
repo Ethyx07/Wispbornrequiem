@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://du8becrhraynp" path="res://Scenes/PlayerClasses/hydra.tscn" id="7_2o50b"]
 [ext_resource type="PackedScene" uid="uid://dranjdg8vapdi" path="res://Scenes/Enemies/Area Boss/huntsman_boss.tscn" id="8_1abdt"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dqgv0"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_eib2q"]
 texture = ExtResource("3_stu14")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
@@ -25,7 +25,7 @@ texture_region_size = Vector2i(32, 32)
 2:3/0 = 0
 3:3/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_phd6j"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vigr7"]
 texture = ExtResource("4_nhiju")
 texture_region_size = Vector2i(32, 32)
 0:4/0 = 0
@@ -54,8 +54,8 @@ texture_region_size = Vector2i(32, 32)
 
 [sub_resource type="TileSet" id="TileSet_u1b3p"]
 tile_size = Vector2i(32, 32)
-sources/1 = SubResource("TileSetAtlasSource_phd6j")
-sources/0 = SubResource("TileSetAtlasSource_dqgv0")
+sources/1 = SubResource("TileSetAtlasSource_vigr7")
+sources/0 = SubResource("TileSetAtlasSource_eib2q")
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_8ph7w"]
 vertices = PackedVector2Array(381, -105, 381, 387, 93, 387, -303, -105, 93, 419, 61, 419, -47, 387, 61, 515, -15, 515, -15, 419, -47, 419, -303, 387)

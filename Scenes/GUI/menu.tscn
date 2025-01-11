@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://cvbhe4702y548"]
+[gd_scene load_steps=8 format=3 uid="uid://cvbhe4702y548"]
 
 [ext_resource type="Script" path="res://Scripts/GUI/menu.gd" id="1_ijv2a"]
 [ext_resource type="Texture2D" uid="uid://c1sj7kv8mau0u" path="res://Assets/GUI/MenuUI/Button Template.png" id="2_gt47o"]
 [ext_resource type="Texture2D" uid="uid://bncd6wnk26rj2" path="res://Assets/GUI/MenuUI/ButtonHovered.png" id="3_p5q4m"]
 [ext_resource type="BitMap" uid="uid://c5nbv02aq3cf4" path="res://Assets/GUI/MenuUI/ClickableBitmap.png" id="4_pa66q"]
+[ext_resource type="Texture2D" uid="uid://d0xpe7tvtx8mr" path="res://Assets/GUI/MenuUI/Wispborn Title.png" id="5_k7w2t"]
 
 [sub_resource type="Theme" id="Theme_q43gx"]
 resource_name = "SaveOne"
@@ -19,6 +20,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ijv2a")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="mainMenu" type="Control" parent="."]
 layout_mode = 1
@@ -142,17 +151,19 @@ text = "Quit"
 scroll_active = false
 autowrap_mode = 0
 
-[node name="Title" type="RichTextLabel" parent="mainMenu"]
+[node name="TextureRect" type="TextureRect" parent="mainMenu"]
+texture_filter = 1
 layout_mode = 1
-offset_left = 49.0
-offset_top = 40.0
-offset_right = 36762.0
-offset_bottom = 5488.0
-scale = Vector2(0.05, 0.05)
-theme_override_font_sizes/normal_font_size = 4000
-text = "Wispborn Requiem"
-fit_content = true
-autowrap_mode = 0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -80.0
+offset_right = 80.0
+offset_bottom = 80.0
+grow_horizontal = 2
+scale = Vector2(5, 5)
+pivot_offset = Vector2(80, 0)
+texture = ExtResource("5_k7w2t")
 
 [node name="saveMenu" type="BoxContainer" parent="."]
 visible = false
@@ -207,23 +218,21 @@ layout_mode = 2
 text = "Delete
 "
 
-[node name="doubleCheck" type="BoxContainer" parent="."]
+[node name="dCheckContainer" type="HBoxContainer" parent="."]
 visible = false
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -255.0
-offset_top = -297.0
-offset_right = 368.0
-offset_bottom = -89.0
+anchors_preset = -1
+anchor_right = 1.0
+offset_top = 150.0
+offset_bottom = 208.0
 grow_horizontal = 2
-grow_vertical = 2
+alignment = 1
+
+[node name="doubleCheck" type="BoxContainer" parent="dCheckContainer"]
+layout_mode = 2
 vertical = true
 
-[node name="AreYouSure" type="RichTextLabel" parent="doubleCheck"]
+[node name="AreYouSure" type="RichTextLabel" parent="dCheckContainer/doubleCheck"]
 layout_mode = 2
 theme = SubResource("Theme_wo7w5")
 bbcode_enabled = true
@@ -233,50 +242,63 @@ Saves cannot be restored![/center]
 fit_content = true
 autowrap_mode = 0
 
-[node name="yesDelete" type="Button" parent="doubleCheck"]
+[node name="yesDelete" type="Button" parent="dCheckContainer/doubleCheck"]
 texture_filter = 1
 layout_mode = 2
 text = "YES
 "
 
-[node name="noDont" type="Button" parent="doubleCheck"]
+[node name="noDont" type="Button" parent="dCheckContainer/doubleCheck"]
 texture_filter = 1
 layout_mode = 2
 text = "NO"
 
 [node name="setSaveName" type="BoxContainer" parent="."]
 visible = false
+texture_filter = 1
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -75.0
-offset_top = -50.0
-offset_right = 75.0
+offset_left = -312.0
+offset_top = -265.0
+offset_right = 3457.0
+offset_bottom = 362.0
 grow_horizontal = 2
 grow_vertical = 0
-scale = Vector2(3.08995, 3.30258)
+scale = Vector2(0.15, 0.16)
 pivot_offset = Vector2(0, 60)
+vertical = true
 
-[node name="nameGrabber" type="TextEdit" parent="setSaveName"]
-clip_contents = false
+[node name="nameText" type="RichTextLabel" parent="setSaveName"]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.0
-placeholder_text = "enter save name"
+theme_override_font_sizes/normal_font_size = 250
+bbcode_enabled = true
+text = "[center]Enter Save Name (5 characters)"
+fit_content = true
+autowrap_mode = 0
+
+[node name="nameGrabber" type="LineEdit" parent="setSaveName"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 200
+max_length = 5
 
 [node name="setName" type="Button" parent="setSaveName/nameGrabber"]
 layout_mode = 1
 anchors_preset = -1
+anchor_left = 1.0
 anchor_top = 0.5
+anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = 150.0
-offset_top = -25.0
-offset_right = 50.0
-offset_bottom = 25.0
+offset_left = -2.3335
+offset_top = -139.0
+offset_right = 290.667
+offset_bottom = 142.0
+grow_horizontal = 0
 grow_vertical = 2
+theme_override_font_sizes/font_size = 200
 text = "OK"
 
 [connection signal="pressed" from="mainMenu/VertContainer/PlayButton" to="." method="_on_play_button_pressed"]
@@ -286,6 +308,6 @@ text = "OK"
 [connection signal="pressed" from="saveMenu/saveThree" to="." method="_on_save_three_pressed"]
 [connection signal="pressed" from="saveMenu/loadDelete/loadSave" to="." method="_on_load_save_pressed"]
 [connection signal="pressed" from="saveMenu/loadDelete/deleteSave" to="." method="_on_delete_save_pressed"]
-[connection signal="pressed" from="doubleCheck/yesDelete" to="." method="_on_yes_delete_pressed"]
-[connection signal="pressed" from="doubleCheck/noDont" to="." method="_on_no_dont_pressed"]
+[connection signal="pressed" from="dCheckContainer/doubleCheck/yesDelete" to="." method="_on_yes_delete_pressed"]
+[connection signal="pressed" from="dCheckContainer/doubleCheck/noDont" to="." method="_on_no_dont_pressed"]
 [connection signal="pressed" from="setSaveName/nameGrabber/setName" to="." method="_on_set_name_pressed"]
