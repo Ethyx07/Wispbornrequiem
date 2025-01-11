@@ -1,0 +1,43 @@
+[gd_scene load_steps=8 format=3 uid="uid://byt6jqakyjsm5"]
+
+[ext_resource type="Script" path="res://Scripts/GUI/character_bg.gd" id="1_0uqrw"]
+[ext_resource type="Texture2D" uid="uid://bo0qcnhxmywu0" path="res://Assets/GUI/Shadows/WispShadow.png" id="2_slb51"]
+[ext_resource type="Texture2D" uid="uid://b6d8g183x604k" path="res://Assets/PlayerSprites/WispPC.png" id="3_a1ge8"]
+[ext_resource type="Texture2D" uid="uid://d1y1nna7gh48m" path="res://Assets/PlayerSprites/Minotaur.png" id="4_r1uky"]
+[ext_resource type="Texture2D" uid="uid://da51ufs56xub2" path="res://Assets/GUI/Shadows/MinotaurShadow.png" id="4_rc7ta"]
+[ext_resource type="Texture2D" uid="uid://wbncjc7y270b" path="res://Assets/GUI/Shadows/HydraShadow.png" id="6_bt288"]
+[ext_resource type="Texture2D" uid="uid://vlndfvlyagwe" path="res://Assets/Enemy/CorruptEnemy/CorruptHydra/FreedHydra.png" id="7_wxjqi"]
+
+[node name="characterBG" type="Control" node_paths=PackedStringArray("spriteList")]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0uqrw")
+wispTextures = Array[Texture2D]([ExtResource("2_slb51"), ExtResource("3_a1ge8")])
+minotaurTextures = Array[Texture2D]([ExtResource("4_rc7ta"), ExtResource("4_r1uky")])
+hydraTextures = Array[Texture2D]([ExtResource("6_bt288"), ExtResource("7_wxjqi")])
+spriteList = [NodePath("leftCharacters/minotaur"), NodePath("rightCharacters/hydra")]
+
+[node name="leftCharacters" type="Node2D" parent="."]
+position = Vector2(587, 358)
+
+[node name="minotaur" type="Sprite2D" parent="leftCharacters"]
+position = Vector2(16, 0)
+scale = Vector2(2, 2)
+texture = ExtResource("4_rc7ta")
+
+[node name="rightCharacters" type="Node2D" parent="."]
+position = Vector2(737, 342)
+
+[node name="hydra" type="Sprite2D" parent="rightCharacters"]
+texture = ExtResource("6_bt288")
+
+[node name="wisp" type="Node2D" parent="."]
+position = Vector2(666, 358)
+
+[node name="wisp" type="Sprite2D" parent="wisp"]
+texture = ExtResource("2_slb51")

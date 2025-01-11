@@ -50,7 +50,7 @@ func _on_quit_button_pressed() -> void:
 
 
 func _on_save_one_pressed() -> void:
-	selectedSave = 1
+	selectedSave = 1	
 	saveOne.grab_focus()
 
 func _on_save_two_pressed() -> void:
