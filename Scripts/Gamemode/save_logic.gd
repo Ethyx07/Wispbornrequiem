@@ -6,17 +6,17 @@ const save_DIR = "user://saves_"
 func _ready() -> void:
 	add_to_group("Persistent")
 
-func setButtonDetails(button : Button, slot : int)-> void:
+func setButtonDetails(button : TextureButton, slot : int)-> void:
 	var save_path = "%ssave_slot_%d.JSON" % [save_DIR,slot]
 	
 	var save_file = FileAccess.open(save_path, FileAccess.READ)
 	if save_file:
 		var save_data = JSON.parse_string(FileAccess.get_file_as_string(save_path))
 		save_file.close()
-		button.text = save_data["save_name"] + "\n Runs: " + str(save_data["no_runs"])
+		button.get_child(0).text =save_data["save_name"] + "\nRuns: " + str(save_data["no_runs"])
 		
 	else:
-		button.text = "Empty Save"
+		button.get_child(0).text = "Empty"
 	
 func save_game(slot: int, save_name : String) -> void:
 	var dir = DirAccess.open(save_DIR)

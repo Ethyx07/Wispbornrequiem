@@ -1,0 +1,16 @@
+[remap]
+
+importer="bitmap"
+type="BitMap"
+uid="uid://dfvnak7l6tbkj"
+path="res://.godot/imported/SaveButtonBitmap.png-e0a9ae367758caf165af8c7129a63935.res"
+
+[deps]
+
+source_file="res://Assets/GUI/MenuUI/SaveButtonBitmap.png"
+dest_files=["res://.godot/imported/SaveButtonBitmap.png-e0a9ae367758caf165af8c7129a63935.res"]
+
+[params]
+
+create_from=0
+threshold=0.5

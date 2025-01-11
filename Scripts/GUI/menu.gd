@@ -51,44 +51,36 @@ func _on_quit_button_pressed() -> void:
 
 func _on_save_one_pressed() -> void:
 	selectedSave = 1
-	saveOne.get_theme_stylebox("normal").border_color = Color.RED
-	saveTwo.get_theme_stylebox("normal").border_color = Color.GRAY
-	saveThree.get_theme_stylebox("normal").border_color = Color.GRAY
+	saveOne.grab_focus()
 
 func _on_save_two_pressed() -> void:
 	selectedSave = 2
-	saveOne.get_theme_stylebox("normal").border_color = Color.GRAY
-	saveTwo.get_theme_stylebox("normal").border_color = Color.RED
-	saveThree.get_theme_stylebox("normal").border_color = Color.GRAY
+	saveTwo.grab_focus()
 
 func _on_save_three_pressed() -> void:
 	selectedSave = 3 
-	saveOne.get_theme_stylebox("normal").border_color = Color.GRAY
-	saveTwo.get_theme_stylebox("normal").border_color = Color.GRAY
-	saveThree.get_theme_stylebox("normal").border_color = Color.RED
+	saveThree.grab_focus()
 
 func _on_load_save_pressed() -> void:
 	loadGame(selectedSave)
 
 func _on_delete_save_pressed() -> void:
 	doubleCheck.show()
-	loadSaveButton.disabled = true
-	deleteSaveButton.disabled = true
+	toggleButtonDisable(true)
 	
 func _on_yes_delete_pressed() -> void:
 	SaveLogic.delete_save(selectedSave)
 	updateSaveData()
 	doubleCheck.hide()
-	loadSaveButton.disabled = false
-	deleteSaveButton.disabled = false
+	toggleButtonDisable(false)
 	
 func _on_no_dont_pressed() -> void:
 	doubleCheck.hide()
-	loadSaveButton.disabled = false
-	deleteSaveButton.disabled = false
+	toggleButtonDisable(false)
 	
 func nameSavePrompt(slot : int) -> void:
 	get_node("setSaveName").show()
+	toggleButtonDisable(true)
 	Gamemode.saveSlot = slot
 	
 func loadGame(slot : int) -> void:
@@ -110,5 +102,12 @@ func _on_set_name_pressed() -> void:
 		SaveLogic.save_game(selectedSave, Gamemode.saveName)
 		get_node("setSaveName/nameGrabber").text = ""
 		get_node("setSaveName").hide()
+		toggleButtonDisable(false)
 		updateSaveData()
 		
+func toggleButtonDisable(dis : bool)-> void:
+	loadSaveButton.disabled = dis
+	deleteSaveButton.disabled = dis
+	saveOne.disabled = dis
+	saveTwo.disabled = dis
+	saveThree.disabled = dis
