@@ -9,6 +9,7 @@ extends Control
 @onready var saveOne = get_node("saveMenu/saveOne")
 @onready var saveTwo = get_node("saveMenu/saveTwo")
 @onready var saveThree = get_node("saveMenu/saveThree")
+@onready var characterBG = get_node("characterBG")
 var selectedSave : int
 
 
@@ -52,14 +53,17 @@ func _on_quit_button_pressed() -> void:
 func _on_save_one_pressed() -> void:
 	selectedSave = 1	
 	saveOne.grab_focus()
+	loadUnlockedSprites(selectedSave)
 
 func _on_save_two_pressed() -> void:
 	selectedSave = 2
 	saveTwo.grab_focus()
+	loadUnlockedSprites(selectedSave)
 
 func _on_save_three_pressed() -> void:
 	selectedSave = 3 
 	saveThree.grab_focus()
+	loadUnlockedSprites(selectedSave)
 
 func _on_load_save_pressed() -> void:
 	loadGame(selectedSave)
@@ -87,6 +91,9 @@ func loadGame(slot : int) -> void:
 	if SaveLogic.load_game(slot):
 		Gamemode.saveSlot = slot
 		openHub()
+
+func loadUnlockedSprites(slot : int) ->void:
+	characterBG.updateSprites(SaveLogic.load_game(slot))
 
 func openHub() -> void:
 	get_tree().change_scene_to_file("res://Scenes/hub_scene.tscn")

@@ -11,6 +11,7 @@ extends Control
 "Hydra" : hydraTextures}
 
 func _ready() -> void:
+	Gamemode.activePodiums["Hydra"] = true
 	updateSprites(false)
 
 func updateSprites(bEmpty : bool) -> void:

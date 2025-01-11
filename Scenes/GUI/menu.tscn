@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cvbhe4702y548"]
+[gd_scene load_steps=11 format=3 uid="uid://cvbhe4702y548"]
 
 [ext_resource type="Script" path="res://Scripts/GUI/menu.gd" id="1_ijv2a"]
 [ext_resource type="Texture2D" uid="uid://c1sj7kv8mau0u" path="res://Assets/GUI/MenuUI/Button Template.png" id="2_gt47o"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://vh6mt6qdneuk" path="res://Assets/GUI/MenuUI/SaveButton.png" id="6_37hdx"]
 [ext_resource type="Texture2D" uid="uid://cib3bpj4kj8it" path="res://Assets/GUI/MenuUI/SaveButtonHighlight.png" id="7_um7vw"]
 [ext_resource type="BitMap" uid="uid://dfvnak7l6tbkj" path="res://Assets/GUI/MenuUI/SaveButtonBitmap.png" id="8_0jx5g"]
+[ext_resource type="PackedScene" uid="uid://byt6jqakyjsm5" path="res://Scenes/GUI/character_bg.tscn" id="9_7da1u"]
 
 [sub_resource type="Theme" id="Theme_wo7w5"]
 default_font_size = 50
@@ -196,6 +197,7 @@ texture_focused = ExtResource("7_um7vw")
 texture_click_mask = ExtResource("8_0jx5g")
 
 [node name="text" type="Label" parent="saveMenu/saveOne"]
+layout_mode = 0
 offset_left = 14.0
 offset_top = 4.75
 offset_right = 244.0
@@ -239,6 +241,7 @@ texture_focused = ExtResource("7_um7vw")
 texture_click_mask = ExtResource("8_0jx5g")
 
 [node name="text" type="Label" parent="saveMenu/saveThree"]
+layout_mode = 0
 offset_left = 14.0
 offset_top = 4.75
 offset_right = 244.0
@@ -284,6 +287,7 @@ texture_hover = ExtResource("3_p5q4m")
 texture_click_mask = ExtResource("4_pa66q")
 
 [node name="load" type="Label" parent="saveMenu/loadDelete/deleteSave"]
+layout_mode = 0
 offset_left = 4.5
 offset_right = 317.5
 offset_bottom = 137.0
@@ -375,6 +379,16 @@ grow_horizontal = 0
 grow_vertical = 2
 theme_override_font_sizes/font_size = 200
 text = "OK"
+
+[node name="characterBG" parent="." instance=ExtResource("9_7da1u")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = -126.0
+offset_bottom = -126.0
 
 [connection signal="pressed" from="mainMenu/VertContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="mainMenu/VertContainer/QuitButton" to="." method="_on_quit_button_pressed"]

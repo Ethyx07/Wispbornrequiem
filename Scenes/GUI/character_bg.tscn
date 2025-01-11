@@ -23,7 +23,7 @@ hydraTextures = Array[Texture2D]([ExtResource("6_bt288"), ExtResource("7_wxjqi")
 spriteList = [NodePath("leftCharacters/minotaur"), NodePath("rightCharacters/hydra")]
 
 [node name="leftCharacters" type="Node2D" parent="."]
-position = Vector2(587, 358)
+position = Vector2(-104, 0)
 
 [node name="minotaur" type="Sprite2D" parent="leftCharacters"]
 position = Vector2(16, 0)
@@ -31,13 +31,12 @@ scale = Vector2(2, 2)
 texture = ExtResource("4_rc7ta")
 
 [node name="rightCharacters" type="Node2D" parent="."]
-position = Vector2(737, 342)
+position = Vector2(81, 0)
 
 [node name="hydra" type="Sprite2D" parent="rightCharacters"]
 texture = ExtResource("6_bt288")
 
 [node name="wisp" type="Node2D" parent="."]
-position = Vector2(666, 358)
 
 [node name="wisp" type="Sprite2D" parent="wisp"]
 texture = ExtResource("2_slb51")
