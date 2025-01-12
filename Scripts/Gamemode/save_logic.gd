@@ -35,7 +35,17 @@ func save_game(slot: int, save_name : String) -> void:
 	if save_file:
 		save_file.store_string(JSON.stringify(save_data, "\t"))
 		save_file.close()
-		
+
+func load_game_sprite(slot : int) -> bool:
+	var save_path = "%ssave_slot_%d.JSON" % [save_DIR,slot]
+	if !FileAccess.file_exists(save_path):
+		return false
+	var save_file = FileAccess.open(save_path, FileAccess.READ)
+	if save_file:
+		var save_data = JSON.parse_string(FileAccess.get_file_as_string(save_path))
+		save_file.close()
+		Gamemode.activePodiums = save_data["game_data"]
+	return true
 	
 func load_game(slot: int) -> bool:
 	var save_path = "%ssave_slot_%d.JSON" % [save_DIR,slot]

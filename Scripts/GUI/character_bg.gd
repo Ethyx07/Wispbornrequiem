@@ -11,19 +11,25 @@ extends Control
 "Hydra" : hydraTextures}
 
 func _ready() -> void:
-	Gamemode.activePodiums["Hydra"] = true
-	updateSprites(false)
+	pass
 
-func updateSprites(bEmpty : bool) -> void:
-	if !bEmpty:
+func updateSprites(save : bool) -> void:
+	if save:
 		get_node("wisp/wisp").texture = wispTextures[1]
+		for sprites in Gamemode.activePodiums:
+			var tempArray = textureDict[sprites]
+			if Gamemode.activePodiums[sprites]:
+				for sprite in spriteList:
+					if sprite.name == sprites:
+						sprite.texture = tempArray[1]
+			else:
+				for sprite in spriteList:
+					if sprite.name == sprites:
+						sprite.texture = tempArray[0]
 	else:
 		get_node("wisp/wisp").texture = wispTextures[0]
-	var index = 0
-	for sprites in Gamemode.activePodiums:
-		var tempArray = textureDict[sprites]
-		if Gamemode.activePodiums[sprites]:
-			spriteList[index].texture = tempArray[1]
-		else:
-			spriteList[index].texture = tempArray[0]
-		index += 1
+		for sprites in Gamemode.activePodiums:
+			var tempArray = textureDict[sprites]
+			for sprite in spriteList:
+					if sprite.name == sprites:
+						sprite.texture = tempArray[0]

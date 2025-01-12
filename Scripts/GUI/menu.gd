@@ -74,6 +74,7 @@ func _on_delete_save_pressed() -> void:
 	
 func _on_yes_delete_pressed() -> void:
 	SaveLogic.delete_save(selectedSave)
+	loadUnlockedSprites(selectedSave)
 	updateSaveData()
 	doubleCheck.hide()
 	toggleButtonDisable(false)
@@ -93,7 +94,7 @@ func loadGame(slot : int) -> void:
 		openHub()
 
 func loadUnlockedSprites(slot : int) ->void:
-	characterBG.updateSprites(SaveLogic.load_game(slot))
+	characterBG.updateSprites(SaveLogic.load_game_sprite(slot))
 
 func openHub() -> void:
 	get_tree().change_scene_to_file("res://Scenes/hub_scene.tscn")
@@ -107,6 +108,7 @@ func _on_set_name_pressed() -> void:
 	if get_node("setSaveName/nameGrabber").text.length() > 0:
 		Gamemode.saveName = get_node("setSaveName/nameGrabber").text
 		SaveLogic.save_game(selectedSave, Gamemode.saveName)
+		loadUnlockedSprites(selectedSave)
 		get_node("setSaveName/nameGrabber").text = ""
 		get_node("setSaveName").hide()
 		toggleButtonDisable(false)

@@ -20,20 +20,21 @@ script = ExtResource("1_0uqrw")
 wispTextures = Array[Texture2D]([ExtResource("2_slb51"), ExtResource("3_a1ge8")])
 minotaurTextures = Array[Texture2D]([ExtResource("4_rc7ta"), ExtResource("4_r1uky")])
 hydraTextures = Array[Texture2D]([ExtResource("6_bt288"), ExtResource("7_wxjqi")])
-spriteList = [NodePath("leftCharacters/minotaur"), NodePath("rightCharacters/hydra")]
+spriteList = [NodePath("rightCharacters/Hydra"), NodePath("leftCharacters/Minotaur")]
 
 [node name="leftCharacters" type="Node2D" parent="."]
 position = Vector2(-104, 0)
 
-[node name="minotaur" type="Sprite2D" parent="leftCharacters"]
+[node name="Minotaur" type="Sprite2D" parent="leftCharacters"]
 position = Vector2(16, 0)
 scale = Vector2(2, 2)
 texture = ExtResource("4_rc7ta")
 
 [node name="rightCharacters" type="Node2D" parent="."]
-position = Vector2(81, 0)
+position = Vector2(129, 0)
 
-[node name="hydra" type="Sprite2D" parent="rightCharacters"]
+[node name="Hydra" type="Sprite2D" parent="rightCharacters"]
+scale = Vector2(2, 2)
 texture = ExtResource("6_bt288")
 
 [node name="wisp" type="Node2D" parent="."]
