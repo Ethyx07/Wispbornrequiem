@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cvbhe4702y548"]
+[gd_scene load_steps=14 format=3 uid="uid://cvbhe4702y548"]
 
 [ext_resource type="Script" path="res://Scripts/GUI/menu.gd" id="1_ijv2a"]
 [ext_resource type="Texture2D" uid="uid://c1sj7kv8mau0u" path="res://Assets/GUI/MenuUI/Button Template.png" id="2_gt47o"]
@@ -9,6 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://cib3bpj4kj8it" path="res://Assets/GUI/MenuUI/SaveButtonHighlight.png" id="7_um7vw"]
 [ext_resource type="BitMap" uid="uid://dfvnak7l6tbkj" path="res://Assets/GUI/MenuUI/SaveButtonBitmap.png" id="8_0jx5g"]
 [ext_resource type="PackedScene" uid="uid://byt6jqakyjsm5" path="res://Scenes/GUI/character_bg.tscn" id="9_7da1u"]
+[ext_resource type="Texture2D" uid="uid://db0pck1l07aiy" path="res://Assets/GUI/MenuUI/LongButton.png" id="9_m7jc2"]
+[ext_resource type="Texture2D" uid="uid://chl8ugkhu2xb6" path="res://Assets/GUI/MenuUI/LongButtonHovered.png" id="10_k56p3"]
+[ext_resource type="BitMap" uid="uid://sr8h3smp8kow" path="res://Assets/GUI/MenuUI/LongButtonBitmap.png" id="11_aifwv"]
 
 [sub_resource type="Theme" id="Theme_wo7w5"]
 default_font_size = 50
@@ -176,9 +179,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -283.0
-offset_top = 517.0
+offset_top = 610.0
 offset_right = -1.0
-offset_bottom = 680.0
+offset_bottom = 773.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(4, 4)
@@ -302,9 +305,10 @@ visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
-offset_top = 400.0
-offset_bottom = 608.0
+offset_top = 619.0
+offset_bottom = 877.0
 grow_horizontal = 2
+pivot_offset = Vector2(960, 0)
 alignment = 1
 
 [node name="doubleCheck" type="BoxContainer" parent="dCheckContainer"]
@@ -321,16 +325,58 @@ Saves cannot be restored![/center]
 fit_content = true
 autowrap_mode = 0
 
-[node name="yesDelete" type="Button" parent="dCheckContainer/doubleCheck"]
+[node name="yesDelete" type="TextureButton" parent="dCheckContainer/doubleCheck"]
 texture_filter = 1
 layout_mode = 2
-text = "YES
-"
+size_flags_horizontal = 4
+texture_normal = ExtResource("9_m7jc2")
+texture_hover = ExtResource("10_k56p3")
+texture_click_mask = ExtResource("11_aifwv")
 
-[node name="noDont" type="Button" parent="dCheckContainer/doubleCheck"]
+[node name="yesLabel" type="Label" parent="dCheckContainer/doubleCheck/yesDelete"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -31.0
+offset_top = -28.0
+offset_right = 217.0
+offset_bottom = 177.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.25, 0.25)
+theme_override_font_sizes/font_size = 150
+text = "Yes"
+horizontal_alignment = 1
+
+[node name="noDont" type="TextureButton" parent="dCheckContainer/doubleCheck"]
 texture_filter = 1
 layout_mode = 2
-text = "NO"
+size_flags_horizontal = 4
+texture_normal = ExtResource("9_m7jc2")
+texture_hover = ExtResource("10_k56p3")
+texture_click_mask = ExtResource("11_aifwv")
+
+[node name="yesLabel" type="Label" parent="dCheckContainer/doubleCheck/noDont"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -31.0
+offset_top = -28.0
+offset_right = 217.0
+offset_bottom = 177.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.25, 0.25)
+theme_override_font_sizes/font_size = 150
+text = "No"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="setSaveName" type="BoxContainer" parent="."]
 visible = false
@@ -342,9 +388,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -312.0
-offset_top = -680.0
+offset_top = -472.0
 offset_right = 3457.0
-offset_bottom = -53.0
+offset_bottom = 155.0
 grow_horizontal = 2
 grow_vertical = 0
 scale = Vector2(0.15, 0.16)
@@ -380,15 +426,22 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 200
 text = "OK"
 
-[node name="characterBG" parent="." instance=ExtResource("9_7da1u")]
+[node name="bgContainer" type="BoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_top = -126.0
-offset_bottom = -126.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -49.0
+offset_bottom = -49.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="characterBG" parent="bgContainer" instance=ExtResource("9_7da1u")]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
 
 [connection signal="pressed" from="mainMenu/VertContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="mainMenu/VertContainer/QuitButton" to="." method="_on_quit_button_pressed"]

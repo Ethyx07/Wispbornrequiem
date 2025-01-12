@@ -9,7 +9,9 @@ extends Control
 @onready var saveOne = get_node("saveMenu/saveOne")
 @onready var saveTwo = get_node("saveMenu/saveTwo")
 @onready var saveThree = get_node("saveMenu/saveThree")
-@onready var characterBG = get_node("characterBG")
+@onready var characterBG = get_node("bgContainer/characterBG")
+
+@onready var defaultActivePodiums = Gamemode.activePodiums
 var selectedSave : int
 
 
@@ -43,6 +45,7 @@ func _ready() -> void:
 func _on_play_button_pressed() -> void:
 	mainMenu.hide()
 	saveMenu.show()
+	characterBG.show()
 	$saveMenu/saveOne.grab_focus()
 	loadButtons.show()
 
@@ -95,6 +98,7 @@ func loadGame(slot : int) -> void:
 
 func loadUnlockedSprites(slot : int) ->void:
 	characterBG.updateSprites(SaveLogic.load_game_sprite(slot))
+	Gamemode.activePodiums = defaultActivePodiums
 
 func openHub() -> void:
 	get_tree().change_scene_to_file("res://Scenes/hub_scene.tscn")

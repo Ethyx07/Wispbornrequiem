@@ -10,6 +10,7 @@ extends Control
 "Minotaur" : minotaurTextures,
 "Hydra" : hydraTextures}
 
+
 func _ready() -> void:
 	pass
 

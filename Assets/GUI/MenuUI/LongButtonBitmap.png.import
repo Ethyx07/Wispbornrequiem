@@ -1,0 +1,16 @@
+[remap]
+
+importer="bitmap"
+type="BitMap"
+uid="uid://sr8h3smp8kow"
+path="res://.godot/imported/LongButtonBitmap.png-826a84cf80940ebc3849c27fa88bc7a9.res"
+
+[deps]
+
+source_file="res://Assets/GUI/MenuUI/LongButtonBitmap.png"
+dest_files=["res://.godot/imported/LongButtonBitmap.png-826a84cf80940ebc3849c27fa88bc7a9.res"]
+
+[params]
+
+create_from=0
+threshold=0.5
