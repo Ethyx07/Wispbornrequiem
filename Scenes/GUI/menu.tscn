@@ -410,21 +410,32 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 200
 max_length = 5
 
-[node name="setName" type="Button" parent="setSaveName/nameGrabber"]
+[node name="setName" type="TextureButton" parent="setSaveName/nameGrabber"]
 layout_mode = 1
-anchors_preset = -1
+anchors_preset = 6
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -2.3335
+offset_left = -2.33398
 offset_top = -139.0
-offset_right = 290.667
-offset_bottom = 142.0
+offset_right = 37.666
+offset_bottom = -99.0002
 grow_horizontal = 0
 grow_vertical = 2
-theme_override_font_sizes/font_size = 200
-text = "OK"
+scale = Vector2(20, 20)
+texture_normal = ExtResource("2_gt47o")
+texture_hover = ExtResource("3_p5q4m")
+texture_click_mask = ExtResource("4_pa66q")
+
+[node name="okButton" type="Label" parent="setSaveName/nameGrabber/setName"]
+layout_mode = 0
+offset_left = 13.3333
+offset_right = 81.3333
+offset_bottom = 69.0
+scale = Vector2(0.2, 0.2)
+theme_override_font_sizes/font_size = 50
+text = "Ok"
 
 [node name="bgContainer" type="BoxContainer" parent="."]
 layout_mode = 1
