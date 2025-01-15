@@ -34,7 +34,7 @@ texture = ExtResource("4_rc7ta")
 position = Vector2(129, 0)
 
 [node name="Hydra" type="Sprite2D" parent="rightCharacters"]
-scale = Vector2(2, 2)
+position = Vector2(-27, 0)
 texture = ExtResource("6_bt288")
 
 [node name="wisp" type="Node2D" parent="."]

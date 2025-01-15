@@ -58,13 +58,13 @@ func _physics_process(delta: float) -> void:
 			if inputVector.x < 0:
 				#faces to the left
 				playerSprite.flip_h = true
-				get_node("InteractableBox/interact_box_left").disabled = false
-				get_node("InteractableBox/interact_box_right").disabled = true
+				#get_node("InteractableBox/interact_box_left").disabled = false
+				#get_node("InteractableBox/interact_box_right").disabled = true
 			elif inputVector.x > 0:
 				#faces to the right
 				playerSprite.flip_h = false
-				get_node("InteractableBox/interact_box_left").disabled = true
-				get_node("InteractableBox/interact_box_right").disabled = false
+				#get_node("InteractableBox/interact_box_left").disabled = true
+				#get_node("InteractableBox/interact_box_right").disabled = false
 			velocity = inputVector * speed
 			move_and_slide()
 	

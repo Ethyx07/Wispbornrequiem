@@ -19,11 +19,11 @@
 radius = 27.0
 height = 54.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_kopfh"]
-size = Vector2(27.25, 19)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_su2ro"]
 size = Vector2(20, 58)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kopfh"]
+size = Vector2(27.25, 19)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mftj6"]
 bg_color = Color(0.92, 0, 0, 1)
@@ -146,20 +146,6 @@ texture = ExtResource("5_drcaf")
 position = Vector2(1, -4)
 shape = SubResource("CapsuleShape2D_qip2i")
 
-[node name="InteractableBox" type="Area2D" parent="."]
-light_mask = 5
-visibility_layer = 5
-position = Vector2(-5, -3)
-scale = Vector2(1.26938, 1.32)
-
-[node name="interact_box_right" type="CollisionShape2D" parent="InteractableBox"]
-position = Vector2(18.9069, 1.51515)
-shape = SubResource("RectangleShape2D_kopfh")
-
-[node name="interact_box_left" type="CollisionShape2D" parent="InteractableBox"]
-position = Vector2(-10.75, 1)
-shape = SubResource("RectangleShape2D_kopfh")
-
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
 
@@ -179,6 +165,16 @@ position = Vector2(36, 0)
 rotation = 1.5708
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_y7ek5")
+
+[node name="InteractableBox" type="Area2D" parent="attackMarker"]
+light_mask = 5
+visibility_layer = 5
+position = Vector2(-5, -3)
+scale = Vector2(1.26938, 1.32)
+
+[node name="interact_box_right" type="CollisionShape2D" parent="attackMarker/InteractableBox"]
+position = Vector2(18.9069, 1.51515)
+shape = SubResource("RectangleShape2D_kopfh")
 
 [node name="hp_bar" type="ProgressBar" parent="."]
 offset_left = -11.0
@@ -237,8 +233,8 @@ texture = ExtResource("8_aahb1")
 
 [node name="lightningAttack" parent="." instance=ExtResource("14_xelji")]
 
-[connection signal="body_entered" from="InteractableBox" to="." method="_on_interactable_box_body_entered"]
-[connection signal="body_exited" from="InteractableBox" to="." method="_on_interactable_box_body_exited"]
-[connection signal="body_shape_exited" from="InteractableBox" to="." method="_on_interactable_box_body_shape_exited"]
 [connection signal="body_entered" from="attackMarker/hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="body_entered" from="attackMarker/InteractableBox" to="." method="_on_interactable_box_body_entered"]
+[connection signal="body_exited" from="attackMarker/InteractableBox" to="." method="_on_interactable_box_body_exited"]
+[connection signal="body_shape_exited" from="attackMarker/InteractableBox" to="." method="_on_interactable_box_body_shape_exited"]
 [connection signal="timeout" from="cooldownTimer" to="." method="_on_cooldown_timer_timeout"]
