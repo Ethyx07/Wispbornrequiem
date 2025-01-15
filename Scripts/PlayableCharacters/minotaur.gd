@@ -4,7 +4,7 @@ extends "res://Scripts/PlayableCharacters/player_wisp.gd"
 @onready var axeThrow : PackedScene = preload("res://Scenes/Weapons/axe_weapon.tscn")
 @onready var hp_bar = get_node("hp_bar")
 @onready var armour_bar = get_node("hp_bar/armour_bar")
-@onready var specialCooldownNode = get_node("CanvasLayer/specialCooldown")
+@onready var specialCooldownNode = get_node("CanvasLayer/BoxContainer/specialCooldown")
 @onready var cooldownTimer = get_node("cooldownTimer")
 
 @export var maxArmourPoints : int = 10
