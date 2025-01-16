@@ -105,6 +105,7 @@ _data = {
 [node name="hydra" type="CharacterBody2D" groups=["Player"]]
 z_index = 2
 texture_filter = 1
+scale = Vector2(0.7, 0.7)
 collision_layer = 7
 collision_mask = 7
 script = ExtResource("1_ssvo3")
