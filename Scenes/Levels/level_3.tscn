@@ -1,7 +1,6 @@
-[gd_scene load_steps=8 format=4 uid="uid://r3p57lsfmjkw"]
+[gd_scene load_steps=7 format=4 uid="uid://r3p57lsfmjkw"]
 
 [ext_resource type="PackedScene" uid="uid://c0suvw7ft6h08" path="res://Scenes/tile_map_layer.tscn" id="1_6jgrk"]
-[ext_resource type="Script" path="res://Scripts/level_logic.gd" id="1_lhq87"]
 [ext_resource type="PackedScene" uid="uid://drxld1vfpxhb8" path="res://Scenes/GUI/player_gui.tscn" id="2_whjml"]
 [ext_resource type="PackedScene" uid="uid://em6vqqa3r1gv" path="res://Scenes/Interactables/doorway.tscn" id="3_xh7mg"]
 [ext_resource type="Script" path="res://Scripts/Level/death_pits_area.gd" id="4_ewgn7"]
@@ -13,7 +12,6 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(453, -211, -376, -214, -377, 106, 452, 110)])
 
 [node name="level_3" type="Node2D"]
-script = ExtResource("1_lhq87")
 
 [node name="TileBackground" parent="." instance=ExtResource("1_6jgrk")]
 z_index = -1
@@ -62,7 +60,6 @@ position = Vector2(0, -61)
 position = Vector2(112, -84)
 
 [node name="DeathPits" type="StaticBody2D" parent="."]
-visible = false
 position = Vector2(321, 195)
 collision_layer = 2
 collision_mask = 2
@@ -70,10 +67,10 @@ collision_mask = 2
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DeathPits"]
 light_mask = 2
 visibility_layer = 2
-polygon = PackedVector2Array(-64, -64, -64, -32, -96, -32, -96, 95, -64, 95, -64, 128, 63, 128, 64, 96, 95, 96, 95, -32, 63, -31, 64, -64)
+position = Vector2(-857, -371)
+polygon = PackedVector2Array(-136, 112, -136, 208, 24, 208, 24, 144, 56, 144, 56, 48, 88, 48, 88, -16, 120, -16, 120, -48, 152, -48, 152, -80, 184, -80, 184, -112, 216, -112, 216, -144, 248, -144, 248, -176, 280, -176, 280, -208, 344, -208, 344, -240, 440, -240, 440, -272, 504, -272, 504, -432, 408, -432, 408, -400, 280, -400, 280, -368, 216, -368, 216, -336, 152, -336, 152, -304, 120, -304, 120, -272, 56, -272, 56, -240, 24, -240, 24, -176, -8, -176, -8, -144, -40, -144, -40, -80, -72, -80, -72, -16, -104, -16, -104, 112)
 
 [node name="DeathPitsArea" type="Area2D" parent="."]
-visible = false
 position = Vector2(321, 0)
 collision_layer = 2
 collision_mask = 4
@@ -82,25 +79,8 @@ script = ExtResource("4_ewgn7")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DeathPitsArea"]
 light_mask = 2
 visibility_layer = 2
-polygon = PackedVector2Array(-64, -64, -64, -32, -96, -32, -96, 95, -64, 95, -64, 128, 63, 128, 64, 96, 95, 96, 95, -32, 63, -31, 64, -64)
-
-[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="DeathPitsArea"]
-light_mask = 2
-visibility_layer = 2
-position = Vector2(-320, 0)
-polygon = PackedVector2Array(-64, -64, -64, -32, -96, -32, -96, 95, -64, 95, -64, 128, 63, 128, 64, 96, 95, 96, 95, -32, 63, -31, 64, -64)
-
-[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="DeathPitsArea"]
-light_mask = 2
-visibility_layer = 2
-position = Vector2(-320, 257)
-polygon = PackedVector2Array(-64, -64, -64, -32, -96, -32, -96, 95, -64, 95, -64, 128, 63, 128, 64, 96, 95, 96, 95, -32, 63, -31, 64, -64)
-
-[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="DeathPitsArea"]
-light_mask = 2
-visibility_layer = 2
-position = Vector2(-1, 258)
-polygon = PackedVector2Array(-64, -64, -64, -32, -96, -32, -96, 95, -64, 95, -64, 128, 63, 128, 64, 96, 95, 96, 95, -32, 63, -31, 64, -64)
+position = Vector2(-857, -176)
+polygon = PackedVector2Array(-136, 112, -136, 208, 24, 208, 24, 144, 56, 144, 56, 48, 88, 48, 88, -16, 120, -16, 120, -48, 152, -48, 152, -80, 184, -80, 184, -112, 216, -112, 216, -144, 248, -144, 248, -176, 280, -176, 280, -208, 344, -208, 344, -240, 440, -240, 440, -272, 504, -272, 504, -432, 408, -432, 408, -400, 280, -400, 280, -368, 216, -368, 216, -336, 152, -336, 152, -304, 120, -304, 120, -272, 56, -272, 56, -240, 24, -240, 24, -176, -8, -176, -8, -144, -40, -144, -40, -80, -72, -80, -72, -16, -104, -16, -104, 112)
 
 [node name="WorldBorder" type="StaticBody2D" parent="."]
 light_mask = 4

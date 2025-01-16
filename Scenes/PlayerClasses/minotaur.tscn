@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://Scripts/PlayableCharacters/minotaur.gd" id="1_65rwl"]
 [ext_resource type="Texture2D" uid="uid://d1y1nna7gh48m" path="res://Assets/PlayerSprites/Minotaur.png" id="2_mwkb6"]
 [ext_resource type="Texture2D" uid="uid://bap1b083cw08e" path="res://Assets/PlayerSprites/AttackArrow.png" id="3_qpmay"]
-[ext_resource type="Texture2D" uid="uid://v2qm0wgpk710" path="res://Assets/GUI/AxeThrowGreyscaled.png" id="4_76vqv"]
-[ext_resource type="Texture2D" uid="uid://ck6tjkljcgqwp" path="res://Assets/GUI/AxeThrow.png" id="5_0wqto"]
+[ext_resource type="Texture2D" uid="uid://bm6r7vcxiylhq" path="res://Assets/GUI/AxeThrowUnder.png" id="4_f5j6k"]
+[ext_resource type="Texture2D" uid="uid://d1oxluqj40vrd" path="res://Assets/GUI/AxeThrowProgress.png" id="5_jop5t"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qip2i"]
 radius = 14.0
@@ -100,31 +100,23 @@ show_percentage = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="BoxContainer" type="BoxContainer" parent="CanvasLayer"]
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -128.0
-offset_top = -59.0
-offset_right = 0.00012207
-offset_bottom = 69.0
-grow_horizontal = 0
-grow_vertical = 0
-scale = Vector2(3, 3)
-pivot_offset = Vector2(85, 120)
-theme_override_constants/separation = -128
-
-[node name="specialCooldown" type="TextureProgressBar" parent="CanvasLayer/BoxContainer"]
+[node name="specialCooldown" type="TextureProgressBar" parent="CanvasLayer"]
 texture_filter = 1
-layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 4
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 543.0
+offset_top = 284.0
+offset_right = 622.0
+offset_bottom = 363.0
+grow_horizontal = 2
+grow_vertical = 2
 max_value = 5.0
 fill_mode = 4
-texture_under = ExtResource("4_76vqv")
-texture_progress = ExtResource("5_0wqto")
+texture_under = ExtResource("4_f5j6k")
+texture_progress = ExtResource("5_jop5t")
 
 [node name="cooldownTimer" type="Timer" parent="."]
 
