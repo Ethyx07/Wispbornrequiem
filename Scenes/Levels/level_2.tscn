@@ -1,20 +1,20 @@
 [gd_scene load_steps=20 format=4 uid="uid://5n0yome5tq1v"]
 
-[ext_resource type="Script" path="res://Scripts/level_logic.gd" id="1_8gmwg"]
-[ext_resource type="Texture2D" uid="uid://dnanjexv0r58u" path="res://Assets/Tilemap/Tilemap.png" id="2_hjtq4"]
-[ext_resource type="PackedScene" uid="uid://bk5vxno1mqdyp" path="res://Scenes/Enemies/flying_enemy.tscn" id="3_y5d6h"]
-[ext_resource type="PackedScene" uid="uid://drxld1vfpxhb8" path="res://Scenes/GUI/player_gui.tscn" id="4_6b2o6"]
-[ext_resource type="Texture2D" uid="uid://diyru2do7cejo" path="res://Assets/Tilemap/CornerTilemap.png" id="4_s8vkp"]
-[ext_resource type="PackedScene" uid="uid://bnh7jre3dp02y" path="res://Scenes/Enemies/spawn_indicator.tscn" id="4_yyapl"]
-[ext_resource type="PackedScene" uid="uid://c8rc5agxlry6f" path="res://Scenes/Enemies/base_enemy.tscn" id="5_d66oa"]
-[ext_resource type="PackedScene" uid="uid://bbkraq600sjs5" path="res://Scenes/Interactables/upgrade_item.tscn" id="5_fsc0g"]
-[ext_resource type="PackedScene" uid="uid://em6vqqa3r1gv" path="res://Scenes/Interactables/doorway.tscn" id="6_j3hsg"]
-[ext_resource type="Texture2D" uid="uid://bv0m2yrvf1bgt" path="res://Assets/Tilemap/TilemapHoles.png" id="8_rp2fx"]
-[ext_resource type="PackedScene" uid="uid://835xqak3vrpb" path="res://Scenes/GUI/item_menu.tscn" id="9_nm0us"]
-[ext_resource type="Script" path="res://Scripts/Level/death_pits_area.gd" id="11_1a1u2"]
+[ext_resource type="Script" path="res://Scripts/level_logic.gd" id="1_2ovsg"]
+[ext_resource type="PackedScene" uid="uid://c8rc5agxlry6f" path="res://Scenes/Enemies/base_enemy.tscn" id="2_qrc6i"]
+[ext_resource type="PackedScene" uid="uid://bk5vxno1mqdyp" path="res://Scenes/Enemies/flying_enemy.tscn" id="3_roo4x"]
+[ext_resource type="PackedScene" uid="uid://bnh7jre3dp02y" path="res://Scenes/Enemies/spawn_indicator.tscn" id="4_obvsu"]
+[ext_resource type="PackedScene" uid="uid://bbkraq600sjs5" path="res://Scenes/Interactables/upgrade_item.tscn" id="5_mdiy0"]
+[ext_resource type="Texture2D" uid="uid://diyru2do7cejo" path="res://Assets/Tilemap/CornerTilemap.png" id="6_ox7v6"]
+[ext_resource type="Texture2D" uid="uid://dnanjexv0r58u" path="res://Assets/Tilemap/Tilemap.png" id="7_lvnpk"]
+[ext_resource type="Texture2D" uid="uid://bv0m2yrvf1bgt" path="res://Assets/Tilemap/TilemapHoles.png" id="8_uesjs"]
+[ext_resource type="PackedScene" uid="uid://drxld1vfpxhb8" path="res://Scenes/GUI/player_gui.tscn" id="9_nf2uy"]
+[ext_resource type="PackedScene" uid="uid://835xqak3vrpb" path="res://Scenes/GUI/item_menu.tscn" id="10_17ii4"]
+[ext_resource type="PackedScene" uid="uid://em6vqqa3r1gv" path="res://Scenes/Interactables/doorway.tscn" id="11_mf2mu"]
+[ext_resource type="Script" path="res://Scripts/Level/death_pits_area.gd" id="12_0llen"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_26gw6"]
-texture = ExtResource("4_s8vkp")
+texture = ExtResource("6_ox7v6")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 1:0/0 = 0
@@ -31,7 +31,7 @@ texture_region_size = Vector2i(32, 32)
 3:3/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e6t8y"]
-texture = ExtResource("2_hjtq4")
+texture = ExtResource("7_lvnpk")
 texture_region_size = Vector2i(32, 32)
 0:4/0 = 0
 0:3/0 = 0
@@ -57,7 +57,7 @@ texture_region_size = Vector2i(32, 32)
 6:1/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_quyyo"]
-texture = ExtResource("8_rp2fx")
+texture = ExtResource("8_uesjs")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 1:1/0 = 0
@@ -81,16 +81,16 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-433, -265, -419, 583, 
 [sub_resource type="GDScript" id="GDScript_efn8q"]
 
 [node name="level2" type="Node2D" node_paths=PackedStringArray("enemySpawns") groups=["Level"]]
-script = ExtResource("1_8gmwg")
-enemyList = Array[PackedScene]([ExtResource("5_d66oa"), ExtResource("3_y5d6h")])
+script = ExtResource("1_2ovsg")
+enemyList = Array[PackedScene]([ExtResource("2_qrc6i"), ExtResource("3_roo4x")])
 enemySpawns = [NodePath("EnemySpawns/Spawn1"), NodePath("EnemySpawns/Spawn2"), NodePath("EnemySpawns/Spawn3"), NodePath("EnemySpawns/Spawn4"), NodePath("EnemySpawns/Spawn5")]
 finalWave = 1
-spawningIndicator = ExtResource("4_yyapl")
+spawningIndicator = ExtResource("4_obvsu")
 cameraXMax = 770.0
 cameraXMin = -450.0
 cameraYMax = 610.0
 cameraYMin = -290.0
-upgradeItem = ExtResource("5_fsc0g")
+upgradeItem = ExtResource("5_mdiy0")
 
 [node name="TileBackground" type="TileMapLayer" parent="."]
 z_index = -1
@@ -100,7 +100,7 @@ tile_set = SubResource("TileSet_m1nrx")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="playergui" parent="CanvasLayer" instance=ExtResource("4_6b2o6")]
+[node name="playergui" parent="CanvasLayer" instance=ExtResource("9_nf2uy")]
 offset_left = 2.0
 offset_top = 2.0
 offset_right = 2.0
@@ -108,10 +108,10 @@ offset_bottom = 2.0
 grow_vertical = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="itemMenu" parent="CanvasLayer" instance=ExtResource("9_nm0us")]
+[node name="itemMenu" parent="CanvasLayer" instance=ExtResource("10_17ii4")]
 visible = false
 
-[node name="doorway" parent="." instance=ExtResource("6_j3hsg")]
+[node name="doorway" parent="." instance=ExtResource("11_mf2mu")]
 texture_filter = 1
 position = Vector2(146, 171)
 
@@ -211,7 +211,7 @@ visible = false
 position = Vector2(321, 0)
 collision_layer = 2
 collision_mask = 4
-script = ExtResource("11_1a1u2")
+script = ExtResource("12_0llen")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DeathPitsArea"]
 light_mask = 2

@@ -64,6 +64,7 @@ vertices = PackedVector2Array(-745, 253, -713, 253, -713, 381, -681, 381, -681, 
 affect_navigation_mesh = true
 
 [node name="FlightNav" type="NavigationRegion2D" parent="."]
+visible = false
 position = Vector2(-7, -13)
 navigation_polygon = SubResource("NavigationPolygon_ithxn")
 navigation_layers = 2
@@ -77,8 +78,7 @@ vertices = PackedVector2Array(-745, 253, -713, 253, -713, 381, -681, 381, -681, 
 affect_navigation_mesh = true
 
 [node name="spawnLocation" type="Node2D" parent="."]
-visible = false
-position = Vector2(171, 0)
+position = Vector2(0, 128)
 
 [node name="EnemySpawns" type="Node2D" parent="."]
 
@@ -98,7 +98,7 @@ position = Vector2(-80, -88)
 position = Vector2(-72, 184)
 
 [node name="Spawn6" type="Node2D" parent="EnemySpawns"]
-position = Vector2(8, -688)
+position = Vector2(8, -280)
 
 [node name="DeathPits" type="StaticBody2D" parent="."]
 position = Vector2(321, 195)
