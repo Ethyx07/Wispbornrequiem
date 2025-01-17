@@ -18,13 +18,14 @@ func interpolate(length : float, duration : float) -> void:
 	tween_rect_h.tween_property(sprite, "region_rect",Rect2(0,9,length, 12), duration)
 	
 func spark(distance : float) -> void:
-	self.look_at(target.position)
-	interpolate(distance, 0.2)
-	await get_tree().create_timer(0.2).timeout
-	zapRadius.global_position = target.global_position
-	hit(target)
-	interpolate(0, 0.1)
-	await get_tree().create_timer(0.1).timeout	
+	if is_instance_valid(target):
+		self.look_at(target.position)
+		interpolate(distance, 0.2)
+		await get_tree().create_timer(0.2).timeout
+		zapRadius.global_position = target.global_position
+		hit(target)
+		interpolate(0, 0.1)
+		await get_tree().create_timer(0.1).timeout	
 	
 
 func hit(current_target : CharacterBody2D) -> void:

@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=4 uid="uid://k01ftl0w8rxv"]
+[gd_scene load_steps=6 format=4 uid="uid://k01ftl0w8rxv"]
 
 [ext_resource type="PackedScene" uid="uid://c0suvw7ft6h08" path="res://Scenes/tile_map_layer.tscn" id="1_nsb7q"]
 [ext_resource type="PackedScene" uid="uid://drxld1vfpxhb8" path="res://Scenes/GUI/player_gui.tscn" id="2_qcci4"]
+[ext_resource type="PackedScene" uid="uid://835xqak3vrpb" path="res://Scenes/GUI/item_menu.tscn" id="3_2capk"]
 [ext_resource type="PackedScene" uid="uid://em6vqqa3r1gv" path="res://Scenes/Interactables/doorway.tscn" id="3_ofbx5"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_r353n"]
@@ -24,6 +25,9 @@ offset_right = 2.0
 offset_bottom = 2.0
 grow_vertical = 1
 metadata/_edit_use_anchors_ = true
+
+[node name="itemMenu" parent="CanvasLayer" instance=ExtResource("3_2capk")]
+visible = false
 
 [node name="doorway" parent="." instance=ExtResource("3_ofbx5")]
 texture_filter = 1
