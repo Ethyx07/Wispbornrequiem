@@ -1,14 +1,14 @@
-[gd_scene load_steps=11 format=4 uid="uid://bit46outrbqa1"]
+[gd_scene load_steps=11 format=4 uid="uid://bn0h62ddpkyv1"]
 
-[ext_resource type="Script" path="res://Scripts/CorruptBosses/corrupt_bosses_arena.gd" id="1_cp1hg"]
-[ext_resource type="PackedScene" uid="uid://dbcsm5nbsnsd8" path="res://Scenes/Enemies/CorruptMinibosses/corrupt_hydra.tscn" id="2_jevns"]
-[ext_resource type="PackedScene" uid="uid://drxld1vfpxhb8" path="res://Scenes/GUI/player_gui.tscn" id="2_scq1u"]
-[ext_resource type="Texture2D" uid="uid://diyru2do7cejo" path="res://Assets/Tilemap/CornerTilemap.png" id="3_stu14"]
-[ext_resource type="Texture2D" uid="uid://dnanjexv0r58u" path="res://Assets/Tilemap/Tilemap.png" id="4_nhiju"]
-[ext_resource type="PackedScene" uid="uid://em6vqqa3r1gv" path="res://Scenes/Interactables/doorway.tscn" id="6_u2ahn"]
+[ext_resource type="Script" path="res://Scripts/CorruptBosses/corrupt_bosses_arena.gd" id="1_8guxw"]
+[ext_resource type="PackedScene" uid="uid://dranjdg8vapdi" path="res://Scenes/Enemies/Area Boss/huntsman_boss.tscn" id="2_g8md5"]
+[ext_resource type="Texture2D" uid="uid://diyru2do7cejo" path="res://Assets/Tilemap/CornerTilemap.png" id="3_hjohn"]
+[ext_resource type="Texture2D" uid="uid://dnanjexv0r58u" path="res://Assets/Tilemap/Tilemap.png" id="4_jk25p"]
+[ext_resource type="PackedScene" uid="uid://drxld1vfpxhb8" path="res://Scenes/GUI/player_gui.tscn" id="5_xnehs"]
+[ext_resource type="PackedScene" uid="uid://em6vqqa3r1gv" path="res://Scenes/Interactables/doorway.tscn" id="6_ge5sl"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_eib2q"]
-texture = ExtResource("3_stu14")
+texture = ExtResource("3_hjohn")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 1:0/0 = 0
@@ -25,7 +25,7 @@ texture_region_size = Vector2i(32, 32)
 3:3/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vigr7"]
-texture = ExtResource("4_nhiju")
+texture = ExtResource("4_jk25p")
 texture_region_size = Vector2i(32, 32)
 0:4/0 = 0
 0:3/0 = 0
@@ -61,9 +61,9 @@ vertices = PackedVector2Array(381, -105, 381, 387, 93, 387, -303, -105, 93, 419,
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(2, 4, 5, 6, 3), PackedInt32Array(5, 7, 8, 9), PackedInt32Array(9, 10, 6), PackedInt32Array(6, 11, 3), PackedInt32Array(6, 5, 9)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-313, -115, -313, 397, -57, 397, -57, 429, -25, 429, -25, 525, 71, 525, 71, 429, 103, 429, 103, 397, 391, 397, 391, -115)])
 
-[node name="corruptDragonArena" type="Node2D" groups=["Level"]]
-script = ExtResource("1_cp1hg")
-bossEnemy = ExtResource("2_jevns")
+[node name="huntsmanBossArena" type="Node2D" groups=["Level"]]
+script = ExtResource("1_8guxw")
+bossEnemy = ExtResource("2_g8md5")
 cameraXMax = 544.0
 cameraXMin = -512.0
 cameraYMax = 544.0
@@ -77,7 +77,7 @@ tile_set = SubResource("TileSet_u1b3p")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="playergui" parent="CanvasLayer" instance=ExtResource("2_scq1u")]
+[node name="playergui" parent="CanvasLayer" instance=ExtResource("5_xnehs")]
 grow_vertical = 1
 metadata/_edit_use_anchors_ = true
 
@@ -122,5 +122,7 @@ polygon = PackedVector2Array(-814, -452, -814, 236, 226, 236, 226, -452)
 [node name="Node2D" type="Node2D" parent="."]
 position = Vector2(-512, 544)
 
-[node name="doorway" parent="." instance=ExtResource("6_u2ahn")]
+[node name="doorway" parent="." instance=ExtResource("6_ge5sl")]
 position = Vector2(8, -112)
+bBossDoor = true
+nextAreaKey = "forest"

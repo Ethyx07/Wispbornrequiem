@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://r3p57lsfmjkw"]
+[gd_scene load_steps=12 format=4 uid="uid://r3p57lsfmjkw"]
 
 [ext_resource type="PackedScene" uid="uid://c0suvw7ft6h08" path="res://Scenes/tile_map_layer.tscn" id="1_6jgrk"]
 [ext_resource type="Script" path="res://Scripts/level_logic.gd" id="1_hq57c"]
@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://em6vqqa3r1gv" path="res://Scenes/Interactables/doorway.tscn" id="3_xh7mg"]
 [ext_resource type="PackedScene" uid="uid://bnh7jre3dp02y" path="res://Scenes/Enemies/spawn_indicator.tscn" id="4_ds5fe"]
 [ext_resource type="Script" path="res://Scripts/Level/death_pits_area.gd" id="4_ewgn7"]
-[ext_resource type="PackedScene" uid="uid://du8becrhraynp" path="res://Scenes/PlayerClasses/hydra.tscn" id="5_63jwh"]
 [ext_resource type="PackedScene" uid="uid://bbkraq600sjs5" path="res://Scenes/Interactables/upgrade_item.tscn" id="5_lowdl"]
 [ext_resource type="PackedScene" uid="uid://835xqak3vrpb" path="res://Scenes/GUI/item_menu.tscn" id="8_v66t7"]
 
@@ -51,6 +50,7 @@ texture_filter = 1
 position = Vector2(0, 56)
 
 [node name="GroundNav" type="NavigationRegion2D" parent="."]
+visible = false
 position = Vector2(-7, -13)
 navigation_polygon = SubResource("NavigationPolygon_7rc8b")
 
@@ -118,6 +118,7 @@ position = Vector2(-72, 184)
 position = Vector2(8, -280)
 
 [node name="DeathPits" type="StaticBody2D" parent="."]
+visible = false
 position = Vector2(321, 195)
 collision_layer = 2
 collision_mask = 2
@@ -154,6 +155,7 @@ polygon = PackedVector2Array(-257, -355, -257, -547, -193, -547, -193, -515, -97
 polygon = PackedVector2Array(-65, -67, 127, -67, 127, -3, 95, -3, 95, 93, 63, 93, 63, 157, 31, 157, 31, 189, -1, 189, -1, 221, -33, 221, -33, 253, -97, 253, -97, 285, -193, 285, -193, 317, -257, 317, -257, 125, -225, 125, -225, 93, -161, 93, -161, 61, -129, 61, -129, 29, -97, 29, -97, -35, -65, -35)
 
 [node name="DeathPitsArea" type="Area2D" parent="."]
+visible = false
 position = Vector2(321, 0)
 collision_layer = 2
 collision_mask = 4
@@ -208,9 +210,6 @@ visibility_layer = 5
 position = Vector2(-11, 300)
 build_mode = 1
 polygon = PackedVector2Array(-1062, -380, -1030, -380, -1030, -508, -998, -508, -998, -572, -966, -572, -966, -636, -934, -636, -934, -668, -902, -668, -902, -732, -870, -732, -870, -764, -838, -764, -838, -796, -806, -796, -806, -828, -742, -828, -742, -860, -710, -860, -710, -892, -646, -892, -646, -924, -582, -924, -582, -956, -454, -956, -454, -988, -134, -988, -134, -956, -6, -956, -6, -924, 58, -924, 58, -892, 122, -892, 122, -860, 154, -860, 154, -828, 218, -828, 218, -796, 250, -796, 250, -764, 282, -764, 282, -732, 314, -732, 314, -668, 346, -668, 346, -636, 378, -636, 378, -572, 410, -572, 410, -508, 442, -508, 442, -380, 474, -380, 474, -372.735, 474, -60, 442, -60, 442, 68, 410, 68, 410, 132, 378, 132, 378, 196, 346, 196, 346, 228, 314, 228, 314, 292, 282, 292, 282, 324, 250, 324, 250, 356, 218, 356, 218, 388, 154, 388, 154, 420, 122, 420, 122, 452, 58, 452, 58, 484, -6, 484, -6, 516, -134, 516, -134, 548, -454, 548, -454, 516, -582, 516, -582, 484, -646, 484, -646, 452, -710, 452, -710, 420, -742, 420, -742, 388, -806, 388, -806, 356, -838, 356, -838, 324, -870, 324, -870, 292, -902, 292, -902, 228, -934, 228, -934, 196, -966, 196, -966, 132, -998, 132, -998, 68, -1030, 68, -1030, -60, -1062, -60)
-
-[node name="hydra" parent="." instance=ExtResource("5_63jwh")]
-position = Vector2(-11, 68)
 
 [connection signal="body_entered" from="DeathPitsArea" to="DeathPitsArea" method="_on_body_entered"]
 [connection signal="body_exited" from="DeathPitsArea" to="DeathPitsArea" method="_on_body_exited"]

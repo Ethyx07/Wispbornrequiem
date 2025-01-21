@@ -1,16 +1,17 @@
-[gd_scene load_steps=10 format=3 uid="uid://2413ue8fbi7x"]
+[gd_scene load_steps=11 format=3 uid="uid://2413ue8fbi7x"]
 
 [ext_resource type="Script" path="res://Scripts/PlayableCharacters/player_wisp.gd" id="1_hy1py"]
 [ext_resource type="Texture2D" uid="uid://b6d8g183x604k" path="res://Assets/PlayerSprites/WispPC.png" id="2_7l2m0"]
 [ext_resource type="Texture2D" uid="uid://b765rq8em4da0" path="res://Assets/PlayerSprites/WispPodium.png" id="2_mw1g2"]
 [ext_resource type="Texture2D" uid="uid://dpke0f8s5sjkw" path="res://Assets/Enemy/JetpackAnim/Shadow.png" id="4_klm5t"]
+[ext_resource type="Texture2D" uid="uid://bap1b083cw08e" path="res://Assets/PlayerSprites/AttackArrow.png" id="4_sjua8"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ydh3u"]
 radius = 14.0
 height = 42.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_kopfh"]
-size = Vector2(16, 44)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dysqm"]
+size = Vector2(27.25, 19)
 
 [sub_resource type="Animation" id="Animation_85dld"]
 length = 0.001
@@ -92,21 +93,23 @@ texture = ExtResource("2_7l2m0")
 [node name="hurtbox" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_ydh3u")
 
-[node name="InteractableBox" type="Area2D" parent="."]
-
-[node name="interact_box_right" type="CollisionShape2D" parent="InteractableBox"]
-position = Vector2(14, 0)
-shape = SubResource("RectangleShape2D_kopfh")
-
-[node name="interact_box_left" type="CollisionShape2D" parent="InteractableBox"]
-position = Vector2(-14, 0)
-shape = SubResource("RectangleShape2D_kopfh")
-
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
 
 [node name="attackMarker" type="Marker2D" parent="."]
-visible = false
+
+[node name="InteractableBox" type="Area2D" parent="attackMarker"]
+
+[node name="interact_box_right" type="CollisionShape2D" parent="attackMarker/InteractableBox"]
+position = Vector2(16.625, 1)
+shape = SubResource("RectangleShape2D_dysqm")
+
+[node name="attackDirection" type="Sprite2D" parent="attackMarker"]
+modulate = Color(1, 1, 1, 0.290196)
+position = Vector2(24, 0)
+rotation = 1.5708
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_sjua8")
 
 [node name="shadow" type="Sprite2D" parent="."]
 position = Vector2(0, 30)
@@ -120,5 +123,5 @@ libraries = {
 }
 autoplay = "bobbing"
 
-[connection signal="body_entered" from="InteractableBox" to="." method="_on_interactable_box_body_entered"]
-[connection signal="body_exited" from="InteractableBox" to="." method="_on_interactable_box_body_exited"]
+[connection signal="body_entered" from="attackMarker/InteractableBox" to="." method="_on_interactable_box_body_entered"]
+[connection signal="body_exited" from="attackMarker/InteractableBox" to="." method="_on_interactable_box_body_exited"]
