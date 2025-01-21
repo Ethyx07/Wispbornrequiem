@@ -397,17 +397,10 @@ scale = Vector2(0.15, 0.16)
 pivot_offset = Vector2(0, 60)
 vertical = true
 
-[node name="nameText" type="RichTextLabel" parent="setSaveName"]
-layout_mode = 2
-theme_override_font_sizes/normal_font_size = 250
-bbcode_enabled = true
-text = "[center]Enter Save Name (5 characters)"
-fit_content = true
-autowrap_mode = 0
-
 [node name="nameGrabber" type="LineEdit" parent="setSaveName"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 200
+placeholder_text = "Enter Save Name (5 Characters)"
 max_length = 5
 
 [node name="setName" type="TextureButton" parent="setSaveName/nameGrabber"]
