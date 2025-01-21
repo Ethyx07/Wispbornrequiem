@@ -256,4 +256,5 @@ show_percentage = false
 layout_mode = 1
 
 [node name="NavAgent" type="NavigationAgent2D" parent="."]
-navigation_layers = 2
+avoidance_layers = 2
+avoidance_mask = 2
