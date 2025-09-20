@@ -43,7 +43,7 @@ func _process(_delta: float) -> void:
 		doorway.get_node("MainTexture").texture = doorway.baseTexture
 		bOpened = true
 	
-func getLimit(cameraAngle : String ) -> int:
+func getLimit(cameraAngle : String ) -> float:
 	if cameraAngle == "cameraXMax":
 		return cameraXMax
 	elif cameraAngle == "cameraXMin":

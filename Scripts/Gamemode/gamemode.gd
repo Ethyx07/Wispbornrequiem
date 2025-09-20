@@ -45,7 +45,7 @@ func load_level() -> void:
 	
 	get_tree().change_scene_to_file(area_dict[area_key]["level_generator"][currentLevel])
 	currentLevel += 1
-	
+	print(currentLevel)
 	var player = PlayerData.playerScene.instantiate()
 	get_tree().root.add_child(player)
 	PlayerData.loadPlayerInfo(player)
@@ -54,6 +54,8 @@ func load_level() -> void:
 func respawn() -> void:
 	runCount += 1
 	area_key = "dungeon"
+	currentLevel == 0
+	print(currentLevel)
 	var projectiles = get_tree().get_nodes_in_group("Projectile")
 	for proj in projectiles:
 		proj.queue_free()
