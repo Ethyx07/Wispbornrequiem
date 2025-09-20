@@ -40,6 +40,10 @@ func interact(body: Node2D) -> void:
 			var newPossession = posssesCharacter.instantiate()
 			newPossession.global_position = body.global_position
 			get_tree().root.get_child(0).add_child(newPossession)
+			newPossession.get_node("Camera2D").limit_left = get_tree().get_first_node_in_group("Level").call("getLimit", "cameraXMin")
+			newPossession.get_node("Camera2D").limit_right = get_tree().get_first_node_in_group("Level").call("getLimit", "cameraXMax")
+			newPossession.get_node("Camera2D").limit_top = get_tree().get_first_node_in_group("Level").call("getLimit", "cameraYMin")
+			newPossession.get_node("Camera2D").limit_bottom = get_tree().get_first_node_in_group("Level").call("getLimit", "cameraYMax")
 			body.remove_self()
 	
 	

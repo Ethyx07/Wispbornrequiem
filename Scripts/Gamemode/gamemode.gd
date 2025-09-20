@@ -53,6 +53,7 @@ func load_level() -> void:
 	
 func respawn() -> void:
 	runCount += 1
+	area_key = "dungeon"
 	var projectiles = get_tree().get_nodes_in_group("Projectile")
 	for proj in projectiles:
 		proj.queue_free()
@@ -73,4 +74,3 @@ func levelGenerator() -> void: #Level generation function, takes the level dicti
 	var miniBossIndex = randi_range(midPoint, area_dict[area_key]["level_generator"].size()) #Sets its mini boss level
 	area_dict[area_key]["level_generator"].insert(miniBossIndex, area_dict[area_key]["mini_boss"])
 	area_dict[area_key]["level_generator"].append(area_dict[area_key]["final_boss"]) #Adds the final boss to the end of the index
-	print(area_dict[area_key]["level_generator"])

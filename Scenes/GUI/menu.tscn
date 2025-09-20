@@ -399,6 +399,15 @@ vertical = true
 
 [node name="nameGrabber" type="LineEdit" parent="setSaveName"]
 layout_mode = 2
+theme_override_colors/clear_button_color_pressed = Color(0.500741, 3.73013e-07, 1.92523e-07, 1)
+theme_override_colors/clear_button_color = Color(0.640825, 0, 0.212578, 1)
+theme_override_colors/selection_color = Color(0.419815, 0.0019802, 0.7055, 1)
+theme_override_colors/caret_color = Color(0.687572, 0.182849, 0, 1)
+theme_override_colors/font_placeholder_color = Color(1, 0.694911, 0.649841, 1)
+theme_override_colors/font_outline_color = Color(0.388237, 0.207716, 0.00625339, 1)
+theme_override_colors/font_selected_color = Color(0, 0, 0.67451, 1)
+theme_override_colors/font_uneditable_color = Color(0.0855867, 0.350883, 0.408164, 1)
+theme_override_colors/font_color = Color(0, 0.427451, 0, 1)
 theme_override_font_sizes/font_size = 200
 placeholder_text = "Enter Save Name (5 Characters)"
 max_length = 5

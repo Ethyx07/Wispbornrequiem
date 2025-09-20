@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://dranjdg8vapdi"]
+[gd_scene load_steps=10 format=3 uid="uid://dranjdg8vapdi"]
 
 [ext_resource type="Script" path="res://Scenes/Enemies/Area Boss/huntsman_boss.gd" id="1_62r6c"]
 [ext_resource type="Texture2D" uid="uid://da13efr6m7guc" path="res://Assets/Enemy/JetpackAnim/JetpackAnimation1.png" id="2_65i42"]
 [ext_resource type="PackedScene" uid="uid://c25t6v0pfo46" path="res://Scenes/Enemies/Area Boss/arrow_proj.tscn" id="2_tyshe"]
+[ext_resource type="Texture2D" uid="uid://dg567jm4nt5g2" path="res://Assets/Enemy/NormalEnemy.png" id="4_33lxd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6kwq6"]
 radius = 56.0089
@@ -80,6 +81,9 @@ speed = 200
 [node name="body" type="Sprite2D" parent="."]
 texture_filter = 1
 texture = ExtResource("2_65i42")
+
+[node name="Sprite2D" type="Sprite2D" parent="body"]
+texture = ExtResource("4_33lxd")
 
 [node name="hurtbox" type="CollisionShape2D" parent="."]
 position = Vector2(2, -2)

@@ -16,10 +16,11 @@ grow_vertical = 2
 
 [node name="itemDesc" type="RichTextLabel" parent="."]
 layout_mode = 0
-offset_left = 10.0
-offset_top = 617.0
-offset_right = 402.0
-offset_bottom = 746.0
+offset_left = -953.0
+offset_top = 1004.0
+offset_right = -264.0
+offset_bottom = 1133.0
+theme_override_font_sizes/normal_font_size = 50
 
 [node name="healthBar" type="ProgressBar" parent="."]
 visible = false
