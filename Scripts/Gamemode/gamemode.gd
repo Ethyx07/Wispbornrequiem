@@ -57,7 +57,7 @@ func respawn() -> void:
 	area_key = "dungeon"
 	currentLevel = 0
 	print(currentLevel)
-	level_list.clear
+	level_list.clear()
 	var projectiles = get_tree().get_nodes_in_group("Projectile")
 	for proj in projectiles:
 		proj.queue_free()

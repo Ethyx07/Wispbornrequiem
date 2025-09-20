@@ -14,7 +14,11 @@ config/name="Wispborn Requiem"
 config/version="Early Demo Build"
 run/main_scene="res://Scenes/GUI/main_menu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
+boot_splash/bg_color=Color(0.0159451, 0.0197502, 0.0476497, 1)
+boot_splash/image="res://Assets/WispbornRequiemIcon.png"
+boot_splash/fullsize=false
 config/icon="res://Assets/WispbornRequiemIcon.png"
+config/windows_native_icon="res://Assets/WispbornRequiemIcon.ico"
 
 [autoload]
 

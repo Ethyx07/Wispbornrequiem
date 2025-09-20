@@ -115,6 +115,7 @@ sources/0 = SubResource("TileSetAtlasSource_j4xoc")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="menu" parent="CanvasLayer" instance=ExtResource("1_nuqka")]
+visible = false
 metadata/_edit_use_anchors_ = true
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer/menu"]
