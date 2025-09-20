@@ -14,6 +14,7 @@ var area_dict = {"dungeon" : dungeon_area, #Dictionary of the dictionaries
 				"forest" : forest_area}
 var area_key = "dungeon"
 var currentLevel : int = 0
+var level_list : Array
 
 var saveSlot : int
 var saveName : String
@@ -43,7 +44,7 @@ func load_level() -> void:
 	for proj in projectiles:
 		proj.queue_free()
 	
-	get_tree().change_scene_to_file(area_dict[area_key]["level_generator"][currentLevel])
+	get_tree().change_scene_to_file(level_list[currentLevel])
 	currentLevel += 1
 	print(currentLevel)
 	var player = PlayerData.playerScene.instantiate()
@@ -54,8 +55,9 @@ func load_level() -> void:
 func respawn() -> void:
 	runCount += 1
 	area_key = "dungeon"
-	currentLevel == 0
+	currentLevel = 0
 	print(currentLevel)
+	level_list.clear
 	var projectiles = get_tree().get_nodes_in_group("Projectile")
 	for proj in projectiles:
 		proj.queue_free()
@@ -69,10 +71,12 @@ func populateLootTable(key : String) -> void:
 	runtimeLootTable = lootTableDict[key].duplicate()
 
 func levelGenerator() -> void: #Level generation function, takes the level dictionary for the area
-	area_dict[area_key]["level_generator"].shuffle() #Duplicates said dungeon and shuffles it randomly
-	while area_dict[area_key]["level_generator"].size() > 2: #Out of the 15 levels it keeps the first 8
-		area_dict[area_key]["level_generator"].pop_back()
-	var midPoint = (area_dict[area_key]["level_generator"].size()/2) #Value for the mini boss index, after the halfway point minimum
-	var miniBossIndex = randi_range(midPoint, area_dict[area_key]["level_generator"].size()) #Sets its mini boss level
-	area_dict[area_key]["level_generator"].insert(miniBossIndex, area_dict[area_key]["mini_boss"])
-	area_dict[area_key]["level_generator"].append(area_dict[area_key]["final_boss"]) #Adds the final boss to the end of the index
+	level_list = area_dict[area_key]["level_generator"].duplicate(true) #Duplicates said dungeon and shuffles it randomly
+	level_list.shuffle()
+	while level_list.size() > 2: #Out of the 15 levels it keeps the first 8
+		level_list.pop_back()
+	var midPoint = (level_list.size()/2) #Value for the mini boss index, after the halfway point minimum
+	var miniBossIndex = randi_range(midPoint, level_list.size()) #Sets its mini boss level
+	level_list.insert(miniBossIndex, area_dict[area_key]["mini_boss"])
+	level_list.append(area_dict[area_key]["final_boss"]) #Adds the final boss to the end of the index
+	

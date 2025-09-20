@@ -10,10 +10,11 @@ config_version=5
 
 [application]
 
-config/name="WispbornRequiem"
+config/name="Wispborn Requiem"
+config/version="Early Demo Build"
 run/main_scene="res://Scenes/GUI/main_menu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://Assets/WispbornRequiemIcon.png"
 
 [autoload]
 
