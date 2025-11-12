@@ -19,7 +19,7 @@ var boss
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	
-	boss = bossEnemy.instantiate()
+	boss = bossEnemy.instantiate() #Arena spawns the boss and sets its health bar value
 	healthBar.max_value = boss.bossMaxHealth
 	healthBar.value = boss.bossMaxHealth
 	
@@ -27,7 +27,7 @@ func _ready() -> void:
 	healthBarVal.add_text(str(boss.bossMaxHealth))
 	
 	bossNameDisplay.clear()
-	bossNameDisplay.bbcode_text = "[center]" + boss.bossName + "[/center]"
+	bossNameDisplay.bbcode_text = "[center]" + boss.bossName + "[/center]" #Centres display name
 	
 	healthBar.visible = true
 	add_child(boss)

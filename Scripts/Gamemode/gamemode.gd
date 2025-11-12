@@ -41,24 +41,24 @@ func _ready() -> void:
 
 func load_level() -> void:
 	var projectiles = get_tree().get_nodes_in_group("Projectile")
-	for proj in projectiles:
+	for proj in projectiles: #Removes all projectiles before loading the next stage
 		proj.queue_free()
 	
-	get_tree().change_scene_to_file(level_list[currentLevel])
+	get_tree().change_scene_to_file(level_list[currentLevel]) #Changes scene based on current level list and current level index
 	currentLevel += 1
 	print(currentLevel)
-	var player = PlayerData.playerScene.instantiate()
+	var player = PlayerData.playerScene.instantiate() #Updates and copies across player data (level streaming would be better should change during future)
 	get_tree().root.add_child(player)
 	PlayerData.loadPlayerInfo(player)
 	
 	
 func respawn() -> void:
-	runCount += 1
+	runCount += 1 #Increases stats for number of runs
 	area_key = "dungeon"
 	currentLevel = 0
 	print(currentLevel)
 	level_list.clear()
-	var projectiles = get_tree().get_nodes_in_group("Projectile")
+	var projectiles = get_tree().get_nodes_in_group("Projectile") #Clears all projectiles and enemies (Garbage Collector)
 	for proj in projectiles:
 		proj.queue_free()
 	var enemies = get_tree().get_nodes_in_group("Enemy")
@@ -68,7 +68,7 @@ func respawn() -> void:
 	get_tree().call_deferred("change_scene_to_file", "res://Scenes/hub_scene.tscn")
 	
 func populateLootTable(key : String) -> void:
-	runtimeLootTable = lootTableDict[key].duplicate()
+	runtimeLootTable = lootTableDict[key].duplicate() #Creates a dupe of the loot table specifically based on the type of player (Minotaur, Hydra)
 
 func levelGenerator() -> void: #Level generation function, takes the level dictionary for the area
 	level_list = area_dict[area_key]["level_generator"].duplicate(true) #Duplicates said dungeon and shuffles it randomly

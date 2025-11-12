@@ -16,12 +16,12 @@ func _ready() -> void:
 	loadPlayerInfo(playerNode)
 	
 func savePlayerInfo(key : String, player : CharacterBody2D) ->void:
-	if character_versions.has(key):
+	if character_versions.has(key): #Makes sure the player key trying to be saved is a valid player type
 		playerScene = character_versions[key]
 		playerNode = player
 		
 	
-func loadPlayerInfo(player : CharacterBody2D) -> void:
+func loadPlayerInfo(player : CharacterBody2D) -> void: #Based on specific character type, certain data is carried over. Currently the used option but not very optimal
 	if is_instance_valid(playerScene):
 		player.health = playerNode.health
 		player.hp_bar.value = playerNode.health
