@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=4 uid="uid://bn0h62ddpkyv1"]
 
-[ext_resource type="Script" path="res://Scripts/CorruptBosses/corrupt_bosses_arena.gd" id="1_8guxw"]
+[ext_resource type="Script" uid="uid://c7xleantl8tlq" path="res://Scripts/CorruptBosses/corrupt_bosses_arena.gd" id="1_8guxw"]
 [ext_resource type="PackedScene" uid="uid://dranjdg8vapdi" path="res://Scenes/Enemies/Area Boss/huntsman_boss.tscn" id="2_g8md5"]
 [ext_resource type="Texture2D" uid="uid://diyru2do7cejo" path="res://Assets/Tilemap/CornerTilemap.png" id="3_hjohn"]
 [ext_resource type="Texture2D" uid="uid://dnanjexv0r58u" path="res://Assets/Tilemap/Tilemap.png" id="4_jk25p"]

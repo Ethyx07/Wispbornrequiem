@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=4 uid="uid://dhx6mxr5221b2"]
 
-[ext_resource type="Script" path="res://Scripts/level_logic.gd" id="1_dp2qe"]
+[ext_resource type="Script" uid="uid://u0adjrk31606" path="res://Scripts/level_logic.gd" id="1_dp2qe"]
 [ext_resource type="PackedScene" uid="uid://c8rc5agxlry6f" path="res://Scenes/Enemies/base_enemy.tscn" id="2_ymly1"]
 [ext_resource type="PackedScene" uid="uid://bnh7jre3dp02y" path="res://Scenes/Enemies/spawn_indicator.tscn" id="3_y4nr2"]
 [ext_resource type="PackedScene" uid="uid://bbkraq600sjs5" path="res://Scenes/Interactables/upgrade_item.tscn" id="4_axwmq"]

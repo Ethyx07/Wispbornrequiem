@@ -1,7 +1,7 @@
 [gd_scene load_steps=21 format=3 uid="uid://bhao4hiyhohpq"]
 
 [ext_resource type="Texture2D" uid="uid://c3gnmi1ovc06m" path="res://Scenes/WeaponSFX/MinotaurSlash/MinotaurSlash1.png" id="1_ew432"]
-[ext_resource type="Script" path="res://Scenes/WeaponSFX/minotaur_slash.gd" id="2_qmrl7"]
+[ext_resource type="Script" uid="uid://b26w251h2jaox" path="res://Scenes/WeaponSFX/minotaur_slash.gd" id="2_qmrl7"]
 [ext_resource type="Texture2D" uid="uid://dpuxpbdtpw6we" path="res://Scenes/WeaponSFX/MinotaurSlash/MinotaurSlash2.png" id="2_yxc70"]
 [ext_resource type="Texture2D" uid="uid://cnre7t50nonjx" path="res://Scenes/WeaponSFX/MinotaurSlash/MinotaurSlash3.png" id="3_tvryv"]
 [ext_resource type="Texture2D" uid="uid://deerlw0yl2kth" path="res://Scenes/WeaponSFX/MinotaurSlash/MinotaurSlash4.png" id="4_a2ut1"]
@@ -50,8 +50,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_yynp5"]
 _data = {
-"RESET": SubResource("Animation_x7t67"),
-"circle_slash": SubResource("Animation_w3nc8")
+&"RESET": SubResource("Animation_x7t67"),
+&"circle_slash": SubResource("Animation_w3nc8")
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_otoew"]

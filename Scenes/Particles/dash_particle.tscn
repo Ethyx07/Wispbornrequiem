@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bddxl25yq1syy"]
 
-[ext_resource type="Script" path="res://Scripts/Particles/dash_particle.gd" id="1_gw6us"]
+[ext_resource type="Script" uid="uid://k2iqd0j00tr2" path="res://Scripts/Particles/dash_particle.gd" id="1_gw6us"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qkfr2"]
 particle_flag_disable_z = true

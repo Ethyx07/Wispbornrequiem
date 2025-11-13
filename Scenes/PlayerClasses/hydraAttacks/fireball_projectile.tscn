@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://cbmdx503euxmt"]
 
 [ext_resource type="Texture2D" uid="uid://c31mafatartaw" path="res://Assets/Weapons/HydraAttacks/Fireball1.png" id="1_3v4mn"]
-[ext_resource type="Script" path="res://Scripts/PlayableCharacters/hydraAttacks/fireball_projectile.gd" id="1_ufshd"]
+[ext_resource type="Script" uid="uid://cxw8eini7dgn3" path="res://Scripts/PlayableCharacters/hydraAttacks/fireball_projectile.gd" id="1_ufshd"]
 [ext_resource type="Texture2D" uid="uid://bt0fm63k16b8n" path="res://Assets/Weapons/HydraAttacks/Fireball2.png" id="2_njtpt"]
 [ext_resource type="Texture2D" uid="uid://bp2v825g8gypx" path="res://Assets/Weapons/HydraAttacks/Fireball3.png" id="3_wg1ps"]
 [ext_resource type="Texture2D" uid="uid://f6wq1hlia2en" path="res://Assets/Weapons/HydraAttacks/Fireball4.png" id="4_a8ubs"]
@@ -68,8 +68,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ytxbr"]
 _data = {
-"RESET": SubResource("Animation_4sm1t"),
-"explosion": SubResource("Animation_j6kfs")
+&"RESET": SubResource("Animation_4sm1t"),
+&"explosion": SubResource("Animation_j6kfs")
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_115ca"]

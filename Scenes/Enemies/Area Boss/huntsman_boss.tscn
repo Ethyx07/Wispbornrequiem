@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://dranjdg8vapdi"]
 
-[ext_resource type="Script" path="res://Scenes/Enemies/Area Boss/huntsman_boss.gd" id="1_62r6c"]
+[ext_resource type="Script" uid="uid://b2lwsgw8enkdg" path="res://Scenes/Enemies/Area Boss/huntsman_boss.gd" id="1_62r6c"]
 [ext_resource type="Texture2D" uid="uid://da13efr6m7guc" path="res://Assets/Enemy/JetpackAnim/JetpackAnimation1.png" id="2_65i42"]
 [ext_resource type="PackedScene" uid="uid://c25t6v0pfo46" path="res://Scenes/Enemies/Area Boss/arrow_proj.tscn" id="2_tyshe"]
 [ext_resource type="Texture2D" uid="uid://dg567jm4nt5g2" path="res://Assets/Enemy/NormalEnemy.png" id="4_33lxd"]
@@ -64,8 +64,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xeiqv"]
 _data = {
-"RESET": SubResource("Animation_0brk6"),
-"deathAnim": SubResource("Animation_ulmdf")
+&"RESET": SubResource("Animation_0brk6"),
+&"deathAnim": SubResource("Animation_ulmdf")
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qh35k"]

@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://da13efr6m7guc" path="res://Assets/Enemy/JetpackAnim/JetpackAnimation1.png" id="1_gq0a1"]
 [ext_resource type="Texture2D" uid="uid://b5idjwshvpjg6" path="res://Assets/Enemy/SwordEnemyV2.png" id="1_tiu2k"]
-[ext_resource type="Script" path="res://Scripts/Enemy/base_enemy.gd" id="1_xs8ep"]
+[ext_resource type="Script" uid="uid://dxyhd8u7m6x7c" path="res://Scripts/Enemy/base_enemy.gd" id="1_xs8ep"]
 [ext_resource type="Texture2D" uid="uid://drnc0d52ccl7l" path="res://Assets/Enemy/JetpackAnim/JetpackAnimation2.png" id="2_fwpbr"]
 [ext_resource type="Texture2D" uid="uid://bxac4pwx53bdl" path="res://Assets/Enemy/SlashAnim/BaseEnemySlash1.png" id="2_yu67b"]
 [ext_resource type="Texture2D" uid="uid://bupfnfvwonkt3" path="res://Assets/Enemy/JetpackAnim/JetpackAnimation3.png" id="3_rfovs"]
@@ -44,8 +44,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1a316"]
 _data = {
-"RESET": SubResource("Animation_jayfo"),
-"jetpack_animation": SubResource("Animation_75xyh")
+&"RESET": SubResource("Animation_jayfo"),
+&"jetpack_animation": SubResource("Animation_75xyh")
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yr4m7"]
@@ -185,9 +185,9 @@ tracks/4/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_84elo"]
 _data = {
-"RESET": SubResource("Animation_u68ip"),
-"attack_slash": SubResource("Animation_f8pgp"),
-"death": SubResource("Animation_lbesf")
+&"RESET": SubResource("Animation_u68ip"),
+&"attack_slash": SubResource("Animation_f8pgp"),
+&"death": SubResource("Animation_lbesf")
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c4pat"]

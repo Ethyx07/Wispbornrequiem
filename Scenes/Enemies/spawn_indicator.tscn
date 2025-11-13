@@ -1,6 +1,6 @@
 [gd_scene load_steps=17 format=3 uid="uid://bnh7jre3dp02y"]
 
-[ext_resource type="Script" path="res://Scripts/Enemy/spawn_indicator.gd" id="1_rueq1"]
+[ext_resource type="Script" uid="uid://n108j6jjbucs" path="res://Scripts/Enemy/spawn_indicator.gd" id="1_rueq1"]
 [ext_resource type="Texture2D" uid="uid://yofwnh5necwm" path="res://Assets/Enemy/EnemySpawn/EnemySpawn1.png" id="2_e3s7p"]
 [ext_resource type="Texture2D" uid="uid://bjloocyxo0m74" path="res://Assets/Enemy/EnemySpawn/EnemySpawn2.png" id="3_mp4xp"]
 [ext_resource type="Texture2D" uid="uid://bf7j8k23a37k7" path="res://Assets/Enemy/EnemySpawn/EnemySpawn3.png" id="4_8bmow"]
@@ -48,8 +48,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jdji7"]
 _data = {
-"RESET": SubResource("Animation_kmo4n"),
-"spawnAnim": SubResource("Animation_5drv2")
+&"RESET": SubResource("Animation_kmo4n"),
+&"spawnAnim": SubResource("Animation_5drv2")
 }
 
 [node name="spawnIndicator" type="Node2D"]

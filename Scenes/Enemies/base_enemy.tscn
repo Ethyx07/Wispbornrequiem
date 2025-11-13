@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://c8rc5agxlry6f"]
 
-[ext_resource type="Script" path="res://Scripts/Enemy/base_enemy.gd" id="1_djb8t"]
+[ext_resource type="Script" uid="uid://dxyhd8u7m6x7c" path="res://Scripts/Enemy/base_enemy.gd" id="1_djb8t"]
 [ext_resource type="Texture2D" uid="uid://b5idjwshvpjg6" path="res://Assets/Enemy/SwordEnemyV2.png" id="2_ns1ec"]
 [ext_resource type="Texture2D" uid="uid://bxac4pwx53bdl" path="res://Assets/Enemy/SlashAnim/BaseEnemySlash1.png" id="3_561am"]
 [ext_resource type="PackedScene" uid="uid://8edjpdiandxd" path="res://Scenes/GUI/status_bar.tscn" id="4_fat4v"]
@@ -70,9 +70,9 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_84elo"]
 _data = {
-"RESET": SubResource("Animation_u68ip"),
-"attack_slash": SubResource("Animation_f8pgp"),
-"death": SubResource("Animation_lbesf")
+&"RESET": SubResource("Animation_u68ip"),
+&"attack_slash": SubResource("Animation_f8pgp"),
+&"death": SubResource("Animation_lbesf")
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c4pat"]

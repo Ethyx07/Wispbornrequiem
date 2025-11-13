@@ -1,6 +1,6 @@
 [gd_scene load_steps=20 format=4 uid="uid://5n0yome5tq1v"]
 
-[ext_resource type="Script" path="res://Scripts/level_logic.gd" id="1_2ovsg"]
+[ext_resource type="Script" uid="uid://u0adjrk31606" path="res://Scripts/level_logic.gd" id="1_2ovsg"]
 [ext_resource type="PackedScene" uid="uid://c8rc5agxlry6f" path="res://Scenes/Enemies/base_enemy.tscn" id="2_qrc6i"]
 [ext_resource type="PackedScene" uid="uid://bk5vxno1mqdyp" path="res://Scenes/Enemies/flying_enemy.tscn" id="3_roo4x"]
 [ext_resource type="PackedScene" uid="uid://bnh7jre3dp02y" path="res://Scenes/Enemies/spawn_indicator.tscn" id="4_obvsu"]
@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://drxld1vfpxhb8" path="res://Scenes/GUI/player_gui.tscn" id="9_nf2uy"]
 [ext_resource type="PackedScene" uid="uid://835xqak3vrpb" path="res://Scenes/GUI/item_menu.tscn" id="10_17ii4"]
 [ext_resource type="PackedScene" uid="uid://em6vqqa3r1gv" path="res://Scenes/Interactables/doorway.tscn" id="11_mf2mu"]
-[ext_resource type="Script" path="res://Scripts/Level/death_pits_area.gd" id="12_0llen"]
+[ext_resource type="Script" uid="uid://dv1hrcodlhgch" path="res://Scripts/Level/death_pits_area.gd" id="12_0llen"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_26gw6"]
 texture = ExtResource("6_ox7v6")

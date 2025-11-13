@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://tv6eh64vfc1h"]
 
-[ext_resource type="Script" path="res://Scripts/Weapons/axe_weapon.gd" id="1_gfgg6"]
+[ext_resource type="Script" uid="uid://jh7fhyqlkal6" path="res://Scripts/Weapons/axe_weapon.gd" id="1_gfgg6"]
 [ext_resource type="Texture2D" uid="uid://cbsgxtck3cyjm" path="res://Assets/Weapons/Axe.png" id="1_vww3b"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ypy2u"]
@@ -54,9 +54,9 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7wopo"]
 _data = {
-"RESET": SubResource("Animation_ohnvj"),
-"return": SubResource("Animation_jg261"),
-"spin": SubResource("Animation_yqlso")
+&"RESET": SubResource("Animation_ohnvj"),
+&"return": SubResource("Animation_jg261"),
+&"spin": SubResource("Animation_yqlso")
 }
 
 [node name="axe_weapon" type="Sprite2D"]

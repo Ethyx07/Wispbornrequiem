@@ -1,6 +1,6 @@
 [gd_scene load_steps=25 format=3 uid="uid://du8becrhraynp"]
 
-[ext_resource type="Script" path="res://Scripts/PlayableCharacters/hydra.gd" id="1_ssvo3"]
+[ext_resource type="Script" uid="uid://bwseejgpwei23" path="res://Scripts/PlayableCharacters/hydra.gd" id="1_ssvo3"]
 [ext_resource type="Texture2D" uid="uid://nrxlphynyx12" path="res://Assets/Enemy/CorruptEnemy/CorruptHydra/FreedHydraBody.png" id="2_catek"]
 [ext_resource type="Texture2D" uid="uid://btdrqypmntaop" path="res://Assets/Enemy/CorruptEnemy/CorruptHydra/FreedHydraLeftHead.png" id="3_3u631"]
 [ext_resource type="Texture2D" uid="uid://bfboss7vradvc" path="res://Assets/GUI/HydraGUI/HydraAttackIceCooldown.png" id="3_07lw7"]
@@ -96,10 +96,10 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_45x0d"]
 _data = {
-"RESET": SubResource("Animation_amb6i"),
-"leftSelect": SubResource("Animation_of7ih"),
-"middleSelect": SubResource("Animation_72b36"),
-"rightSelect": SubResource("Animation_bpml7")
+&"RESET": SubResource("Animation_amb6i"),
+&"leftSelect": SubResource("Animation_of7ih"),
+&"middleSelect": SubResource("Animation_72b36"),
+&"rightSelect": SubResource("Animation_bpml7")
 }
 
 [node name="hydra" type="CharacterBody2D" groups=["Player"]]

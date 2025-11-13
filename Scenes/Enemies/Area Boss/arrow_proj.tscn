@@ -1,7 +1,7 @@
 [gd_scene load_steps=19 format=3 uid="uid://c25t6v0pfo46"]
 
 [ext_resource type="Texture2D" uid="uid://db74x18dc8cld" path="res://Assets/Enemy/AreaBoss/arrow.png" id="1_inm77"]
-[ext_resource type="Script" path="res://Scripts/Projectiles/arrow_proj.gd" id="1_yd07f"]
+[ext_resource type="Script" uid="uid://cwrbri33qibrg" path="res://Scripts/Projectiles/arrow_proj.gd" id="1_yd07f"]
 [ext_resource type="Texture2D" uid="uid://2m5bpn3e32hs" path="res://Assets/Enemy/AreaBoss/trackArrow1.png" id="2_ky5m1"]
 [ext_resource type="Texture2D" uid="uid://d1cpmohwyf4ep" path="res://Assets/Enemy/AreaBoss/bounceArrow.png" id="3_qfp3m"]
 [ext_resource type="Texture2D" uid="uid://br8aidgdi2y4o" path="res://Assets/Enemy/AreaBoss/trackArrow2.png" id="3_vjgtw"]
@@ -50,8 +50,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_fgsf6"]
 _data = {
-"RESET": SubResource("Animation_tutr4"),
-"trackAnim": SubResource("Animation_oux3m")
+&"RESET": SubResource("Animation_tutr4"),
+&"trackAnim": SubResource("Animation_oux3m")
 }
 
 [sub_resource type="Animation" id="Animation_kc1fi"]
@@ -88,8 +88,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_j2ee0"]
 _data = {
-"RESET": SubResource("Animation_kc1fi"),
-"speedyAnim": SubResource("Animation_ldugl")
+&"RESET": SubResource("Animation_kc1fi"),
+&"speedyAnim": SubResource("Animation_ldugl")
 }
 
 [node name="arrow_proj" type="Node2D" groups=["Projectile"]]

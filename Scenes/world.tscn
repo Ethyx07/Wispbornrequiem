@@ -16,7 +16,6 @@ func loadNextLevel() ->void:
 "
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_j18pl"]
-load_path = "res://.godot/imported/Dungeon_Tileset.png-f968bc41fc025fa09a3d46f46c7c8319.ctex"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5q172"]
 texture = SubResource("CompressedTexture2D_j18pl")

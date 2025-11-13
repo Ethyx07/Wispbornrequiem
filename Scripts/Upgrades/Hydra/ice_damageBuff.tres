@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bf7lyghe8vsqv" path="res://Assets/Upgrades/Hydra/IceDamageBuffHighlighted.png" id="1_ltuko"]
 [ext_resource type="Texture2D" uid="uid://c8gn73c72h7ff" path="res://Assets/Upgrades/Hydra/IceDamageBuff.png" id="2_076me"]
-[ext_resource type="Script" path="res://Scripts/Upgrades/upgrade_item.gd" id="3_mtq8g"]
+[ext_resource type="Script" uid="uid://ch7qxhl1y3vxc" path="res://Scripts/Upgrades/upgrade_item.gd" id="3_mtq8g"]
 
 [resource]
 script = ExtResource("3_mtq8g")

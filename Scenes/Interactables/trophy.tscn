@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://bfi2oqbfot71m"]
 
-[ext_resource type="Script" path="res://Scripts/Interactables/trophy.gd" id="1_rld04"]
+[ext_resource type="Script" uid="uid://bghbmqai6ovpm" path="res://Scripts/Interactables/trophy.gd" id="1_rld04"]
 [ext_resource type="Texture2D" uid="uid://bjpdnwuo15gc8" path="res://Assets/Relics/HydraHead/HydraTrophyUnlocked.png" id="2_xgi04"]
 [ext_resource type="Texture2D" uid="uid://xosdynni4ght" path="res://Assets/Enemy/CorruptEnemy/CorruptHydra/FreedHydraRightHead.png" id="2_yh3iy"]
 [ext_resource type="Texture2D" uid="uid://c26372rqbwpou" path="res://Assets/Relics/HydraHead/HydraTrophyHighlighted.png" id="3_c4ki2"]

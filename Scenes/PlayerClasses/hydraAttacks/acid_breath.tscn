@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://dmatwbwv7f8jo"]
 
-[ext_resource type="Script" path="res://Scripts/PlayableCharacters/hydraAttacks/acid_breath.gd" id="1_1hbrn"]
+[ext_resource type="Script" uid="uid://dvquwdvkxkckq" path="res://Scripts/PlayableCharacters/hydraAttacks/acid_breath.gd" id="1_1hbrn"]
 [ext_resource type="Texture2D" uid="uid://753i0jhh7368" path="res://Assets/Weapons/HydraAttacks/AcidBreath1.png" id="2_0xhf2"]
 [ext_resource type="Texture2D" uid="uid://8a5cjigna03r" path="res://Assets/Weapons/HydraAttacks/AcidBreath9.png" id="2_wlkvw"]
 [ext_resource type="Texture2D" uid="uid://blk553ovrgp4m" path="res://Assets/Weapons/HydraAttacks/AcidBreath2.png" id="3_67vwx"]
@@ -121,8 +121,8 @@ tracks/3/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_b4x25"]
 _data = {
-"RESET": SubResource("Animation_bvu3o"),
-"attack": SubResource("Animation_4krmi")
+&"RESET": SubResource("Animation_bvu3o"),
+&"attack": SubResource("Animation_4krmi")
 }
 
 [node name="acidBreath" type="Node2D" groups=["Projectile"]]

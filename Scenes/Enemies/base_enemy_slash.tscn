@@ -1,6 +1,6 @@
 [gd_scene load_steps=17 format=3 uid="uid://byxcauw0mm0sv"]
 
-[ext_resource type="Script" path="res://Scripts/Enemy/base_enemy_slash.gd" id="1_jmpu2"]
+[ext_resource type="Script" uid="uid://bu13qiqeh3b8s" path="res://Scripts/Enemy/base_enemy_slash.gd" id="1_jmpu2"]
 [ext_resource type="Texture2D" uid="uid://bxac4pwx53bdl" path="res://Assets/Enemy/SlashAnim/BaseEnemySlash1.png" id="1_w0k21"]
 [ext_resource type="Texture2D" uid="uid://bcpg5rv6lo478" path="res://Assets/Enemy/SlashAnim/BaseEnemySlash2.png" id="2_a4pnq"]
 [ext_resource type="Texture2D" uid="uid://ce8r5byldacb6" path="res://Assets/Enemy/SlashAnim/BaseEnemySlash3.png" id="3_rb6lm"]
@@ -46,8 +46,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_m7b55"]
 _data = {
-"RESET": SubResource("Animation_jm4kl"),
-"attack_slash": SubResource("Animation_8pl00")
+&"RESET": SubResource("Animation_jm4kl"),
+&"attack_slash": SubResource("Animation_8pl00")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t7of4"]

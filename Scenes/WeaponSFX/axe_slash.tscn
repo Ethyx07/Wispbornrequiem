@@ -1,7 +1,7 @@
 [gd_scene load_steps=17 format=3 uid="uid://dspcekj4x1pew"]
 
 [ext_resource type="Texture2D" uid="uid://ce2on6h1tgs61" path="res://Scenes/WeaponSFX/axe_animation/SlashSpriteAnimated1.png" id="2_b6xtf"]
-[ext_resource type="Script" path="res://Scripts/WeaponSFX/axe_slash.gd" id="2_udq3p"]
+[ext_resource type="Script" uid="uid://5ygea0aite8c" path="res://Scripts/WeaponSFX/axe_slash.gd" id="2_udq3p"]
 [ext_resource type="Texture2D" uid="uid://dtx2ta20emgo0" path="res://Scenes/WeaponSFX/axe_animation/SlashSpriteAnimated2.png" id="2_xqjyb"]
 [ext_resource type="Texture2D" uid="uid://dy2yd2vi8jvcp" path="res://Scenes/WeaponSFX/axe_animation/SlashSpriteAnimated3.png" id="3_m0j8x"]
 [ext_resource type="Texture2D" uid="uid://buod11jq6gksx" path="res://Scenes/WeaponSFX/axe_animation/SlashSpriteAnimated4.png" id="4_3bb1o"]
@@ -95,8 +95,8 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rty8o"]
 _data = {
-"RESET": SubResource("Animation_fjud6"),
-"slash_appear": SubResource("Animation_n7w5k")
+&"RESET": SubResource("Animation_fjud6"),
+&"slash_appear": SubResource("Animation_n7w5k")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5afa8"]
